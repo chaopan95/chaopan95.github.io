@@ -1,0 +1,230 @@
+---
+layout: page
+title:  "Graph Theory"
+---
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    processEscapes: true
+  }
+});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
+
+{:toc}
+
+* 
+{:toc}
+
+
+
+<style>
+table {
+  border-collapse: collapse;
+  border: 1px solid black;
+  margin: 0 auto;
+} 
+
+th,td {
+  border: 1px solid black;
+  text-align: center;
+  padding: 20px;
+}
+
+table.a {
+  table-layout: auto;
+  width: 180px;  
+}
+
+table.b {
+  table-layout: fixed;
+  width: 600px;  
+}
+
+table.c {
+  table-layout: auto;
+  width: 100%;  
+}
+
+table.d {
+  table-layout: fixed;
+  width: 100%;  
+}
+</style>
+
+
+## 1. Undirected Graphs & Directed Graphs
+
+<p align="justify">
+
+</p>
+
+## 2. Spanning Trees
+<p align="justify">
+
+</p>
+
+## 3. Shortest Paths
+<p align="justify">
+<table class="c">
+  <tr><th>Algorithms</th><th>Complexity</th><th>Sources</th><th>Sparse or Dense Graph</th><th>Advantages</th><th>Disadvantages</th></tr>
+  <tr><td>Floyd</td><td>$O(V^{3})$</td><td>Multi</td><td>Dense</td><td>Simple to code</td><td>Apply to small data set</td></tr>
+  <tr><td>Dijkstra</td><td>$O(V^{2})$</td><td>Single</td><td>Dense</td><td>Stable</td><td>Negative edges are not allowed</td></tr>
+  <tr><td>Heap-Dijkstra</td><td>$O(V\log V)$</td><td>Single</td><td>Dense</td><td>Stable</td><td>Negative edges are not allowed</td></tr>
+  <tr><td>Bellman-Ford</td><td>$VE$</td><td>Single</td><td>Sparse</td><td>Negative edges are allowed</td><td>Negative circuit is not allowed</td></tr>
+  <tr><td>SPFA</td><td>kE (k mean is 2)</td><td>--</td><td>--</td><td>--</td><td>--</td></tr>
+</table>
+</p>
+
+### 3.1 Bellman-Ford
+<p align="justify">
+
+</p>
+
+### 3.2 Dijkstra
+<p align="justify">
+
+</p>
+{% highlight C++ %}
+int Dijkstra(int **mat, int n, int b, int e)
+{
+    int *dist = new int [n]{};
+    for (int i = 0; i < n; i++) { dist[i] = -1; }
+    bool *V = new bool [n]{};
+    V[b] = true;
+    dist[b] = 0;
+    int curNode = b;
+    int num = 0;
+    while (num < n)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            if (mat[curNode][j] && !V[j])
+            {
+                if (dist[j] == -1)
+                {
+                    dist[j] = dist[curNode] + mat[curNode][j];
+                }
+                else if (dist[curNode] + mat[curNode][j] < dist[j])
+                {
+                    dist[j] = dist[curNode] + mat[curNode][j];
+                }
+            }
+        }
+        
+        int min = (1ll<<31) - 1;
+        for (int j = 0; j < n; j++)
+        {
+            if (dist[j] != -1 && !V[j] && dist[j] < min)
+            {
+                min = dist[j];
+                curNode = j;
+            }
+        }
+        V[curNode] = true;
+        num++;
+    }
+    int res = dist[e];
+    delete []dist;
+    delete []V;
+    return res;
+}
+
+void ShortPath()
+{
+    int n = 4;
+    int **mat = new int *[n];
+    for (int i = 0; i < n; i++)
+    {
+        mat[i] = new int [n]{};
+    }
+    mat[1-1][2-1] = mat[2-1][1-1] = 5;
+    mat[1-1][3-1] = mat[3-1][1-1] = 6;
+    mat[2-1][4-1] = mat[4-1][2-1] = 8;
+    mat[3-1][4-1] = mat[4-1][3-1] = 6;
+    
+    int b = 1, e = 3;
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = i; j < n; j++)
+        {
+            if (Dijkstra(mat, n, i, j) != Floyd(mat, n, i, j))
+            {
+                cout << i << ' ' << j << endl;
+            }
+        }
+    }
+    cout << Dijkstra(mat, n, b, e) << endl;
+    cout << Floyd(mat, n, b, e) << endl;
+ 
+    for (int i = 0; i < n; i++) { delete []mat[i]; }
+    delete []mat;
+}
+{% endhighlight %}
+
+### 3.3 Floyd
+<p align="justify">
+
+</p>
+{% highlight C++ %}
+int Floyd(int **mat, int n, int b, int e)
+{
+    int INF = (1ll << 31) - 1;
+    int **dist = new int *[n];
+    for (int i = 0; i < n; i++)
+    {
+        dist[i] = new int [n]{};
+        for (int j = 0; j < n; j++)
+        {
+            if (i == j) { continue; }
+            if (mat[i][j] == 0) { dist[i][j] = INF; }
+            else { dist[i][j] = mat[i][j]; }
+        }
+    }
+    
+    for (int k = 0; k < n; k++)
+    {
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < n; j++)
+            {
+                if (dist[i][k] == INF || dist[k][j] == INF) { continue; }
+                if (dist[i][j] == INF)
+                {
+                    dist[i][j] = dist[i][k] + dist[k][j];
+                }
+                else if (dist[i][j] > dist[i][k] + dist[k][j])
+                {
+                    dist[i][j] = dist[i][k] + dist[k][j];
+                }
+            }
+        }
+    }
+    
+    int res = dist[b][e];
+    for (int i = 0; i < n; i++) { delete []dist[i]; }
+    delete []dist;
+    return res;
+}
+{% endhighlight %}
+
+### 3.4 A*
+<p align="justify">
+
+</p>
+
+## 1.5 Flows
+<p align="justify">
+最大流的四种算法介绍https://blog.csdn.net/yjr3426619/article/details/82808303<br>
+网络流题目详讲+题单(入门版)https://blog.csdn.net/qq_40875035/article/details/82884100<br>
+网络流题目详讲+题单(提高版)https://www.cnblogs.com/cjoierljl/p/9489471.html<br>
+网络流24题https://www.cnblogs.com/xseventh/p/7912202.html<br>
+图论题集https://blog.csdn.net/Twillz/article/details/78708938<br>
+</p>
+
+## 1.6 Matching
+<p align="justify">
+
+</p>

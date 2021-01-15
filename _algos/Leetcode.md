@@ -1,0 +1,2858 @@
+---
+layout: post
+title:  "Leetcode"
+---
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    processEscapes: true
+  }
+});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
+
+{:toc}
+
+* 
+{:toc}
+
+
+<style>
+table {
+  border-collapse: collapse;
+  border: 1px solid black;
+  margin: 0 auto;
+} 
+
+th,td {
+  border: 1px solid black;
+  text-align: center;
+  padding: 20px;
+}
+
+table.a {
+  table-layout: auto;
+  width: 180px;  
+}
+
+table.b {
+  table-layout: fixed;
+  width: 600px;  
+}
+
+table.c {
+  table-layout: auto;
+  width: 100%;  
+}
+
+table.d {
+  table-layout: fixed;
+  width: 100%;  
+}
+</style>
+
+
+## 0001. Two Sum
+<p align="justify">
+Given an array of integers, return indices of the two numbers such that they add up to a specific target. You may assume that each input would have exactly one solution, and you may not use the same element twice.<br><br>
+
+<b>Example:</b><br>
+Given nums = [2, 7, 11, 15], target = 9,<br>
+Because nums[0] + nums[1] = 2 + 7 = 9,<br>
+return [0, 1].<br><br>
+
+<b>Solution:</b><br>
+</p>
+{% highlight C++ %}
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        vector<int> res;
+        int n = int(nums.size());
+        if (n < 2) { return res; }
+        unordered_map<int, int> M;
+        unordered_map<int, int>::iterator iter;
+        for (int i = 0; i < n; i++)
+        {
+            int diff = target - nums[i];
+            iter = M.find(diff);
+            if (iter != M.end())
+            {
+                res.push_back(i);
+                res.push_back(iter->second);
+                return res;
+            }
+            else { M[nums[i]] = i; }
+        }
+        return res;
+    }
+};
+{% endhighlight %}
+
+## 0002. Add Two Numbers
+<p align="justify">
+You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list. You may assume the two numbers do not contain any leading zero, except the number 0 itself.<br><br>
+
+<b>Example:</b><br>
+Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)<br>
+Output: 7 -> 0 -> 8<br>
+Explanation: 342 + 465 = 807.<br><br>
+
+<b>Solution:</b>
+</p>
+{% highlight C++ %}
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+        ListNode *pre = new ListNode(0), *cur = pre;
+        int val = 0, pos = 0;
+        while (l1 != nullptr && l2 != nullptr)
+        {
+            val = l1->val + l2->val + pos;
+            pos = 0;
+            if (val > 9)
+            {
+                val -= 10;
+                pos = 1;
+            }
+            cur->next = new ListNode(val);
+            cur = cur->next;
+            l1 = l1->next;
+            l2 = l2->next;
+        }
+        while (l1 != nullptr)
+        {
+            val = l1->val + pos;
+            pos = 0;
+            if (val > 9)
+            {
+                val -= 10;
+                pos = 1;
+            }
+            cur->next = new ListNode(val);
+            cur = cur->next;
+            l1 = l1->next;
+        }
+        while (l2 != nullptr)
+        {
+            val = l2->val + pos;
+            pos = 0;
+            if (val > 9)
+            {
+                val -= 10;
+                pos = 1;
+            }
+            cur->next = new ListNode(val);
+            cur = cur->next;
+            l2 = l2->next;
+        }
+        if (pos == 1) { cur->next = new ListNode(1); }
+        ListNode *head = pre->next;
+        delete pre;
+        return head;
+    }
+};
+{% endhighlight %}
+
+## 0003. Longest Substring Without Repeating Characters*
+<p align="justify">
+Given a string, find the length of the longest substring without repeating characters.<br><br>
+
+<b>Example 1:</b><br>
+Input: "abcabcbb"<br>
+Output: 3 <br>
+Explanation: The answer is "abc", with the length of 3. <br><br>
+
+<b>Example 2:</b><br>
+Input: "bbbbb"<br>
+Output: 1<br>
+Explanation: The answer is "b", with the length of 1.<br><br>
+
+<b>Example 3:</b><br>
+Input: "pwwkew"<br>
+Output: 3<br>
+Explanation: The answer is "wke", with the length of 3. <br>
+Note that the answer must be a substring, "pwke" is a subsequence and not a substring.<br><br>
+
+<b>Solution:</b><br>
+$\bigstar$ Dynamic programming<br>
+We need a dictionary dict (Attention: dict is a key word in Python, take another) for each character to stock its last position in one string and we need a array dp for each character to represente a max length without repetition if we regard this character as an end.<br>
+At first, if the length of s is 0, return directly 0.<br>
+Then, dp[0] = 1 which means max length is 1 for the first character. We take i (i>=1) into account.<br>
+If s[i] is not in dict, we regard s[i] is never visited, in otehr word, s[i] is different from any character from s[0] to s[i-1], so we have dp[i] = dp[i-1]+1.<br>
+If s[i] is in dict, s[i] is repeated and we calculate i-dict[s[i]], which means a distance dist between two same s[i]. If dist > dp[i-1], a max length without repetition for s[i] is bigger than s[i-1], in other word, s[i-1] has one repetition before, then dp[i] = dp[i-1]+1; otherwise, dp[i] = dist.
+</p>
+{% highlight C++ %}
+// Dynamic programming
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        int n = int(s.length()), maxLen = 1;
+        if (n == 0) { return 0; }
+        map<int, int> dict;
+        map<int, int>::iterator iter;
+        int *dp = new int [n]{};
+        dp[0] = 1;
+        dict[s[0]] = 0;
+        for (int i = 1; i < n; i++)
+        {
+            iter = dict.find(s[i]);
+            if (iter == dict.end()) { dp[i] = dp[i-1] + 1; }
+            else
+            {
+                int dist = i - dict[s[i]];
+                if (dist > dp[i-1]) { dp[i] = dp[i-1] + 1; }
+                else { dp[i] = dist; }
+            }
+            dict[s[i]] = i;
+            maxLen = maxLen > dp[i] ? maxLen : dp[i];
+        }
+        delete []dp;
+        return maxLen;
+    }
+};
+{% endhighlight %}
+
+<p align="justify">
+$\bigstar$ Sliding window<br>
+1) We initialise a dict for all characters of s with false, which means no one is visited. We set two index or pointers i, j for sliding window: i = j = 0 or i, j points to s[0].<br>
+2) Under a loop of i < length(s) and j < length(s), if dict[s[i]] is false, set dict[s[i]] = true, max_len = max(max_len, i-j+1), i++, which means s[i] is never visited, we cans slide i further; otherwise, set dict[s[j]] = false, j++, which means s[i] and s[j] are same characters, we have to get rid of the influence of i, that is to say, s[i] is visited.
+</p>
+{% highlight C++ %}
+// Sliding windows
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        int n = int(s.length());
+        if (n == 0) { return 0; }
+        int i = 0, j = 0, maxLen = 1;
+        map<int, bool> dict;
+        for (int i = 0; i < n; i++) { dict[s[i]] = false; }
+        while (i < n && j < n)
+        {
+            if (!dict[s[i]])
+            {
+                dict[s[i]] = true;
+                maxLen = maxLen > (i-j+1) ? maxLen : (i-j+1);
+                i++;
+            }
+            else
+            {
+                dict[s[j]] = false;
+                j++;
+            }
+        }
+        return maxLen;
+    }
+};
+{% endhighlight %}
+
+## 0004. Median of Two Sorted Arrays*
+<p align="justify">
+There are two sorted arrays nums1 and nums2 of size m and n respectively. Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)). You may assume nums1 and nums2 cannot be both empty.<br><br>
+
+<b>Example 1:</b><br>
+nums1 = [1, 3]<br>
+nums2 = [2]<br>
+The median is 2.0<br><br>
+
+<b>Example 2:</b><br>
+nums1 = [1, 2]<br>
+nums2 = [3, 4]<br>
+The median is (2 + 3)/2 = 2.5<br><br>
+
+<b>Solution:</b><br>
+This problem requires a time complexity in <b>O(log(m+n))</b>, which determines that we cannot merge sort the twos arrays then get a median value because of o(m+n). A faisible solution is to find k-th value in two sorted arrays based on binary search.<br><br>
+
+$\bigstar$ Cut two sorted arrays<br>
+In fact, median is a statistique term, which means a value in middle position. If we want acquire a median value in one sorted array, it is easy to take the value in middlle position.
+<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/ALGOS/Leetcode/1.png"/></center>
+</p>
+<p align="justify">
+For example, the cutting line split an array into two parts with same size, l1 and r1 are left value and right value of cut postion.<br>
+Left example is odd array, l1 = r1 = 3, while right example is even array, l1 = 3, r1 = 4.<br><br>
+Similarly, we can generalize this to two arrays. If we can find such a cut for two arrays that the number of left cut and the number of right cut are equal, we can determine a median value for the 2 arrays. For example, we determine cut position k1, k2 for A, B respectively.
+<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/ALGOS/Leetcode/2.png"/></center>
+$$\text{Median} = \frac{\text{max}(l1, l2) + \text{min}(r1, r2)}{2} = 4$$
+
+$\bigstar$ Unify odd and even number<br>
+According to traditional way, we have to treat case-by-case: it is different to calculate median value for odd array and even array.<br>
+In order to conquer this problem, we introuce a virtual placeholder. For example, an original array A is <b>1 2 3 4 5</b> and we insert a virtual placeholder <b>#</b> into A, which becomes A' = <b>#1#2#3#4#5#</b>. We see, lenghth of the original array is 5, while length of the new array is 5*2+1. If we cut A' at position 4(5th character from left),
+<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/ALGOS/Leetcode/3.png"/></center>
+</p>
+<p align="justify">
+With this method, it's easy to get value in the original. Cut position c = 4
+$$l1 = A[(c-1)/2] = A[1] = 2, r1 = A[c/2] = A[2] = 3$$
+
+If cut position for A' is in first # or last #, it will cause a overflow problem.
+<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/ALGOS/Leetcode/4.png"/></center>
+</p>
+<p align="justify">
+As the example shows, if cut position at first #, left = min(A[0], B[0]), while cut position at last #, right = max(A[-1], B[-1]).
+</p>
+{% highlight C++ %}
+class Solution {
+public:
+    double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
+        int n1 = int(nums1.size()), n2 = int(nums2.size());
+        if (n1 == 0) { return (nums2[(n2-1)/2]+nums2[n2/2])/2.0; }
+        if (n2 == 0) { return (nums1[(n1-1)/2]+nums1[n1/2])/2.0; }
+        int MAX = nums1[n1-1] > nums2[n2-1] ? nums1[n1-1] : nums2[n2-1];
+        int MIN = nums1[0] < nums2[0] ? nums1[0] : nums2[0];
+        if (n1 < n2) { return findK(nums1, nums2, 0, 2*n1, n1, n2, MAX, MIN); }
+        else { return findK(nums2, nums1, 0, 2*n2, n2, n1, MAX, MIN); }
+    }
+    double findK(vector<int> nums1, vector<int> nums2,
+                 int b, int e, int n1, int n2,
+                 int MAX, int MIN)
+    {
+        int l1 = 0, l2 = 0, r1 = 0, r2 = 0;
+        int k1 = (b + e) / 2, k2 = (n1 + n2 - k1);
+        if (k1 == 0) { l1 = MIN; r1 = nums1[0]; }
+        else if (k1 >= 2*n1) { l1 = nums1[n1-1]; r1 = MAX; }
+        else { l1 = nums1[(k1-1)/2]; r1 = nums1[k1/2]; }
+        if (k2 == 0) { l2 = MIN; r2 = nums2[0]; }
+        else if (k2 >= 2*n2) { l2 = nums2[n2-1]; r2 = MAX; }
+        else { l2 = nums2[(k2-1)/2]; r2 = nums2[k2/2]; }
+        if (l1 <= r2 && l2 <= r1)
+        {
+            return ((l1>l2?l1:l2)+(r1 < r2?r1:r2))/2.0;
+        }
+        else if (l1 > r2)
+        {
+            return findK(nums1, nums2, b, k1-1, n1, n2, MAX, MIN);
+        }
+        else { return findK(nums1, nums2, k1+1, e, n1, n2, MAX, MIN); }
+    }
+};
+{% endhighlight %}
+
+## 0005. Longest Palindromic Substring*
+<p align="justify">
+Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000.<br><br>
+
+<b>Example 1:</b><br>
+Input: "babad"<br>
+Output: "bab"<br>
+Note: "aba" is also a valid answer.<br><br>
+
+<b>Example 2:</b><br>
+Input: "cbbd"<br>
+Output: "bb"<br><br>
+
+<b>Solution:</b><br>
+Dynamic programming:<br>
+We construct a table, such that table[i][j] represent a substring fron s[i] to s[j] is palindromic or not. Note that, each single character is palindromic, namely table[i][i] is true. We also assignment table[i][i+1] = true if two adjacent characters are same. Then we visit other substirngs to find the longest one.
+</p>
+{% highlight C++ %}
+class Solution {
+public:
+    string longestPalindrome(string s) {
+        int n = int(s.length()), pos = 0, len = 1;
+        if (n < 2) { return s; }
+        bool **dp = new bool *[n];
+        for (int i = 0; i < n; i++)
+        {
+            dp[i] = new bool [n]{};
+            dp[i][i] = true;
+        }
+        for (int i = 0; i < n-1; i++)
+        {
+            if (s[i] == s[i+1])
+            {
+                dp[i][i+1] = true;
+                pos = i;
+                len = 2;
+            }
+        }
+        for (int k = 2; k < n; k++)
+        {
+            for (int i = 0; i < n-k; i++)
+            {
+                int j = i + k;
+                if (s[i] == s[j] && dp[i+1][j-1])
+                {
+                    pos = i;
+                    len = k + 1;
+                    dp[i][j] = true;
+                }
+            }
+        }
+        for (int i = 0; i < n; i++) { delete []dp[i]; }
+        delete []dp;
+        return s.substr(pos, len);
+    }
+};
+{% endhighlight %}
+
+## 0006. ZigZag Conversion
+<p align="justify">
+The string "PAYPALISHIRING" is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)<br>
+P   A   H   N<br>
+A P L S I I G<br>
+Y   I   R<br><br>
+
+And then read line by line: "PAHNAPLSIIGYIR"<br><br>
+
+Write the code that will take a string and make this conversion given a number of rows:<br>
+string convert(string s, int numRows);<br><br>
+
+<b>Example 1:</b><br>
+Input: s = "PAYPALISHIRING", numRows = 3<br>
+Output: "PAHNAPLSIIGYIR"<br><br>
+
+<b>Example 2:</b><br>
+Input: s = "PAYPALISHIRING", numRows = 4<br>
+Output: "PINALSIGYAHRPI"<br>
+Explanation:<br>
+P     I    N<br>
+A   L S  I G<br>
+Y A   H R<br>
+P     I<br><br>
+
+<b>Solution:</b>
+</p>
+{% highlight C++ %}
+class Solution {
+public:
+    string convert(string s, int numRows) {
+        int n = int(s.length());
+        if (n == 0 || numRows < 2) { return s; }
+        string res = "";
+        int nRow = numRows, num = 2*numRows - 2;
+        int nCol = (n / num) * (num - nRow + 1);
+        if (n % num < nRow) { nCol++; }
+        else { nCol += (n % num) - nRow + 1; }
+        char *mat = new char [nRow*nCol]{};
+        for (int k = 0; k < n; k++)
+        {
+            int quo = k / num, mod = k % num;
+            int i = -1, j = quo * (num - nRow + 1);
+            if (mod < nRow) { i = mod; }
+            else
+            {
+                i = nRow - 2 - (mod - nRow);
+                j += mod - nRow + 1;
+            }
+            mat[i*nCol+j] = s[k];
+        }
+        for (int i = 0; i < nRow; i++)
+        {
+            for (int j = 0; j < nCol; j++)
+            {
+                if (mat[i*nCol+j]) { res.push_back(mat[i*nCol+j]); }
+            }
+        }
+        delete []mat;
+        return res;
+    }
+};
+{% endhighlight %}
+
+## 0007. Reverse Integer
+<p align="justify">
+Given a 32-bit signed integer, reverse digits of an integer.<br><br>
+
+<b>Example 1:</b><br>
+Input: 123<br>
+Output: 321<br><br>
+
+<b>Example 2:</b><br>
+Input: -123<br>
+Output: -321<br><br>
+
+<b>Example 3:</b><br>
+Input: 120<br>
+Output: 21<br><br>
+
+Note:<br>
+Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [$-2^{31}$,  $2^{31}$−1]. For the purpose of this problem, assume that your function returns 0 when the reversed integer overflows.<br><br>
+
+<b>Solution:</b>
+</p>
+{% highlight C++ %}
+class Solution {
+public:
+    int reverse(int x) {
+        long res = 0;
+        bool isNeg = false;
+        if (x < 0) { isNeg = true; }
+        while (x)
+        {
+            res = res * 10 + x % 10;
+            x /= 10;
+        }
+        if (res >= (1ll << 31) || res <= -(1ll << 31)) { return 0; }
+        return int(res);
+    }
+};
+{% endhighlight %}
+
+## 0008. String to Integer (atoi)
+<p align="justify">
+Implement atoi which converts a string to an integer. The function first discards as many whitespace characters as necessary until the first non-whitespace character is found. Then, starting from this character, takes an optional initial plus or minus sign followed by as many numerical digits as possible, and interprets them as a numerical value.<br><br>
+
+The string can contain additional characters after those that form the integral number, which are ignored and have no effect on the behavior of this function.<br><br>
+
+If the first sequence of non-whitespace characters in str is not a valid integral number, or if no such sequence exists because either str is empty or it contains only whitespace characters, no conversion is performed.<br><br>
+
+If no valid conversion could be performed, a zero value is returned.<br><br>
+
+Note:<br>
+Only the space character ' ' is considered as whitespace character.<br>
+Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [$-2^{31}$,  $2^{31}$−1]. If the numerical value is out of the range of representable values, INT_MAX ($2^{31}$ − 1) or INT_MIN (-$2^{31}$) is returned.<br><br>
+
+<b>Example:</b><br>
+Input: "42"<br>
+Output: 42<br><br>
+
+<b>Example 2:</b><br>
+Input: "   -42"<br>
+Output: -42<br>
+Explanation: The first non-whitespace character is '-', which is the minus sign. Then take as many numerical digits as possible, which gets 42.<br><br>
+
+<b>Example 3:</b><br>
+Input: "4193 with words"<br>
+Output: 4193<br>
+Explanation: Conversion stops at digit '3' as the next character is not a numerical digit.<br><br>
+
+<b>Example 4:</b><br>
+Input: "words and 987"<br>
+Output: 0<br>
+Explanation: The first non-whitespace character is 'w', which is not a numerical digit or a +/- sign. Therefore no valid conversion could be performed.<br><br>
+
+<b>Example 5:</b><br>
+Input: "-91283472332"<br>
+Output: -2147483648<br>
+Explanation: The number "-91283472332" is out of the range of a 32-bit signed integer. Thefore INT_MIN (−$2^{31}$) is returned.<br><br>
+
+<b>Solution:</b>
+</p>
+{% highlight C++ %}
+class Solution {
+public:
+    int myAtoi(string s) {
+        int n = int(s.length());
+        if (n == 0) { return 0; }
+        bool isNeg = false;
+        long res = 0;
+        int pos = 0;
+        while (s[pos] == ' ') { pos++; }
+        if (s[pos] == '-') { isNeg = true; }
+        else if (s[pos] == '+') { isNeg = false; }
+        else if (s[pos] >= '0' && s[pos] <= '9') { res += s[pos] - '0'; }
+        else { return 0; }
+        for (++pos; pos < n; pos++)
+        {
+            if (s[pos] < '0' || s[pos] > '9') { break; }
+            res = res * 10 + s[pos] - '0';
+            if (res >= (1ll << 31))
+            {
+                if (isNeg) { return -(1ll << 31); }
+                else { return (1ll << 31) - 1; }
+            }
+        }
+        if (isNeg) { return -res; }
+        return res;
+    }
+};
+{% endhighlight %}
+
+## 0009. Palindrome Number
+<p align="justify">
+Determine whether an integer is a palindrome. An integer is a palindrome when it reads the same backward as forward.<br><br>
+
+<b>Example 1:</b><br>
+Input: 121<br>
+Output: true<br><br>
+
+<b>Example 2:</b><br>
+Input: -121<br>
+Output: false<br>
+Explanation: From left to right, it reads -121. From right to left, it becomes 121-. Therefore it is not a palindrome.<br><br>
+
+<b>Example 3:</b><br>
+Input: 10<br>
+Output: false<br>
+Explanation: Reads 01 from right to left. Therefore it is not a palindrome.<br><br>
+
+Follow up:<br>
+Coud you solve it without converting the integer to a string?<br><br>
+
+<b>Solution:</b>
+</p>
+{% highlight C++ %}
+class Solution {
+public:
+    bool isPalindrome(int x) {
+        if (x < 0) { return false; }
+        if (x < 10) { return true; }
+        int count = 0, a = x;
+        while (a)
+        {
+            count++;
+            a /= 10;
+        }
+        count--;
+        while (x)
+        {
+            int deno = int(pow(10, count));
+            int left = x / deno, right = x % 10;
+            if (left != right) { return false; }
+            x = x % deno;
+            x = x / 10;
+            count -= 2;
+        }
+        return true;
+    }
+};
+{% endhighlight %}
+
+## 0010. Regular Expression Matching*
+<p align="justify">
+Given an input string (s) and a pattern (p), implement regular expression matching with support for '.' and '*'.<br><br>
+
+'.' Matches any single character.<br>
+'*' Matches zero or more of the preceding element.<br>
+
+The matching should cover the entire input string (not partial).<br><br>
+
+Note:<br>
+s could be empty and contains only lowercase letters a-z.<br>
+p could be empty and contains only lowercase letters a-z, and characters like . or *.<br><br>
+
+<b>Example 1:</b><br>
+Input:<br>
+s = "aa"<br>
+p = "a"<br>
+Output: false<br>
+Explanation: "a" does not match the entire string "aa".<br><br>
+
+<b>Example 2:</b><br>
+Input:<br>
+s = "aa"<br>
+p = "a*"<br>
+Output: true<br>
+Explanation: '*' means zero or more of the preceding element, 'a'. Therefore, by repeating 'a' once, it becomes "aa".<br><br>
+
+<b>Example 3:</b><br>
+Input:<br>
+s = "ab"<br>
+p = ".*"<br>
+Output: true<br>
+Explanation: ".*" means "zero or more (*) of any character (.)".<br><br>
+
+<b>Example: 4</b><br>
+Input:<br>
+s = "aab"<br>
+p = "c*a*b"<br>
+Output: true<br>
+Explanation: c can be repeated 0 times, a can be repeated 1 time. Therefore, it matches "aab".<br><br>
+
+<b>Example 5:</b><br>
+Input:<br>
+s = "mississippi"<br>
+p = "mis*is*p*."<br>
+Output: false<br><br>
+
+<b>Solution:</b><br>
+Consider two string s, p. i, j denote some position in s and p.<br><br>
+
+We use dynamic programming with a matrix dp $(ns+1) \times (np+1)$. ns and np are length of s and p. dp[i][j] denote if s[i:] and p[j:] match. The last entry dp[ns][np] is true. because '' and '' match.<br><br>
+
+Firstly, we check if s[i] and p[j] match ij_match is false or true.<br>
+Secondly, if p[j+1] is *, dp[i][j] has two independent sources: dp[i][j+2] and dp[i+1][j]. In detail, dp[i][j+2] represents we jump over * to check dp[i][j+2]. Similarly, dp[i+1][j] influences dp[i][j] but we have to consider ij_match. Both ij_match and dp[i+1][j] are true, dp[i][j] is true.<br>
+Otherwise, p[j+1] is not *, dp[i][j] is dependent of ij_match and dp[i+1][j+1].<br>
+Finally, return dp[0][0]<br><br>
+
+Remark: why we don't consider ij_match for dp[i][j+2]? Because we jump over *.
+</p>
+{% highlight C++ %}
+class Solution {
+public:
+    bool isMatch(string s, string p) {
+        int ns = int(s.length()), np = int(p.length());
+        bool **dp = new bool *[ns+1];
+        for (int i = 0; i <= ns; i++) { dp[i] = new bool [np+1]{}; }
+        dp[ns][np] = true;
+        for (int i = ns; i >= 0; i--)
+        {
+            for (int j = np-1; j >= 0; j--)
+            {
+                bool ijMatch = i < ns && (s[i] == p[j] || p[j] == '.');
+                if (j < np - 1 && p[j+1] == '*')
+                {
+                    dp[i][j] = dp[i][j+2] || (ijMatch && dp[i+1][j]);
+                }
+                else { dp[i][j] = ijMatch && dp[i+1][j+1]; }
+            }
+        }
+        int res = dp[0][0];
+        for (int i = 0; i <= ns; i++) { delete []dp[i]; }
+        delete []dp;
+        return res;
+    }
+};
+{% endhighlight %}
+
+## 0011. Container With Most Water*
+<p align="justify">
+Given n non-negative integers a1, a2, ..., an , where each represents a point at coordinate (i, ai). n vertical lines are drawn such that the two endpoints of line i is at (i, ai) and (i, 0). Find two lines, which together with x-axis forms a container, such that the container contains the most water.<br><br>
+
+Note: You may not slant the container and n is at least 2.<br>
+<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/ALGOS/Leetcode/5.png"/></center>
+</p>
+<p align="justify">
+The above vertical lines are represented by array [1,8,6,2,5,4,8,3,7]. In this case, the max area of water (blue section) the container can contain is 49.<br><br>
+
+<b>Example:</b><br>
+Input: [1,8,6,2,5,4,8,3,7]<br>
+Output: 49<br><br>
+
+<b>Solution:</b><br>
+Brutal force cause Time Limit Exceeded. We use two points method.<br>
+1) Firstly, we set two extremities as initial values.<br>
+2) Then we move the shorter side towards the longer side one step, e.g. moving 1 towards 7.<br>
+3) We repeat 2) until two side are adjacent.<br>
+During this process, we calculate the max area.<br>
+</p>
+{% highlight C++ %}
+class Solution {
+public:
+    int maxArea(vector<int>& height) {
+        int n = int(height.size());
+        if (n < 2) { return 0; }
+        int i = 0, j = n-1, res = 0;
+        while (i < j)
+        {
+            int a = height[i], b = height[j];
+            int B = a < b ? a : b, H = j - i;
+            if (B * H > res) { res = B * H; }
+            if (a < b) { i++; }
+            else { j--; }
+        }
+        return res;
+    }
+};
+{% endhighlight %}
+
+## 0012. Integer to Roman
+<p align="justify">
+Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.<br>
+<table class="a">
+  <tr><th>Symbol</th><th>Value</th></tr>
+  <tr><td>I</td><td>1</td></tr>
+  <tr><td>V</td><td>5</td></tr>
+  <tr><td>X</td><td>10</td></tr>
+  <tr><td>L</td><td>50</td></tr>
+  <tr><td>C</td><td>100</td></tr>
+  <tr><td>D</td><td>500</td></tr>
+  <tr><td>M</td><td>1000</td></tr>
+</table><br>
+</p>
+<p align="justify">
+For example, two is written as II in Roman numeral, just two one's added together. Twelve is written as, XII, which is simply X + II. The number twenty seven is written as XXVII, which is XX + V + II.<br><br>
+
+Roman numerals are usually written largest to smallest from left to right. However, the numeral for four is not IIII. Instead, the number four is written as IV. Because the one is before the five we subtract it making four. The same principle applies to the number nine, which is written as IX. There are six instances where subtraction is used:<br><br>
+
+I can be placed before V (5) and X (10) to make 4 and 9.<br>
+X can be placed before L (50) and C (100) to make 40 and 90.<br>
+C can be placed before D (500) and M (1000) to make 400 and 900.<br>
+Given an integer, convert it to a roman numeral. Input is guaranteed to be within the range from 1 to 3999.<br><br>
+
+<b>Example 1:</b><br>
+Input: 3<br>
+Output: "III"<br><br>
+
+<b>Example 2:</b><br>
+Input: 4<br>
+Output: "IV"<br><br>
+
+<b>Example 3:</b><br>
+Input: 9<br>
+Output: "IX"<br><br>
+
+<b>Example 4:</b><br>
+Input: 58<br>
+Output: "LVIII"<br>
+Explanation: L = 50, V = 5, III = 3.<br><br>
+
+<b>Example 5:</b><br>
+Input: 1994<br>
+Output: "MCMXCIV"<br>
+Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.<br><br>
+
+<b>Solution:</b>
+</p>
+{% highlight C++ %}
+class Solution {
+public:
+    string intToRoman(int num) {
+        string res = "";
+        int nums[4] = {1000, 100, 10, 1};
+        char roman[4] = {'M', 'C', 'X', 'I'};
+        for (int i = 0; i < 4; i++)
+        {
+            int quo = num / nums[i], mod = num % nums[i];
+            num = mod;
+            if (quo == 0) { continue; }
+            if (quo == 9)
+            {
+                if (roman[i] == 'C') { res += "CM"; }
+                if (roman[i] == 'X') { res += "XC"; }
+                if (roman[i] == 'I') { res += "IX"; }
+                continue;
+            }
+            if (quo == 4)
+            {
+                if (roman[i] == 'C') { res += "CD"; }
+                if (roman[i] == 'X') { res += "XL"; }
+                if (roman[i] == 'I') { res += "IV"; }
+                continue;
+            }
+            if (quo >= 5)
+            {
+                quo -= 5;
+                if (roman[i] == 'C') { res.push_back('D'); }
+                if (roman[i] == 'X') { res.push_back('L'); }
+                if (roman[i] == 'I') { res.push_back('V'); }
+            }
+            while (quo--) { res.push_back(roman[i]); }
+        }
+        return res;
+    }
+};
+{% endhighlight %}
+
+## 0013. Roman to Integer
+<p align="justify">
+Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.<br>
+<table class="a">
+  <tr><th>Symbol</th><th>Value</th></tr>
+  <tr><td>I</td><td>1</td></tr>
+  <tr><td>V</td><td>5</td></tr>
+  <tr><td>X</td><td>10</td></tr>
+  <tr><td>L</td><td>50</td></tr>
+  <tr><td>C</td><td>100</td></tr>
+  <tr><td>D</td><td>500</td></tr>
+  <tr><td>M</td><td>1000</td></tr>
+</table><br>
+</p>
+<p align="justify">
+For example, two is written as II in Roman numeral, just two one's added together. Twelve is written as, XII, which is simply X + II. The number twenty seven is written as XXVII, which is XX + V + II.<br><br>
+
+Roman numerals are usually written largest to smallest from left to right. However, the numeral for four is not IIII. Instead, the number four is written as IV. Because the one is before the five we subtract it making four. The same principle applies to the number nine, which is written as IX. There are six instances where subtraction is used:<br><br>
+
+I can be placed before V (5) and X (10) to make 4 and 9.<br>
+X can be placed before L (50) and C (100) to make 40 and 90.<br>
+C can be placed before D (500) and M (1000) to make 400 and 900.<br><br>
+
+Given a roman numeral, convert it to an integer. Input is guaranteed to be within the range from 1 to 3999.<br><br>
+
+<b>Example 1:</b><br>
+Input: "III"<br>
+Output: 3<br><br>
+
+<b>Example 2:</b><br>
+Input: "IV"<br>
+Output: 4<br><br>
+
+<b>Example 3:</b><br>
+Input: "IX"<br>
+Output: 9<br><br>
+
+<b>Example 4:</b><br>
+Input: "LVIII"<br>
+Output: 58<br>
+Explanation: L = 50, V= 5, III = 3.<br><br>
+
+<b>Example 5:</b><br>
+Input: "MCMXCIV"<br>
+Output: 1994<br>
+Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.<br><br>
+
+<b>Solution:</b>
+</p>
+{% highlight C++ %}
+class Solution {
+public:
+    int romanToInt(string s) {
+        int res = 0, n = int(s.length());
+        if (n == 0) { return res; }
+        int nums[4] = {1000, 100, 10, 1};
+        char roman[4] = {'M', 'C', 'X', 'I'};
+        map<char, int> dictRomanToInt;
+        dictRomanToInt['M'] = 1000;
+        dictRomanToInt['D'] = 500;
+        dictRomanToInt['C'] = 100;
+        dictRomanToInt['L'] = 50;
+        dictRomanToInt['X'] = 10;
+        dictRomanToInt['V'] = 5;
+        dictRomanToInt['I'] = 1;
+        map<string, int> dictRomanpairToInt;
+        map<string, int>::iterator iter;
+        dictRomanpairToInt["IV"] = 4;
+        dictRomanpairToInt["IX"] = 9;
+        dictRomanpairToInt["XL"] = 40;
+        dictRomanpairToInt["XC"] = 90;
+        dictRomanpairToInt["CD"] = 400;
+        dictRomanpairToInt["CM"] = 900;
+        int pos = 0;
+        while (pos < n)
+        {
+            iter = dictRomanpairToInt.find(s.substr(pos, 2));
+            if (iter != dictRomanpairToInt.end())
+            {
+                res += iter->second;
+                pos += 2;
+                continue;
+            }
+            res += dictRomanToInt[s[pos]];
+            pos++;
+        }
+        return res;
+    }
+};
+{% endhighlight %}
+
+## 0014. Longest Common Prefix
+<p align="justify">
+Write a function to find the longest common prefix string amongst an array of strings.<br><br>
+
+If there is no common prefix, return an empty string "".<br><br>
+
+<b>Example 1:</b><br>
+Input: ["flower","flow","flight"]<br>
+Output: "fl"<br><br>
+
+<b>Example 2:</b><br>
+Input: ["dog","racecar","car"]<br>
+Output: ""<br>
+Explanation: There is no common prefix among the input strings.<br><br>
+
+<b>Note:</b><br>
+All given inputs are in lowercase letters a-z.<br><br>
+
+<b>Solution:</b>
+</p>
+{% highlight C++ %}
+class Solution {
+public:
+    string longestCommonPrefix(vector<string>& strs) {
+        int n = int(strs.size());
+        if (n == 0) { return ""; }
+        string str = "";
+        for (int j = 0; j < int(strs[0].length()); j++)
+        {
+            char flag = strs[0][j];
+            for (int i = 1; i < n; i++)
+            {
+                if (strs[i][j] != flag) { return str; }
+            }
+            str.push_back(flag);
+        }
+        return str;
+    }
+};
+{% endhighlight %}
+
+## 0015. 3Sum*
+<p align="justify">
+Given an array nums of n integers, are there elements a, b, c in nums such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.<br><br>
+
+Note:<br>
+The solution set must not contain duplicate triplets.<br><br>
+
+<b>Example:</b><br>
+Given array nums = [-1, 0, 1, 2, -1, -4],<br><br>
+
+A solution set is:<br>
+[<br>
+  [-1, 0, 1],<br>
+  [-1, -1, 2]<br>
+]<br><br>
+
+<b>Solution:</b>
+<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/ALGOS/Leetcode/6.png"/></center>
+</p>
+<p align="justify">
+1) sort the array<br>
+2) set 3 position variable i, j, k: i is from 0 to n-3, j is initialised as i+1 and k is n-1 initially.<br>
+3) compute sum of nums for i, j, k. if sum < 0, j++; if sum > 0, k--; if sum is 0, append this tuple into our resuslt array. Conitnue to move j rightward until no repetiton and continue to move k until no duplicate.<br>
+4) repeat 3) until i ends<br>
+</p>
+{% highlight C++ %}
+class Solution {
+public:
+    void swap(vector<int>& nums, int i, int j){
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
+    void quickSort(vector<int>& nums, int start, int end){
+        if (start < end)
+        {
+            int i = start, j = end;
+            while (i < j)
+            {
+                while (nums[i] <= nums[j] && i < j) { j--; }
+                swap(nums, i, j);
+                while (nums[i] <= nums[j] && i < j) { i++; }
+                swap(nums, i, j);
+            }
+            quickSort(nums, start, i-1);
+            quickSort(nums, j+1, end);
+        }
+    }
+    vector<vector<int>> threeSum(vector<int>& nums) {
+        vector<vector<int>> res;
+        int n = int(nums.size());
+        if (n < 3) { return res; }
+        quickSort(nums, 0, n-1);
+        
+        for (int i = 0; i < n - 2; i++)
+        {
+            int j = i + 1, k = n - 1;
+            if (i > 0  && nums[i] == nums[i-1]) { continue; }
+            while (j < k)
+            {
+                int temp = nums[i] + nums[j] + nums[k];
+                if (temp < 0) { j++; }
+                else if (temp > 0) { k--; }
+                else
+                {
+                    vector<int> tuple;
+                    tuple.push_back(nums[i]);
+                    tuple.push_back(nums[j]);
+                    tuple.push_back(nums[k]);
+                    res.push_back(tuple);
+                    while (j < k && nums[j] == nums[j+1]) { j++; }
+                    while (j < k && nums[k] == nums[k-1]) { k--; }
+                    j++;
+                    k--;
+                }
+            }
+        }
+        return res;
+    }
+};
+{% endhighlight %}
+
+## 0016. 3Sum Closest
+<p align="justify">
+Given an array nums of n integers and an integer target, find three integers in nums such that the sum is closest to target. Return the sum of the three integers. You may assume that each input would have exactly one solution.<br><br>
+
+<b>Example:</b><br>
+Input: nums = [-1,2,1,-4], target = 1<br>
+Output: 2<br>
+Explanation: The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).<br><br>
+
+<b>Constraints:</b><br>
+3 <= nums.length <= 10^3<br>
+-10^3 <= nums[i] <= 10^3<br>
+-10^4 <= target <= 10^4<br><br>
+
+<b>Solution:</b>
+</p>
+{% highlight C++ %}
+class Solution {
+public:
+    void swap(vector<int>& nums, int i, int j){
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
+    void quickSort(vector<int>& nums, int start, int end){
+        if (start < end)
+        {
+            int i = start, j = end;
+            while (i < j)
+            {
+                while (nums[i] <= nums[j] && i < j) { j--; }
+                swap(nums, i, j);
+                while (nums[i] <= nums[j] && i < j) { i++; }
+                swap(nums, i, j);
+            }
+            quickSort(nums, start, i-1);
+            quickSort(nums, j+1, end);
+        }
+    }
+    int threeSumClosest(vector<int>& nums, int target) {
+        int n = int(nums.size());
+        quickSort(nums, 0, n-1);
+        int sum = nums[0] + nums[1] + nums[2];
+        int res = sum;
+        for (int i = 0; i < n - 2; i++)
+        {
+            int j = i + 1, k = n - 1;
+            while (j < k)
+            {
+                sum = nums[i] + nums[j] + nums[k];
+                if (sum == target) { return sum; }
+                if (abs(sum - target) < abs(res - target)) { res = sum; }
+                if (sum < target) { j++; }
+                else { k--; }
+            }
+        }
+        return res;
+    }
+};
+{% endhighlight %}
+
+{% highlight C++ %}
+class Solution {
+public:
+    int threeSumClosest(vector<int>& nums, int target) {
+        int n = int(nums.size()), res = 0, diff = (1ll << 31) - 1;
+        if (n < 3) { return 0; }
+        sort(nums.begin(), nums.end());
+        for (int i = 0; i <= n-3; i++)
+        {
+            int j = i + 1, k = n - 1;
+            while (j < k)
+            {
+                int sum = nums[i] + nums[j] + nums[k];
+                if (abs(sum - target) < diff)
+                {
+                    diff = abs(sum - target);
+                    res = sum;
+                }
+                if (sum < target) { j++; }
+                else if (sum > target) { k--; }
+                else { return target; }
+            }
+        }
+        return res;
+    }
+};
+{% endhighlight %}
+
+## 0017. Letter Combinations of a Phone Number
+<p align="justify">
+Given a string containing digits from 2-9 inclusive, return all possible letter combinations that the number could represent.<br><br>
+
+A mapping of digit to letters (just like on the telephone buttons) is given below. Note that 1 does not map to any letters.
+$$
+\begin{bmatrix}
+\text{1: } \infty & \text{2: abc} & \text{3: def} \\
+4: ghi & 5: jkl & 6: mno \\
+7: pqrs & 8: tuv & 9: wxyz
+\end{bmatrix}
+$$
+
+<b>Example:</b><br>
+Input: "23"<br>
+Output: ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"].<br><br>
+
+Note: Although the above answer is in lexicographical order, your answer could be in any order you want.<br><br>
+
+<b>Solution:</b>
+</p>
+{% highlight C++ %}
+class Solution {
+public:
+    vector<string> letterCombinations(string digits) {
+        vector<string> res;
+        int n = int(digits.length());
+        if (n == 0) { return res; }
+        string *arr = new string [10]{};
+        for (int i = 2; i <= 6; i++)
+        {
+            string str = "";
+            for (int j = 0; j < 3; j++) { str.push_back('a' + (i-2)*3+j); }
+            arr[i] = str;
+        }
+        arr[7] = "pqrs";
+        arr[8] = "tuv";
+        arr[9] = "wxyz";
+        string str = digits;
+        combine(str, res, 0, n, arr, digits);
+        delete []arr;
+        return res;
+    }
+    void combine(string &str, vector<string> &res, int idx, int n,
+                 string *arr, string digits)
+    {
+        if (idx == n) { res.push_back(str); }
+        else
+        {
+            for (int i = 0; i < int(arr[digits[idx]-'0'].length()); i++)
+            {
+                str[idx] = arr[digits[idx]-'0'][i];
+                combine(str, res, idx+1, n, arr, digits);
+            }
+        }
+    }
+};
+{% endhighlight %}
+
+## 0018. 4Sum
+<p align="justify">
+Given an array nums of n integers and an integer target, are there elements a, b, c, and d in nums such that a + b + c + d = target? Find all unique quadruplets in the array which gives the sum of target.<br>
+Note:<br>
+The solution set must not contain duplicate quadruplets.<br><br>
+
+<b>Example:</b><br>
+Given array nums = [1, 0, -1, 0, -2, 2], and target = 0.<br>
+A solution set is:<br>
+[<br>
+&emsp;[-1,  0, 0, 1],<br>
+&emsp;[-2, -1, 1, 2],<br>
+&emsp;[-2,  0, 0, 2]<br>
+]<br><br>
+
+<b>Solution:</b>
+</p>
+{% highlight C++ %}
+class Solution {
+public:
+    vector<vector<int>> fourSum(vector<int>& nums, int target) {
+        vector<vector<int>> res;
+        int n = int(nums.size());
+        
+        if (n < 4) { return res; }
+        sort(nums.begin(), nums.end());
+        if (n == 4)
+        {
+            if (nums[0]+nums[1]+nums[2]+nums[3] == target)
+            {
+                res.push_back(nums);
+            }
+            return res;
+        }
+        for (int i = 0; i < n-3; i++)
+        {
+            //if (nums[i] == nums[i+1]) { continue; }
+            for (int j = i+1; j < n-2; j++)
+            {
+                //if (nums[j] == nums[j+1]) { continue; }
+                int b = j+1, e = n-1;
+                while (b < e)
+                {
+                    int sum = nums[i] + nums[j] + nums[b] + nums[e];
+                    if (sum < target) { b++; }
+                    else if (sum > target) { e--; }
+                    else
+                    {
+                        while (b < e && nums[b] == nums[b+1]) { b++; }
+                        while (b < e && nums[e] == nums[e-1]) { e--; }
+                        vector<int> temp;
+                        temp.push_back(nums[i]);
+                        temp.push_back(nums[j]);
+                        temp.push_back(nums[b]);
+                        temp.push_back(nums[e]);
+                        res.push_back(temp);
+                        b++;
+                        e--;
+                    }
+                }
+            }
+        }
+        if (int(res.size()) == 0)
+        {
+            return res;
+        }
+        quickSort(res, 0, int(res.size())-1);
+        int pos = 1;
+        for (int i = 1; i < int(res.size()); i++)
+        {
+            if (res[i-1][0] == res[i][0] && res[i-1][1] == res[i][1] &&
+                res[i-1][2] == res[i][2] && res[i-1][3] == res[i][3])
+            {
+                continue;
+            }
+            for (int j = 0; j < 4; j++)
+            {
+                res[pos][j] = res[i][j];
+            }
+            pos++;
+        }
+        res.resize(pos);
+
+        return res;
+    }
+    void swap(vector<vector<int>> &arr, int i, int j)
+    {
+        for (int k = 0; k < 4; k++)
+        {
+            int temp = arr[i][k];
+            arr[i][k] = arr[j][k];
+            arr[j][k] = temp;
+        }
+    }
+    bool isLEQ(vector<vector<int>> arr, int i, int j)
+    {
+        for (int k = 0; k < 4; k++)
+        {
+            if (arr[i][k] < arr[j][k]) { return true; }
+            if (arr[i][k] > arr[j][k]) { return false; }
+        }
+        return true;
+    }
+    void quickSort(vector<vector<int>> &arr, int b, int e)
+    {
+        if (b < e)
+        {
+            int i = b, j = e;
+            while (i < j)
+            {
+                while (i < j && isLEQ(arr, i, j)) { j--; }
+                swap(arr, i, j);
+                while (i < j && isLEQ(arr, i, j)) { i++; }
+                swap(arr, i, j);
+            }
+            quickSort(arr, b, i-1);
+            quickSort(arr, j+1, e);
+        }
+    }
+};
+{% endhighlight %}
+
+{% highlight C++ %}
+class Solution {
+public:
+    vector<vector<int>> fourSum(vector<int>& nums, int target) {
+        int n = int(nums.size());
+        vector<vector<int>> res;
+        if (n < 4) { return res; }
+        sort(nums.begin(), nums.end());
+        for (int i = 0; i < n-3; i++)
+        {
+            for (int j = i+1; j < n-2; j++)
+            {
+                int b = j + 1, e = n-1;
+                while (b < e)
+                {
+                    int sum = nums[i] + nums[j] + nums[b] + nums[e];
+                    if (sum < target) { b++; }
+                    else if (sum > target) { e--; }
+                    else
+                    {
+                        while (i < n-3 && nums[i] == nums[i+1]) { i++; }
+                        while (j < n-2 && nums[j] == nums[j+1]) { j++; }
+                        while (b < e && nums[b] == nums[b+1]) { b++; }
+                        while (b < e && nums[e] == nums[e-1]) { e--; }
+                        vector<int> arr;
+                        arr.push_back(nums[i]);
+                        arr.push_back(nums[j]);
+                        arr.push_back(nums[b]);
+                        arr.push_back(nums[e]);
+                        res.push_back(arr);
+                        b++;
+                        e--;
+                    }
+                }
+            }
+        }
+        return res;
+    }
+};
+{% endhighlight %}
+
+## 0019. Remove Nth Node From End of List*
+<p align="justify">
+Given a linked list, remove the n-th node from the end of list and return its head.<br><br>
+
+<b>Example:</b><br>
+Given linked list: 1->2->3->4->5, and n = 2.<br>
+After removing the second node from the end, the linked list becomes 1->2->3->5.<br><br>
+
+<b>Note:</b><br>
+Given n will always be valid.<br><br>
+
+<b>Follow up:</b><br>
+Could you do this in one pass?<br><br>
+
+<b>Solution:</b>
+Two pointers
+</p>
+{% highlight C++ %}
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* removeNthFromEnd(ListNode* head, int n) {
+        if (n < 1 || head == nullptr) { return head; }
+        ListNode *pre = new ListNode(0, head);
+        ListNode *p1 = pre, *p2 = head, *p3 = head;
+        while (n--)
+        {
+            if (p3 == nullptr) { return head; }
+            p3 = p3->next;
+        }
+        while (p3 != nullptr)
+        {
+            p3 = p3->next;
+            p2 = p2->next;
+            p1 = p1->next;
+        }
+        p1->next = p2->next;
+        delete p2;
+        head = pre->next;
+        delete pre;
+        return head;
+    }
+};
+{% endhighlight %}
+
+## 0020. Valid Parentheses
+<p align="justify">
+Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.<br>
+An input string is valid if:<br>
+Open brackets must be closed by the same type of brackets.<br>
+Open brackets must be closed in the correct order.<br><br>
+
+<b>Example 1:</b><br>
+Input: s = "()"<br>
+Output: true<br>
+<b>Example 2:</b><br>
+Input: s = "()[]{}"<br>
+Output: true<br>
+<b>Example 3:</b><br>
+Input: s = "(]"<br>
+Output: false<br>
+<b>Example 4:</b><br>
+Input: s = "([)]"<br>
+Output: false<br>
+<b>Example 5:</b><br>
+Input: s = "{[]}"<br>
+Output: true<br><br>
+
+<b>Constraints:</b><br>
+1 <= s.length <= $10^{4}$<br>
+s consists of parentheses only '()[]{}'.<br><br>
+
+<b>Solution:</b>
+</p>
+{% highlight C++ %}
+class Solution {
+public:
+    bool isValid(string s) {
+        int n = int(s.length());
+        stack<char> st;
+        for (int i = 0; i < n; i++)
+        {
+            if (s[i] == '[' || s[i] == '{' || s[i] == '(')
+            {
+                st.push(s[i]);
+            }
+            else if ((s[i] == ')' && !st.empty() && st.top() == '(') ||
+                     (s[i] == ']' && !st.empty() && st.top() == '[') ||
+                     (s[i] == '}' && !st.empty() && st.top() == '{'))
+            {
+                st.pop();
+            }
+            else { return false; }
+        }
+        return st.empty();
+    }
+};
+{% endhighlight %}
+
+## 0021. Merge Two Sorted Lists
+<p align="justify">
+Merge two sorted linked lists and return it as a new sorted list. The new list should be made by splicing together the nodes of the first two lists.<br><br>
+
+<b>Example:</b><br>
+Input: 1->2->4, 1->3->4<br>
+Output: 1->1->2->3->4->4<br><br>
+
+<b>Solution:</b>
+</p>
+{% highlight C++ %}
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
+        if (l1 == nullptr) { return l2; }
+        if (l2 == nullptr) { return l1; }
+        ListNode *head = new ListNode(0);
+        ListNode *curNode = head;
+        while (l1 != nullptr && l2 != nullptr)
+        {
+            if (l1->val < l2->val)
+            {
+                curNode->next = l1;
+                l1 = l1->next;
+            }
+            else
+            {
+                curNode->next = l2;
+                l2 = l2->next;
+            }
+            curNode = curNode->next;
+        }
+        if (l1 != nullptr) { curNode->next = l1; }
+        if (l2 != nullptr) { curNode->next = l2; }
+        curNode = head->next;
+        delete head;
+        return curNode;
+    }
+};
+{% endhighlight %}
+
+## 0022. Generate Parentheses
+<p align="justify">
+Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.<br><br>
+
+For example, given n = 3, a solution set is:<br>
+[<br>
+&emsp;"((()))",<br>
+&emsp;"(()())",<br>
+&emsp;"(())()",<br>
+&emsp;"()(())",<br>
+&emsp;"()()()"<br>
+]<br><br>
+
+<b>Solution:</b>
+</p>
+{% highlight C++ %}
+class Solution {
+public:
+    vector<string> generateParenthesis(int n) {
+        vector<string> res;
+        if (n == 0) { return res; }
+        string str = "";
+        append(res, str, n, 0, 0, 0);
+        return res;
+    }
+    void append(vector<string> &res, string str, int n,
+                int idx, int nLeft, int nRight)
+    {
+        if (idx == 2*n)
+        {
+            if (nRight == nLeft) { res.push_back(str); }
+            return;
+        }
+        if (nLeft >= nRight && nLeft < n)
+        {
+            append(res, str+'(', n, idx+1, nLeft+1, nRight);
+        }
+        append(res, str+')', n, idx+1, nLeft, nRight+1);
+    }
+};
+{% endhighlight %}
+
+## 0023. Merge k Sorted Lists
+<p align="justify">
+You are given an array of k linked-lists lists, each linked-list is sorted in ascending order. Merge all the linked-lists into one sorted linked-list and return it.<br><br>
+
+<b>Example 1:</b><br>
+Input: lists = [[1,4,5],[1,3,4],[2,6]]<br>
+Output: [1,1,2,3,4,4,5,6]<br>
+Explanation: The linked-lists are:<br>
+[<br>
+&emsp;1->4->5,<br>
+&emsp;1->3->4,<br>
+&emsp;2->6<br>
+]<br>
+merging them into one sorted list:<br>
+1->1->2->3->4->4->5->6<br>
+<b>Example 2:</b><br>
+Input: lists = []<br>
+Output: []<br>
+<b>Example 3:</b><br>
+Input: lists = [[]]<br>
+Output: []<br><br>
+
+<b>Constraints:</b><br>
+k == lists.length<br>
+0 <= k <= 10^4<br>
+0 <= lists[i].length <= 500<br>
+-10^4 <= lists[i][j] <= 10^4<br>
+lists[i] is sorted in ascending order.<br>
+The sum of lists[i].length won't exceed 10^4.<br><br>
+
+<b>Solution:</b>
+</p>
+{% highlight C++ %}
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* mergeKLists(vector<ListNode*>& lists) {
+        int n = int(lists.size());
+        if (n == 0) { return nullptr; }
+        ListNode *pre = new ListNode(0), *head = pre, *cur = pre;
+        while (true)
+        {
+            int idx = -1, min = (1ll << 31) - 1;
+            for (int i = 0; i < n; i++)
+            {
+                if (lists[i] == nullptr) { continue; }
+                if (lists[i]->val < min)
+                {
+                    idx = i;
+                    min = lists[i]->val;
+                }
+            }
+            if (idx == -1) { break; }
+            cur->next = lists[idx];
+            lists[idx] = lists[idx]->next;
+            cur = cur->next;
+        }
+        head = pre->next;
+        delete pre;
+        return head;
+    }
+};
+{% endhighlight %}
+
+## 0024. Swap Nodes in Pairs
+<p align="justify">
+Given a linked list, swap every two adjacent nodes and return its head.<br>
+You may not modify the values in the list's nodes, only nodes itself may be changed.<br><br>
+
+<b>Example:</b><br>
+Given 1->2->3->4, you should return the list as 2->1->4->3.<br><br>
+
+<b>Solution:</b>
+</p>
+{% highlight C++ %}
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* swapPairs(ListNode* head) {
+        if (head == nullptr || head->next == nullptr) { return head; }
+        ListNode *pre = new ListNode(0);
+        ListNode *par = head, *son = head->next, *gra = pre;
+        pre->next = head;
+        while (son != nullptr)
+        {
+            par->next = son->next;
+            son->next = par;
+            gra->next = son;
+            gra = par;
+            par = par->next;
+            if (par == nullptr) { break; }
+            son = par->next;
+        }
+        head = pre->next;
+        delete pre;
+        return head;
+    }
+};
+{% endhighlight %}
+
+## 0025. Reverse Nodes in k-Group
+<p align="justify">
+Given a linked list, reverse the nodes of a linked list k at a time and return its modified list.<br>
+k is a positive integer and is less than or equal to the length of the linked list. If the number of nodes is not a multiple of k then left-out nodes in the end should remain as it is.<br><br>
+
+<b>Example:</b><br>
+Given this linked list: 1->2->3->4->5<br>
+For k = 2, you should return: 2->1->4->3->5<br>
+For k = 3, you should return: 3->2->1->4->5<br><br>
+
+<b>Note:</b><br>
+Only constant extra memory is allowed.<br>
+You may not alter the values in the list's nodes, only nodes itself may be changed.<br><br>
+
+<b>Solution:</b>
+</p>
+{% highlight C++ %}
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* reverseKGroup(ListNode* head, int k) {
+        if (head == nullptr || head->next == nullptr ||
+            k < 2) { return head; }
+        ListNode *front = head;
+        for (int i = 0; i < k; i++)
+        {
+            if (front == nullptr) { return head; }
+            front = front->next;
+        }
+        bool isEnd = false;
+        ListNode *pre = new ListNode(0, head);
+        ListNode *gra = pre, *par = head, *son = head->next;
+        while (true)
+        {
+            ListNode *temp = front, *p1 = gra, *p2 = par, *p3 = son;
+            while (p2 != temp)
+            {
+                if (front == nullptr) { isEnd = true; }
+                else { front = front->next; }
+                p2->next = p1;
+                p1 = p2;
+                p2 = p3;
+                if (p3 == nullptr) { break; }
+                p3 = p3->next;
+            }
+            par->next = p2;
+            gra->next = p1;
+            gra = par;
+            par = p2;
+            son = p3;
+            if (isEnd || p3 == nullptr) { break; }
+        }
+        head = pre->next;
+        delete pre;
+        return head;
+    }
+};
+{% endhighlight %}
+
+## 0026. Remove Duplicates from Sorted Array
+<p align="justify">
+Given a sorted array nums, remove the duplicates in-place such that each element appear only once and return the new length.<br>
+Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory.<br><br>
+
+<b>Example 1:</b><br>
+Given nums = [1,1,2],<br>
+Your function should return length = 2, with the first two elements of nums being 1 and 2 respectively.<br>
+It doesn't matter what you leave beyond the returned length.<br>
+<b>Example 2:</b><br>
+Given nums = [0,0,1,1,1,2,2,3,3,4],<br>
+Your function should return length = 5, with the first five elements of nums being modified to 0, 1, 2, 3, and 4 respectively.<br>
+It doesn't matter what values are set beyond the returned length.<br><br>
+
+<b>Solution:</b>
+</p>
+{% highlight C++ %}
+class Solution {
+public:
+    int removeDuplicates(vector<int>& nums) {
+        int n = int(nums.size());
+        if (n < 2) { return n; }
+        int len = 1;
+        for (int i = 1; i < n; i++)
+        {
+            if (nums[i] == nums[i-1]) { continue; }
+            nums[len++] = nums[i];
+        }
+        return len;
+    }
+};
+{% endhighlight %}
+
+## 0027. Remove Element
+<p align="justify">
+Given an array nums and a value val, remove all instances of that value in-place and return the new length.<br>
+Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory.<br>
+The order of elements can be changed. It doesn't matter what you leave beyond the new length.<br><br>
+
+<b>Example 1:</b><br>
+Given nums = [3,2,2,3], val = 3,<br>
+Your function should return length = 2, with the first two elements of nums being 2.<br>
+It doesn't matter what you leave beyond the returned length.<br>
+<b>Example 2:</b><br>
+Given nums = [0,1,2,2,3,0,4,2], val = 2,<br>
+Your function should return length = 5, with the first five elements of nums containing 0, 1, 3, 0, and 4.<br>
+Note that the order of those five elements can be arbitrary.<br>
+It doesn't matter what values are set beyond the returned length.<br><br>
+
+<b>Solution:</b><br>
+</p>
+{% highlight C++ %}
+class Solution {
+public:
+    int removeElement(vector<int>& nums, int val) {
+        int n = int(nums.size()), len = 0;
+        if (n == 0) { return 0; }
+        for (int i = 0; i < n; i++)
+        {
+            if (nums[i] != val) { nums[len++] = nums[i]; }
+        }
+        return len;
+    }
+};
+{% endhighlight %}
+
+## 0028. Implement strStr()*
+<p align="justify">
+Implement strStr().<br>
+Return the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.<br><br>
+
+<b>Example 1:</b><br>
+Input: haystack = "hello", needle = "ll"<br>
+Output: 2<br>
+<b>Example 2:</b><br>
+Input: haystack = "aaaaa", needle = "bba"<br>
+Output: -1<br><br>
+
+<b>Solution:</b>
+</p>
+{% highlight C++ %}
+class Solution {
+public:
+    int strStr(string haystack, string needle) {
+        string T = haystack, P = needle;
+        int nT = int(T.length()), nP = int(P.length());
+        if (nP == 0) { return 0; }
+        if (nT == 0) { return -1; }
+        int *next = new int [nP]{};
+        int i = 0, j = 0, t = next[0] = -1, k = 0;
+        while (k < nP-1)
+        {
+            if (t < 0 || P[t] == P[k]) { next[++k] = ++t; }
+            else { t = next[t]; }
+        }
+        while (i < nT && j < nP)
+        {
+            if (j < 0 || T[i] == P[j]) { i++; j++; }
+            else { j = next[j]; }
+        }
+        delete []next;
+        if (i-j <= nT-nP) { return i - j; }
+        else { return -1; }
+    }
+};
+{% endhighlight %}
+
+## 0029. Divide Two Integers*
+<p align="justify">
+Given two integers dividend and divisor, divide two integers without using multiplication, division and mod operator.<br>
+Return the quotient after dividing dividend by divisor.<br>
+The integer division should truncate toward zero, which means losing its fractional part. For example, truncate(8.345) = 8 and truncate(-2.7335) = -2.<br><br>
+
+<b>Example 1:</b><br>
+Input: dividend = 10, divisor = 3<br>
+Output: 3<br>
+Explanation: 10/3 = truncate(3.33333..) = 3.<br>
+<b>Example 2:</b><br>
+Input: dividend = 7, divisor = -3<br>
+Output: -2<br>
+Explanation: 7/-3 = truncate(-2.33333..) = -2.<br><br>
+
+<b>Solution:</b>
+</p>
+{% highlight C++ %}
+class Solution {
+public:
+    int divide(int dividend, int divisor) {
+        int MAX = (1ll << 31) - 1;
+        long m = abs(long(dividend)), n = abs(long(divisor)), quo = 0;
+        while (m >= n)
+        {
+            long s = n, incre = 1;
+            while ((s << 1) <= m) { s <<= 1; incre <<= 1; }
+            quo += incre;
+            m -= s;
+        }
+        if ((dividend < 0) ^ (divisor < 0)) { quo *= -1; }
+        return quo > MAX ? MAX : int(quo);
+    }
+};
+{% endhighlight %}
+
+## 0030. Substring with Concatenation of All Words*
+<p align="justify">
+You are given a string s and an array of strings words of the same length. Return all starting indices of substring(s) in s that is a concatenation of each word in words exactly once, in any order, and without any intervening characters.<br>
+You can return the answer in any order.<br><br>
+
+<b>Example 1:</b><br>
+Input: s = "barfoothefoobarman", words = ["foo","bar"]<br>
+Output: [0,9]<br>
+Explanation: Substrings starting at index 0 and 9 are "barfoo" and "foobar" respectively.<br>
+The output order does not matter, returning [9,0] is fine too.<br>
+<b>Example 2:</b><br>
+Input: s = "wordgoodgoodgoodbestword", words = ["word","good","best","word"]<br>
+Output: []<br>
+<b>Example 3:</b><br>
+Input: s = "barfoofoobarthefoobarman", words = ["bar","foo","the"]<br>
+Output: [6,9,12]<br><br>
+
+<b>Constraints:</b><br>
+1 <= s.length <= 104<br>
+s consists of lower-case English letters.<br>
+1 <= words.length <= 5000<br>
+1 <= words[i].length <= 30<br>
+words[i] consists of lower-case English letters.<br><br>
+
+<b>Solution:</b>
+</p>
+{% highlight C++ %}
+class Solution {
+public:
+    vector<int> findSubstring(string s, vector<string>& words) {
+        vector<int> res;
+        int n = int(words.size()), sLen = int(s.length());
+        if (n == 0 || n * words[0].length() > sLen) { return res; }
+        sort(words.begin(), words.end());
+        int i = 0, wordLen = int(words[0].length()), wordsLen = n * wordLen;
+        while (i + wordsLen <= sLen)
+        {
+            string subStr = s.substr(i, wordsLen);
+            vector<string> tmp;
+            for (int j = 0; j < wordsLen; j += wordLen)
+            {
+                tmp.push_back(subStr.substr(j, wordLen));
+            }
+            sort(tmp.begin(), tmp.end());
+            bool isOk = true;
+            for (int k = 0; k < n; k++)
+            {
+                if (tmp[k] != words[k])
+                {
+                    isOk = false;
+                    break;
+                }
+            }
+            if (isOk) { res.push_back(i); }
+            i++;
+        }
+        return res;
+    }
+};
+{% endhighlight %}
+
+## 0031. Next Permutation*
+<p align="justify">
+Implement next permutation, which rearranges numbers into the lexicographically next greater permutation of numbers.<br>
+If such arrangement is not possible, it must rearrange it as the lowest possible order (ie, sorted in ascending order).<br>
+The replacement must be in-place and use only constant extra memory.<br>
+Here are some examples. Inputs are in the left-hand column and its corresponding outputs are in the right-hand column.<br><br>
+
+<b>Example:</b><br>
+1,2,3 → 1,3,2<br>
+3,2,1 → 1,2,3<br>
+1,1,5 → 1,5,1<br><br>
+
+<b>Solution:</b>
+</p>
+{% highlight C++ %}
+class Solution {
+public:
+    void nextPermutation(vector<int>& nums) {
+        int n = int(nums.size()), idx = -1;
+        if (n < 2) { return; }
+        for (int i = n - 1; i > 0; i--)
+        {
+            if (nums[i-1] < nums[i])
+            {
+                idx = i - 1;
+                break;
+            }
+        }
+        if (idx == -1)
+        {
+            sort(nums.begin(), nums.end());
+            return;
+        }
+        for (int i = n - 1; i > idx; i--)
+        {
+            if (nums[i] > nums[idx])
+            {
+                swap(nums[i], nums[idx]);
+                sort(nums.begin()+idx+1, nums.end());
+                return;
+            }
+        }
+    }
+};
+{% endhighlight %}
+
+## 0032. Longest Valid Parentheses*
+<p align="justify">
+Given a string containing just the characters '(' and ')', find the length of the longest valid (well-formed) parentheses substring.<br><br>
+
+<b>Example 1:</b><br>
+Input: "(()"<br>
+Output: 2<br>
+Explanation: The longest valid parentheses substring is "()"<br>
+<b>Example 2:</b><br>
+Input: ")()())"<br>
+Output: 4<br>
+Explanation: The longest valid parentheses substring is "()()"<br><br>
+
+<b>Solution:</b>
+</p>
+{% highlight C++ %}
+class Solution {
+public:
+    int longestValidParentheses(string s) {
+        int maxLen = 0, n = int(s.length()), leftCount = 0;
+        if (n < 2) { return maxLen; }
+        int *dp = new int [n]{};
+        for (int i = 0; i < n; i++)
+        {
+            if (leftCount == 0 && s[i] == ')') { continue; }
+            if (s[i] == '(') { leftCount++; }
+            else
+            {
+                leftCount--;
+                dp[i] = dp[i-1] + 1;
+                if (i - dp[i] * 2 >= 0) { dp[i] += dp[i-dp[i]*2]; }
+            }
+            maxLen = maxLen > dp[i] ? maxLen : dp[i];
+        }
+        delete []dp;
+        return maxLen * 2;
+    }
+};
+{% endhighlight %}
+
+## 0033. Search in Rotated Sorted Array
+<p align="justify">
+You are given an integer array nums sorted in ascending order, and an integer target. Suppose that nums is rotated at some pivot unknown to you beforehand (i.e., [0,1,2,4,5,6,7] might become [4,5,6,7,0,1,2]). If target is found in the array return its index, otherwise, return -1.<br><br>
+
+<b>Example:</b><br>
+Input: nums = [4,5,6,7,0,1,2], target = 0<br>
+Output: 4<br><br>
+
+Input: nums = [4,5,6,7,0,1,2], target = 3<br>
+Output: -1<br><br>
+
+Input: nums = [1], target = 0<br>
+Output: -1<br><br>
+
+<b>Solution:</b><br>
+</p>
+{% highlight C++ %}
+class Solution {
+public:
+    int search(vector<int>& nums, int target) {
+        int n = int(nums.size());
+        if (n == 0) { return -1; }
+        return binSear(nums, target, 0, n-1);
+    }
+    int binSear(vector<int> nums, int target, int b, int e)
+    {
+        if (b > e) { return -1; }
+        if (nums[b] == target) { return b; }
+        if (nums[e] == target) { return e; }
+        int m = (b + e) / 2;
+        if (nums[b] < nums[e])  //sorted array
+        {
+            if (nums[m] > target) { return binSear(nums, target, b, m-1); }
+            else if (nums[m] == target) { return m; }
+            else { return binSear(nums, target, m+1, e); }
+        }
+        else  //rotated array
+        {
+            if (nums[m] < nums[e] && target > nums[b])
+            {
+                return binSear(nums, target, b, m-1);
+            }
+            else if (nums[m] > nums[b] && target < nums[e])
+            {
+                return binSear(nums, target, m+1, e);
+            }
+            else
+            {
+                if (nums[m] < target) { return binSear(nums, target, m+1, e); }
+                else if (nums[m] == target) { return m; }
+                else { return binSear(nums, target, b, m-1); }
+            }
+        }
+    }
+};
+{% endhighlight %}
+
+## 0034. Find First and Last Position of Element in Sorted Array
+<p align="justify">
+Given an array of integers nums sorted in ascending order, find the starting and ending position of a given target value. If target is not found in the array, return [-1, -1]. Follow up: Could you write an algorithm with O(log n) runtime complexity?<br><br>
+
+<b>Example:</b><br>
+Input: nums = [5,7,7,8,8,10], target = 8<br>
+Output: [3,4]<br><br>
+
+Input: nums = [5,7,7,8,8,10], target = 6<br>
+Output: [-1,-1]<br><br>
+
+Input: nums = [], target = 0<br>
+Output: [-1,-1]<br><br>
+
+<b>Constraints:</b><br>
+0 <= nums.length <= $10^{5}$<br>
+-$10^{9}$ <= nums[i] <= $10^{9}$<br>
+nums is a non-decreasing array.<br>
+-$10^{9}$ <= target <= $10^{9}$<br><br>
+
+<b>Solution:</b>
+</p>
+{% highlight C++ %}
+class Solution {
+public:
+    vector<int> searchRange(vector<int>& nums, int target) {
+        int n = int(nums.size());
+        vector<int> res;
+        res.push_back(-1);
+        res.push_back(-1);
+        if (n < 1) { return res; }
+        res[0] = binSearFir(nums, target, 0, n-1);
+        res[1] = binSearSec(nums, target, 0, n);
+        return res;
+    }
+    int binSearFir(vector<int> &nums, int target, int b, int e)
+    {
+        if (b == e)
+        {
+            if (nums[b] == target) { return b; }
+            else { return -1; }
+        }
+        int m = (b + e) / 2;
+        if (nums[m] < target) { return binSearFir(nums, target, m+1, e); }
+        else { return binSearFir(nums, target, b, m); }
+    }
+    int binSearSec(vector<int> &nums, int target, int b, int e)
+    {
+        if (b + 1 == e)
+        {
+            if (nums[b] == target) { return b; }
+            else { return -1; }
+        }
+        int m = (b + e) / 2;
+        if (nums[m] <= target) { return binSearSec(nums, target, m, e); }
+        else { return binSearSec(nums, target, b, m); }
+    }
+};
+{% endhighlight %}
+
+## 0035. Search Insert Position
+<p align="justify">
+Given a sorted array of distinct integers and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.<br><br>
+
+<b>Example:</b><br>
+Input: nums = [1,3,5,6], target = 5<br>
+Output: 2<br><br>
+
+Input: nums = [1,3,5,6], target = 2<br>
+Output: 1<br><br>
+
+Input: nums = [1,3,5,6], target = 7<br>
+Output: 4<br><br>
+
+Input: nums = [1,3,5,6], target = 0<br>
+Output: 0<br><br>
+
+Input: nums = [1], target = 0<br>
+Output: 0<br><br>
+
+<b>Solution:</b>
+</p>
+{% highlight C++ %}
+class Solution {
+public:
+    int searchInsert(vector<int>& nums, int target) {
+        int n = int(nums.size());
+        if (n == 0) { return 0; }
+        return binSear(nums, 0, n-1, target);;
+    }
+    int binSear(vector<int> arr, int b, int e, int target)
+    {
+        if (target > arr[e]) { return e+1; }
+        if (target < arr[b]) { return b; }
+        int m = (b + e) / 2;
+        if (arr[m] == target) { return m; }
+        else if (arr[m] < target) { return binSear(arr, m+1, e, target); }
+        else { return binSear(arr, b, m-1, target); }
+    }
+};
+
+class Solution {
+public:
+    int searchInsert(vector<int>& nums, int target) {
+        int n = int(nums.size());
+        if (n == 0) { return 0; }
+        int b = 0, e = n - 1;
+        while (b <= e)
+        {
+            int m = (b + e) / 2;
+            if (nums[b] >= target) { return b; }
+            if (nums[e] == target) { return e; }
+            if (nums[m] > target) { e = m - 1; }
+            else if (nums[m] < target) { b = m + 1; }
+            else { return m; }
+        }
+        if (nums[e] < target) { return e + 1; }
+        else { return e; }
+    }
+};
+{% endhighlight %}
+
+## 0036. Valid Sudoku*
+<p align="justify">
+Determine if a 9 x 9 Sudoku board is valid. Only the filled cells need to be validated according to the following rules:<br>
+Each row must contain the digits 1-9 without repetition.<br>
+Each column must contain the digits 1-9 without repetition.<br>
+Each of the nine 3 x 3 sub-boxes of the grid must contain the digits 1-9 without repetition.<br>
+Note:<br>
+A Sudoku board (partially filled) could be valid but is not necessarily solvable.<br>
+Only the filled cells need to be validated according to the mentioned rules.
+$$
+\begin{bmatrix}
+5 & 3 & . & . & 7 & . & . & . & . \\
+6 & . & . & 1 & 9 & 5 & . & . & . \\
+. & 9 & 8 & . & . & . & . & 6 & . \\
+8 & . & . & . & 6 & . & . & . & 3 \\
+4 & . & . & 8 & . & 3 & . & . & 1 \\
+7 & . & . & . & 2 & . & . & . & 6 \\
+. & 6 & . & . & . & . & 2 & 8 & . \\
+. & . & . & 4 & 1 & 9 & . & . & 5 \\
+. & . & . & . & 8 & . & . & 7 & 9
+\end{bmatrix}
+$$
+
+<b>Example:</b><br>
+Input: board = <br>
+[["5","3",".",".","7",".",".",".","."]<br>
+,["6",".",".","1","9","5",".",".","."]<br>
+,[".","9","8",".",".",".",".","6","."]<br>
+,["8",".",".",".","6",".",".",".","3"]<br>
+,["4",".",".","8",".","3",".",".","1"]<br>
+,["7",".",".",".","2",".",".",".","6"]<br>
+,[".","6",".",".",".",".","2","8","."]<br>
+,[".",".",".","4","1","9",".",".","5"]<br>
+,[".",".",".",".","8",".",".","7","9"]]<br>
+Output: true<br><br>
+
+Input: board = <br>
+[["8","3",".",".","7",".",".",".","."]<br>
+,["6",".",".","1","9","5",".",".","."]<br>
+,[".","9","8",".",".",".",".","6","."]<br>
+,["8",".",".",".","6",".",".",".","3"]<br>
+,["4",".",".","8",".","3",".",".","1"]<br>
+,["7",".",".",".","2",".",".",".","6"]<br>
+,[".","6",".",".",".",".","2","8","."]<br>
+,[".",".",".","4","1","9",".",".","5"]<br>
+,[".",".",".",".","8",".",".","7","9"]]<br>
+Output: false<br>
+Explanation: Same as Example 1, except with the 5 in the top left corner being modified to 8. Since there are two 8's in the top left 3x3 sub-box, it is invalid.<br><br>
+
+<b>Constraints:</b><br>
+board.length == 9<br>
+board[i].length == 9<br>
+board[i][j] is a digit or '.'.<br><br>
+
+<b>Solution:</b>
+</p>
+{% highlight C++ %}
+class Solution {
+public:
+    bool isValidSudoku(vector<vector<char>>& board) {
+        for (int i = 0; i < 9; i++)
+        {
+            for (int j = 0; j < 9; j++)
+            {
+                if (board[i][j] == '.') { continue; }
+                if (!isValidForij(board, i, j)) { return false; }
+            }
+        }
+        return true;
+    }
+    bool isValidForij(vector<vector<char>> board, int i, int j)
+    {
+        int dupRow = 0, dupCol = 0;
+        for (int k = 0; k < 9; k++)
+        {
+            if (board[k][j] == board[i][j]) { dupRow++; }
+            if (board[i][k] == board[i][j]) { dupCol++; }
+        }
+        if (dupRow > 1 || dupCol > 1) { return false; }
+        int m = i / 3, n = j / 3, dupSubBox = 0;
+        for (int x = 0; x < 3; x++)
+        {
+            for (int y = 0; y < 3; y++)
+            {
+                if (board[m*3+x][n*3+y] == board[i][j]) { dupSubBox++; }
+            }
+        }
+        if (dupSubBox > 1) { return false; }
+        return true;
+    }
+};
+{% endhighlight %}
+
+## 0037. Sudoku Solver*
+<p align="justify">
+Write a program to solve a Sudoku puzzle by filling the empty cells. A sudoku solution must satisfy all of the following rules:<br>
+Each of the digits 1-9 must occur exactly once in each row.<br>
+Each of the digits 1-9 must occur exactly once in each column.<br>
+Each of the digits 1-9 must occur exactly once in each of the 9 3x3 sub-boxes of the grid.<br>
+The '.' character indicates empty cells.
+$$
+\begin{bmatrix}
+5 & 3 & . & . & 7 & . & . & . & . \\
+6 & . & . & 1 & 9 & 5 & . & . & . \\
+. & 9 & 8 & . & . & . & . & 6 & . \\
+8 & . & . & . & 6 & . & . & . & 3 \\
+4 & . & . & 8 & . & 3 & . & . & 1 \\
+7 & . & . & . & 2 & . & . & . & 6 \\
+. & 6 & . & . & . & . & 2 & 8 & . \\
+. & . & . & 4 & 1 & 9 & . & . & 5 \\
+. & . & . & . & 8 & . & . & 7 & 9
+\end{bmatrix} \Rightarrow
+\begin{bmatrix}
+5 & 3 & {\color{Red} 4} & {\color{Red} 6} & 7 & {\color{Red} 8} & {\color{Red} 9} & {\color{Red} 1} & {\color{Red} 2} \\
+6 & {\color{Red} 7} & {\color{Red} 2} & 1 & 9 & 5 & {\color{Red} 3} & {\color{Red} 4} & {\color{Red} 8} \\
+{\color{Red} 1} & 9 & 8 & {\color{Red} 3} & {\color{Red} 4} & {\color{Red} 2} & {\color{Red} 5} & 6 & {\color{Red} 7} \\
+8 & {\color{Red} 5} & {\color{Red} 9} & {\color{Red} 7} & 6 & {\color{Red} 1} & {\color{Red} 4} & {\color{Red} 2} & 3 \\
+4 & {\color{Red} 2} & {\color{Red} 6} & 8 & {\color{Red} 5} & 3 & {\color{Red} 7} & {\color{Red} 9} & 1 \\
+7 & {\color{Red} 1} & {\color{Red} 3} & {\color{Red} 9} & 2 & {\color{Red} 4} & {\color{Red} 8} & {\color{Red} 5} & 6 \\
+{\color{Red} 9} & 6 & {\color{Red} 1} & {\color{Red} 5} & {\color{Red} 3} & {\color{Red} 7} & 2 & 8 & {\color{Red} 4} \\
+{\color{Red} 2} & {\color{Red} 8} & {\color{Red} 7} & 4 & 1 & 9 & {\color{Red} 6} & {\color{Red} 3} & 5 \\
+{\color{Red} 3} & {\color{Red} 4} & {\color{Red} 5} & {\color{Red} 2} & 8 & {\color{Red} 6} & {\color{Red} 1} & 7 & 9
+\end{bmatrix}
+$$
+
+<b>Example:</b><br>
+Input: board =<br>
+[["5","3",".",".","7",".",".",".","."],<br>
+["6",".",".","1","9","5",".",".","."],<br>
+[".","9","8",".",".",".",".","6","."],<br>
+["8",".",".",".","6",".",".",".","3"],<br>
+["4",".",".","8",".","3",".",".","1"],<br>
+["7",".",".",".","2",".",".",".","6"],<br>
+[".","6",".",".",".",".","2","8","."],<br>
+[".",".",".","4","1","9",".",".","5"],<br>
+[".",".",".",".","8",".",".","7","9"]]<br>
+Output:<br>
+[["5","3","4","6","7","8","9","1","2"],<br>
+["6","7","2","1","9","5","3","4","8"],<br>
+["1","9","8","3","4","2","5","6","7"],<br>
+["8","5","9","7","6","1","4","2","3"],<br>
+["4","2","6","8","5","3","7","9","1"],<br>
+["7","1","3","9","2","4","8","5","6"],<br>
+["9","6","1","5","3","7","2","8","4"],<br>
+["2","8","7","4","1","9","6","3","5"],<br>
+["3","4","5","2","8","6","1","7","9"]]<br><br>
+
+<b>Constraints:</b><br>
+board.length == 9<br>
+board[i].length == 9<br>
+board[i][j] is a digit or '.'.<br>
+It is guaranteed that the input board has only one solution.<br><br>
+
+<b>Solution:</b>
+</p>
+{% highlight C++ %}
+class Solution {
+public:
+    void solveSudoku(vector<vector<char>>& board) {
+        isSolver(board);
+    }
+    bool isSolver(vector<vector<char>> &board)
+    {
+        for (int i = 0; i < 9; i++)
+        {
+            for (int j = 0; j < 9; j++)
+            {
+                if (board[i][j] == '.')
+                {
+                    for (char c = '1'; c <= '9'; c++)
+                    {
+                        if (isFeasible(board, i, j, c))
+                        {
+                            board[i][j] = c;
+                            if (isSolver(board)) { return true; }
+                            else { board[i][j] = '.'; }
+                        }
+                    }
+                    // No feasible number
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+    bool isFeasible(vector<vector<char>> board, int row, int col, char c)
+    {
+        for(int i = 0; i < 9; i++)
+        {
+            if(board[row][i] == c) { return false; }
+            if(board[i][col] == c) { return false; }
+            if(board[3*(row/3)+i/3][3*(col/3)+i%3] == c) { return false; }
+        }
+        return true;
+    }
+};
+{% endhighlight %}
+
+## 0038. Count and Say
+<p align="justify">
+The count-and-say sequence is a sequence of digit strings defined by the recursive formula:<br>
+countAndSay(1) = "1"<br>
+countAndSay(n) is the way you would "say" the digit string from countAndSay(n-1), which is then converted into a different digit string.<br>
+To determine how you "say" a digit string, split it into the minimal number of groups so that each group is a contiguous section all of the same character. Then for each group, say the number of characters, then say the character. To convert the saying into a digit string, replace the counts with a number and concatenate every saying.<br><br>
+
+<b>Example:</b><br>
+Input: n = 1<br>
+Output: "1"<br>
+Explanation: This is the base case.<br><br>
+
+Input: n = 4<br>
+Output: "1211"<br>
+Explanation:<br>
+countAndSay(1) = "1"<br>
+countAndSay(2) = say "1" = one 1 = "11"<br>
+countAndSay(3) = say "11" = two 1's = "21"<br>
+countAndSay(4) = say "21" = one 2 + one 1 = "12" + "11" = "1211"<br><br>
+
+<b>Constraints:</b><br>
+1 <= n <= 30<br><br>
+
+<b>Solution:</b>
+</p>
+{% highlight C++ %}
+class Solution {
+public:
+    string countAndSay(int n) {
+        string res = "1";
+        if (n == 1) { return res; }
+        for (int i = 2; i <= n; i++)
+        {
+            string cur = "";
+            res.push_back('0');
+            int len = int(res.length()), count = 1;
+            char ch = res[0];
+            for (int i = 1; i < len; i++)
+            {
+                if (res[i] == res[i-1]) { count++; }
+                else
+                {
+                    cur += to_string(count);
+                    cur.push_back(ch);
+                    count = 1;
+                    ch = res[i];
+                }
+            }
+            res = cur;
+        }
+        return res;
+    }
+};
+{% endhighlight %}
+
+## 0041. First Missing Positive
+<p align="justify">
+Given an unsorted integer array, find the smallest missing positive integer.<br><br>
+
+<b>Example 1:</b><br>
+Input: [1,2,0]<br>
+Output: 3<br>
+<b>Example 2:</b><br>
+Input: [3,4,-1,1]<br>
+Output: 2<br>
+<b>Example 3:</b><br>
+Input: [7,8,9,11,12]<br>
+Output: 1<br><br>
+
+<b>Follow up:</b><br>
+Your algorithm should run in O(n) time and uses constant extra space.<br><br>
+
+<b>Solution:</b>
+</p>
+{% highlight C++ %}
+class Solution {
+public:
+    int firstMissingPositive(vector<int>& nums) {
+        int len = int(nums.size());
+        if (len == 0) { return 1; }
+        vector<int> arr;
+        for (int i = 0; i < len; i++)
+        {
+            arr.push_back(nums[i]);
+        }
+        sort(arr.begin(), arr.end());
+        int res = 1;
+        if (arr[0] > 1) { return 1; }
+        if (arr[0] == 1) { res++; }
+        for (int i = 1; i < len; i++)
+        {
+            if (arr[i] <= 0 || arr[i] == arr[i-1]) { continue; }
+            if (arr[i] != res) { return res; }
+            res++;
+        }
+        return res;
+    }
+};
+{% endhighlight %}
+
+## 0053. Maximum Subarray*
+<p align="justify">
+Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum. Follow up: If you have figured out the O(n) solution, try coding another solution using the divide and conquer approach, which is more subtle.<br><br>
+
+<b>Example:</b><br>
+Input: nums = [-2,1,-3,4,-1,2,1,-5,4]<br>
+Output: 6<br>
+Explanation: [4,-1,2,1] has the largest sum = 6.<br><br>
+
+Input: nums = [1]<br>
+Output: 1<br><br>
+
+Input: nums = [0]<br>
+Output: 0<br><br>
+
+Input: nums = [-1]<br>
+Output: -1<br><br>
+
+Input: nums = [-2147483647]<br>
+Output: -2147483647<br><br>
+
+<b>Constraints:</b><br>
+1 <= nums.length <= 2 * 10^4<br>
+-2^31 <= nums[i] <= 2^31 - 1<br><br>
+
+<b>Solution:</b>
+</p>
+{% highlight C++ %}
+class Solution {
+public:
+    int maxSubArray(vector<int>& nums) {
+        int n = int(nums.size());
+        if (n == 0) { return 0; }
+        int maxSum = nums[0], curSum = nums[0];
+        for (int i = 1; i < n; i++)
+        {
+            if (curSum < 0) { curSum = 0; }
+            curSum += nums[i];
+            if (curSum > maxSum) { maxSum = curSum; }
+        }
+        return maxSum;
+    }
+};
+{% endhighlight %}
+
+## 0069 Sqrt(x)*
+<p align="justify">
+Given a non-negative integer x, compute and return the square root of x. Since the return type is an integer, the decimal digits are truncated, and only the integer part of the result is returned.<br><br>
+
+<b>Example:</b><br>
+Input: x = 4<br>
+Output: 2<br>
+Input: x = 8<br>
+Output: 2<br>
+Explanation: The square root of 8 is 2.82842..., and since the decimal part is truncated, 2 is returned.<br><br>
+
+<b>Constraints:</b><br>
+0 <= x <= 2^31 - 1<br><br>
+
+<b>Solution:</b>
+Binary search
+</p>
+{% highlight C++ %}
+class Solution {
+public:
+    int mySqrt(int x)
+    {
+        long lo = 1, hi = x;
+        while (lo <= hi)
+        {
+            long mi = (lo + hi) / 2;
+            if (mi * mi < x) { lo = mi + 1; }
+            else if (mi * mi > x) { hi = mi - 1; }
+            else { return int(mi); }
+        }
+        return int(hi);
+    }
+};
+{% endhighlight %}
+
+## 0094. Binary Tree Inorder Traversal*
+<p align="justify">
+Given the root of a binary tree, return the inorder traversal of its nodes' values.<br><br>
+
+<b>Example:</b><br>
+Input: root = [1,null,2,3]<br>
+Output: [1,3,2]<br><br>
+
+Input: root = []<br>
+Output: []<br><br>
+
+Input: root = [1]<br>
+Output: [1]<br><br>
+
+Input: root = [1,2]<br>
+Output: [2,1]<br><br>
+
+Input: root = [1,null,2]<br>
+Output: [1,2]<br><br>
+
+<b>Solution:</b>
+</p>
+{% highlight C++ %}
+class Solution {
+public:
+    vector<int> inorderTraversal(TreeNode* root) {
+        vector<int> res;
+        stack<TreeNode*> st;
+        TreeNode *curNode = root;
+        while (curNode != nullptr)
+        {
+            while (curNode != nullptr)
+            {
+                if (curNode->right != nullptr) { st.push(curNode->right); }
+                st.push(curNode);
+                curNode = curNode->left;
+            }
+            curNode = st.top();
+            st.pop();
+            while (!st.empty() && curNode->right == nullptr)
+            {
+                res.push_back(curNode->val);
+                curNode = st.top();
+                st.pop();
+            }
+            res.push_back(curNode->val);
+            if (!st.empty())
+            {
+                curNode = st.top();
+                st.pop();
+            }
+            else { curNode = nullptr; }
+        }
+        return res;
+    }
+};
+{% endhighlight %}
+
+## 0121. Best Time to Buy and Sell Stock
+<p align="justify">
+Say you have an array for which the ith element is the price of a given stock on day i. If you were only permitted to complete at most one transaction (i.e., buy one and sell one share of the stock), design an algorithm to find the maximum profit. Note that you cannot sell a stock before you buy one.<br><br>
+
+<b>Example:</b><br>
+Input: [7,1,5,3,6,4]<br>
+Output: 5<br>
+Explanation: Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6-1 = 5. Not 7-1 = 6, as selling price needs to be larger than buying price.<br><br>
+
+Input: [7,6,4,3,1]<br>
+Output: 0<br>
+Explanation: In this case, no transaction is done, i.e. max profit = 0.<br><br>
+
+<b>Solution:</b>
+</p>
+{% highlight C++ %}
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int n = int(prices.size()), maxPro = 0, minPri = (1ll << 31) - 1;
+        for (int i = 0; i < n; i++)
+        {
+            minPri = minPri < prices[i] ? minPri : prices[i];
+            maxPro = maxPro > prices[i] - minPri ? maxPro : prices[i] - minPri;
+        }
+        return maxPro;
+    }
+};
+{% endhighlight %}
+
+## 0543. Diameter of Binary Tree
+<p align="justify">
+Given a binary tree, you need to compute the length of the diameter of the tree. The diameter of a binary tree is the length of the longest path between any two nodes in a tree. This path may or may not pass through the root.<br><br>
+
+<b>Example:</b><br>
+Given a binary tree
+</p>
+{% highlight C++ %}
+/*
+          1
+         / \
+        2   3
+       / \     
+      4   5
+*/
+{% endhighlight %}
+<p align="justify">
+Return 3, which is the length of the path [4,2,1,3] or [5,2,1,3].<br>
+Note: The length of path between two nodes is represented by the number of edges between them.<br><br>
+
+<b>Solution:</b>
+</p>
+{% highlight C++ %}
+class Solution {
+public:
+    int diameterOfBinaryTree(TreeNode* root) {
+        int max = 0;
+        getDep(root, max);
+        return max;
+    }
+    int getDep(TreeNode *root, int &maxLen)
+    {
+        if (root == nullptr) { return 0; }
+        int leftDep = getDep(root->left, maxLen);
+        int rightDep = getDep(root->right, maxLen);
+        int curLen = leftDep + rightDep;
+        maxLen = maxLen > curLen ? maxLen : curLen;
+        return (leftDep > rightDep ? leftDep : rightDep) + 1;
+    }
+};
+{% endhighlight %}
+
+## 1143. Longest Common Subsequence
+<p align="justify">
+Given two strings text1 and text2, return the length of their longest common subsequence.<br>
+A subsequence of a string is a new string generated from the original string with some characters(can be none) deleted without changing the relative order of the remaining characters. (eg, "ace" is a subsequence of "abcde" while "aec" is not). A common subsequence of two strings is a subsequence that is common to both strings.<br>
+If there is no common subsequence, return 0.<br><br>
+
+<b>Example:</b><br>
+Input: text1 = "abcde", text2 = "ace" <br>
+Output: 3<br>
+Explanation: The longest common subsequence is "ace" and its length is 3.<br><br>
+
+Input: text1 = "abc", text2 = "abc"<br>
+Output: 3<br>
+Explanation: The longest common subsequence is "abc" and its length is 3.<br><br>
+
+Input: text1 = "abc", text2 = "def"<br>
+Output: 0<br>
+Explanation: There is no such common subsequence, so the result is 0.<br><br>
+
+<b>Solution:</b>
+</p>
+{% highlight C++ %}
+class Solution {
+public:
+    int longestCommonSubsequence(string text1, string text2) {
+        string s1 = text1, s2 = text2;
+        int n1 = int(s1.length()), n2 = int(s2.length());
+        int **dp = new int *[n1+1];
+        for (int i = 0; i < n1+1; i++)
+        {
+            dp[i] = new int [n2+1]{};
+        }
+        for (int i = 1; i < n1+1; i++)
+        {
+            for (int j = 1; j < n2+1; j++)
+            {
+                if (s1[i-1] == s2[j-1]) { dp[i][j] = dp[i-1][j-1] + 1; }
+                else
+                {
+                    dp[i][j] = (dp[i-1][j] > dp[i][j-1] ?
+                                dp[i-1][j] : dp[i][j-1]);
+                }
+            }
+        }
+        int lcs = dp[n1][n2];
+        for (int i = 0; i < n1+1; i++)
+        {
+            delete []dp[i];
+        }
+        delete []dp;
+        return lcs;
+    }
+};
+{% endhighlight %}
+
+
+## 1585. Check If String Is Transformable With Substring Sort Operations*
+<p align="justify">
+Given two strings s and t, you want to transform string s into string t using the following operation any number of times:<br>
+Choose a non-empty substring in s and sort it in-place so the characters are in ascending order.<br>
+For example, applying the operation on the underlined substring in "14234" results in "12344".<br>
+Return true if it is possible to transform string s into string t. Otherwise, return false.<br>
+A substring is a contiguous sequence of characters within a string.<br><br>
+
+<b>Example:</b><br>
+Input: s = "84532", t = "34852"<br>
+Output: true<br>
+Explanation: You can transform s into t using the following sort operations:<br>
+"84532" (from index 2 to 3) -> "84352"<br>
+"84352" (from index 0 to 2) -> "34852"<br><br>
+
+Input: s = "34521", t = "23415"<br>
+Output: true<br>
+Explanation: You can transform s into t using the following sort operations:<br>
+"34521" -> "23451"<br>
+"23451" -> "23415"<br><br>
+
+Input: s = "12345", t = "12435"<br>
+Output: false<br><br>
+
+Input: s = "1", t = "2"<br>
+Output: false<br><br>
+
+<b>Constraints:</b><br>
+s.length == t.length<br>
+1 <= s.length <= 105<br>
+s and t only contain digits from '0' to '9'.<br><br>
+
+<b>Solution:</b>
+</p>
+{% highlight C++ %}
+class Solution {
+public:
+    bool isTransformable(string s, string t) {
+        vector<vector<int>> idx(10);
+        vector<int> count(10);
+        for (int i = 0; i < int(s.length()); i++)
+        {
+            idx[s[i]-'0'].push_back(i);
+        }
+        for (int i = 0; i < int(t.length()); i++)
+        {
+            int digit = t[i] - '0';
+            if (count[digit] == idx[digit].size()) { return false; }
+            for (int j = 0; j < digit; j++)
+            {
+                if (count[j] != idx[j].size() &&
+                    idx[j][count[j]] < idx[digit][count[digit]])
+                {
+                    return false;
+                }
+            }
+            count[digit]++;
+        }
+        return true;
+    }
+};
+{% endhighlight %}
+
+## 
+<p align="justify">
+
+<b>Example:</b><br>
+
+<b>Constraints:</b><br>
+
+<b>Solution:</b>
+</p>
+{% highlight C++ %}
+
+{% endhighlight %}
