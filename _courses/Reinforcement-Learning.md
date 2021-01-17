@@ -72,14 +72,14 @@ $\bigstar$ Describe foundamental concepts: rewards, time steps and values<br><br
 
 <b>Clinical Trials</b><br>
 Consider a doctor has 3 differents treatments<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/1_1_1_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/1_1_1_1.png"/></center>
 </p>
 <p align="justify">
 The doctor describes a treatment at random and observe the change after one treatment. After a while, the doctor will notice which treatment is better tan others. Then the doctor must decide between sticking with the best performing treatment or continuing with the randomized study. In fact, it's possible that the other two treatments are better and they work worse this time due to some accidents. This is an example of decision-making under uncertainty.<br><br>
 
 <b>k-armed bandit</b><br>
 The medical treatment above is one application of k-armed bandit.<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/1_1_1_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/1_1_1_2.png"/></center>
 </p>
 <p align="justify">
 <b>Actions-Values</b><br>
@@ -98,7 +98,7 @@ p(r \mid a) =
 \end{cases}
 $$
 
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/1_1_1_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/1_1_1_3.png"/></center>
 </p>
 <p align="justify">
 We can calculate its own action values.<br><br>
@@ -124,7 +124,7 @@ We take sample-average method to estimate $q_{*}(a)$<br>
 $$Q_{t}(a) \doteq \frac{\text{sum of rewards when a taken prior to t}}{\text{number of times a taken prior to t}} = \frac{\sum_{i=1}^{t-1} R}{t-1}$$
 
 For example, a doctor chooses one of 3 treatments and he will get a reward 1 if the treatment works. After a while, he gets three value of actions.<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/1_1_2_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/1_1_2_1.png"/></center>
 </p>
 <p align="justify">
 In the next step, he will decide which atcion to take. If he always picks up the biggest $Q_{a}$, we call this greedy action selection due to exploitation. In contrast, we have non-greedy action selection based on exploration. In fact, an agent cannot hold exploitation and exploration simultaneously. This is a fundamental problem in Reinforcement Learning.<br><br>
@@ -159,7 +159,7 @@ A non-stationary problem is same as stationary bandit problem except that our di
 $$Q_{n+1} = Q_{n} + \alpha(R_{n} - Q_{n})$$
 
 The reward weight decreases exponentially as time increases<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/1_1_3_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/1_1_3_1.png"/></center>
 </p>
 <p align="justify">
 <b>Decay Past Rewards</b><br>
@@ -206,7 +206,7 @@ A_{t} \leftarrow
 $$
 
 Here is an experiment for 10-armed Testbed with different $\epsilon$<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/1_1_4_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/1_1_4_1.png"/></center>
 </p>
 <p align="justify">
 <b>Summary</b><br>
@@ -218,7 +218,7 @@ $\bigstar$ We introduce epsilon-greedy which is a simple method for balancing ex
 <p align="justify">
 <b>Example: Clinical Trials</b><br>
 A reward of 1 if the treatment works otherwise 0. We give an initial value $Q_{1} = 2$ for all actions.<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/1_1_5_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/1_1_5_1.png"/></center>
 </p>
 <p align="justify">
 After a while, our estimated $Q_{n}(a)$ is close to $q_{*}(n)$. Recall $q_{*}$ is the true optimal action value. We always want to estimate it with data.<br><br>
@@ -228,7 +228,7 @@ All the methods we have discussed so far are dependent to some extent on the ini
 In practice, this kind of bias is usually not a problem and can sometimes be very helpful. The downside is that the initial estimates become a set of parameters that must be picked by the user, if only to set them all to zero. The upside is that they provide an easy way to supply some prior knowledge about what level of rewards can be expected.<br><br>
 
 Initial action values can also be used as a simple way to encourage exploration.<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/1_1_5_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/1_1_5_2.png"/></center>
 </p>
 <p align="justify">
 An initial estimate of +5 is thus wildly optimistic because <b>$q_{*}(a)$ in this problem are selected from a normal distribution with mean 0 and variance 1</b>. But this optimism encourages action-value methods to explore. Whichever actions are initially selected, the reward is less than the starting estimates; the learner switches to other actions, being “disappointed” with the rewards it is receiving. The result is that all actions are tried several times before the value estimates converge. The system does a fair amount of exploration even if greedy actions are selected all the time.<br><br>
@@ -249,13 +249,13 @@ $\bigstar$ Described limitations of optimistic initial value<br>
 <p align="justify">
 <b>Uncertainty in Estimates</b><br>
 When we use epsilon-greedy action selection, we have a small probability that pick up a random action. So, there will be uncertainty in estimating $q_{*}$.<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/1_1_6_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/1_1_6_1.png"/></center>
 </p>
 <p align="justify">
 If the confidence interval is small, we are pretty sure $Q_{n}(a)$ is close to $q_{*}(a)$.<br><br>
 
 In Upper-Confidence Bound (UCB), we follow the principle of optimism in face of uncertainty. For example, we have 3 action-values with uncertainty<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/1_1_6_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/1_1_6_2.png"/></center>
 </p>
 <p align="justify">
 Our agent has no idea which is best, so it optimistically picks the action that has the highest upper bound.<br><br>
@@ -274,7 +274,7 @@ $$c \sqrt{\frac{\ln t}{N_{t}(a)}} = c \sqrt{\frac{\ln10000}{100}} = 0.303c$$
 Therefore, we have a much larger confidence interval with $N_{t}(a) = 100$.<br><br>
 
 Performance of optimistic initial values on the 10-armed Testbed<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/1_1_6_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/1_1_6_3.png"/></center>
 </p>
 <p align="justify">
 <b>Summary</b><br>
@@ -297,7 +297,7 @@ $$q_{n+1} = q_{n} + \alpha_{n}(R_{n} - q_{n})$$
 
 <b>2.1</b><br>
 Given the estimate update in red, <b>what do you think was the value of the step size parameter we used to update the estimate on each time step?</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/1_1_7_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/1_1_7_1.png"/></center>
 </p>
 <p align="justify">
 A. 1<br>
@@ -309,7 +309,7 @@ D. 1/2<br><br>
 
 <b>2.2</b><br>
 Given the estimate update in red, <b>what do you think was the value of the step size parameter we used to update the estimate on each time step?</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/1_1_7_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/1_1_7_2.png"/></center>
 </p>
 <p align="justify">
 A. 1<br>
@@ -321,7 +321,7 @@ D. 1/2<br><br>
 
 <b>2.3</b><br>
 Given the estimate update in red, <b>what do you think was the value of the step size parameter we used to update the estimate on each time step?</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/1_1_7_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/1_1_7_3.png"/></center>
 </p>
 <p align="justify">
 A. 1<br>
@@ -341,7 +341,7 @@ C. The agent wants to maximize the amount of reward it receives over its lifetim
 
 <b>4.</b><br>
 Here is a diagram about different epsilon<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/1_1_7_4.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/1_1_7_4.png"/></center>
 </p>
 <p align="justify">
 <b>4.1</b><br>
@@ -374,12 +374,12 @@ Weekly reading: Chapter 3.3 (pages 47-56)<br>
 #### 1.2.1 Markov Decision Processes
 <p align="justify">
 Markov decision process (MDP) is a framework in Reinforcement Learning to describe how an agent interacts with its environment.<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/1_2_1_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/1_2_1_1.png"/></center>
 </p>
 <p align="justify">
 <b>The dynamics of an MDP</b><br>
 At state S, an agent takes an action a then it goes into a next state S' (S' could be S, but here we use different notations to distinguish them) with a reward (positive or negative). We take use of a join distribution to describe this process.<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/1_2_1_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/1_2_1_2.png"/></center>
 </p>
 <p align="justify">
 The present state contains all the information necessary to predict the future.<br><br>
@@ -402,7 +402,7 @@ $$E[G_{t}] = E[R_{t+1} + R_{t+2} + ... + R_{T}]$$
 Specifically, we call $R_{T}$ as final time step where the agent environment interation ends. <b>At termination, the agent is reset to a start state.</b><br><br>
 
 Every episode has a final state called terminal state.<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/1_2_2_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/1_2_2_1.png"/></center>
 </p>
 <p align="justify">
 We call these tasks episodic tasks.<br><br>
@@ -427,7 +427,7 @@ $\bigstar$ In episodic tasks, the agent-environment interatcion breaks up into e
 </p>
 <p align="justify">
 For example, a thermostat can be formulated as a continuing task since the thermostat never stops interacting with the environment.<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/1_2_3_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/1_2_3_1.png"/></center>
 </p>
 <p align="justify">
 We hope our thermostat is intelligent to adjust the temperature. So, the reward is -1 when temperature is adjusted manually.<br><br>
@@ -609,7 +609,7 @@ Weekly reading: Chapter 3.5 - 3.8 (pages 58-67)<br>
 <b>Deterministic policy notation</b><br>
 If the agent is at state s, it will take an specific action a.<br>
 $$\pi(s) = a$$
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/1_3_1_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/1_3_1_1.png"/></center>
 </p>
 <p align="justify">
 <b>Stochastic policy notation</b><br>
@@ -630,7 +630,7 @@ $$v_{\pi}(s) = E_{\pi}[G_{t} \mid S_{t} = s], \quad G_{t} = \sum_{k=0}^{\infty} 
 $$q_{\pi}(s, a) = E_{\pi} [G_{t} \mid S_{t} = s, A_{t} = a]$$
 
 <b>Value functions predict rewards into the future</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/1_3_2_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/1_3_2_1.png"/></center>
 </p>
 <p align="justify">
 Value functions are able to judge the quality of policies.<br><br>
@@ -657,7 +657,7 @@ So, we find a relationship of state-value function between two steps.<br>
 $$v_{\pi}(s) = \sum_{a} \pi(a \mid s) \sum_{s'} \sum_{r} p(s', r \mid s, a)(r + \gamma v_{\pi}(s')), \forall s \in S$$
 
 We can use a diagram to represent<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/1_3_3_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/1_3_3_1.png"/></center>
 </p>
 <p align="justify">
 <b>Action-value Bellman Equation</b><br>
@@ -677,7 +677,7 @@ $\bigstar$ The current time step's state-action values can be written recusively
 #### 1.3.4 Optimal Policies
 <p align="justify">
 An optimal policy $\pi*$ is as good as or better than all the other policies<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/1_3_4_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/1_3_4_1.png"/></center>
 </p>
 <p align="justify">
 <b>Summary</b><br>
@@ -717,11 +717,11 @@ $\bigstar$ The Bellman optimality equation relates the value of a state, or stat
 <b>Determining an Optimal Policy</b><br>
 $$v_{*}(s) = \max_{a} \sum_{s'} \sum_{r} p(s', r \mid s, a)[r + \gamma v_{*}(s')]$$
 $$\pi_{*}(s) = \arg\max_{a} \sum_{s'} \sum_{r} p(s', r \mid s, a)[r + \gamma v_{*}(s')]$$
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/1_3_6_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/1_3_6_1.png"/></center>
 </p>
 <p align="justify">
 For example<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/1_3_6_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/1_3_6_2.png"/></center>
 </p>
 <p align="justify">
 <b>Summary</b><br>
@@ -826,7 +826,7 @@ D. States to expected returns.<br><br>
 
 <b>2.</b><br>
 Consider the continuing Markov decision process shown below. The only decision to be made is in the top state, where two actions are available, left and right. The numbers show the rewards that are received deterministically after each action. There are exactly two deterministic policies, $\pi_{\mbox{left}}$ and $\pi_{\mbox{right}}$. Indicate the optimal policies if $\gamma$ = 0? If $\gamma$ = 0.9? If $\gamma$ = 0.5? [Select all that apply]<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/1_3_8_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/1_3_8_1.png"/></center>
 </p>
 <p align="justify">
 A. For $\gamma$ = 0.9, $\pi_{\mbox{left}}$<br>
@@ -940,11 +940,11 @@ Policy evaluation is the task of determining the value function for a specific p
 $$\pi \rightarrow v_{\pi}$$
 
 <b>Control is the task of improving a policy</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/1_4_1_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/1_4_1_1.png"/></center>
 </p>
 <p align="justify">
 We use dynamic programming for policy evaluation and control.<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/1_4_1_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/1_4_1_2.png"/></center>
 </p>
 <p align="justify">
 $$
@@ -974,7 +974,7 @@ s and s' are states. k+1 is next iteration.<br><br>
 When $v_{k+1} \approx v_{k}$, we stop.<br><br>
 
 Algorithm<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/1_4_2_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/1_4_2_1.png"/></center>
 </p>
 <p align="justify">
 <b>Summary</b><br>
@@ -1000,7 +1000,7 @@ $\bigstar$ The policy Improvement theorem tells us that a greedified policy is a
 Policy Iteration contains <b>Policy Evaluation</b> and <b>Policy Improvement</b>.<br><br>
 
 $$\pi_{1} \rightarrow v_{\pi_{1}} \rightarrow \pi_{2} \rightarrow v_{\pi_{2}} \rightarrow \pi_{3} \rightarrow ...$$
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/1_4_4_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/1_4_4_1.png"/></center>
 </p>
 <p align="justify">
 Finally, we have an optimal policy and shared value functions.<br>
@@ -1014,11 +1014,11 @@ $\bigstar$ Policy Iteration follows a sequence of better and better policies and
 #### 1.4.5 Flexibility of the Policy Iteration Framework
 <p align="justify">
 <b>Policy Iteration</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/1_4_5_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/1_4_5_1.png"/></center>
 </p>
 <p align="justify">
 <b>Generalized Policy Iteration</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/1_4_5_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/1_4_5_2.png"/></center>
 </p>
 <p align="justify">
 Synchronous methods repeatedly sweep over the entire state space. Asynchronous methods are more flexible, and they can update states in any order. Asynchronous methods can more efficiently propagate value information. This can be especially helpful when the state space is very large.<br><br>
@@ -1032,11 +1032,11 @@ $\bigstar$ Generalized Policy iteration unifies classical DP methods, value iter
 #### 1.4.6 Efficiency of Dynamic Programming
 <p align="justify">
 <b>A Sampling Alternative for Policy Evaluation</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/1_4_6_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/1_4_6_1.png"/></center>
 </p>
 <p align="justify">
 Bootstrapping<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/1_4_6_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/1_4_6_2.png"/></center>
 </p>
 <p align="justify">
 <b>DP is much faster in practice than brutal force.</b><br><br>
@@ -1140,7 +1140,7 @@ C. They learn from trial and error interaction.<br><br>
 
 <b>12.</b><br>
 Consider the undiscounted, episodic MDP below. There are four actions possible in each state, A = {up, down, right, left}, which deterministically cause the corresponding state transitions, except that actions that would take the agent off the grid in fact leave the state unchanged. The right half of the figure shows the value of each state under the equiprobable random policy.<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/1_4_7_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/1_4_7_1.png"/></center>
 </p>
 <p align="justify">
 <b>12.1</b><br>
@@ -1197,15 +1197,15 @@ To use pure DP approach, the agent needs to know the environment's transition pr
 $$v_{\pi} = E_{\pi}[G_{t} \mid S_{t} = s]$$
 
 Monte Carlo method for learning a value function would first observe multiple returns from the same state. Then, it average those observed returns to estimate the expected return from that state. As the number of samples increases, the average tends to get closer and closer to the expected return. The more returns the agent observes from a state, the more likely it is that the sample average is close to the state value. These returns can only be observed at the end of an episode.<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/2_1_1_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/2_1_1_1.png"/></center>
 </p>
 <p align="justify">
 <b>MC Algorithm</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/2_1_1_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/2_1_1_2.png"/></center>
 </p>
 <p align="justify">
 For example, we have episodic tasks with 5 rewards and $\gamma = 0.5$. This is one sample.<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/2_1_1_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/2_1_1_3.png"/></center>
 </p>
 <p align="justify">
 In order to compute efficiently, we should calculate return form terminal state then backward.<br>
@@ -1227,7 +1227,7 @@ $\bigstar$ We showed a Monte Carlo Algorithm for learning state valeus in episod
 <p align="justify">
 <b>Blackjack</b><br>
 Collect cards so that their sum is as large as possible without exceeding 21.<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/2_1_2_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/2_1_2_1.png"/></center>
 </p>
 <p align="justify">
 The game begins with 2 cards dealt to both the player and the dealer. The player can see one of the dealer's cards, but the other is face down. If the player immediately has 21, they win unless the dealer also has 21 in which case they draw. If the player doesn't have 21 immediately, they can request more cards one at a time or a hit. If the sum of the player's cards ever exceeds 21, we say the player goes bust and loses. Otherwise when the player decides to stop requesting cards or sticks, it becomes the dealer's turn. The dealer only hits if the sum of their cards is less than 17, if the dealer goes bust the player wins. Otherwise, the winner of the game is a player who's sum is closer to 21.<br><br>
@@ -1244,7 +1244,7 @@ We assume the cards are dealt from the deck with replacement. This means that th
 $\bigstar$ Policy: Stop requesting cards when the player's sum is 20 or 21.<br><br>
 
 <b>Result</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/2_1_2_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/2_1_2_2.png"/></center>
 </p>
 <p align="justify">
 <b>Implication of Monte Carlo learning</b><br>
@@ -1260,15 +1260,15 @@ $\bigstar$ Monte Carlo learning is computationally efficient.<br>
 #### 2.1.3 Using Monte Carlo for Action Values
 <p align="justify">
 $$q_{\pi}(s, a) = E_{\pi}[G_{t} \mid S_{t} = s, A_{t} = a]$$
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/2_1_3_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/2_1_3_1.png"/></center>
 </p>
 <p align="justify">
 <b>Action-values are useful for learning a policy</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/2_1_3_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/2_1_3_2.png"/></center>
 </p>
 <p align="justify">
 <b>Exploration Starts</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/2_1_3_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/2_1_3_3.png"/></center>
 </p>
 <p align="justify">
 <b>Summary</b><br>
@@ -1280,13 +1280,13 @@ $\bigstar$ Importance of maintaining explorations<br>
 <p align="justify">
 <b>Monte Carlo Generalized Policy Iteration</b><br>
 GPI includes a <b>policy evaluation</b> and a <b>policy improvement</b> step. GPI algorithms produce sequences of policies that are at least as good as the policies before them.<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/2_1_4_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/2_1_4_1.png"/></center>
 </p>
 <p align="justify">
 In the GPI framework, the value estimates need only improve a little, not all the way to the correct action values.<br><br>
 
 Monte Carlo Algorithm for Exploration Start<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/2_1_4_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/2_1_4_2.png"/></center>
 </p>
 <p align="justify">
 <b>Summary</b><br>
@@ -1300,13 +1300,13 @@ We can't always use Exploration Stars. For example, how could we randomly sample
 
 <b>$\epsilon$-Greedy Exploration</b><br>
 Epsilon soft policies take each action with probability at least Epsilon over the number of actions $\frac{\epsilon}{\left | A \right |}$. The uniform random policy is another notable Epsilon South policy.<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/2_1_5_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/2_1_5_1.png"/></center>
 </p>
 <p align="justify">
 $\epsilon$ soft policies continue to explore and they are always stochastic.<br><br>
 
 <b>$\epsilon$-greedy policies and deterministic policies</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/2_1_5_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/2_1_5_2.png"/></center>
 </p>
 <p align="justify">
 <b>Summary</b><br>
@@ -1363,7 +1363,7 @@ $$\rho(x) = \frac{\pi(x)}{b(x)}$$
 
 <b>Look at an example of Estimation of via Sampling</b><br>
 We have two distirbutions $b(x)$ and $\pi(x)$.<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/2_1_7_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/2_1_7_1.png"/></center>
 </p>
 <p align="justify">
 We draw samples from $b$ then estimate an expectated value under $\pi$. For reference, 2.2 is a true expected value uner $\pi$.<br>
@@ -1514,7 +1514,7 @@ D. $\frac{\epsilon}{A}$<br><br>
 #### 2.1.9 Off-Policy Monte Carlo Prediction
 <p align="justify">
 MC prediction for off-policy according to Importance Sampling<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/2_1_9_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/2_1_9_1.png"/></center>
 </p>
 <p align="justify">
 <b>Off-Policy Monte Carlo</b><br>
@@ -1541,11 +1541,11 @@ $$= \prod_{k=t}^{T-1} \frac{\pi(A_{k} \mid S_{k})}{b(A_{k} \mid S_{k})}$$
 $$E_{b}[\rho_{t:T-1} G_{t} \mid S_{t} = s] = v_{\pi}(s)$$
 
 <b>Every-visit MC prediction algorithm for on-policy and off-policy</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/2_1_9_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/2_1_9_2.png"/></center>
 </p>
 <p align="justify">
 <b>Computing $\rho_{t:T-1}$ incrementally</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/2_1_9_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/2_1_9_3.png"/></center>
 </p>
 <p align="justify">
 <b>Summary</b><br>
@@ -1590,11 +1590,11 @@ But TD needs only the next state. We can get directly from the environment witho
 Consider t+1 is current time step and t is previous time step. We use the state in previous time step $s_{t}$ to compute the TD error.<br>
 $$V(S_{t}) \leftarrow V(S_{t}) + \alpha [R_{t+1} + \gamma V(S_{t+1}) - V(S_{t})]$$
 $$s_{t} \leftarrow s_{t+1}$$
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/2_2_1_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/2_2_1_1.png"/></center>
 </p>
 <p align="justify">
 TD(0) algorithm<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/2_2_1_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/2_2_1_2.png"/></center>
 </p>
 <p align="justify">
 <b>Summary</b><br>
@@ -1611,21 +1611,21 @@ TD methods don't require a model of the environment. They can learn directly fro
 <p align="justify">
 <b>Random Walk</b><br>
 In this experiment we have 7 states: A, B, C, D, E are non-terminal states. Our agent has two available actions to take: left and right with a equiprob policy. Remember that once the agent arrives at a terminal state, this episode ends and V(terminal state) is 0.<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/2_2_3_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/2_2_3_1.png"/></center>
 </p>
 <p align="justify">
 The value of the start state is 0.5, that means the probability of terminating from the center is a half.<br><br>
 
 We have a reference state value functions.<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/2_2_3_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/2_2_3_2.png"/></center>
 </p>
 <p align="justify">
 We run one episode for TD method and MC method.<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/2_2_3_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/2_2_3_3.png"/></center>
 </p>
 <p align="justify">
 We run more episodes to calculate the RMS error for TD and MC.<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/2_2_3_4.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/2_2_3_4.png"/></center>
 </p>
 <p align="justify">
 <b>Summary</b><br>
@@ -1640,7 +1640,7 @@ $\bigstar$ The result shows that TD converges faster to a low final error in thi
 
 #### 2.2.5 Programming Assignment: Policy Evaluation with Temporal Difference Learning
 <p align="justify">
-All codes are available <a href="https://github.com/chaopan1995/PROJECTS/tree/master/Reinforcement-Learning-Course-PA/Policy-Evaluation-with-Temporal-Difference%20Learning">here.</a><br>
+All codes are available <a href="https://github.com/chaopan95/PROJECTS/tree/master/Reinforcement-Learning-Course-PA/Policy-Evaluation-with-Temporal-Difference%20Learning">here.</a><br>
 </p>
 
 ### 2.3 Temporal Difference Learning Methods for Control
@@ -1651,12 +1651,12 @@ Weekly reading: Chapter 6.4-6.6 (pp. 129-134).<br>
 #### 2.3.1 Sarsa
 <p align="justify">
 <b>Recall Generalized Policy Iteration</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/2_3_1_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/2_3_1_1.png"/></center>
 </p>
 <p align="justify">
 <b>Sarsa</b><br>
 Sarsa is a short of state, action, reward, next state, next action.<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/2_3_1_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/2_3_1_2.png"/></center>
 </p>
 <p align="justify">
 Sarsa makes predictions about the values of state action pair. It takes an action $A_{t}$ in current state $S_{t}$ and observes reward $R_{t+1}$ as well next state $S_{t+1}$. In Sarsa, the agent needs to know its next state action pair before updating its value estimate. Since the agent is learning action values for a specific policy, it uses that policy to sample next action.<br>
@@ -1665,11 +1665,11 @@ $$Q(S_{t}, A_{t}) \leftarrow Q(S_{t}, A_{t}) + \alpha [R_{t+1} + \gamma Q(S_{t+1
 This update is done after every transition from a nonterminal state $S_{t}$. If $S_{t+1}$ is terminal state, $Q(S_{t+1}, A_{t+1})$ is 0.<br><br>
 
 The backup diagram for Sarsa<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/2_3_1_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/2_3_1_3.png"/></center>
 </p>
 <p align="justify">
 This equation is for policy evaluation. Tnaks for the GPI framework, we can turn it into a control algorithm.<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/2_3_1_4.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/2_3_1_4.png"/></center>
 </p>
 <p align="justify">
 We can improve the policy every time step rather than after an episode or after convergence.<br><br>
@@ -1679,11 +1679,11 @@ $\bigstar$ Sarsa is an action value form of TD which combines these ideas.<br><b
 
 <b>The Windy Gridworld</b><br>
 We have a start state S and a goal state G. The agent can move four directions and each move gets a reward of -1.<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/2_3_1_5.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/2_3_1_5.png"/></center>
 </p>
 <p align="justify">
 Besides, we impose wind from down to up. Due to the wind, each horizontal move will shift one grid upward. This is an undiscounted episodic task. We apply a $\epsilon$-greedy Sarsa with $\epsilon$ = 0.1, $\alpha$ = 0.5 and initial value $Q(s, a)$ = 0.<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/2_3_1_6.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/2_3_1_6.png"/></center>
 </p>
 <p align="justify">
 The increasing slope shows the goal was reached more quickly over time. By 8000 steps, the policy is optimal with an average step length of 17.<br><br>
@@ -1691,7 +1691,7 @@ The increasing slope shows the goal was reached more quickly over time. By 8000 
 Monte Carlo is hard to work here because termination is not guaranteed for all policies. Without termination, MC cannot update value function.<br>
 
 <b>Sarsa Algorithm</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/2_3_1_7.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/2_3_1_7.png"/></center>
 </p>
 <p align="justify">
 Sarsa is on-policy TD control.<br>
@@ -1702,21 +1702,21 @@ Sarsa is on-policy TD control.<br>
 <b>Q-Learning Algorithm</b><br>
 Q-learning was developed in 1989 and is one of the first major online Reinforcement Learning algorithm.<br>
 $$Q(S, A) \leftarrow Q(S, A) + \alpha [R + \gamma \max_{a} Q(S', a) - Q(S, A)]$$
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/2_3_2_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/2_3_2_1.png"/></center>
 </p>
 <p align="justify">
 <b>Revisiting Bellman equations</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/2_3_2_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/2_3_2_2.png"/></center>
 </p>
 <p align="justify">
 In fact, Sarsa is a sample-based algorithm to solve the Bellman equation for action values. Q-learning also solves the Bellman equation using samples from the environment. But instead of using the standard Bellman equation, Q-learning uses the Bellman's Optimality Equation for action values. The optimality equations enable Q-learning to directly learn Q-star instead of switching between policy improvement and policy evaluation steps.<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/2_3_2_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/2_3_2_3.png"/></center>
 </p>
 <p align="justify">
 Even though Sarsa and Q-learning are both based on Bellman equations, they're based on very different Bellman equations. Sarsa is sample-based version of <b>policy iteration</b> which uses Bellman equations for action values, that each depend on <b>a fixed policy</b>. Q-learning is a sample-based version of <b>value iteration</b> which iteratively applies the Bellman optimality equation. Applying the Bellman's Optimality Equation strictly improves the value function, unless it is already optimal. So value iteration continually improves as value function estimate, which eventually converges to the optimal solution. For the same reason, Q-learning also converges to the optimal value function as long as the aging continues to explore and samples all areas of the state action space.<br><br>
 
 We take s same example like before, but with Q-Learning and Sarsa.<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/2_3_2_4.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/2_3_2_4.png"/></center>
 </p>
 <p align="justify">
 Towards the end, Q-Learning seems to find a better policy.<br><br>
@@ -1725,25 +1725,25 @@ Why Q-learning does better than Sarsa here?<br>
 Q-Learning takes the max over next action values. So it only changes when the agent learns that one action is better than another. In contrast, SARSA uses the estimate of the next action value in its target.<br><br>
 
 If we set $\alpha$ = 0.1<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/2_3_2_5.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/2_3_2_5.png"/></center>
 </p>
 <p align="justify">
 Sarsa learns a same policy but more slowly. This experiment highlights the impact of parameters in Reinforcement Learning, including $\alpha$, $\epsilon$, initial value function etc.<br><br>
 
 <b>Comparison between Sarsa and Q-Learning</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/2_3_2_6.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/2_3_2_6.png"/></center>
 </p>
 <p align="justify">
 <b>Target and Behavior Policies for Q-Learning</b><br>
 Target Policy is always greedy with respect to its current values, while Behavior Policy can be anything that continues to visit all pairs during the learning, e.g. $\epsilon$-greedy.<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/2_3_2_7.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/2_3_2_7.png"/></center>
 </p>
 <p align="justify">
 Here is a question, <b>since Q-learning learns off-policy, why don't we see any important sampling ratios?</b><br>
 It is because the agent is estimating action values with unknown policy. It does not need important sampling ratios to correct for the difference in action selection. The action value function represents the returns following each action in a given state. The agent's target policy represents the probability of taking each action in a given state. Putting these two elements together, the agent can calculate the expected return under its target policy from any given state, in particular, the next state, $S_{t+1}$. Q-learning uses exactly this technique to learn off-policy. Since the agents target policies greedy, with respect to its action values, all non-maximum actions have probability 0. As a result, the expected return from that state is equal to a maximal action value from that state.<br><br>
 
 <b>Cliff Walking</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/2_3_2_8.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/2_3_2_8.png"/></center>
 </p>
 <p align="justify">
 Since Q-learning learns the optimal value function, it quickly learns that an optimal policy travels right alongside the cliff. However, since his actions or epsilon greedy, traveling alongside the cliff occasionally results and falling off of the cliff. Sarsa learns about his current policy, taking into account the effect of epsilon greedy action selection. Accounting for occasional exploratory actions, it learns to take the longer but more reliable path. They usually avoids randomly falling into the cliff. Because of it's safer path, Sarsa is able to reach the goal more reliably.<br>
@@ -1752,7 +1752,7 @@ Since Q-learning learns the optimal value function, it quickly learns that an op
 #### 2.3.3 Expected Sarsa
 <p align="justify">
 <b>The Bellman Equation for action-values</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/2_3_3_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/2_3_3_1.png"/></center>
 </p>
 <p align="justify">
 The agent has already known the policy, it can compute the expected value function directly.<br><br>
@@ -1762,14 +1762,14 @@ The expected Sarsa algorithm is similar to Sarsa expcet TD error uses the expect
 $$Q(S_{t}, A_{t}) \leftarrow Q(S_{t}, A_{t}) +\alpha [R_{t+1} + \gamma \sum_{a'} \pi(a' \mid S_{t+1}) Q(S_{t+1}, a') - Q(S_{t}. A_{t})]$$
 
 For example,<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/2_3_3_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/2_3_3_2.png"/></center>
 </p>
 <p align="justify">
 Expected Sarsa is more table in update target than Sarsa.<br><br>
 
 <b>Satbility in the Update Target</b><br>
 Consider a reward is 1. Both Sarsa and Expected Sarsa start with true value function for next state.<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/2_3_3_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/2_3_3_3.png"/></center>
 </p>
 <p align="justify">
 The next action sampling that Sarsa does can cause it uo update its value in a wrong direction. It relies on the fact that in expectation across mutilple updates, the direction is correct. But, Expected Sarsa update targets are exactly correct and do not change the estimated values away from the true values.<br><br>
@@ -1777,26 +1777,26 @@ The next action sampling that Sarsa does can cause it uo update its value in a w
 <b>In fact, Expected Sarsa update targets are much lower variance than Sarsa.</b> But Expected Sarsa need much computation ressource. If there are many actions, computing the average might take a long time.<br><br>
 
 The backup diagrams for Q-learning and Expected Sarsa.<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/2_3_3_4.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/2_3_3_4.png"/></center>
 </p>
 <p align="justify">
 <b>Off-Policy Expected Sarsa</b><br>
 Consider the Expected Sarsa update. The next action is sampled from $\pi$ in this case. However, notice that the expectation over actions is computed independently of the action actually selected in the next state.<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/2_3_3_5.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/2_3_3_5.png"/></center>
 </p>
 <p align="justify">
 In other word, $\pi$ need not to be equal to behavior policy. So, Expected Sarsa is off-policy like Q-Learning.<br><br>
 
 <b>Greedy Expected Sarsa</b><br>
 If we take a greedy policy as target policy with respect to action value estimates.<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/2_3_3_6.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/2_3_3_6.png"/></center>
 </p>
 <p align="justify">
 In other word, Q-Learning is a special case of Expected Sarsa with greedy target policy.<br><br>
 
 <b>TD control and Bellman equations</b><br>
 Sarsa uses a sample based version of the Bellman euqation to learn $q_{\pi}$, Q-Learning uses the Bellman optimality equation to learn $q_{*}$. Expected Sarsa uses a same Bellman equation like Sarsa, but Expected Sarsa takes an average over the next action values.<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/2_3_3_7.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/2_3_3_7.png"/></center>
 </p>
 <p align="justify">
 Sarsa can do better than Q-learning when performance is measured online. This is because on-policy control methods account for their own exploration.<br>
@@ -1820,13 +1820,13 @@ Weekly reading: Chapter 8.1-8.3 (pp. 159-166).<br>
 #### 2.4.1 What is a Model?
 <p align="justify">
 <b>Model store knowledge</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/2_4_1_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/2_4_1_1.png"/></center>
 </p>
 <p align="justify">
 In this course, model store knowledge about the transition and reward dynamics.<br><br>
 
 A model allows for planning. Planning refers to the process of using a model to improve a policy.<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/2_4_1_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/2_4_1_2.png"/></center>
 </p>
 <p align="justify">
 <b>Types of Models</b><br>
@@ -1840,20 +1840,20 @@ Sample models require less memory; distribution models can be used to compute th
 #### 2.4.2 Random Tabular Q-planning
 <p align="justify">
 <b>Planning improves policies</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/2_4_2_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/2_4_2_1.png"/></center>
 </p>
 <p align="justify">
 One possible approach to planning is to first sample experience from the model.<br><br>
 
 <b>Connection with Q-Learning</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/2_4_2_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/2_4_2_2.png"/></center>
 </p>
 <p align="justify">
 <b>Random-sample one-step tabular Q-Planning</b><br>
 Suppose we have a sample model of the transition dynamics and a strategy for sampling relevant state action pairs. One possible option is sample states and actions uniformly.<br><br>
 
 his algorithm first chooses a state action pair at random from the set of all states and actions. It then queries the sample model with this state action pair to produce a sample of the next state and reward. It then performs a Q-Learning Update on this model transition. Finally, it improves the policy by beautifying with respect to the updated action values.<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/2_4_2_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/2_4_2_3.png"/></center>
 </p>
 <p align="justify">
 A key point is that this planning method only uses imagined or simulated experience.<br>
@@ -1863,11 +1863,11 @@ A key point is that this planning method only uses imagined or simulated experie
 <p align="justify">
 <b>The Dyna Architecture</b><br>
 First, we have environment and policy, which generate a stream of experience. Then we use this experience to perform direct RL updates. To do planning, we need a model coming from somewhere. Well, the environment experience can be used to learn the model. This model will generate model experience. Besides, we want to control how the model generates this simulated experience. We call this process <b>search control</b>. Planning update are performed using the experience generated by the model.<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/2_4_3_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/2_4_3_1.png"/></center>
 </p>
 <p align="justify">
 Look at an example of a simple maze where a robot try to find the exit E. This is a discounted problem. The robot receieves 1 at goal, 0 otherwise.<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/2_4_3_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/2_4_3_2.png"/></center>
 </p>
 <p align="justify">
 One direct RL update using Q-Learning<br>
@@ -1879,38 +1879,38 @@ $\bigstar$ Direct RL updates use environment experience to improve a policy or v
 $\bigstar$ Planning updates use model experience to improve a policy or value function.<br><br>
 
 <b>The Dyna Algorithm</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/2_4_3_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/2_4_3_3.png"/></center>
 </p>
 <p align="justify">
 <b>More planning $\rightarrow$ faster learning</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/2_4_3_4.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/2_4_3_4.png"/></center>
 </p>
 <p align="justify">
 <b>Bonus rewards for exploration</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/2_4_3_5.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/2_4_3_5.png"/></center>
 </p>
 <p align="justify">
 <b>The Dyna-Q+ Algorithm</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/2_4_3_6.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/2_4_3_6.png"/></center>
 </p>
 <p align="justify">
 Adding this reward bonus to Dyna-Q's planning updates results in the Dyna-Q+ algorithm.<br><br>
 
 <b>Dyna-Q vs Dyna-Q+ in a chaning environment</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/2_4_3_7.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/2_4_3_7.png"/></center>
 </p>
 <p align="justify">
 Dyna-Q+ can find the short caut while Dyna-Q cannot.<br><br>
 
 Backup diagrams for all the one-step updates considered in this book<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/2_4_3_8.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/2_4_3_8.png"/></center>
 </p>
 <p align="justify">
 If there is enough time to complete an expected update, then the resulting estimate is generally better than that of b sample updates because of the absence of sampling error. But if there is insu cient time to complete an expected update, then sample updates are always preferable because they at least make some improvement in the value estimate with fewer than b updates. In a large problem with many state–action pairs, we are often in the latter situation.<br>
 </p>
 <p align="justify">
 We summarize all algorithms in a map<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/2_4_3_9.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/2_4_3_9.png"/></center>
 </p>
 
 #### 2.4.4 Quiz: Practice Assessment
@@ -1935,18 +1935,18 @@ Ch. 9.1 - 9.4 (pp. 197- 209)<br>
 $$\hat{v}(s, w) \approx v_{\pi}(s)$$
 
 w is weight. For example<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/3_1_1_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/3_1_1_1.png"/></center>
 </p>
 <p align="justify">
 <b>Linear Vlaue Function Approximation</b><br>
 $$\hat{v}(s, w) = \sum w_{i}x_{i}(s) = < w, x(s) >$$
 
 Tabular value functions are in fact linear functions.<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/3_1_1_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/3_1_1_2.png"/></center>
 </p>
 <p align="justify">
 <b>Nonlinear Function Approximation</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/3_1_1_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/3_1_1_3.png"/></center>
 </p>
 <p align="justify">
 <b>Generalization: Update to One State Affect the Value of Other State.</b><br>
@@ -1964,7 +1964,7 @@ The function approximator should be compatible with bootstrapping.<br><br>
 
 <b>The Mean Squared Value Error Objective</b><br>
 The mean squared value error is a metric to measure the difference between value function and estimated value function.<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/3_1_1_4.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/3_1_1_4.png"/></center>
 </p>
 <p align="justify">
 $$\text{Mean Squared Value Error} = \sum_{s} \mu(s) [v_{\pi}(s) - \hat{v}(s, w)]^{2}$$
@@ -1978,11 +1978,11 @@ $$\overline{VE} = \sum_{s} \mu(s) [v_{\pi}(s) - \hat{v}(s, w)]^{2}$$
 #### 3.1.2 Gradient Descent
 <p align="justify">
 <b>Gradient: Derivatives in multiple domensions</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/3_1_2_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/3_1_2_1.png"/></center>
 </p>
 <p align="justify">
 <b>Gradient Descent</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/3_1_2_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/3_1_2_2.png"/></center>
 </p>
 <p align="justify">
 <b>Gradient of the Mean squared Value Error Objective</b><br>
@@ -1998,16 +1998,16 @@ $$w_{t+1} = w_{t} + \alpha [G_{t} - \hat{v}(S_{t}, w_{t})] \nabla \hat{v}(S_{t},
 $$E_{\pi} [2[v_{\pi}(S_{t}) - \hat{v}(S_{t}, w)]\nabla \hat{v}(S_{t}, w)] = E_{\pi} [2[G_{t} - \hat{v}(S_{t}, w)] \nabla \hat{v}(S_{t}, w)]$$
 
 <b>Gradient Monte Carlo Algorithm</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/3_1_2_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/3_1_2_3.png"/></center>
 </p>
 <p align="justify">
 <b>State Aggregation</b><br>
 We group some states with a same feature. We update a group of state at a same time.<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/3_1_2_4.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/3_1_2_4.png"/></center>
 </p>
 <p align="justify">
 <b>State Aggregation with Monte Carlo</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/3_1_2_5.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/3_1_2_5.png"/></center>
 </p>
 <p align="justify">
 <b>Gradient Monte Carlo</b><br>
@@ -2027,13 +2027,13 @@ Why $\nabla U_{t} \neq 0$?<br>
 $$\nabla U_{t} = \nabla (R_{t+1} + \gamma \hat{v}(S_{t+1}, w)) = \gamma \nabla \hat{v}(S_{t+1}, w) \neq 0$$
 
 Semi-gradient TD(0) algorithm<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/3_1_2_6.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/3_1_2_6.png"/></center>
 </p>
 <p align="justify">
 <b>Comparing TD and Monte Carlo with State Aggregation</b><br>
 $\bigstar$ Gradient Monte Carlo will converge to a local minimum of the Mean Squared Value Error, because of unbiased $G_{t}$<br>
 $\bigstar$ Semi-gradient TD will not necessarily converge to a local minimum of the Mean Squared Value Error.<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/3_1_2_7.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/3_1_2_7.png"/></center>
 </p>
 <p align="justify">
 <b>TD update with Linear Function Approximation</b><br>
@@ -2044,7 +2044,7 @@ $$\nabla \hat{v}(S_{t}, w) = x(S_{t})$$
 $$w \leftarrow w +\alpha \delta_{t} x(S_{t})$$
 
 <b>Tabular TD is a special case of linear TD</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/RL/3_1_2_8.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/RL/3_1_2_8.png"/></center>
 </p>
 <p align="justify">
 <b>The utility of Linear Function Approximation</b><br>
