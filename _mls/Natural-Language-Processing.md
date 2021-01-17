@@ -80,7 +80,7 @@ $\bigstar$ EOS: end of sentence; UNK: unknow words<br>
 #### 1.1.2 Model
 <p align="justify">
 <b>Rucurrent Architecture</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/ML/NLP/1_1_1_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/ML/NLP/1_1_1_1.png"/></center>
 </p>
 <p align="justify">
 $$h_{t} = f_{h}(V \cdot x_{t} + W \cdot h_{t-1} + b_{h})$$
@@ -98,7 +98,7 @@ The main problem is arbitrary length of sequence, because MLP requires a fixed s
 
 <b>Bidirectional RNN (BRNN)</b><br>
 We have two nodes at each layer
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/ML/NLP/1_1_1_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/ML/NLP/1_1_1_2.png"/></center>
 </p>
 <p align="justify">
 $$\hat{y}_{t} = f_{h}(W_{\overrightarrow{h}} \overrightarrow{h}_{t-1} + W_{\overleftarrow{h}} \overleftarrow{h}_{t-1} + V x_{t} + b)$$
@@ -179,7 +179,7 @@ $\bigstar$ Many to Many (equivalent or inequivalent length)<br>
 -- Handwritting to text / text to handwritting<br>
 -- Speech to text / text to speech<br>
 -- Machine translation
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/ML/NLP/1_1_4_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan1995.github.io/master/_imgs/ML/NLP/1_1_4_1.png"/></center>
 </p>
 
 
@@ -214,7 +214,7 @@ $$
 
 $\bigstar$ CBOW Skip-Gram<br>
 $\bigstar$ Hoffman tree, hierarchical softmax, negative sampling<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/ML/NLP/1_2_1_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan1995.github.io/master/_imgs/ML/NLP/1_2_1_1.png"/></center>
 </p>
 <p align="justify">
 <b>Quiz:</b> Which part of word2vec model would take most time to compute? For simplicity, assume that you compute it on modern CPU as of year 2017, your vocabulary contains 100 000 words and hidden vector size is 1000<br>
@@ -287,7 +287,7 @@ $$h_{t} = f_{h}(V \cdot x_{t} + W \cdot h_{t-1} + b_{h}) = f_{h}(pr_{t})$$
 $$\frac{\partial h_{t}}{\partial h_{t-1}} = \frac{\partial h_{t}}{\partial pr_{t}}\frac{\partial pr_{t}}{\partial h_{t-1}} = diag(f'_{h}(pr_{t})) \cdot W$$
 
 Vanishing gradients are very likely especially with sigmoid and tanh
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/ML/NLP/1_3_1_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan1995.github.io/master/_imgs/ML/NLP/1_3_1_1.png"/></center>
 </p>
 <p align="justify">
 Besides, $\left \| W \right \|$ could be either small or large: small $\left \| W \right \|$ could aggravate the vanishing gradient problem while large $\left \| W \right \|$ could cause exploding gradients (especially with ReLU)<br><br>
