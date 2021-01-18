@@ -54,11 +54,6 @@ table.d {
 </style>
 
 
-<p align="justify">
-<a href="https://www.coursera.org/account/accomplishments/certificate/F55JE94VCMHJ"> My certificate.</a><br>
-</p>
-
-
 ## 1. Week 1
 ### 1.1 Introduction
 #### 1.1.1 Introduction
@@ -107,11 +102,11 @@ D. Treat both as regression problems.<br>
 <b>Unsupervised Learning</b><br>
 Unsupervised learning has no labels.<br>
 Some example<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/ML/1_1_1_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/ML/1_1_1_1.png"/></center>
 </p>
 <p align="justify">
 <b>Cocktail party problem</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/ML/1_1_1_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/ML/1_1_1_2.png"/></center>
 </p>
 <p align="justify">
 We want to seperate different audios with some unsupervised algorithms.<br>
@@ -176,12 +171,12 @@ $\bigstar$ Notation:<br>
 -- (x, y) is one training example<br>
 -- $(x^{i}, y^{i})$ is $i^{th}$ training example<br>
 For example, we have a dataset about house price<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/ML/1_2_1_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/ML/1_2_1_1.png"/></center>
 </p>
 <p align="justify">
 $x^{1}$ = 2104, $y^{3}$ = 315<br>
 Here is a model diagram<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/ML/1_2_1_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/ML/1_2_1_2.png"/></center>
 </p>
 <p align="justify">
 h is our hypothesis for this model. We can use a linear regression to represent h<br>
@@ -212,7 +207,7 @@ $\bigstar$ Gradient descent algorithm<br>
 $$\theta_{j} := \theta_{j} - \alpha \frac{\partial}{\partial \theta_{j}} J(\theta_{0}, \theta_{1}), \quad j =0, 1$$
 If $\alpha$ is too small, gradient descent can be slow. If $\alpha$ is too large, gradient descent can overshoot the minimum, so that it may fail to converge, or even diverge.<br>
 $\theta$ is hard to get off a local minimum.<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/ML/1_2_2_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/ML/1_2_2_1.png"/></center>
 </p>
 <p align="justify">
 Gradient descent can converge to a local minimum, even with the learning rate $\alpha$ fixed. As we approach a local minimum, gradient descent will automatically take smaller steps. So, no need to descrease $\alpha$ over time.<br><br>
@@ -909,7 +904,7 @@ Predict y = 1 if $h_{\theta}(x) \geq$ 0.5; y = 0 if $h_{\theta}(x)$ < 0.5<br><br
 <p align="justify">
 <b>Cost Function</b><br>
 Using square cost function leads to a non-convex function<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/ML/3_1_2_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/ML/3_1_2_1.png"/></center>
 </p>
 <p align="justify">
 Logistic regression cost function<br>
@@ -962,7 +957,7 @@ D. Our estimate for P(y = 1 | x; $\theta$) is 0.4<br><br>
 
 <b>2.</b><br>
 Suppose you have the following training set, and fit a logistic regression classifier $h_{\theta}(x) = g(\theta_{0} + \theta_{1}x_{1} + \theta_{2} x_{2})$.<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/ML/3_1_4_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/ML/3_1_4_1.png"/></center>
 </p>
 <p align="justify">
 Which of the following are true? Check all that apply.<br>
@@ -1003,7 +998,7 @@ D. Linear regression always works well for classification if you classify by usi
 
 <b>5.</b><br>
 Suppose you train a logistic classifier $h_{\theta}(x) = g(\theta_{0} + \theta_{1}x_{1} + \theta_{2} x_{2})$. Suppose $\theta_{0}$ = -6, $\theta_{1}$ = 1, $\theta_{2}$ = 0. Which of the following figures represents the decision boundary found by your classifier?<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/ML/3_1_4_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/ML/3_1_4_2.png"/></center>
 </p>
 <p align="justify">
 <b>Answer</b>: B.<br><br>
@@ -1114,14 +1109,14 @@ D. Using too large a value of λ can cause your hypothesis to overfit the data; 
 
 <b>4.</b><br>
 In which one of the following figures do you think the hypothesis has overfit the training set?
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/ML/3_2_2_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/ML/3_2_2_1.png"/></center>
 </p>
 <p align="justify">
 <b>Answer</b>: A.<br><br>
 
 <b>5.</b><br>
 In which one of the following figures do you think the hypothesis has underfit the training set?
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/ML/3_2_2_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/ML/3_2_2_2.png"/></center>
 </p>
 <p align="justify">
 <b>Answer</b>: A.<br><br>
@@ -1232,7 +1227,7 @@ end
 <p align="justify">
 <b>Non-linear Hypotheses</b><br>
 Non-linear classification<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/ML/4_1_1_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/ML/4_1_1_1.png"/></center>
 </p>
 <p align="justify">
 <br>
@@ -1247,7 +1242,7 @@ Recent ressurgence: state-of-the-art technique for many applications<br><br>
 <p align="justify">
 <b>Model Representation</b><br>
 $a_{j}^{(i)}$ denotes the activated value in the j-th neuron (generally from top to down) in i-th layer. Conventionally, we count from the first hidden layer.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/ML/4_1_2_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/ML/4_1_2_1.png"/></center>
 </p>
 <p align="justify">
 Forward propagation<br>
@@ -1264,7 +1259,7 @@ If $i^{\text{th}}$ layer has $n^{(i)}$ neurons and $(i-1)^{\text{th}}$ has $n^{(
 #### 4.1.3 Applications
 <p align="justify">
 <b>Multiclass Classification</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/ML/4_1_3_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/ML/4_1_3_1.png"/></center>
 <br>
 </p>
 
@@ -1280,7 +1275,7 @@ D. A two layer (one input layer, one output layer; no hidden layer) neural netwo
 
 <b>2.</b><br>
 Consider the following neural network which takes two binary-valued inputs $x_{1}$, $x_{2}$ ∈{0,1} and outputs $h_{\theta}$(x). Which of the following logical functions does it (approximately) compute?
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/ML/4_1_4_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/ML/4_1_4_1.png"/></center>
 </p>
 <p align="justify">
 A. OR<br>
@@ -1291,14 +1286,14 @@ D. XOR (exclusive OR)<br>
 
 <b>3.</b><br>
 Consider the neural network given below. Which of the following equations correctly computes the activation $a_{1}^{(3)}$? Note: g(z) is the sigmoid activation function.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/ML/4_1_4_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/ML/4_1_4_2.png"/></center>
 </p>
 <p align="justify">
 <b>Answer</b>: A.<br><br>
 
 <b>4.</b><br>
 You have the following neural network. You'd like to compute the activations of the hidden layer $a^{(2)} \in \mathbb{R}^{3}$. One way to do so is the following Octave code. You want to have a vectorized implementation of this (i.e., one that does not use for loops). Which of the following implementations correctly compute $a^{(2)}$? Check all that apply.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/ML/4_1_4_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/ML/4_1_4_3.png"/></center>
 </p>
 <p align="justify">
 A. z = Theta1 * x; a2 = sigmoid(z)<br>
@@ -1339,7 +1334,7 @@ $$
 \end{bmatrix}
 $$
 How will this change the value of the output $h_{\theta}(x)$?
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/ML/4_1_4_4.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/ML/4_1_4_4.png"/></center>
 </p>
 <p align="justify">
 A. it will stay the same<br>
@@ -1808,7 +1803,7 @@ Variance(overfit): low training error but high validation error.<br>
 If a learning algorithm is suffering high bias, getting more training data will not help much; if a learning algorithm is suffering high variance, getting more training data will help.<br><br>
 
 <b>Learning Curves</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/ML/6_1_2_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/ML/6_1_2_1.png"/></center>
 </p>
 <p align="justify">
 <b>Deciding What to Do Next Revisited</b><br>
@@ -1827,7 +1822,7 @@ $\bigstar$ High variance<br>
 <p align="justify">
 <b>1.</b><br>
 You train a learning algorithm, and find that it has unacceptably high error on the test set. You plot the learning curve, and obtain the figure below. Is the algorithm suffering from high bias, high variance, or neither?
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/ML/6_1_3_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/ML/6_1_3_1.png"/></center>
 </p>
 <p align="justify">
 A. High bias<br>
@@ -2041,7 +2036,7 @@ end
 {% endhighlight %}
 <p align="justify">
 learning curve
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/ML/6_1_4_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/ML/6_1_4_1.png"/></center>
 <br>
 </p>
 
@@ -2165,7 +2160,7 @@ h_{\theta}(x) =
 $$
 
 <b>Large Margin Intuition</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/ML/7_1_1_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/ML/7_1_1_1.png"/></center>
 </p>
 <p align="justify">
 If y = 1, we want $\theta^{T}x \geq 1$; if y = 0, we want $\theta^{T}x \leq -1$.<br><br>
@@ -2208,7 +2203,7 @@ $$
 & \cdots
 \end{aligned}
 $$
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/ML/7_1_2_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/ML/7_1_2_1.png"/></center>
 </p>
 <p align="justify">
 Hypothesis: given x, compute features $f \in \mathbb{R}^{m+1}$, predict "y = 1" if $\theta^{T} f \geq 0$.<br>
@@ -2250,7 +2245,7 @@ if n is small and m is large, create / add more features, then use logistic regr
 <p align="justify">
 <b>1.</b><br>
 Suppose you have trained an SVM classifier with a Gaussian kernel, and it learned the following decision boundary on the training set:
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/ML/7_1_4_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/ML/7_1_4_1.png"/></center>
 </p>
 <p align="justify">
 You suspect that the SVM is underfitting your dataset. Should you try increasing or decreasing C? Increasing or decreasing $\sigma^{2}$?<br>
@@ -2265,7 +2260,7 @@ Underfit means high bias<br><br>
 The formula for the Gaussian kernel is given by
 $$\text{similarity} (x, l^{(1)}) = \exp(-\frac{\left \| x - l^{(1)} \right \|^{2}}{2 \sigma^{2}})$$
 The figure below shows a plot of $f_{1} = \text{similarity}(x, l^{(1)})$ when $\sigma^{2}$ = 1. Which of the following is a plot of $f_{1}$ when $\sigma^{2}$ = 0.25?
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/ML/7_1_4_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/ML/7_1_4_2.png"/></center>
 </p>
 <p align="justify">
 <b>Answer</b>: A.<br><br>
@@ -2274,7 +2269,7 @@ The figure below shows a plot of $f_{1} = \text{similarity}(x, l^{(1)})$ when $\
 The SVM solves
 $$\min_{\theta} C [\sum_{i=1}^{m} y^{(i)} \text{Cost}_{1}(\theta^{T}x^{(i)}) + (1 - y^{(i)}) \text{Cost}_{0}(\theta^{T}x^{(i)}) ] + \frac{1}{2} \sum_{j=1}^{n} \theta_{j}^{2}$$
 where the functions $\text{Cost}_{0}(z)$ and $\text{Cost}_{1}(z)$ look like this:
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/ML/7_1_1_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/ML/7_1_1_1.png"/></center>
 </p>
 <p align="justify">
 The first term in the objective is:
@@ -2599,7 +2594,7 @@ Pick clustering that gave the lowest cost $J(c^{(1)}, ..., c^{(m)}, \mu_{1}, ...
 
 <b>Choosing the Number of Clusters</b><br>
 Elbow method
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/ML/8_1_1_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/ML/8_1_1_1.png"/></center>
 </p>
 <p align="justify">
 Sometimes, you are running K-means to get clusters to use for some later/downstream purpose. Evaluate K-means based on a metric for how well it performs for that later purpose.<br><br>
@@ -2679,7 +2674,7 @@ D. If we are worried about K-means getting stuck in bad local optima, one way to
 #### 8.2.1 Motivation
 <p align="justify">
 <b>Data Compression</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/ML/8_2_1_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/ML/8_2_1_1.png"/></center>
 <br>
 </p>
 
@@ -2760,7 +2755,7 @@ $\bigstar$ Bad use of PCA: to prevent overfitting. Use regularization instead.<b
 <p align="justify">
 <b>1.</b><br>
 Consider the following 2D dataset. Which of the following figures correspond to possible values that PCA may return for $u^{(1)}$ (the first eigenvector / first principal component)? Check all that apply (you may have to check more than one figure).
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/ML/8_2_4_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/ML/8_2_4_1.png"/></center>
 </p>
 <p align="justify">
 <b>Answer</b>: A, B.<br><br>
@@ -3061,7 +3056,7 @@ D. In a typical anomaly detection setting, we have a large number of anomalous e
 
 <b>5.</b><br>
 You have a 1-D dataset $\{x^{(1)}, ..., x^{(m)}\}$ and you want to detect outliers in the dataset. You first plot the dataset and it looks like this:
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/ML/9_1_4_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/ML/9_1_4_1.png"/></center>
 </p>
 <p align="justify">
 Suppose you fit the gaussian distribution parameters $\mu_{1}$ and $\sigma_{1}^{2}$ to this dataset. Which of the following values for $\mu_{1}$ and $\sigma_{1}^{2}$ might you get?
@@ -3125,7 +3120,7 @@ $$
 #### 9.2.3 Low Rank Matrix Factorization
 <p align="justify">
 <b>Vectorization: Low Rank Matrix Factorization</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/ML/9_2_3_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/ML/9_2_3_1.png"/></center>
 <br>
 </p>
 
@@ -3453,7 +3448,7 @@ An unpromising component will have little effect on overall performance when it 
 
 <b>4.</b><br>
 Suppose you are building an object classifier, that takes as input an image, and recognizes that image as either containing a car (y=1) or not (y=0). For example, here are a positive example and a negative example:
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/ML/11_1_2_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/ML/11_1_2_1.png"/></center>
 </p>
 <p align="justify">
 After carefully analyzing the performance of your algorithm, you conclude that you need more positive (y=1) training examples. Which of the following might be a good way to get additional positive examples?<br>
