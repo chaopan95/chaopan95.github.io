@@ -135,7 +135,7 @@ Set of basic operations for manipulating these probability distributions.<br><br
 <b>1. Factor product</b><br>
 Let X,Y and Z be binary variables.<br>
 If $\phi_1(X,Y)$ and $\phi_2(Y, Z)$ are the factors shown below, compute the selected entries (marked by a '?') in the factor $\psi(X, Y, Z) = \phi_1(X,Y) \cdot \phi_2(Y, Z)$, giving your answer according to the ordering of assignments to variables as shown below.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_1_4_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_1_4_1.png"/></center>
 </p>
 <p align="justify">
 <b>Answer:</b> 0.16 0.45 0.6<br><br>
@@ -143,7 +143,7 @@ If $\phi_1(X,Y)$ and $\phi_2(Y, Z)$ are the factors shown below, compute the sel
 <b>2. Factor reduction</b><br>
 Let X, Z be binary variables, and let Y be a variable that takes on values 1, 2, or 3.<br>
 Now say we observe Y = 2. If $\phi(X,Y,Z)$ is the factor shown below, compute the missing entries of the reduced factor $\psi(X, Z)$ given that Y = 2, giving your answer according to the ordering of assignments to variables as shown below.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_1_4_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_1_4_2.png"/></center>
 </p>
 <p align="justify">
 <b>Answer:</b> 40 27 54 3<br><br>
@@ -151,7 +151,7 @@ Now say we observe Y = 2. If $\phi(X,Y,Z)$ is the factor shown below, compute th
 <b>3. Factor marginalization</b><br>
 Let X, Z be binary variables, and let Y be a variable that takes on values 1, 2, or 3. If $\phi(X,Y,Z)$ is the factor shown below, compute the entries of the factor
 $$\psi(Y, Z) = \sum_X \phi(X,Y,Z)$$
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_1_4_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_1_4_3.png"/></center>
 </p>
 <p align="justify">
 <b>Answer:</b> 108 135 79 141<br><br>
@@ -168,11 +168,11 @@ S: student SAT<br>
 L:reference letter<br><br>
 
 Here is a possible model
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_2_1_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_2_1_1.png"/></center>
 </p>
 <p align="justify">
 Factorization of joint distribution P(D, I, G, S, L) is $P(D) P(I) P(G \mid I,D) P(S \mid I) P(L \mid G)$ with chain rule
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_2_1_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_2_1_2.png"/></center>
 </p>
 <p align="justify">
 For example, we want to know a joint of probability for $d^{0}$, $i^{1}$, $g^{3}$, $s^{1}$, $l^{1}$
@@ -259,7 +259,7 @@ $$P(l^{1} \mid i^{0}) = \frac{P(l^{1}, i^{0})}{P(i^{0})} = \frac{0.27}{0.7} = 0.
 
 If we add another factor of difficulty, say easy $d^{0}$, then
 $$P(l^{1} \mid i^{0}, d^{0}) = 0.51$$
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_2_2_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_2_2_1.png"/></center>
 </p>
 <p align="justify">
 <b>Evidential Reasoning</b><br>
@@ -270,7 +270,7 @@ $$P(d^{1} \mid g^{3}) = \frac{P(d^{1}, g^{3})}{P(g^{3})} = \frac{0.22}{0.35} = 0
 
 We know $P(i^{1}) = 0.3$ for a high intelligence and what is the probability that a student with C has high intelligence
 $$P(i^{1} \mid g^{3}) = 0.08$$
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_2_2_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_2_2_2.png"/></center>
 </p>
 <p align="justify">
 <b>Intercausal Reasoning</b><br>
@@ -278,7 +278,7 @@ It's flow of information between two causes of a single effect.<br><br>
 
 For example, a student with C has a high intelligence with a probability $P(i^{1} \mid g^{3}) = 0.08$. If we have another information this course is hard $d^{1}$, the probability that this student with C has high intelligence goes up
 $$P(i^{1} \mid g^{3}, d^{1}) = 0.11$$
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_2_2_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_2_2_3.png"/></center>
 </p>
 <p align="justify">
 If a student aces the SAT, say $s^{1}$ but has a C in one course, the probability that he has high intelligence goes up
@@ -286,7 +286,7 @@ $$P(i^{1} \mid g^{3}, s^{1}) = 0.58$$
 
 The probability that this course is really hard goes up too
 $$P(d^{1} \mid g^{3}, s^{1}) = 0.76$$
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_2_2_4.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_2_2_4.png"/></center>
 <br>
 </p>
 
@@ -326,7 +326,7 @@ $\bigstar$ for any v-structure $X_{i-1} \rightarrow X_{i} \leftarrow X_{i+1}$, w
 $\bigstar$ no other $X_{i}$ is in Z<br><br>
 
 For example, we have a Bayesian Network like this
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_2_3_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_2_3_1.png"/></center>
 </p>
 <p align="justify">
 Given evidence G:<br>
@@ -372,7 +372,7 @@ D and I are independent but D and I are not independent given condition G<br><br
 <p align="justify">
 <b>Definition:</b> X and Y are d-separated in G given Z if there is no active trail in G between X and Y given Z.<br>
 Notation: $d-sep_{G}(X, Y \mid Z)$
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_2_3_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_2_3_1.png"/></center>
 </p>
 <p align="justify">
 For example, $d-sep_{G}(D, J \mid L, I)$ is a correct d-separation, while $d-sep_{G}(D, J \mid L, H, I)$, $d-sep_{G}(D, I \mid L)$ and $d-sep_{G}(D, J \mid L)$ are not correct.<br><br>
@@ -386,7 +386,7 @@ $$I(G) = \{(X \perp Y \mid Z): d-sep_{G}(X, Y \mid Z)\}$$
 $\bigstar$ <b>Definition:</b> If P satisfies I(G), G is an I-map (independency map) of P<br><br>
 
 For example, we have 2 joint distributions $P_{1}$ and $P_{2}$ and 2 graphs $G_{1}$ and $G_{2}$
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_2_6_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_2_6_1.png"/></center>
 </p>
 <p align="justify">
 For $G_{1}$, $I(G_{1}) = {D \perp I}$; while for $G_{2}$, $I(G_{2}) = \varnothing$ because D and I are not independent.<br><br>
@@ -439,7 +439,7 @@ If P factorizes over a graph G, we can read from the graph independencies that m
 <p align="justify">
 <b>Naive Bayes model</b><br>
 We have a class variable ans some feature variables. Features are observed and class is not observed. Our goal is to infer the class.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_2_8_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_2_8_1.png"/></center>
 </p>
 <p align="justify">
 Naive Bayes model make independence assumption: Given the class variable, each observed variable is independent of the other observed variables.<br>
@@ -453,7 +453,7 @@ We have more than 1 class
 $$\frac{P(C=c^{1} \mid x_{1}, \cdots, x_{n})}{P(C=c^{2} \mid x_{1}, \cdots, x_{n})} = \frac{P(C=c^{1})}{P(C=c^{2})} \prod_{i=1}^{n} \frac{P(x_{i} \mid C=c^{1})}{P(x_{i} \mid C=c^{2})}$$
 
 Bernoulli Naive Bayes for text
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_2_8_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_2_8_2.png"/></center>
 </p>
 <p align="justify">
 <b>Summary</b><br>
@@ -470,7 +470,7 @@ In general, if we have an edge $X \rightarrow Y$ in some Bayesian network, is th
 
 <b>2.</b><br>
 Say we observe Intelligence. <b>Are Grade and SAT conditionally independent?</b>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_2_9_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_2_9_1.png"/></center>
 </p>
 <p align="justify">
 <b>Answer</b>: Yes.<br>
@@ -479,7 +479,7 @@ If we don't observe Intelligence, then Grade and SAT are dependent, because obse
 <b>3. Independencies in a graph</b><br>
 <b>3.1</b><br>
 A multinomial distribution over m possibilities $x_{1},\cdots,x_{m}$ has m parameters, but m−1 independent parameters, because we have the constraint that all parameters must sum to 1, so that if you specify m−1 of the parameters, the final one is fixed. In a CPD P(X∣Y), if X has m values and Y has k values, then we have k distinct multinomial distributions, one for each value of Y, and we have m−1 independent parameters in each of them, for a total of k(m−1). More generally, in a CPD $P(X \mid Y_{1}, \cdots, Y_{r})$, if each $Y_{i}$ has $k_{i}$ values, we have a total of $\prod_{i=1}^{r}k_{i}(m-1)$ independent parameters. <b>How many independent parameters are required to uniquely define the CPD of E (the conditional probability distribution associated with the variable E) in the same graphical model as above, if A, B, and D are binary, and C and E have three values each?</b>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_2_9_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_2_9_2.png"/></center>
 </p>
 <p align="justify">
 <b>Answer</b>: $2 \cdot 3 \cdot (3-1) = 12$<br><br>
@@ -528,7 +528,7 @@ Since G is an I-map of P, all independencies in G are also in P. However, this d
 
 <b>6. Naive Bayes</b><br>
 Consider the following Naive Bayes model for flu diagnosis:
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_2_9_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_2_9_3.png"/></center>
 </p>
 <p align="justify">
 Assume a population size of 10,000. <b>Which of the following statements are true in this model? You may select 1 or more options.</b><br>
@@ -579,7 +579,7 @@ Template models are a convenient way of representing Bayesian networks that have
 #### 1.3.2 Temporal Model: DBNs
 <p align="justify">
 <b>Distributions over Trajectoires</b>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_3_2_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_3_2_1.png"/></center>
 </p>
 <p align="justify">
 $\bigstar$ Pick time granularity $\Delta$<br>
@@ -615,7 +615,7 @@ For example, let's imagine that this represents now the traffic on some road. We
 
 <b>Template Transition Model</b><br>
 let's assume that our stayed description is composed of a set of random variables. And we have little baby traffic system where we have the weather at the current time point, the location of a vehicle, the velocity of the vehicle. We also have a sensor, who's observation we get at each of those time points. And the sensor may or may not be failing at the current time point. And what we've done here is we've encoded the the probabilistic model of this next state. So, W', V', L', F' and O', given the previous states, W, V, L, and F.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_3_2_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_3_2_2.png"/></center>
 </p>
 <p align="justify">
 $$P(W', V', L', F', O' \mid W, V, L, F) = P(W' \mid W) P(V' \mid W, V) P(L' \mid V, L) P(F' \mid F, W) P(O' \mid L', F')$$
@@ -630,14 +630,14 @@ We have CPDs for the variables on the right-hand side, the prime variables. But 
 
 <b>Initial State Distribution</b><br>
 Time slice 0
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_3_2_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_3_2_3.png"/></center>
 </p>
 <p align="justify">
 $$P(W^{(0)}, V^{(0)}, L^{(0)}, F^{(0)}, O^{(0)}) = P(W^{(0)}) P(V^{(0)} \mid L^{(0)}) P(L^{(0)}) P(F^{(0)}) P(O^{(0)} \mid F^{(0)}, L^{(0)})$$
 
 <b>Ground Bayesian Network</b><br>
 With those two pieces, we can now represent probability distributions over arbitrarily long trajectories, by taking for time slice zero and copying the times zero Bayesian network, which represent the probability distribution over the time zero variables. And now, we have a bunch of copies that represent the probability distribution at time one, given time zero. And here, we have another copy of exactly the same set of parameters that represents time two given time one. And we can continue copying this indefinitely and each copy gives us the probability distribution of the next time slice given the one that we just had and so we can construct arbitrarily along Bayesian network.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_3_2_4.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_3_2_4.png"/></center>
 </p>
 <p align="justify">
 <b>2-time-slice Bayesian Network</b><br>
@@ -666,13 +666,13 @@ $\bigstar$ They make assumptions that may require appropriate model (re)design: 
 <p align="justify">
 <b>Hidden Markov Models</b><br>
 One simple yet extraordinarily class of probabilistic temporal models is the hidden Markov models. Although these are models can be viewed as a subclass of dynamic Bayesian networks. We'll see that they have their own type of structure that makes them particularly useful for a broad range of applications.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_3_3_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_3_3_1.png"/></center>
 </p>
 <p align="justify">
 A hidden Markov model in its simplest form can be viewed as a probabilistic model that has a state variable S and a single observation variable O. And so the model really has only two publistic pieces, there is the transition model that tells us the transition from one state to the next over time and then there is the observation model, that tells us in a given state how likely we are to see different observations.<br><br>
 
 We can unroll 2TBN to produce an unrolled network, which has the same repeated structure state at time zero move to the state at time one, and so on, and at each state, we make an appropriate observation. But what's interesting about hidden Markov models is that they often have a lot of internal structure that manifests most notably here in the transition model, but sometimes that was on the observation model.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_3_3_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_3_3_2.png"/></center>
 </p>
 <p align="justify">
 Here is an example of what the of what a structured transition model would look like and each of these nodes in here is not a random variable, rather it is a particular assignment to the state variable, sort of state that the model might been. And what you see here is the structure of the transition matrix that tells us that from S1 for example, the the model is likely to transition to S2 with probability of 0.7 or stay in S1 with a probability of 0.3. And these two outgoing probabilities have to sum to one because it's a probability distribution over the next state, given that in the current time point the model is in state S1. And we similarly have that for, all other states, so here from S4, for example, there is the probability of 0.9 of going to S2 and 0.1 of staying at S4.<br><br>
@@ -684,7 +684,7 @@ $\bigstar$ Biological sequence analysis<br>
 $\bigstar$ Text annotation<br><br>
 
 We take robot localization for an example
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_3_3_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_3_3_3.png"/></center>
 </p>
 <p align="justify">
 $S^{(i)}$ is a state variable that represents the robot pose that is the position, and potentially orientation of the robot within a map at each point in time.<br><br>
@@ -706,11 +706,11 @@ $\bigstar$ HMMs are used in a wide variety of applications for modeling sequence
 <p align="justify">
 <b>Modeling Repetition</b><br>
 Imagine that we're repeatedly tossing the same coin again and again. So we have an <b>outcome</b> variable, and what we'd like to model is the repetition of multiple tosses. And so we're going to put a little box around that outcome variable, and this box which is called a <b>plate</b>, which is a way of denoting that the outcome variable is indexed. Usually we don't denote explicitly by different tosses of the coin t. And the reason for calling it a plate is because the intuition of the this is a stack of identical plates. That's kind of where the idea comes from for plate model.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_3_4_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_3_4_1.png"/></center>
 </p>
 <p align="justify">
 And looking at what that model denotes is if we have a set of coins. The coin tosses t1 up to tk.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_3_4_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_3_4_2.png"/></center>
 </p>
 <p align="justify">
 $$\{ t_{1}, \cdots, t_{k} \}$$
@@ -720,14 +720,14 @@ It basically says that we have a set of random variables, outcome t1 up to outco
 A random variable $\theta$ who is the actual CPD parameterization is explicitly into the model, so that we can show how different variable depend on that. And we can see that $\theta$ is outside of the plate, which means that it's not indexed by t and it's the same for all values of t. In other word, we have all of these outcomes depend on the exact same parameterization. And the CPD of the outcome of t1 is copied from this parameterization $\theta$.<br><br>
 
 Going back to our university with multiple students, we now have a two variable model where we have intelligence and grade. And we now index that by different students s, which again indicates that we have a repetition, a copying of this template model. In this case, I only made two copies for one for student 1 and the other one for student 2.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_3_4_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_3_4_3.png"/></center>
 </p>
 <p align="justify">
 And once again, if we wanted to encode dependence on the parameters. So we might have $\theta_{I}$, which represents the CPD for Intelligence. And we might have $\theta_{G}$, which represents the CPD for Grade. $\theta_{I}$ and $\theta_{G}$ are out of the plate. And we would have exactly the same idea that $\theta_{I}$ enforces the two I variables and $\theta_{G}$ enforces the two g variables. Sometimes in many models, we will include those parameters explicitly within the model. But often when we have a parameter that's outside of all plates. We won't denote it explicitly.<br><br>
 
 <b>Nested Plates</b><br>
 We want to know how different types of objects in the model overlap with each other. In this case, we have two kinds of objects: courses and students. So the difficulty variable belongs in the course plate because it's a property of course and the students plate is inside the course plate.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_3_4_4.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_3_4_4.png"/></center>
 </p>
 <p align="justify">
 Because the intelligence variable is in both the s plate and c plate, it's going to be indexed by both.<br><br>
@@ -736,23 +736,23 @@ We build our model by unraveling course ans student plate: two courses and two s
 
 <b>Overlapping Plates</b><br>
 Plate s and plate c have a common property grade
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_3_4_5.png"/></center>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_3_4_6.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_3_4_5.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_3_4_6.png"/></center>
 </p>
 <p align="justify">
 <b>Explicit Parameters Sharing</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_3_4_7.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_3_4_7.png"/></center>
 </p>
 <p align="justify">
 <b>Collective Inference</b><br>
 Consider a student takes two courses Geo101 and CS101. Our priority believe is 80% student have high intelligence.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_3_4_8.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_3_4_8.png"/></center>
 </p>
 <p align="justify">
 According to CPDs, the probability that this student have high intelligence goes up if we know he has a A for Geo101, while the probability will go down if we know he has C for CS101.<br><br>
 
 What if a bunch of students takes a bunch of course?
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_3_4_9.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_3_4_9.png"/></center>
 </p>
 <p align="justify">
 So, we are pretty sure CS101 is an easy course and we can determine si some student have high intelligence.<br><br>
@@ -767,7 +767,7 @@ which means we cannot have an index in the parent that doesn't appear in the chi
 
 For example
 $$G(s, c) \sim A(U_{1}, U_{2})$$
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_3_4_4.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_3_4_4.png"/></center>
 </p>
 <p align="justify">
 We have 2 template parents I(s) for s and D(c) for c. This exactly says that the grade of a particular student in a particular course depends on the difficulty of that course and on the intelligence of that student.<br><br>
@@ -783,7 +783,7 @@ $\bigstar$ Multiple 'languages', each with different tradeoffs in expressive pow
 <p align="justify">
 <b>1.</b><br>
 <b>Which of the following plate models could have induced the ground network shown?</b>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_3_5_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_3_5_1.png"/></center>
 </p>
 <p align="justify">
 <b>Answer:</b> C.<br>
@@ -791,7 +791,7 @@ From the ground network, we can see that A and B belong only to plate x, C belon
 
 <b>2. Independencies in DBNs</b><br>
 <b>In the following DBN, which of the following independence assumptions are true? You may select 1 or more options.</b>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_3_5_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_3_5_2.png"/></center>
 </p>
 <p align="justify">
 A. $(X^{(t+1)} \perp X^{(t)} \mid X^{(t-1)})$<br>
@@ -820,7 +820,7 @@ D. There is an instance of A and an instance of B for every i.<br>
 <b>5.</b><br>
 <b>5.1 *Plate Interpretation</b><br>
 Consider the plate model below (with edges removed).
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_3_5_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_3_5_3.png"/></center>
 </p>
 <p align="justify">
 <b>Which of the following might a given instance of $X$ possibly represent in the grounded model? (You may select 1 or more options.</b> Keep in mind that this question addresses the variable's semantics, not its CPD.)<br>
@@ -841,7 +841,7 @@ D. st<br>
 
 <b>6. Template Models</b><br>
 Consider the plate model shown below. Assume we are given K Markets, L Products, M Consumers and N Locations.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_3_5_4.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_3_5_4.png"/></center>
 </p>
 <p align="justify">
 <b>6.1 What is the total number of instances of the variable P in the grounded BN?</b><br>
@@ -860,7 +860,7 @@ D. Whether a specific product PROD was consumed by consumer C in market M in loc
 
 <b>7. Time-Series Graphs</b><br>
 <b>Which of the time-series graphs satisfies the Markov assumption? You may select 1 or more options.</b>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_3_5_5.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_3_5_5.png"/></center>
 </p>
 <p align="justify">
 A. (a)<br>
@@ -871,7 +871,7 @@ C. (c)<br>
 
 <b>8. *Unrolling DBNs</b><br>
 Below are 2-TBNs that could be unrolled into DBNs. Consider these unrolled DBNs (note that there are no edges within the first time-point).
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_3_5_6.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_3_5_6.png"/></center>
 </p>
 <p align="justify">
 <b>In which of them will $(X^{(t)} \perp Z^{(t)} \mid Y^{(t)})$ hold for all t, assuming $Obs^{(t)}$ is observed for all t and $X^{(t)}$ and $Z^{(t)}$ are never observed? You may select 1 or more options.</b><br>
@@ -889,7 +889,7 @@ C. (c)<br>
 <p align="justify">
 <b>Tabular Representations</b><br>
 Usually, a table is used to represent the CPDs, but if we have enormous variables, tabular representation is not suitable.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_4_1_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_4_1_1.png"/></center>
 </p>
 <p align="justify">
 <b>General CPDs</b><br>
@@ -914,7 +914,7 @@ $$P(Y \mid X, Z, c) = P(Y \mid Z, c)$$<br>
 <p align="justify">
 <b>Tree CPD</b><br>
 Imagine a student is applying a job and the prospect of the student to get the job depends on 3 variables: apply, letter and SAT. Besides, we construct a possible CPDs for this model.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_4_2_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_4_2_1.png"/></center>
 </p>
 <p align="justify">
 This is a branching process. For example, if the student didn't apply this job, the probability of getting the job is 0.2. If the student did apply and he has a SAT score, the probability of getting the job will be 0.9.<br><br>
@@ -927,7 +927,7 @@ D. $(J \perp_{c} L \mid s^{1}, A)$<br>
 <b>Answer:</b> A, C, D.<br><br>
 
 Another example
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_4_2_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_4_2_2.png"/></center>
 </p>
 <p align="justify">
 <b>Which non-context-specific independency is implied by the structure of this CPD?</b><br>
@@ -940,7 +940,7 @@ Given J activates v-structure $L_{1} \rightarrow J \leftarrow L_{2}$.<br><br>
 
 <b>Multiplexer CPDs</b><br>
 Multiplexer CPD in this case actually has the following structure.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_4_2_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_4_2_3.png"/></center>
 </p>
 <p align="justify">
 We have a set of random variables $Z_{1}$ up to $Z_{k}$ all of which take up some value in some particular space and the variable Y is a copy of one of the $Z_{i}$. Variable A is multiplexer, selector variable and it takes some value in space $\{ 1, \cdots, k \}$<br><br>
@@ -969,7 +969,7 @@ $\bigstar$ Relevant in multiple applications<br>
 <p align="justify">
 <b>Noisy OR CPD</b><br>
 Consider a situation that we have a variable Cough that depends on multiple different factors, such as pneumonia, flu, tuberculosis, bronchitis, and so on.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_4_3_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_4_3_1.png"/></center>
 </p>
 <p align="justify">
 Tree-CPD doesn't work because this is not the case where we depend on one only certain context and not on others. In other word, Cough depends on all of them. In order to represent this model, we use Noisy OR CPD.<br><br>
@@ -1002,14 +1002,14 @@ Given that y = 0, all $Z_{i}$ = 0, so that the trail of influence from $X_{1}$ t
 
 <b>Independence of Causal Influence</b><br>
 We develop the Noisy OR CPD a little
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_4_3_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_4_3_2.png"/></center>
 </p>
 <p align="justify">
 In fact, we can generalize this model by remplacing OR by AND, MAX, sigmoid etc.<br><br>
 
 <b>Sigmoid CPD</b><br>
 Based on the graph above, we have a Sigmoid CPD
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_4_3_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_4_3_3.png"/></center>
 </p>
 <p align="justify">
 $$P(y^{1} \mid X_{1}, \cdots, X_{k}) = sigmoid(Z)$$
@@ -1019,7 +1019,7 @@ $$sigmoid(z) = \frac{e^{z}}{1 + e^{z}}$$<br>
 #### 1.4.4 Continuous Variables
 <p align="justify">
 Imagine we want to measure temperature
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_4_4_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_4_4_1.png"/></center>
 </p>
 <p align="justify">
 We have a sensor for temperature now with a gaussian distribution $S \sim N(T; \sigma_{S}^{2})$. Similarly, temperature soon also follow a gaussian distribution
@@ -1040,7 +1040,7 @@ This is called conditional linear gaussian<br><br>
 
 <b>Linear Gaussian</b><br>
 We have a general variable y and its parents $X_{1}, \cdots, X_{k}$
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_4_4_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_4_4_2.png"/></center>
 </p>
 <p align="justify">
 $$Y \sim N(w_{0} + \sum_{i=1}^{k} w_{i}X_{i}; \sigma^{2})$$
@@ -1049,7 +1049,7 @@ The mean of Y is a linear function of its parents but the variance don't depend 
 
 <b>Conditional Linear Gaussian</b><br>
 Based on linear gaussian, we introduce a discrete parent of y, say A, so linear gaussian's parameters depend on A
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_4_4_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_4_4_3.png"/></center>
 </p>
 <p align="justify">
 $$Y \sim N(w_{a0} + \sum_{i=1}^{k} w_{ai} X_{i}; \sigma_{a}^{2})$$
@@ -1061,7 +1061,7 @@ In this case, the variance depends on A.<br><br>
 <p align="justify">
 <b>1.</b><br>
 <b>Which of the following context-specific dependencies hold when X is a deterministic OR of $Y_{1}$ and $Y_{2}$? (Mark all that apply)</b>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_4_5_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_4_5_1.png"/></center>
 </p>
 <p align="justify">
 A. $(X \perp Y_{1} \mid y_{2}^{1})$<br>
@@ -1087,7 +1087,7 @@ $$\frac{O(X_{i} = 0)}{O(X_{i} = 1)} = e^{w_{i}}$$
 
 <b>3.</b><br>
 Let L and V be the location and velocity of a car. Assume that the CPD on the right is a linear Gaussian.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_4_5_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_4_5_2.png"/></center>
 </p>
 <p align="justify">
 <b>Which of the following statements could possibly be consistent with that CPD?</b><br>
@@ -1101,7 +1101,7 @@ C would not be possible, as Gaussian distributions are unbounded, and there will
 
 <b>4.</b><br>
 Consider the CPD below.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_4_5_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_4_5_3.png"/></center>
 </p>
 <p align="justify">
 <b>4.1 Causal Influence</b><br>
@@ -1118,7 +1118,7 @@ D. $(E \perp_{c} D, B \mid a^{1})$<br>
 
 <b>5.</b><br>
 We have a Bayesian network.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_4_5_4.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_4_5_4.png"/></center>
 </p>
 <p align="justify">
 <b>5.1 Independencies with Deterministic Functions</b><br>
@@ -1147,11 +1147,11 @@ Undirected graph<br><br>
 #### 1.5.1 Pairwise Markov Networks
 <p align="justify">
 Imagine 4 students are in a group. Well, Alice and Charles don't get along and Bob and Debbie had a bad breakup so they don't talk to each other. So, we have the study pairs that are marked by the edges on this diagram
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_5_1_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_5_1_1.png"/></center>
 </p>
 <p align="justify">
 If two students study together, they influence each other. The influence flows both the directions. For example, Alice and Bob study together, if one of them has the misconception, then the other is likely to have too. So how to parametrize such an undirected graph?
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_5_1_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_5_1_2.png"/></center>
 </p>
 <p align="justify">
 The numbers in each table mean the local happiness of variables with taking a particular joint assignement. For example, A and B take a joint assignement, the happiest assignement for A and B in isolation of everything else is $a^{0}b^{0}$, which means neither has the misconception, so that that is the happiest assignement. $a^{1}b^{1}$ means both of them have the misconception.<br><br>
@@ -1164,7 +1164,7 @@ Why is this not a proper probability distribution?<br>
 -- It is not necessarily between 0 and 1.<br><br>
 
 We normalize it
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_5_1_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_5_1_3.png"/></center>
 </p>
 <p align="justify">
 $$P(A, B, C, D) = \frac{1}{Z} \widetilde{P}(A, B, C, D)$$
@@ -1179,7 +1179,7 @@ D. None of the above<br>
 <b>Answer:</b> D.<br><br>
 
 Here, we have a set of factors that we used to construct this distribution
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_5_1_4.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_5_1_4.png"/></center>
 </p>
 <p align="justify">
 The probability of A and B is defines by a factor $\Phi = \{ \phi_{1}, \phi_{2}, \phi_{3}, \phi_{4} \}$. We note it $P_{\Phi}(A, B)$<br><br>
@@ -1198,7 +1198,7 @@ Why do we have the highest propability when $a^{0}b^{1}$? B really likes to aggr
 #### 1.5.2 General Gibbs Distribution
 <p align="justify">
 Imagine we have 4 random variables A, B, C, D and pairwise edges between each two of them.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_5_2_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_5_2_1.png"/></center>
 </p>
 <p align="justify">
 Consider a fully connected pariwise Markov network over $X_{1}, \cdots, X_{n}$ where each $X_{i}$ has d values. How many parameters does the network have?<br>
@@ -1221,7 +1221,7 @@ $$P_{\Phi}(X_{1}, \cdots, X_{n}) = \frac{1}{Z_{\Phi}} \widetilde{P}_{\Phi}(X_{1}
 $$\Phi = \{ \phi_{1}(D_{1}), \cdots, \phi_{k}(D_{k}) \}$$
 
 Induced markov network $H_{\Phi}$ has an edge $X_{i} - X_{j}$ whenever there exists $\phi_{m} \in \Phi$ and $X_{i}, X_{j} \in \phi_{m}$.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_5_2_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_5_2_2.png"/></center>
 </p>
 <p align="justify">
 For example, we have two factors $\phi_{1}(A, B, C)$ and $\phi_{2}(B, C, D)$. Then we represent them in our diagram with two colors.<br><br>
@@ -1230,7 +1230,7 @@ For example, we have two factors $\phi_{1}(A, B, C)$ and $\phi_{2}(B, C, D)$. Th
 P factorizes over H if there exists $\Phi = \{ \phi_{1}(D_{1}), \cdots, \phi_{k}(D_{k}) \}$, such that<br>
 -- $P = P_{\Phi}$ (normalized product of factors)<br>
 -- H is the induced graph for $\Phi$.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_5_2_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_5_2_3.png"/></center>
 </p>
 <p align="justify">
 For example, <b>which Gibbs distribution would be induce the graph H</b><br>
@@ -1264,7 +1264,7 @@ $\bigstar$ But active trails depend only on graph structure<br><br>
 <p align="justify">
 <b>Correlated Features</b><br>
 Consider the case of image segmentation
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_5_3_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_5_3_1.png"/></center>
 </p>
 <p align="justify">
 Imagine we are try to predict $C_{i}$ (target), a label for a particular superpixel and $X_{i1}, \cdots, X_{ik}$ represent some features, such as color, texture histogram etc.<br><br>
@@ -1329,7 +1329,7 @@ $\bigstar$ Correlations don't matter<br>
 $\bigstar$ Can train a discriminative classifier (SVM, boosting) to improve performance<br><br>
 
 <b>CRF for Language</b>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_5_3_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_5_3_2.png"/></center>
 </p>
 <p align="justify">
 <b>Summary</b><br>
@@ -1345,7 +1345,7 @@ $\bigstar$ Allows models with highly expressive features, without worrying about
 $\bigstar$ <b>Definition:</b> X and Y are seperated in H given Z if there is no active trail in H between X and Y given Z. In other word, no node along trail is observed.<br><br>
 
 For example, here is a diagram H
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_5_4_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_5_4_1.png"/></center>
 </p>
 <p align="justify">
 A and E are seperated in the diagram above given B, D, or given B, C.<br><br>
@@ -1413,7 +1413,7 @@ If we have $P(Y \mid x^{1}) = P(Y \mid x^{0})$, then the edges can be removed be
 $\bigstar$ Minimal I-map may still not capture I(P)<br><br>
 
 For example, we have a student netwok
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_5_5_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_5_5_1.png"/></center>
 </p>
 <p align="justify">
 (a) is our original network and it is a minimal I-map, but (b) is also a minimal I-map because if no edge is redundant. If we remove any edge we will get a graph like one of (c), (d), (e), which doesn't represent the same I-map as (b).<br><br>
@@ -1425,7 +1425,7 @@ $\bigstar$ Perfect Map: I(G) = I(P)<br>
 -- G perfectly captures independencies in P<br><br>
 
 Unfortunately, perfect map is hard to come by. For example, one scenario doesn't have a perfect map. This is a distribution P that is actually represented by the pairwise Markov networks
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_5_5_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_5_5_2.png"/></center>
 </p>
 <p align="justify">
 (a) is our original network, P gives a set of independency statements. None of (b), (c), (d) is an I-map of P.<br><br>
@@ -1435,14 +1435,14 @@ $\bigstar$ Perfect Map: I(H) = I(P)<br>
 -- H perfectly captures independencies in P<br><br>
 
 For example, here is a Bayesian network (a) and MN graphs (b), (c), (d)
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_5_5_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_5_5_3.png"/></center>
 </p>
 <p align="justify">
 We can see that no MN graph can exactly represent I(P), so there is no prefect map I(H) in this case<br><br>
 
 <b>Uniqueness of a Perfect Map</b><br>
 Imagine two graphs
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_5_5_4.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_5_5_4.png"/></center>
 </p>
 <p align="justify">
 We can see these two graphs can represent the same distribution.<br><br>
@@ -1506,7 +1506,7 @@ $$P(\mathbf{X}) \propto e^{-\frac{1}{T}E(\mathbf{X})}$$
 
 <b>Metric MRFs</b><br>
 $\bigstar$ All $X_{i}$ take values in label space V
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_5_6_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_5_6_1.png"/></center>
 </p>
 <p align="justify">
 $\bigstar$ Distance function $\mu: V \times V \rightarrow \mathbb{R}^{+}$<br>
@@ -1543,7 +1543,7 @@ $$<br>
 $\bigstar$ In most MRFs, same features and weight are used over many scopes<br><br>
 
 Take Ising Model for example, we have a bunch of binary variables
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_5_7_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_5_7_1.png"/></center>
 </p>
 <p align="justify">
 $$E(x_{1}, \cdots, x_{n}) = -\sum_{(i, j) \in Edegs} w_{i, j}x_{i}x_{j} - \sum_{i}u_{i}x_{i}$$
@@ -1551,7 +1551,7 @@ $$E(x_{1}, \cdots, x_{n}) = -\sum_{(i, j) \in Edegs} w_{i, j}x_{i}x_{j} - \sum_{
 Where $x_{i}x_{j}$ is $f(x_{i}, x_{j})$. We can use $w$ to replace $w_{i, j}$<br><br>
 
 For Natural Language Processing
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_5_7_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_5_7_2.png"/></center>
 </p>
 <p align="justify">
 Some energy terms $w_{k}f_{k}(X_{i}, y_{i})$ repeat for all position i in the sequence. Some energy terms $w_{m}f_{m}(y_{i}, y_{i+1})$ also repeat for all positions i.<br><br>
@@ -1565,7 +1565,7 @@ D. An energy term regarding whether there is a period at the end of a word.<br>
 Energy terms for which you would not want different parameterization for different positions should be repeated. An energy term regarding whether the third word is "sun" is position-specific and it would be incorrect to repeat it.<br><br>
 
 For Image Segmentation
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_5_7_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_5_7_3.png"/></center>
 </p>
 <p align="justify">
 Some features and weights for all superpixels in the image.<br><br>
@@ -1598,7 +1598,7 @@ D. {A, B, C, E}<br>
 
 <b>2. Independence in Markov Networks</b><br>
 Consider this graphical model and all of the edges are undirected (see modified graph below)
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_5_8_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_5_8_1.png"/></center>
 </p>
 <p align="justify">
 <b>Which pairs of variables are independent in this network? You may select 1 or more options.</b><br>
@@ -1609,7 +1609,7 @@ C. A, D<br>
 
 <b>3. Factorization</b><br>
 <b>Which of the following is a valid Gibbs distribution over this graph?</b>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_5_8_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_5_8_2.png"/></center>
 </p>
 <p align="justify">
 A. $\frac{\phi(A) \times \phi(B) \times \phi(C) \times \phi(D) \times \phi(E) \times \phi(F)}{Z}$, where Z is the partition function<br>
@@ -1640,7 +1640,7 @@ F. Always greater than or equal to 0<br>
 
 <b>5. I-Map</b><br>
 Graph G is a perfect I-map for distribution P, i.e. $\mathcal{I}(G)=\mathcal{I}(P)$.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_5_8_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_5_8_3.png"/></center>
 </p>
 <p align="justify">
 <b>Which of the other graphs is a perfect I-map for P?</b><br>
@@ -1650,7 +1650,7 @@ I isn't because it has the extra independence relation $(A \perp C)$. II has $(B
 <b>6. I-Equivalence</b><br>
 <b>6.1</b><br>
 In the figure below, <b>graph G is I-equivalent to which other graph(s)?</b>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_5_8_4.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_5_8_4.png"/></center>
 </p>
 <p align="justify">
 <b>Answer:</b> I.<br><br>
@@ -1680,7 +1680,7 @@ $$a^{*} = arg \max_{a}EU[ D[ a ] ]$$
 
 <b>Simple Influence Diagram</b><br>
 We have a state random variable market, an action variable found (the agent peak one with peak probability), our situation is a budding entrepreneur, who just graduated from college and wants to decide whether to found a widget making company or not.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_6_1_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_6_1_1.png"/></center>
 </p>
 <p align="justify">
 <b>Assuming that Found is a binary decision, what is the size of the CPD for Found?</b><br><br>
@@ -1696,7 +1696,7 @@ So, the best action (or decision) is to found the market.<br><br>
 
 <b>More Complex Influence Diagram</b><br>
 We have a student diagram, where only one action is study and three utility functions $V_{Q}$, $V_{G}$ and $V_{S}$. $V_{Q}$ represents how much happiness for the student life, for example, if the course that he takes is easy and he studies hard, he may be happy. Similarly, $V_{G}$ measures how much his happiness for the grade and $V_{S}$ shows how much happiness for getting a job.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_6_1_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_6_1_2.png"/></center>
 </p>
 <p align="justify">
 We have a composed utility function
@@ -1708,7 +1708,7 @@ $$V_{G} + V_{Q} + V_{S}$$
 
 <b>Information Edges</b><br>
 We introduce another random variable Survey for Market-found diagram
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_6_1_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_6_1_3.png"/></center>
 </p>
 <p align="justify">
 Decision rule $\delta$ at action node A is a CPD P(A | Parents(A))<br><br>
@@ -1722,7 +1722,7 @@ $$MEU(D) = \max_{\delta_{A}} EU[ D(\delta_{A}) ]$$
 
 <b>Finding MEU DEcision Rules</b><br>
 Take an example of market-survey-found as an example to illustrate how we find a MEU under decision rules
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_6_1_4.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_6_1_4.png"/></center>
 </p>
 <p align="justify">
 $$EU[D(\delta_{A})] = \sum_{x, a} P_{\delta_{A}}(x, a)U(x, a)$$
@@ -1802,7 +1802,7 @@ So in principal people might be willing to pay any amount to play this game, bec
 
 <b>Utilitiy Curve</b><br>
 In order to quantify this case, we use utility curve whose x axis is the reward and y axis is the utility that an agent describes to that.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_6_2_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_6_2_1.png"/></center>
 </p>
 <p align="justify">
 If a reward is 500 dollars, we can find its corresponded utility function value in this diagram.<br><br>
@@ -1827,7 +1827,7 @@ D. She should accept with probability $log_{2}1.1$<br>
 We do not have enough information to answer this question because Thelma's utility function is not specified.<br><br>
 
 Besides, this curve's shape is concave, representing a risk profile which is <b>risk averse</b>. If a curve is linear, we call it <b>risk neutral</b>. Conversely, if we have a convex curve, we call it <b>risk seeking</b>. The risk seeking behavior occurs for example in other gambling situations, where one is willing to actually take a loss in terms of the expected reward for the small chance of a getting a really high pay-off.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_6_2_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_6_2_2.png"/></center>
 </p>
 <p align="justify">
 <b>Multi-Attribute Utilities</b><br>
@@ -1858,7 +1858,7 @@ $\bigstar$ $D_{X \rightarrow A}$ = influence diagram with edge $X \rightarrow A$
 $$VPI(A \mid X) := MEU(D_{X \rightarrow A}) - MEU(D)$$
 
 Consider two situations, one is that the agent founds the company without any additional information about the value of the market; the other is that the agent makes an observation reagrding the survey variable prior to making the decision whether to found this company
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_6_3_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_6_3_1.png"/></center>
 </p>
 <p align="justify">
 So, the value of decision making is
@@ -1890,7 +1890,7 @@ The value of knowing X > 0 because $\delta(A \mid \overline{Z})$ is not optimal 
 
 <b>Value of Information Example</b><br>
 Consider two companies, we are considering to join one of them. We have two state variables about management, say $s^{1}$ is bad management. The Funding variable depends on the state with a CPD. Our utility function is V, 1 means we choose to join and 0 means no.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_6_3_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_6_3_2.png"/></center>
 </p>
 <p align="justify">
 Based on figure (a), For company 1
@@ -1946,7 +1946,7 @@ MEU()
 Which means that the agent shouldn't be willing to pay his company too much money in order to get information about the detail.<br><br>
 
 If we change the distribution of $S_{1}$
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_6_3_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_6_3_3.png"/></center>
 </p>
 <p align="justify">
 In the original diagram
@@ -1967,7 +1967,7 @@ $\bigstar$ Information is valuable if and only if it induces a change in action 
 #### 1.6.4 Quiz
 <p align="justify">
 <b>1. Utility Curves</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_6_4_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_6_4_1.png"/></center>
 </p>
 <p align="justify">
 <b>1.1</b><br>
@@ -1988,7 +1988,7 @@ D. U(500 dollar)<br>
 
 <b>2. *Uninformative Variables</b><br>
 Here is an influence diagram
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_6_4_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_6_4_2.png"/></center>
 </p>
 <p align="justify">
 <b>What is an appropriate way to have the model account for the fact that if the Test wasn’t performed ($t^{0}$), then the survey is uninformative?</b><br>
@@ -2033,7 +2033,7 @@ $\bigstar$ Latent<br>
 -- Hidden<br><br>
 
 Sometimes latent variables can simplify our structure. For example, imagine that I asked all of you in this class, what time does your watch show?
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_7_1_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_7_1_1.png"/></center>
 </p>
 <p align="justify">
 So $W_{i}$ is the time on the watch of each of you in the class. Now, these variables are all correlated with each other. But in fact, they're not correlated with each other. Unless we all had a watch setting party just before class. Really, what they're all correlated with is Greenwich mean time. So we have a model, in this case it's a naive base model, where we have Greenwich Mean Time influencing a bunch of random variables that are conditionally independent given that. Now Greenwich Mean Time is latent unless we actually end up calling Greenwich to find out what the current time is right now in Greenwich, which I don't think any of us really care about. But why would we want to include Greenwich Mean Time in our model? Because if we don't include Greenwich Mean Time, so if we basically eliminate Greenwich Mean Time from our model, what happens to the dependency structure, of our model? We end up with a complicated model.<br><br>
@@ -2045,13 +2045,13 @@ When we think about Bayesian networks specifically, do the arrows correspond to 
 $$X \rightarrow Y \quad X \leftarrow Y$$
 
 So, the answer to that is yes and no. so what does no mean in this case? We have X pointing to Y, where X is a parent of Y. In the Bayes Net I can equally invert that edge with Y pointing to X. So, in this example, we can reverse the edges and have a model that's equally expressive. But that model might be very nasty. For example, $X_{1}$ and $X_{2} are both parents of Y.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_7_1_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_7_1_2.png"/></center>
 </p>
 <p align="justify">
 If we want to invert the directionality of the edges and put Y as a parent of say $X_{2}$, this is not in our case. So causal directionality is often simpler.
 
 So let's go back to our Greenwich mean time example.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_7_1_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_7_1_3.png"/></center>
 </p>
 <p align="justify">
 Where we have the Greenwich mean time is in some way the, the cause or the parent of the different watch, times that we see our in different individuals. And now I'm going to force Grenwich mean time to be the child of all these. Is this the correct model? No, because this says that all of the watch times are independent which is not the case. And so, what we're going to end up with as the model is the same horrific model that I showed before where everything is connected to everything else. Although causal ordering is not more correct than a non-causal ordering, it's sparser, more intuitive and easier to parameterize.<br><br>
@@ -2092,7 +2092,7 @@ $\bigstar$ Error analysis<br>
 <b>1. Template Model Representation</b><br>
 Consider the following scenario:<br>
 On each campus there are several Computer Science students and several Psychology students (each student belongs to one xor the other group). We have a binary variable L for whether the campus is large, a binary variable S for whether the CS student is shy, a binary variable C for whether the Psychology student likes computers, and a binary variable F for whether the Computer Science student is friends with the Psychology student. <b>Which of the following plate models can represent this scenario?</b>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_7_2_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_7_2_1.png"/></center>
 </p>
 <p align="justify">
 A. (A)<br>
@@ -2121,7 +2121,7 @@ E. Dependes on the specific structure of T<br>
 
 <b>4. *Markov Network Construction</b><br>
 Consider the unrolled network for the plate model shown below, where we have n students and m courses. Assume that we have observed the grade of all students in all courses. <b>In general, what does a pairwise Markov network that is a minimal I-map for the conditional distribution look like?</b> (Hint: the factors in the network are the CPDs reduced by the observed grades. We are interested in modeling the conditional distribution, so we do not need to explicitly include the Grade variables in this new network. Instead, we model their effect by appropriately choosing the factor values in the new network.)
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_7_2_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_7_2_2.png"/></center>
 </p>
 <p align="justify">
 A. A fully connected graph with instantiations of the Difficulty and Intelligence variables.<br>
@@ -2133,7 +2133,7 @@ E. A bipartite graph where instantiations of the Difficulty variables are on one
 
 <b>5. Grounded Plates.</b><br>
 Which of the following is a valid grounded model for the plate shown? You may select 1 or more options.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_7_2_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_7_2_3.png"/></center>
 </p>
 <p align="justify">
 A. (a)<br>
@@ -2161,7 +2161,7 @@ D. No probability distribution P that factorizes over G also factorizes over G'<
 
 <b>8. Template Model in CRF</b><br>
 The CRF model for OCR with only singleton and pairwise potentials that you played around with in PA3 and PA7 is an instance of a template model, with variables $C_{1}, \cdots, C_{n}$ over the characters and observed images $I_{1}, \cdots, I_{n}$. The model we used is a template model in that the singleton potentials are replicated across different $C_{i}$ variables, and the pairwise potentials are replicated across character pairs. The structure of the model is shown below:
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/1_7_2_4.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_7_2_4.png"/></center>
 </p>
 <p align="justify">
 Now consider the advantages of this particular template model for the OCR task, as compared to a non-template model that has the same structure, but where there are distinct singleton potentials for each $C_{i}$ variable, and distinct potentials for each pair of characters. <b>Which of the following about the advantage of using a template model is true? You may select 1 or more options.</b><br>
@@ -2197,7 +2197,7 @@ $$\left | P_{\phi}(X=x \mid E=e) - p \right | < \epsilon$$
 <b>Answer:</b> $k^{n}$.<br><br>
 
 <b>Sum-Product</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_1_1_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_1_1_1.png"/></center>
 </p>
 <p align="justify">
 For Bayesian network
@@ -2216,7 +2216,7 @@ $\bigstar$ For the numerator
 $$P(Y, E=e) = \sum_{W} P(Y, W, E=e) = \sum_{W} \frac{1}{Z} \prod_{k} \phi_{k}(D_{k}, E=e) = \sum_{W} \frac{1}{Z} \prod_{k} \phi'_{k}(D'_{k})$$
 
 So, we can reduce the factors by the evidence. For example, if we observe A = $a^{0}$, we can eliminate A = $a^{1}$ while computing the distribution above because A = $a^{1}$ is not consistent with our evidence.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_1_1_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_1_1_2.png"/></center>
 </p>
 <p align="justify">
 $\bigstar$ For the denominator
@@ -2260,7 +2260,7 @@ $\bigstar$ Applications:<br>
 
 <b>MAP $\neq$ Max over Marginal</b><br>
 For example,
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_1_2_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_1_2_1.png"/></center>
 </p>
 <p align="justify">
 We can calculate its Joint distribution
@@ -2314,7 +2314,7 @@ $\bigstar$ Many exact and approximate algorithms<br><br>
 <p align="justify">
 <b>Elimination in Chains</b><br>
 Consider a graph with a joint distribution
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_2_1_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_2_1_1.png"/></center>
 </p>
 <p align="justify">
 We want to get P(E), so
@@ -2334,7 +2334,7 @@ $$= \sum_{D} \phi_{4}(D, E) \sum_{C} \phi_{3}(C, D)\tau_{2}(C)$$
 We can continue such a process until a solution<br><br>
 
 For another example, we want to compute P(J), so we have to eliminate all other variables C, D, I, H, G, S, L
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_2_1_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_2_1_2.png"/></center>
 </p>
 <p align="justify">
 $$P(J) = \sum_{C, D, I, G, S, L, H} \phi_{J}(J, L, S)\phi_{L}(L, G)\phi_{S}(S, I)\phi_{G}(G, I, D)\phi_{H}(H, G, J)\phi_{I}(I)\phi_{D}(C, D)\phi_{C}(C)$$
@@ -2404,7 +2404,7 @@ How many times does each entry in $\psi_i$ get added to one of the $\tau_{i}$ en
 We are computing a single sum over some entries in $\psi$, so each entry is involved in the sum at most once.<br><br>
 
 For factor product, imagine we have two factors
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_2_2_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_2_2_1.png"/></center>
 </p>
 <p align="justify">
 We define the number of lines for the new table by
@@ -2413,7 +2413,7 @@ $$N_{k} = \left | Val(X_{k}) \right |$$
 In fact, the new table's cardinality = a product of all variables' cardinality. So factor product's cost: $(m_{k}-1)N_{k}$ multiplications<br><br>
 
 For factor marginalization
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_2_2_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_2_2_2.png"/></center>
 </p>
 <p align="justify">
 Cost: ~ $N_{k}$ additions<br><br>
@@ -2434,7 +2434,7 @@ $\bigstar$ $N_{k} = \left | Val(X_{k}) \right | = O(d^{r_{k}})$ where<br>
 -- $r_{k} = \left | Val(X_{i}) \right |$ denotes the cardinality of the scope of the $k^{th}$ factor, in other word, $r_{k}$ variables in the $k^{th}$ factors<br><br>
 
 For example
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_2_2_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_2_2_3.png"/></center>
 </p>
 <p align="justify">
 We can find $\tau_{5}$ has the most variables.<br><br>
@@ -2446,7 +2446,7 @@ $$\sum_{G} \phi_L(L, G)\phi_G(G, I, D)\phi_H(H, G, J)$$
 So, in this step, the scope of factor is 6 variables: L, G, I, D, H, J.<br><br>
 
 For another example
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_2_2_4.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_2_2_4.png"/></center>
 </p>
 <p align="justify">
 If we eliminate A first, the scope of variable is $\{ A, B_{1}, \cdots, B_{k} \}$, says k+1. But, if we eliminate $B_{1}$ first, the scope is $\{ A, B_{1}, C \}$.<br><br>
@@ -2462,7 +2462,7 @@ $\bigstar$ Complexity of algorithm depends on heavily on elimination order<br><b
 #### 2.2.3 Graph-Based Perspective on Variable Elimination
 <p align="justify">
 Consider an initial network, we deduce a set of factors
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_2_3_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_2_3_1.png"/></center>
 </p>
 <p align="justify">
 $$\phi_{J}(J, L, S)\phi_{L}(L, G)\phi_{S}(S, I)\phi_{G}(G, I, D)\phi_{H}(H, G, J)\phi_{I}(I)\phi_{D}(C, D)\phi_{C}(C)$$
@@ -2470,7 +2470,7 @@ $$\phi_{J}(J, L, S)\phi_{L}(L, G)\phi_{S}(S, I)\phi_{G}(G, I, D)\phi_{H}(H, G, J
 A structure of the graph that corresponds to the set of factors is like right one. We notice that, for any v-structure, we have to add an edge after turning all edges undirected. This is called moralization.<br><br>
 
 For example, <b>How many edges should be added to the graph to make it moralized?</b>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_2_3_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_2_3_2.png"/></center>
 </p>
 <p align="justify">
 <b>Answer:</b> 2.<br>
@@ -2478,7 +2478,7 @@ There are two v-structures in the graph, one at A and the other at D. So we have
 
 <b>Elimination as Graph Operations</b><br>
 We eliminate all variables except J in order
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_2_3_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_2_3_3.png"/></center>
 </p>
 <p align="justify">
 After eliminating I, we introduce a new edge between G and S, because S and G are in a same factor $\tau_{3}(S, G)$. <b>All variables that connect to I are connected after I is eliminated.</b> The new edge is called <b>fill edge</b>.<br><br>
@@ -2494,7 +2494,7 @@ A <b>clique</b> is a fully connected graph.<br><br>
 $\bigstar$ Theorem: Every factor produced during VE is a clique in the induced graph.<br><br>
 
 For example, we eliminate 5 variables, says C, D, I, H, G in order.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_2_3_4.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_2_3_4.png"/></center>
 </p>
 <p align="justify">
 After each elimination, we have a clique, e.g. C-D.<br><br>
@@ -2530,7 +2530,7 @@ $\bigstar$ Theorem: The induced graph is triangulated.<br>
 -- No loops of lenghth > 3 without a bridge<br><br>
 
 For example, here is a loop of length > 3 without a bridge
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_2_4_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_2_4_1.png"/></center>
 </p>
 <p align="justify">
 Assume we eliminate A, will add a fill edge between B and D.<br><br>
@@ -2546,7 +2546,7 @@ $\bigstar$ Simple heuristics that try to keep induced graph small often provide 
 <p align="justify">
 <b>1. Intermediate Factors</b><br>
 Consider running variable elimination on the following Bayesian network over binary variables.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_2_5_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_2_5_1.png"/></center>
 </p>
 <p align="justify">
 <b>Which of the nodes, if eliminated first, results in the largest intermediate factor?</b> By largest factor we mean the factor with the largest number of entries.<br>
@@ -2571,7 +2571,7 @@ Suppose we run variable elimination on a Markov network where we eliminate all t
 
 <b>4. Intermediate Factors</b><br>
 We have a graph
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_2_5_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_2_5_2.png"/></center>
 </p>
 <p align="justify">
 <b>4.1</b><br>
@@ -2584,7 +2584,7 @@ If we perform variable elimination on the graph with the variable ordering F, E,
 
 <b>4.3 Induced Graphs</b><br>
 If we perform variable elimination on the graph shown below with the variable ordering B, A, C, F, E, D. <b>what is the induced graph for the run?</b>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_2_5_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_2_5_3.png"/></center>
 </p>
 <p align="justify">
 <b>Answer:</b> (a).<br><br>
@@ -2610,13 +2610,13 @@ An alternative class of algorithms to the variable elimination algorithms is the
 <p align="justify">
 <b>Cluster Graph</b><br>
 Imagine based on a Markov network, we have a cluster graph
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_3_1_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_3_1_1.png"/></center>
 </p>
 <p align="justify">
 So, in this graph, we have 4 clusters. For example, cluster 1 contains A and B and cluster 2 has a jurisdiction over B and C. <b>These clusters are going to talk to each other and they are going to try to convince each other that what they think about a variable under their jurisdiction is correct.</b> For example, cluster 1 is going to talk to cluster 2 about the variable B and it's going to tell cluster 2 what it thinks about B, so cluster 2 becomes more informed about the distribution over B. Besides, each cluster has its own initial information, namely the fatcor in original graph. The variables are going to communicate by via these things called <b>messages</b>.<br><br>
 
 Now we are going to call these clusters $\Psi$, so cluster 1 is $\Psi_{1}(A, B)$.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_3_1_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_3_1_2.png"/></center>
 </p>
 <p align="justify">
 Imagine cluster 2 sends a message to cluster 1. Because they start to talk to each other, so the initial message is 1, namely $\delta_{2, 1}$ = 1, which means a message from 2 to 1. For cluster A, it's going to talk to cluster 4 with more information.
@@ -2629,7 +2629,7 @@ In this message passing process, <b>what would be the right definition for the m
 $$\delta_{1, 2}(B) = \sum_{A}\psi_{1}(A,B)\delta_{4,1}(A)$$
 
 So, this general process is what keeps the message-passing algorithm going and each cluster is going to send message to its adjacent clusters.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_3_1_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_3_1_3.png"/></center>
 </p>
 <p align="justify">
 Notice the message that 3 sends to 4 doesn't take into consideration the information that it got from 4. Because we'd like to avoid this case in which 3 thought about this first, but now 4 is reinforcing 3 by telling it to 3 again and the beliefs are just going to go up. And so what happens here is that we deliberately only, restrict attention to evidence that. <b>Messages come in from other sources.</b><br><br>
@@ -2643,7 +2643,7 @@ $\bigstar$ Define
 $$\psi_{i}(C_{i}) = \prod_{k: \alpha(k)=i} \phi_{k}$$
 
 For example, we have a set of factors. So, we have a possible cluster graph with an initial belief of factors.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_3_1_4.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_3_1_4.png"/></center>
 </p>
 <p align="justify">
 <b>Message Passing</b><br>
@@ -2652,7 +2652,7 @@ $$\delta_{i \rightarrow j}(S_{i, j}) = \sum_{C_{i}-S_{i, j}} \psi_{i} \times \pr
 Where $N_{j}$ means j's neighbors.<br><br>
 
 Here is an example,
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_3_1_5.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_3_1_5.png"/></center>
 </p>
 <p align="justify">
 $$\delta_{1 \rightarrow 4}(B) = \sum_{A,C} \psi_{1}(A, B, C) \times \delta_{2 \rightarrow 1}(C)$$
@@ -2690,13 +2690,13 @@ $\bigstar$ For each factor $\phi_{k} \in \Phi$, there exists a cluster $C_{i}$ s
 $\bigstar$ For each pair of clusters $C_{i}$, $C_{j}$ and variable $X \in C_{i} \cap C_{j}$ there exists a unique path between $C_{i}$ and $C_{j}$ for which all clusters and sepsets contain X.<br><br>
 
 For example, here is a cluster graph. X is one of variables in $C_{5} \cap C_{7}$.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_3_2_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_3_2_1.png"/></center>
 </p>
 <p align="justify">
 Then, there must be a path, suppose $C_{5}$ - $C_{3}$ - $C_{7}$, in which all clusters and sepsets contain X.<br><br>
 
 We illustrate why exist and unique.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_3_2_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_3_2_2.png"/></center>
 </p>
 <p align="justify">
 For exist, suppose a sepset between $C_{3}$ and $C_{7}$ doesn't contain X, it will be impossible for $C_{5}$ to communicate with $C_{7}$.<br><br>
@@ -2704,7 +2704,7 @@ For exist, suppose a sepset between $C_{3}$ and $C_{7}$ doesn't contain X, it wi
 For uniqueness, suppose we have two paths: $C_{5}$ - $C_{3}$ - $C_{7}$ and $C_{5}$ - $C_{2}$ - $C_{3}$ - $C_{7}$. $C_{5}$ can pass message about X to $C_{2}$, $C_{2}$ can pass it to $C_{3}$ and $C_{3}$ can do the same thing to $C_{5}$. So, this forms a feedback loop, which gives rise to extreme and skewed probability.<br><br>
 
 Imagine we have another variable Y, which is strongly correlated to X and we have a path $C_{5}$ - $C_{2}$ - $C_{3}$ for Y.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_3_2_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_3_2_3.png"/></center>
 </p>
 <p align="justify">
 Then, consider $C_{3}$ sends information to $C_{5}$ about X. $C_{5}$ translates that to information about Y. That information about Y goes back to $C_{3}$ via $C_{2}$ and increases the probability in X. <b>Belief Propagation does poorly when we have strong correlations because of feedback loops.</b><br><br>
@@ -2713,7 +2713,7 @@ We have an alternaive definition about Running Intersection Property<br>
 $\bigstar$ Equivalently: For any X, the set of clusters and sepsets containing X form a tree.<br><br>
 
 <b>Which of the following cluster graphs satisfy the running intersection property?</b> Mark all that apply.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_3_2_4.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_3_2_4.png"/></center>
 </p>
 <p align="justify">
 <b>Answer:</b> (b), (c).<br><br>
@@ -2724,11 +2724,11 @@ $\bigstar$ For each $X_{i}$ a singleton cluster {$X_{i}$}<br>
 $\bigstar$ Edge $C_{k}$ --- $X_{i}$ if $X_{i} \in C_{k}$<br><br>
 
 For example,
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_3_2_5.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_3_2_5.png"/></center>
 </p>
 <p align="justify">
 <b>Which of the following is the Bethe cluster graph for a network with factors $\phi_1(A,B)$, $\phi_2(B,C)$, $\phi_3(A,C)$?</b>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_3_2_6.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_3_2_6.png"/></center>
 </p>
 <p align="justify">
 <b>Answer:</b> (c).<br>
@@ -2752,7 +2752,7 @@ $\bigstar$ Cluster beliefs
 $$\beta_{i}(C_{i}) = \psi_{i} \times \prod_{k \in N_{i}} \delta_{k \rightarrow i}$$
 
 For example, consider a cluster graph
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_3_3_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_3_3_1.png"/></center>
 </p>
 <p align="justify">
 For cluster 1, its belief
@@ -2796,7 +2796,7 @@ sepset belief
 $$\mu_{i, j}(S_{i, j}) = \delta_{j \rightarrow i}\delta_{i \rightarrow j}$$
 
 We put cluster beliefs ands sepset beliefs on the cluster graph
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_3_3_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_3_3_2.png"/></center>
 </p>
 <p align="justify">
 We notice each message, says $\delta_{4 \rightarrow 1}$ appears twice in this cluster graph.
@@ -2815,11 +2815,11 @@ $\bigstar$ Cluster graph beliefs are an alternative, calibrated parameterization
 <p align="justify">
 <b>1. Cluster Graph Construction</b><br>
 Consider the pairwise MRF, H, shown below with potentials over {A,B}, {B,C}, {A,D}, {B,E}, {C,F}, {D,E} and {E,F}.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_3_4_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_3_4_1.png"/></center>
 </p>
 <p align="justify">
 <b>Which of the following is/are valid cluster graph(s) for H?</b> (A cluster graph is valid if it satisfies the running intersection property and family preservation. You may select 1 or more options).
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_3_4_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_3_4_2.png"/></center>
 </p>
 <p align="justify">
 <b>Answer:</b> (b), (d) (e).<br>
@@ -2838,7 +2838,7 @@ Family Preservation explains that the proper construction of a clique tree (clus
 
 <b>3.</b><br>
 Suppose we wish to perform inference over the Markov network M as shown below. Each of the variables $X_{i}$ are binary, and the only potentials in the network are the pairwise potentials $\phi_{i,j}(X_i, X_j)$, with one potential for each pair of variables $X_{i}$, $X_{j}$ connected by an edge in M.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_3_4_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_3_4_3.png"/></center>
 </p>
 <p align="justify">
 <b>3.1 Message Passing in a Cluster Graph</b><br>
@@ -2871,11 +2871,11 @@ During all iterations, we never change le value of $\phi_{4, 5}(X_{4}, X_{5})$, 
 <p align="justify">
 <b>Message Passing in Tree</b><br>
 Consider a Markov network as well as its cluster graph with pairwise potential for each cluster.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_4_1_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_4_1_1.png"/></center>
 </p>
 <p align="justify">
 So, we put message for each sepset.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_4_1_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_4_1_2.png"/></center>
 </p>
 <p align="justify">
 <b>Correctness</b><br>
@@ -2902,7 +2902,7 @@ $\bigstar$ For each pair of clusters $C_{i}$, $C_{j}$ and variable $X \in C_{i} 
 $\bigstar$ For each pair of clusters $C_{i}$, $C_{j}$ and variable $X \in C_{i} \cap C_{j}$, in the unique path between $C_{i}$ and $C_{j}$, all clusters and sepsets contain X.<br><br>
 
 For example, we have a cluster graph and $C_{6}$ and $C_{7}$ contain a common variable.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_4_1_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_4_1_3.png"/></center>
 </p>
 <p align="justify">
 Then $C_{4}$ and $C_{3}$ must contain X.<br><br>
@@ -2919,7 +2919,7 @@ $\bigstar$ Resulting beliefs are guaranteed to be correct marginals<br><br>
 <p align="justify">
 <b>Message Passing in Tree</b><br>
 We have a Markov network as well as its cluster graph
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_4_2_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_4_2_1.png"/></center>
 </p>
 <p align="justify">
 Once we compute $\delta_{1 \rightarrow 2}(B)$, it is converged because $\psi_{1}$ never changes. So cluster 1 pass the message of B to cluster 2, then $\delta_{2 \rightarrow 3}(B)$ is converged. This applies for other clusters. So, we notice one propagation from left to right and one propagagtion form right to left makes the whole cluster graph converged. We call <b>forward propagation algorithm</b>. Then we compute cluster beliefs $\beta_{i}(C_{i})$ represents an unnormalized measure.<br><br>
@@ -2931,7 +2931,7 @@ $\bigstar$ Can pass messages from leaves inward<br>
 $\bigstar$ If messages are passed in the right order, only need to pass 2(K-1) messages, where K is the number of total clusters.<br><br>
 
 For example, we have a cluster grapha and we give a possible right order for two directions.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_4_2_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_4_2_2.png"/></center>
 </p>
 <p align="justify">
 <b>Answering Queries</b><br>
@@ -2946,7 +2946,7 @@ $\bigstar$ Introducing new evidence Z = z and querying X. If X does not share a 
 -- Sum out irrelevant variables and normalize<br><br>
 
 For example, we want to query E given A = a
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_4_2_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_4_2_3.png"/></center>
 </p>
 <p align="justify">
 So, we multiply $1_{A=a}$ into clique 1 in order to remove all inconsistent factors in cluster 1. Then, we propagate the message to cluster 4 and compute the marginalization with normalization<br><br>
@@ -2970,7 +2970,7 @@ $\bigstar$ Theorem: T satisfies RIP (Running Intersection Property) if and only 
 $$P_{\Phi} \models (W_{<(i, j)} \perp W_{<(j, i)} \mid S_{i, j})$$
 
 For example, we have a Markov network as well as its cluster graph
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_4_3_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_4_3_1.png"/></center>
 </p>
 <p align="justify">
 Consider variable G and S, so, C, I, D are separated from H, L, J given G, S.
@@ -2980,13 +2980,13 @@ $$P_{\Phi} \models (\{ C, I, D \} \perp \{ H, J, L \} \mid \{ G, S \})$$
 $\bigstar$ Each sepset needs to separate graph into two conditionally independent parts<br><br>
 
 For example, we have a complete bipartite graph
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_4_3_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_4_3_2.png"/></center>
 </p>
 <p align="justify">
 The minimum sepset has a size at least min(k, m) in order to completely seperate two sets of variables.<br><br>
 
 Another example, Ising model
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_4_3_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_4_3_3.png"/></center>
 </p>
 <p align="justify">
 The minimum sepset is $\{ A_{2, 1}, A_{1, 2} \}$ with a size of 2. The largest sepset has a size at least n for a $n \times n$ grid.<br><br>
@@ -3015,7 +3015,7 @@ $\bigstar$ VE defines a graph<br>
 -- Draw edge $C_{i} - C_{j}$ if the factor generated from $\lambda_{i}$ is used in the computation of $\lambda_{j}$<br><br>
 
 For example, in a Markov network we eliminate variables C, D, I, H, G, S, L one by one.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_4_4_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_4_4_1.png"/></center>
 </p>
 <p align="justify">
 $\bigstar$ Eliminate C: $\tau_{1}(D) = \sum_{C}\phi_{C}(C)\phi_{C, D}(C, D)$<br>
@@ -3026,32 +3026,32 @@ $\bigstar$ Eliminate D: $\tau_{2}(G, I) = \sum_{D}\phi_{G}(G, I, D)\tau_{1}(D)$<
 
 $\bigstar$ Eliminate I: $\tau_{3}(G, S) = \sum_{I}\phi_{I}(I)\phi_{S}(S,I)\tau_{2}(G, I)$<br>
 -- $\phi_{I}(I)\phi_{S}(S,I)\tau_{2}(G, I)$ is $\lambda_{3}$. Cluster 3 is for factors $\phi_{I}(I)\phi_{S}(S,I)\tau_{2}(G, I)$. Because $\tau_{2}(G, I)$ is used, we draw an edge between cluster 2 and cluster 3.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_4_4_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_4_4_2.png"/></center>
 </p>
 <p align="justify">
 $\bigstar$ Eliminate H: $\tau_{4}(G, J) = \sum_{H}\phi_{H}(H,G,J)$<br>
 -- Cluster 4 for factors $\phi_{H}(H,G,J)$
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_4_4_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_4_4_3.png"/></center>
 </p>
 <p align="justify">
 $\bigstar$ Eliminate G: $\tau_{5}(J, L, S) = \sum_{G}\phi_{L}(L, G)\tau_{3}(G, S)\tau_{4}(G, J)$<br>
 -- Cluster 5 for factors $\phi_{L}(L, G)\tau_{3}(G, S)\tau_{4}(G, J)$. An edge between cluster 5 and cluster 3 and another edge between cluster 5 and cluster 4.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_4_4_4.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_4_4_4.png"/></center>
 </p>
 <p align="justify">
 $\bigstar$ Eliminate S: $\tau_{6}(J, L) = \sum_{S}\phi_{J}(J, L, S)\tau_{5}(J, L, S)$<br>
 -- Cluster 6 for factors $\phi_{J}(J, L, S)\tau_{5}(J, L, S)$. An edge between cluster 6 and cluster 5
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_4_4_5.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_4_4_5.png"/></center>
 </p>
 <p align="justify">
 $\bigstar$ Eliminate L: $\tau_{7}(J) = \sum_{L}\tau_{6}(J, L)$<br>
 -- Cluster 7 for factors $\tau_{6}(J, L)$. An edge between cluster 7 and cluster 6.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_4_4_6.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_4_4_6.png"/></center>
 </p>
 <p align="justify">
 $\bigstar$ Remove redundant cliques: <b>those whose scope is a subset of adjacent clique's scope</b><br>
 -- remove cluster 7 and cluster 6
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_4_4_7.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_4_4_7.png"/></center>
 </p>
 <p align="justify">
 <b>Properties of Tree</b><br>
@@ -3079,7 +3079,7 @@ $\bigstar$ Clique trees use dynamic programming (storing messages) to compute ma
 <p align="justify">
 <b>1.</b><br>
 Here is a cluster tree
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_4_5_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_4_5_1.png"/></center>
 </p>
 <p align="justify">
 <b>1.1 Message Ordering</b><br>
@@ -3096,7 +3096,7 @@ In the clique tree above, what is the correct form of the message from clique 3 
 
 <b>2. Clique Tree Properties</b><br>
 Consider the following Markov Network (a) over potentials $\phi_{A,B}$, $\phi_{B,C}$, $\phi_{A,D}$, $\phi_{B,E}$, $\phi_{C,F}$, $\phi_{D,E}$, and $\phi_{E,F}$:
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_4_5_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_4_5_2.png"/></center>
 </p>
 <p align="justify">
 Which of the following properties are necessary for a valid clique tree for the above network (a), but are NOT satisfied by graph (b):<br>
@@ -3134,7 +3134,7 @@ E is the condition that makes a clique tree max-calibrated. All adjacent cliques
 <p align="justify">
 <b>Misconception Revisited</b><br>
 Here is a Markov network as well as a figure about distance to true marginals as iterations
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_5_1_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_5_1_1.png"/></center>
 </p>
 <p align="justify">
 We have strong potentials for factors. Par example, C highly agrees with B, B highly agrees with A and A highly agrees with D, but D highly disagrees with C. Besides, there is a conflict between two directions of messages passing: C - B - A - D and C - D, so there is much oscillation. <b>Tight loops, strong potentials and conflicting directions is probably the worst example for belief propagagtion.</b><br><br>
@@ -3142,18 +3142,18 @@ We have strong potentials for factors. Par example, C highly agrees with B, B hi
 <b>Different Variant of BP</b><br>
 $\bigstar$ Synchronous BP<br>
 -- all messages are updated in parallel
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_5_1_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_5_1_2.png"/></center>
 </p>
 <p align="justify">
 In fact, synchronous BP performs not well enough, because the right figure tells us not 100% messages are converged.<br><br>
 
 $\bigstar$ Asynchronous BP<br>
 -- messages are updated one at a time
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_5_1_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_5_1_3.png"/></center>
 </p>
 <p align="justify">
 But different order has different result.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_5_1_4.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_5_1_4.png"/></center>
 </p>
 <p align="justify">
 <b>Observations</b><br>
@@ -3188,7 +3188,7 @@ D. Oscillations will decrease. The time to convergence will increase up to a poi
 At λ=0, there is no damping, while at λ=1, there is full damping, i.e., no messages will be updated. As λ goes from 1 to 0, damping will increase, so the amplitude of the oscillations will tend to decrease. Damping will help the convergence of the network to a point, but after some point, increased damping will tend to slow the convergence down (consider the extreme case of λ=1, in which no messages will be updated, so the algorithm will never converge).<br><br>
 
 Here is a comparison between three methods: Synchronous (red), Asynchronous without smoothing (green) and asynchronous with smoothing (blue). Notice y-axis represente a percentage of converged messages.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_5_1_5.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_5_1_5.png"/></center>
 </p>
 <p align="justify">
 <b>Summary</b><br>
@@ -3207,12 +3207,12 @@ $\bigstar$ Some new algorithms have better convergence<br>
 <p align="justify">
 <b>Message Coding & Decoding</b><br>
 Imagine k bits through a noisy channel
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_5_2_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_5_2_1.png"/></center>
 </p>
 <p align="justify">
 <b>Channel Capacity</b><br>
 We have three kinds of channels: binary symmetric channel, binary erasure channel and gaussian channel
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_5_2_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_5_2_2.png"/></center>
 </p>
 <p align="justify">
 We have a Gaussian channel with capacity $0.5log(1 + \frac{E(X^{2})}{\sigma^{2}})$, and an amplifier that doubles the expected value of the signal $E(X^{2})$, but also scales its noise, parameterized by $\sigma$, by a factor of $\sqrt{2}$. <b>What would using this circuit do to the capacity of the channel?</b><br>
@@ -3225,7 +3225,7 @@ The increase in $E(X^{2})$ would be canceled out exactly by the increased noise,
 
 <b>Shannon's Theorem</b><br>
 Shannon's Theorem, related the notion of channel capacity and bit error probability in a way defines an extremely sharp boundary between codes that are feasible and codes that are infeasible.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_5_2_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_5_2_3.png"/></center>
 </p>
 <p align="justify">
 X-axis is the rate of the code $\frac{k}{n}$. This is a rate in multiple channel capacity so this says once you define the channel capacity we can look at the rate of a code and each code could be in a different point of the spectrum in terms of the rate.<br><br>
@@ -3234,19 +3234,19 @@ Y-axis is the bit error probability. So obviously, lower is better, in terms of 
 
 <b>How close to C can we get?</b><br>
 But the question is how can we achieve something that's close To the Shannon limit. On the x axis, we have the signal to noise ratio, measured in db. And on the y axis, we have the log of the bit error probability.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_5_2_4.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_5_2_4.png"/></center>
 </p>
 <p align="justify">
 <b>Turbocodes: The Idea</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_5_2_5.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_5_2_5.png"/></center>
 </p>
 <p align="justify">
 <b>Iterations of Turbo Decoding</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_5_2_6.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_5_2_6.png"/></center>
 </p>
 <p align="justify">
 <b>Low-Density Parity Checking Codes</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_5_2_7.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_5_2_7.png"/></center>
 </p>
 <p align="justify">
 We have seen this kind of cluster graph before, when we called it a Bethe graph. <b>What are the $U_{i}$?</b><br>
@@ -3257,7 +3257,7 @@ D. Messages that are fixed because the clique tree is calibrated once it has con
 <b>Answer:</b> C.<br><br>
 
 <b>Decoding as Loopy BP</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_5_2_8.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_5_2_8.png"/></center>
 </p>
 <p align="justify">
 <b>Turbo-Codes & LDPCs</b><br>
@@ -3290,12 +3290,12 @@ $$\theta_{k}(D_{k}) = \log \phi_{k}(D_{k})$$
 $$arg\max \sum_{k}\theta_{k}(D_{k}) = arg \max \theta(X_{1}, \cdots, X_{n})$$
 
 For example
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_6_1_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_6_1_1.png"/></center>
 </p>
 <p align="justify">
 <b>Max-Sum Elimination in Chains</b><br>
 Here is an example of Markov network
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_6_1_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_6_1_2.png"/></center>
 </p>
 <p align="justify">
 Our factor product is changed to a summation after logarithm
@@ -3308,11 +3308,11 @@ $$\max_{D}\max_{C}\max_{B}\max_{A} \theta(A, B, C, D, E)$$
 <b>Answer:</b> $\theta_{1}(A, B)$, $\theta_{4}(D, E)$.<br><br>
 
 Similar to factor product, we have a table to represent hwo to sum two factors
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_6_1_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_6_1_3.png"/></center>
 </p>
 <p align="justify">
 Factor marginalization becomes fatcor maximization
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_6_1_4.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_6_1_4.png"/></center>
 </p>
 <p align="justify">
 For example, $\theta(a^{1}, c^{1}) = \max (\theta(a^{1}, b^{1}, c^{1}), \theta(a^{1}, b^{2}, c^{1}))$.<br><br>
@@ -3328,7 +3328,7 @@ $\lambda_{4}(E=e) = \max_{A, B, C, D} \theta(A, B, C, D, E=e)$ is called max-mar
 
 <b>Max-Sum in Clique Tree</b><br>
 For the markov network, we have a clique tree. Each cluster represent a potential $\theta_{i}$. Similarly, we have message passing.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_6_1_5.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_6_1_5.png"/></center>
 </p>
 <p align="justify">
 <b>Convergence of Message Passing</b><br>
@@ -3343,7 +3343,7 @@ $\bigstar$ Calibration: cliques agree on shared variables
 $$\max_{C_{i} \rightarrow S_{i, j}} \beta_{i}(C_{i}) = \max_{C_{j} \rightarrow S_{i, j}} \beta_{j}(C_{j})$$
 
 For example, cluster 1 and cluster 2 have a common variable B
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_6_1_6.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_6_1_6.png"/></center>
 </p>
 <p align="justify">
 <b>Summary</b><br>
@@ -3362,7 +3362,7 @@ $\bigstar$ Easy if MAP is unique<br>
 -- Due to calibration, choices at all cliques must agree.<br><br>
 
 For example, we have a same $\theta$ value for these three cliques
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_6_2_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_6_2_1.png"/></center>
 </p>
 <p align="justify">
 $\bigstar$ If MAP assignement is not unique, we may have multiple choices at some cliques<br>
@@ -3409,7 +3409,7 @@ which is what max-sum message passing returns. So setting the potentials appropr
 <p align="justify">
 <b>Correspondence / data association</b><br>
 Imagine a bipartite graph
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_7_1_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_7_1_1.png"/></center>
 </p>
 <p align="justify">
 $$
@@ -3433,7 +3433,7 @@ $\bigstar$ Many applications<br>
 
 <b>Associative potentials</b><br>
 Imagine we have two binary variables as well as a table of potentials
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_7_1_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_7_1_2.png"/></center>
 </p>
 <p align="justify">
 We have a constraint a + d $\geq$ b + c.<br><br>
@@ -3490,14 +3490,14 @@ $$L(\lambda) = \sum_{i=1}^{n} \max_{x_{i}}(\theta_{i}(x_{i}) + \sum_{F: i \in F}
 $L(\lambda)$ is upper bound on MAP(\theta) for any setting of $\lambda$.<br><br>
 
 For example
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_7_2_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_7_2_1.png"/></center>
 </p>
 <p align="justify">
 $\bigstar$ Slaves don't have to be factors in original model<br>
 -- Subsets of factors that admit tractable solution to local maximization task<br><br>
 
 For example
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_7_2_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_7_2_2.png"/></center>
 </p>
 <p align="justify">
 $\bigstar$ In pairwise networks, often divide factors into set of disjoint trees<br>
@@ -3599,7 +3599,7 @@ Consider k values for X and each x has a probability
 $$Val(X) = \{ x^{1}, \cdots, x^{k} \}, \quad P(x^{i}) = \theta^{i}$$
 
 We can put the probabilities into an interval of [0, 1].
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_8_1_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_8_1_1.png"/></center>
 </p>
 <p align="justify">
 So, each sub-interval corresponds to a value of x. For example, if we generate a value of probability randomly between $\theta^{1}+\theta^{2}$ and $\theta^{1}+\theta^{2}+\theta^{3}$, we will assign $x^{3}$ to this random point.<br><br>
@@ -3621,7 +3621,7 @@ $$M \geq \frac{3}{p\epsilon^{2}}\ln\frac{2}{\delta}$$
 
 <b>Forward Sampling from a BN</b><br>
 Consider a Bayesian network
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_8_1_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_8_1_2.png"/></center>
 </p>
 <p align="justify">
 We can generate a series of samples
@@ -3667,7 +3667,7 @@ $\bigstar$ A Markov chain defines a probabilistic transition model T(x $\rightar
 $$\sum_{x'} T(x \rightarrow x') = 1$$
 
 For example,
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_8_2_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_8_2_1.png"/></center>
 </p>
 <p align="justify">
 The current state is 0, the next state is one of {-1, 0, 1} with a probability {0.25, 0.5, 0.25} respectively.<br><br>
@@ -3717,7 +3717,7 @@ We use $\pi(x)$ to denote a stationary distribution
 $$\pi(x') = \sum_{x} \pi(x)T(x \rightarrow x')$$
 
 For example
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_8_2_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_8_2_2.png"/></center>
 </p>
 <p align="justify">
 We can write a stationary distribution for each variable
@@ -3835,7 +3835,7 @@ For example, we have 3 binary variables and their initial values are {0, 0, 0} a
 After sampling $x_{1}$, we get a assignement $x_{1} = 1$. After the whole sample, we get a new x' = {1, 0, 0} to replace x.<br><br>
 
 Another example, a Bayesian network with $L = l^{0}$ and $S = s^{1}$ observed.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_8_4_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_8_4_1.png"/></center>
 </p>
 <p align="justify">
 Our factor product
@@ -3865,7 +3865,7 @@ $\bigstar$ Multiply all the factors together to get the numerator<br>
 The chain rule allows us to compute the numerator by simply multiplying all factors together (operations are linear in the number of factors). We can get the denominator by simply summing out $X_{i}$ from the numerator (which is linear in the number of values of $X_{i}$. Therefore it's always tractable.<br><br>
 
 For example, we sample A based a Markov network
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_8_4_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_8_4_2.png"/></center>
 </p>
 <p align="justify">
 We set A' in order to distinguish A in numerator because of different assignments for A.<br><br>
@@ -3883,7 +3883,7 @@ which means we only care about $X_{i}$ and its neighbors in some a graph.<br><br
 
 <b>Gibbs Chain and Regularity</b><br>
 Consider a deterministic model with XOR. Imagine y = 1 is observed
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_8_4_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_8_4_3.png"/></center>
 </p>
 <p align="justify">
 Suppose our initial state is $X_{1} = 0, X_{2} = 1$. So. we sample $X_{1}$ given $X_{2}$ and Y
@@ -3911,7 +3911,7 @@ Markov chain Monte Carlo sampling is a general paradigm for generating samples f
 <b>Revsersible Chain</b><br>
 $$\pi(x)T(x \rightarrow x') = \pi(x')T(x' \rightarrow x)$$
 
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_8_5_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_8_5_1.png"/></center>
 </p>
 <p align="justify">
 which means a probability of transition i to j is equal to that j to i. We call this <b>detailed balance</b>.<br><br>
@@ -3964,7 +3964,7 @@ $\bigstar$ Opposing forces<br>
 -- But then acceptance probability often low<br><br>
 
 <b>MCMC for Matching</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_8_5_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_8_5_2.png"/></center>
 </p>
 <p align="justify">
 <b>HM for Matching: Augmenting Path</b><br>
@@ -3972,11 +3972,11 @@ $\bigstar$ Opposing forces<br>
 2) sample $X_{i}$, pretending that all values are available<br>
 3) pick the variable whose assignment was taken (conflict), and return to step 2.<br>
 $\bigstar$ When step 2 creates no conflict, modify assignment to flip augmenting path
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_8_5_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_8_5_3.png"/></center>
 </p>
 <p align="justify">
 <b>Example Results</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_8_5_4.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_8_5_4.png"/></center>
 </p>
 <p align="justify">
 <b>Summary</b><br>
@@ -4014,7 +4014,7 @@ C: We want to be able to compute the number of samples that we will reject. The 
 
 <b>3. Stationary Distributions</b><br>
 Consider the simple Markov chain shown in the figure below.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_8_6_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_8_6_1.png"/></center>
 </p>
 <p align="justify">
 By definition, a stationary distribution π for this chain must satisfy <b>which of the following properties?</b> You may select 1 or more options.<br>
@@ -4028,7 +4028,7 @@ F. $\pi(x_{1}) = 0.2\pi(x_{1}) + 0.3\pi(x_{3})$<br>
 
 <b>4. *Gibbs Sampling in a Bayesian Network</b><br>
 Suppose we have the Bayesian network shown in the image below.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_8_6_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_8_6_2.png"/></center>
 </p>
 <p align="justify">
 If we are sampling the variable $X_{23}$ as a substep of Gibbs sampling, <b>what is the closed form equation for the distribution we should use over the value $X'_{23}$?</b> By closed form, we mean that all computation such as summations are tractable and that we have access to all terms without requiring extra computation.<br>
@@ -4066,24 +4066,24 @@ D: This is correct because if you are able to move around the state space, you a
 #### 2.9.1 Inference in Temporal Models
 <p align="justify">
 <b>DBN Template Specification</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_9_1_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_9_1_1.png"/></center>
 </p>
 <p align="justify">
 <b>Ground Bayesian Network</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_9_1_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_9_1_2.png"/></center>
 </p>
 <p align="justify">
 $\bigstar$ Can unroll DBN for given trajectory and run inference over ground network.<br><br>
 
 <b>Plate Model</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_9_1_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_9_1_3.png"/></center>
 </p>
 <p align="justify">
 $\bigstar$ Can unroll plate model for given set of objects and run inference over ground network.<br><br>
 
 <b>Belief State Tracking</b><br>
 Belief state tracking is keeping track over the state of the system as it evolves.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_9_1_4.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_9_1_4.png"/></center>
 </p>
 <p align="justify">
 This is a traditional probabilistic inference task because it corresponds to asking what is our probability distribution over the state of time t, given the observations that the agent has had access to up to time t. 
@@ -4109,7 +4109,7 @@ $$= \frac{P(\boldsymbol{o}^{t+1} \mid S^{(t+1)}) \sigma^{(\cdot t+1)}(S^{(t+1)})
 The denominator is normalizing constants, which can be derived by computing the numerator then normalizing.<br><br>
 
 <b>Computational Issues</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_9_1_5.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_9_1_5.png"/></center>
 </p>
 <p align="justify">
 $\bigstar$ Minimal sepset must seperate future from past $\Rightarrow$ must involve at least all of the persistent variables<br><br>
@@ -4120,7 +4120,7 @@ $\bigstar$ Minimal sepset must seperate future from past $\Rightarrow$ must invo
 
 <b>Entanglement</b><br>
 We're thinking of belief state tracking.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_9_1_6.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_9_1_6.png"/></center>
 </p>
 <p align="justify">
 Our goal is to maintain a belief state over t=3, and we're trying to think about how can we maintain this probability distribution $\sigma^{(t=3)}$ in a way that doesn't involve maintaining a full explicit joint distribution over the variables t=3.<br><br>
@@ -4139,7 +4139,7 @@ $\bigstar$ Moreover, ground network is often large and densely connected, requir
 <p align="justify">
 <b>1. Unrolling DBNs</b><br>
 <b>Which independencies hold in the unrolled network for the following 2-TBN for all t?</b>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_9_2_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_9_2_1.png"/></center>
 </p>
 <p align="justify">
 (Hint: it may be helpful to draw the unrolled DBN for several slices)<br>
@@ -4235,7 +4235,7 @@ D. It is possible in G but not in T<br>
 
 <b>2. *Markov Network Construction</b><br>
 Consider the unrolled network for the plate model shown below, where we have n students and m courses. Assume that we have observed the grade of all students in all courses. In general, what does a pairwise Markov network that is a minimal I-map for the conditional distribution look like? (Hint: the factors in the network are the CPDs reduced by the observed grades. We are interested in modeling the conditional distribution, so we do not need to explicitly include the Grade variables in this new network. Instead, we model their effect by appropriately choosing the factor values in the new network.)
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_10_2_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_10_2_1.png"/></center>
 </p>
 <p align="justify">
 A. A fully connected graph with instantiations of the Difficulty and Intelligence variables.<br>
@@ -4299,7 +4299,7 @@ $$\frac{p(x'_{i} \mid x_{-i})}{P(x_{i} \mid x_{-i})}$$
 
 <b>9. *Value of Information</b><br>
 <b>In the influence diagram on the right, when does performing LabTest have value? That is, when would you want to observe the LabTest variable?</b>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/2_10_2_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/2_10_2_2.png"/></center>
 </p>
 <p align="justify">
 Hint: Think about when information is valuable in making a decision.<br>
@@ -4326,17 +4326,17 @@ D. We can't reconstruct the original distribution because we were preforming loo
 #### 3.1.1 Learning: Overview
 <p align="justify">
 <b>Learning</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/3_1_1_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/3_1_1_1.png"/></center>
 </p>
 <p align="justify">
 <b>Structure, Data</b><br>
 We have four cases: known structure with complete data, unknow structure and complete data, known structure with complete data and unknown structure with incomplete data. Our goal is to produce a CPD corresponded to the network (if unknow, infer it)
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/3_1_1_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/3_1_1_2.png"/></center>
 </p>
 <p align="justify">
 <b>Latent Variables, Incomplete Data</b><br>
 In our final network, a variable H is a hidden variable. We haven't observed it.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/3_1_1_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/3_1_1_3.png"/></center>
 </p>
 <p align="justify">
 <b>How would you characterize hidden Markov models?</b><br>
@@ -4429,7 +4429,7 @@ $\bigstar$ Tosses are independent of each other<br>
 $\bigstar$ Tosses are sampled from the same distribution (identically distributed)<br>
 
 Based on the information above, we construct a plate model
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/3_2_1_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/3_2_1_1.png"/></center>
 </p>
 <p align="justify">
 <b>Which of the following is true of the plate model shown here?</b><br>
@@ -4461,7 +4461,7 @@ Then the likelihood function is
 $$L(\theta: D) = P(D \mid \theta) = P(H \mid \theta) \cdot P(T \mid \theta) \cdot P(T \mid \theta) \cdot P(H \mid \theta) \cdot P(H \mid \theta) = \theta^{3}(1-\theta)^{2}$$
 
 We plot a figure of this function with regard to $\theta$
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/3_2_1_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/3_2_1_2.png"/></center>
 </p>
 <p align="justify">
 $$\theta^{*} = \arg\max_{\theta} L(\theta: D) = \arg\max_{\theta}\theta^{3}(1-\theta)^{2} = 0.6$$
@@ -4486,7 +4486,7 @@ $\bigstar$ A function s(D) is a <b>sufficient statistic</b> from instances to a 
 $$\sum_{x[i] \in D} s(x[i]) = \sum_{x[i] \in D'} s(x[i]) \quad \Rightarrow \quad L(\theta: D) = L(\theta: D')$$
 
 In other word, we try to use a smaller set of parameters/notations/statistics to describe a large dataset<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/3_2_1_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/3_2_1_3.png"/></center>
 </p>
 <p align="justify">
 <b>Sufficient Statistic for Multinomial</b><br>
@@ -4535,7 +4535,7 @@ $\bigstar$ MLE has closed form solution for many parametric distributions<br><br
 <p align="justify">
 <b>MLE for Bayesian Networks</b><br>
 Consider a simple Bayesian Network in a form of plate model<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/3_2_2_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/3_2_2_1.png"/></center>
 </p>
 <p align="justify">
 $\bigstar$ Parameters<br>
@@ -4573,7 +4573,7 @@ $$\hat{\theta_{}}_{x \mid u} = \frac{M[x, u]}{\sum_{x'} M[x', u]} = \frac{M[x, u
 
 <b>Shared Parameters</b><br>
 Image a markov chain with state transition<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/3_2_2_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/3_2_2_2.png"/></center>
 </p>
 <p align="justify">
 $$L(\theta: S^{0:T}) = \prod_{t=1}^{T} P(S^{t} \mid S^{t-1}: \theta) = \prod_{i, j} \prod_{t: S^{t}=s^{i}, S^{t+1}=s^{j}} P(S^{t+1} \mid S^{t}: \theta_{S' \mid S}) = \prod_{i, j} \prod_{t: S^{t}=s^{i}, S^{t+1}=s^{j}} \theta_{s^{i} \rightarrow s^{j}}$$
@@ -4586,7 +4586,7 @@ Finally, the estimated parameter<br>
 $$\hat{\theta_{}}_{s^{i} \rightarrow s^{j}} = \frac{M[s^{i} \rightarrow s^{j}]}{M[s^{i}]}$$
 
 We take a more complex example<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/3_2_2_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/3_2_2_3.png"/></center>
 </p>
 <p align="justify">
 $$L(\Theta : S^{0:T}, O^{0:T}) = \prod_{t=1}^{T} P(S^{t} \mid S^{t-1}: \theta_{S' \mid S}) \prod_{t=1}^{T} P(O^{t} \mid S^{t} : \theta_{O' \mid S'}) = \prod_{i, j} \theta_{s^{i} \rightarrow s^{j}}^{M[s^{i} \rightarrow s^{j}]} \prod_{i, k} \theta_{o^{k} \mid s^{i}}^{M[o^{k}, s^{i}]}$$
@@ -4700,7 +4700,7 @@ $\bigstar$ A coin is tossed 10000 times, and comes out 'head s' 7000 of the 1000
 <b>Maximum likelihood estimation has absolutely no ability to distinguish between these three scenarios.</b> Between the case of a familiar setting such as a coin versus an unfamiliar event such as the two teams playing, on the one hand, and between the case where we toss a coin ten times verses tossing a coin ten thousand times. Neither of these distinction is apparent in the maximum likelihood estimate.<br><br>
 
 <b>Parameter Estimation as a PGM</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/3_3_1_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/3_3_1_1.png"/></center>
 </p>
 <p align="justify">
 We're going to see that theta is in fact, a random variable by itself. It's a continuous valued random variable. which in this case, in the case of a coin toss, takes on value in the space, 01 but in either case it is a random variable, and therefore something over which will maintain and probability distribution. This is factored at the heart of the Bayesian formalism.<br><br>
@@ -4733,7 +4733,7 @@ $$P(\theta) = \frac{1}{Z} \prod_{i=1}^{k} \theta_{i}^{\alpha_{i}-1}, \quad Z = \
 $\bigstar$ Intuitively, hyperparameters $(\alpha_{1}, ..., \alpha_{k})$ correspond to the number of samples we have seen.<br><br>
 
 We plot several Dirichlet distributions with different $\alpha_{H}$ and $\alpha_{T}$<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/3_3_1_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/3_3_1_2.png"/></center>
 </p>
 <p align="justify">
 We can notice that a mix of $\alpha_{H}$ and $\alpha_{T}$ determines the position of the peak and total $\alpha = \alpha_{H} + \alpha_{T}$ determines how sharp it is.<br><br>
@@ -4777,7 +4777,7 @@ $\bigstar$ Dirichlet distribution is conjugate to mutinomial<br>
 <p align="justify">
 <b>Bayesian Prediction</b><br>
 Consider a model with parameters which satisfiy the Dirichlet distribution<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/3_3_2_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/3_3_2_1.png"/></center>
 </p>
 <p align="justify">
 $$P(X) = \int_{\theta} P(X \mid \theta)P(\theta) d\theta$$
@@ -4787,7 +4787,7 @@ $$P(X = x^{i} \mid \theta) = \frac{1}{Z} \int_{\theta} \theta_{i} \cdot \prod_{j
 $\bigstar$ Dirichlet hyperparameters correspond to the number of samples we have seen.<br><br>
 
 For example, we want to predict X[M+1] with a Bayesian network<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/3_3_2_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/3_3_2_2.png"/></center>
 </p>
 <p align="justify">
 $$P(x[M+1] \mid x[1], ..., x[M]) = \int_{\theta} P(x[M+1] \mid x[1], ..., x[M], \theta) P(\theta \mid x[1], ..., x[M]) d\theta$$
@@ -4813,7 +4813,7 @@ Suppose we have 4 one and 1 zeos (e.g. 4 heads and 1 tail)<br>
 $$(M_{1}, M_{0}) = (4, 1)$$
 
 So, we plot the Dirichlet distribution<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/3_3_2_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/3_3_2_3.png"/></center>
 </p>
 <p align="justify">
 Then, we want to predict a probability for X[6] = 1<br>
@@ -4825,7 +4825,7 @@ $$P(X[6] = 1) = \frac{\alpha_{1} + M_{1}}{\alpha + M} = \frac{1 + 4}{2 + 5} = \f
 
 <b>Effect of Priors</b><br>
 $\bigstar$ Prediction of P(X=1) after seeing data with $M_{1} = \frac{1}{4}M_{0}$ as a function of sample size M<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/3_3_2_4.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/3_3_2_4.png"/></center>
 </p>
 <p align="justify">
 For fixed ratio $\frac{\alpha_{1}}{\alpha_{0}}$, we have a 0.5 probability when 0 data observed, this is reasonable. Low $\alpha$ is closer to data estimates. High $\alpha$ takes more data to be close to the empirical fractions of heads versus tails.<br><br>
@@ -4833,7 +4833,7 @@ For fixed ratio $\frac{\alpha_{1}}{\alpha_{0}}$, we have a 0.5 probability when 
 For fixed equivalent sample size, we start with different priors ($\alpha_{1}, \alpha_{0}$), the posterior probability will be converged to 0.2 (empirical estimate) with different data.<br><br>
 
 $\bigstar$ In real data, Bayesian estimates are less sensitive to noise in the data.<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/3_3_2_5.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/3_3_2_5.png"/></center>
 </p>
 <p align="justify">
 <b>Summary</b><br>
@@ -4846,7 +4846,7 @@ $\bigstar$ But Dirichlet hyperparameters determine both the prior beliefs and th
 <p align="justify">
 <b>Bayesian Estimation in BNs</b><br>
 Consider a Bayesian network with paramters
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/3_3_3_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/3_3_3_1.png"/></center>
 </p>
 <p align="justify">
 $\bigstar$ Instances are independent given parameters<br>
@@ -4855,7 +4855,7 @@ $\bigstar$ Parameters for individual variables are independent a priori<br>
 $$P(\theta) = \prod_{i} P(\theta_{X_{i} \mid Parent(X_{i})})$$
 
 $\bigstar$ Posteriors of $\theta$ are independent given complete data<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/3_3_3_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/3_3_3_2.png"/></center>
 </p>
 <p align="justify">
 $$\theta_{X} \perp \theta_{Y \mid X} \mid D$$
@@ -4885,7 +4885,7 @@ $\bigstar$ We need hyperparameter $\alpha_{x \mid u}$ for each node X, value x, 
 -- $\alpha_{x \mid u} := \alpha \cdot P(x, u \mid \Theta_{0})$<br><br>
 
 For examole, condsider a simple Bayesian network composed of two binary variables X $\rightarrow$ Y<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/3_3_3_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/3_3_3_3.png"/></center>
 </p>
 <p align="justify">
 Suppose the parameter $\Theta_{0}$ follows a uniform distribution. For variable X<br>
@@ -4901,7 +4901,7 @@ $\bigstar$ ICU-Alarm network<br>
 $\bigstar$ Experiment<br>
 -- Sample instance from network<br>
 -- Relearn parameters<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/3_3_3_4.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/3_3_3_4.png"/></center>
 </p>
 <p align="justify">
 Which of the following statements are true regarding the generalization performance (test-set log-likelihood, or relative entropy) for different priors? Mark all that apply.<br>
@@ -4960,7 +4960,7 @@ E. $M \rightarrow \infty$ and $\alpha$ is fixed<br>
 <p align="justify">
 <b>Log-Likelihood for markov Nets</b><br>
 Consider a Markov Network with 3 variables<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/3_4_1_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/3_4_1_1.png"/></center>
 </p>
 <p align="justify">
 Given a dataset (a, b, c), the distribution over this graph is<br>
@@ -4988,7 +4988,7 @@ $\bigstar$ Partition function couples the parameters<br>
 -- No closed form solution to derive a sufficient statistics<br><br>
 
 <b>Example: Log-Likelihood Function</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/3_4_1_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/3_4_1_2.png"/></center>
 </p>
 <p align="justify">
 <b>Log-Likelihood for Log-Linear Model</b><br>
@@ -5051,7 +5051,7 @@ $\bigstar$ For gradient, need expected features counts (the critical computation
 $\bigstar$ Requires inference at each gradient step<br><br>
 
 <b>Example: Ising Model</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/3_4_1_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/3_4_1_3.png"/></center>
 </p>
 <p align="justify">
 Energy function is composed of a pairwise terms and a singleton terms<br>
@@ -5100,7 +5100,7 @@ $$\frac{\partial}{\partial \theta_{i}} \frac{1}{M} l_{Y \mid X} (\theta: D) = \f
 Note that, $x[m]$ is fixed, so $E_{\theta}[f_{i}(x[m], Y)]$ is only about Y.<br><br>
 
 We take image segmentation as an example<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/3_4_2_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/3_4_2_1.png"/></center>
 </p>
 <p align="justify">
 s, t denote a superpixel and s, t are near to each other.<br><br>
@@ -5150,14 +5150,14 @@ $\bigstar$ But conditional model is often much simpler, so inference cost for CR
 <p align="justify">
 <b>Gaussian Parameter Prior</b><br>
 $$P(\theta: \sigma^{2}) = \prod_{i=1}^{k} \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{\theta_{i}^{2}}{2\sigma^{2}}}$$
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/3_4_3_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/3_4_3_1.png"/></center>
 </p>
 <p align="justify">
 This is a 0-mean variante gaussian. $\sigma$ dictates how firmly we believe that the parameter is close to 0. As $\sigma$ increases, parameters will tend to be further from zero. The $\sigma^{2}$ is called <b>hyperparameter</b>.<br><br>
 
 <b>Laplacian Parameter Prior</b><br>
 $$P(\theta : \beta) = \prod_{i=1}^{k} \frac{1}{2\beta} e^{-\frac{\left | \theta_{i} \right |}{\beta}}$$
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/3_4_3_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/3_4_3_2.png"/></center>
 </p>
 <p align="justify">
 $\beta$ is a hyperparameter. As $\beta$ increases, fewer parameters will be exactly 0. As $\beta$ increases, parameters will tend to be further from zero.<br><br>
@@ -5175,7 +5175,7 @@ We take a log-form
 $$= \arg\max_{\theta} (l(\theta : D) + \log P(\theta))$$
 
 Look at what these negative logarithms $-\log P(\theta)$ look like in the context of these two priors<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/3_4_3_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/3_4_3_3.png"/></center>
 </p>
 <p align="justify">
 For a Gaussian Distribution, the negative logarithm is simply a quadratic, so we have a quadratic penalty that pushes the parameters towards zero. This is exactly L2 regularization in Machine Learning.<br><br>
@@ -5235,7 +5235,7 @@ $\bigstar$ For structure discovery, when inferring network structure is goal its
 
 <b>Importance of Accurate Structure</b><br>
 Consider the true network $G^{*}$ and the learned network $G_{1}$ and $G_{2}$. Let's define $P^{*}$ such that $G^{*}$ is the perfect map for $P^{*}$.<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/3_5_1_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/3_5_1_1.png"/></center>
 </p>
 <p align="justify">
 <b>Which of the following statements hold?</b><br>
@@ -5258,7 +5258,7 @@ $\bigstar$ For $G_{2}$, we add an arc<br>
 
 <b>Score-Based Learning</b><br>
 Define scoring function that evaluates how well a structure matches the data.<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/3_5_1_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/3_5_1_2.png"/></center>
 </p>
 <p align="justify">
 Search for a structure that maximizes the score.<br><br>
@@ -5274,7 +5274,7 @@ $\theta_{}$ = MLE of the parameters given G and D.<br><br>
 
 <b>Example</b><br>
 We have two different graphs as well as their likelihood score<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/3_5_2_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/3_5_2_1.png"/></center>
 </p>
 <p align="justify">
 We calculate their difference<br>
@@ -5314,7 +5314,7 @@ $$\mathbf{H}_{P}(X) = \sum_{x}P(x)\log P(x)$$
 Score is higher if $X_{i}$ is correlated with its parents.<br><br>
 
 <b>Limitations of Likelihood Score</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/3_5_2_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/3_5_2_2.png"/></center>
 </p>
 <p align="justify">
 $$\text{score}_{L}(G_{1}: D) - \text{score}_{L}(G_{0}: D) = M \mathbf{I}_{\hat{P_{}}}(X; Y)$$
@@ -5507,7 +5507,7 @@ $\bigstar$ Bayesian score<br>
 <p align="justify">
 <b>1.</b><br>
 Consider the following 4 graphs:<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/3_5_5_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/3_5_5_1.png"/></center>
 </p>
 <p align="justify">
 <b>1.1 Likelihood Scores</b><br>
@@ -5633,7 +5633,7 @@ $\bigstar$ For such a score, we can show $w(i \rightarrow j) = w(j \rightarrow i
 -- This is logical, because the mutual information has no sign of direction.<br><br>
 
 <b>Learning Forest III -- Algorithm for equivalent scores</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/3_6_1_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/3_6_1_1.png"/></center>
 </p>
 <p align="justify">
 $\bigstar$ Define undirected graph with nodes {1, ..., n}<br>
@@ -5652,7 +5652,7 @@ For the Bayesian and BIC scores, we have a penalty for the complexity of the str
 
 <b>Learning Forest: Example</b><br>
 Tree learned from data of Alarm network<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/3_6_1_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/3_6_1_2.png"/></center>
 </p>
 <p align="justify">
 $\bigstar$ Not every edge in tree is in the original network<br>
@@ -5675,7 +5675,7 @@ $\bigstar$ Theorem:<br>
 
 <b>Heuristic Search</b><br>
 We have an initial network then we try add an edge or remove an edge in order to get a bigger score.<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/3_6_2_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/3_6_2_1.png"/></center>
 </p>
 <p align="justify">
 $\bigstar$ Search operatiors<br>
@@ -5722,7 +5722,7 @@ $\bigstar$ Tabu list:<br>
 -- search cannot reverse any of these steps<br><br> 
 
 For example,<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/3_6_2_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/3_6_2_2.png"/></center>
 </p>
 <p align="justify">
 <b>Summary</b><br>
@@ -5750,7 +5750,7 @@ $\bigstar$ Total: $O(n^{2}(Mn+m))$ per search step<br><br>
 
 <b>Exploiting Decomposability</b><br>
 Consider a Bayesian network and we want to add an edge from B to D<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/3_6_3_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/3_6_3_1.png"/></center>
 </p>
 <p align="justify">
 The original graph's score<br>
@@ -5763,11 +5763,11 @@ In fact, only the last term changes, so we don't need to recalculate the first 3
 $$\Delta \text{Score}(D) = \text{Score}(D \mid \{B, C\}) - \text{Score}(D \mid \{C\})$$
 
 We can generalize to other operations<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/3_6_3_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/3_6_3_2.png"/></center>
 </p>
 <p align="justify">
 Furthermore, if we contunue to delete an edge form B to C, we have a score difference $\Delta \text{Score}(C)$<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/3_6_3_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/3_6_3_3.png"/></center>
 </p>
 <p align="justify">
 In fact, $\Delta \text{Score}(C)$ has already been calculated in the previous steps<br><br>
@@ -5888,7 +5888,7 @@ $\bigstar$ Challenges<br>
 <b>Why laten variables?</b><br>
 $\bigstar$ Model sparsity<br>
 Consider a Bayesian network with 7 binary variables<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/3_7_1_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/3_7_1_1.png"/></center>
 </p>
 <p align="justify">
 So we have 17 parameters. Now, we decide H is latent and we are going to learn a network over the observable variables, which are the x's and the y's. Then we have a much more complex network.<br><br>
@@ -5931,7 +5931,7 @@ Y_{i} =
 $$
 
 With thes variables, we can have two models<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/3_7_1_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/3_7_1_2.png"/></center>
 </p>
 <p align="justify">
 For case I, we notice that, the targte and observed value Y depends on X and on O but there is no interaction between X and O. By comparison, case II shows X affects O.<br><br>
@@ -5944,7 +5944,7 @@ This expression denotes the observation variables O are independent of unobserve
 
 <b>Identifiability</b><br>
 $\bigstar$ <b>Likelihood can have multiple global maxima.</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/3_7_1_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/3_7_1_3.png"/></center>
 </p>
 <p align="justify">
 $\bigstar$ For example:<br>
@@ -5964,7 +5964,7 @@ The likelihood function doesn't distinguish between the true parameters and othe
 
 <b>Likelihood for Complete Data</b><br>
 Suppose we have 3 training data for a Bayesian network<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/3_7_1_4.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/3_7_1_4.png"/></center>
 </p>
 <p align="justify">
 We can compute its likelihood<br>
@@ -5980,7 +5980,7 @@ $\theta_{Y \mid X}$ is no longer independent of $\theta_{X}$, because there is a
 
 <b>Likelihood for Incomplete Data</b><br>
 x[1] and x[3] are missing<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/3_7_1_5.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/3_7_1_5.png"/></center>
 </p>
 <p align="justify">
 Similarly, we compute its likelihood with ignoring x[1] and x[3]<br>
@@ -5993,12 +5993,12 @@ $\bigstar$ Likelihood doesn't decomposes by variables<br>
 $\bigstar$ Computing likelihood requires inference<br><br>
 
 <b>Multimodal Likelihood</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/3_7_1_6.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/3_7_1_6.png"/></center>
 </p>
 <p align="justify">
 <b>Parameter Correlations</b><br>
 Consider a Bayesian network with two variables as well as their own parameters<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/3_7_1_7.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/3_7_1_7.png"/></center>
 </p>
 <p align="justify">
 $\bigstar$ Total of 8 data instances<br>
@@ -6017,13 +6017,13 @@ $\bigstar$ Raises multiple challenges & issues<br>
 <p align="justify">
 <b>Likelihood with Complete / Incomplete Data</b><br>
 We can plot a diagram about likelihood based on complete data and incomplete data.<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/3_7_2_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/3_7_2_1.png"/></center>
 </p>
 <p align="justify">
 We notice that with incomplete data, likelihood has mutilple local maxima.<br><br>
 
 <b>Gradient Ascent</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/3_7_2_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/3_7_2_2.png"/></center>
 </p>
 <p align="justify">
 $\bigstar$ Follow gradient of likelihood w.r.t. parameters<br>
@@ -6080,7 +6080,7 @@ D. "complete the missing data" corresponds to finding the MAP values of the unob
 
 <b>Example: Bayesian Clustering</b><br>
 Consider a standard naive Bayesian network with a variable Class and a bunch of observed features.<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/3_7_2_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/3_7_2_3.png"/></center>
 </p>
 <p align="justify">
 Suppose Class is missing. So, we compute the sufficient statistics and optimize parameters<br>
@@ -6102,7 +6102,7 @@ $\bigstar$ Cons<br>
 <b>More Formal Intuition</b><br>
 $\bigstar$ Use current point to construct local approximation<br>
 $\bigstar$ Maximize new functions in closed form<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/3_7_3_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/3_7_3_1.png"/></center>
 </p>
 <p align="justify">
 $\bigstar$ d: observed data in instance<br>
@@ -6139,13 +6139,13 @@ $\bigstar$ if $\theta^{t+1} = \theta^{t}$, then $\theta^{t}$ is a stationary poi
 #### 3.7.4 EM in Practice
 <p align="justify">
 <b>EM Convergence in Practice</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/3_7_4_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/3_7_4_1.png"/></center>
 </p>
 <p align="justify">
 The log likelihood increases consistently and monotonically over iterations. Besides, at iteration 10, the log-likelihood cobverges but the parameters' values don't, so likelihood space is not the same as convergence in parameter space.<br><br>
 
 <b>Overfitting</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/3_7_4_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/3_7_4_2.png"/></center>
 </p>
 <p align="justify">
 $\bigstar$ Early stopping using cross validation<br>
@@ -6160,11 +6160,11 @@ D. We stop when the log-likelihood on the test set $D_{test}$ starts to decrease
 Training set performance will never decrease, and you never use your test set for selecting any parameters, only for evaluating performance.<br><br>
 
 <b>Local Optima</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/3_7_4_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/3_7_4_3.png"/></center>
 </p>
 <p align="justify">
 <b>Significance of Local Optima</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/3_7_4_4.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/3_7_4_4.png"/></center>
 </p>
 <p align="justify">
 <b>Initialization if Critical</b><br>
@@ -6185,7 +6185,7 @@ $\bigstar$ Initialization is critical<br><br>
 <p align="justify">
 <b>Discovering User Clusters</b><br>
 A naive Bayesian model<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/3_7_5_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/3_7_5_1.png"/></center>
 </p>
 <p align="justify">
 <b>MSNBC Story Clusters</b><br>
@@ -6208,7 +6208,7 @@ $\bigstar$ Readers of 'Softer' News (12%)<br>
 -- Read Astrology<br><br>
 
 <b>Speech Recognition HMM</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/3_7_5_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/3_7_5_2.png"/></center>
 </p>
 <p align="justify">
 <b>3D Robot Mapping</b><br>
@@ -6247,7 +6247,7 @@ We say data is MAR if whether the data is missing is independent of the missing 
 
 <b>2. Computing Sufficient Statistics</b><br>
 Given the network and data instances shown below,
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/3_7_6_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/3_7_6_1.png"/></center>
 </p>
 <p align="justify">
 how do we compute the expected sufficient statistics for a particular value of the parameters?<br>
@@ -6548,7 +6548,7 @@ Your friend is performing greedy hill-climbing structure search over a network w
 -- Delete an edge<br>
 ---Reverse an edge<br>
 She tells you that after examining $\cal{D}$, she took a single step and got the following graph:<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/3_8_2_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/3_8_2_1.png"/></center>
 </p>
 <p align="justify">
 She also tells you that for the next step she has determined that there is a unique optimal greedy operation o to take. <b>Which of the following steps could 
@@ -6563,7 +6563,7 @@ F. Add edge $B \rightarrow C$<br>
 
 <b>10. Graph Structure Search</b><br>
 Consider performing graph structure search using a decomposable score. Suppose our current candidate is graph G below.<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/3_8_2_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/3_8_2_2.png"/></center>
 </p>
 <p align="justify">
 We want to compute the changes of scores associated with applying three different operations:<br>
@@ -6595,7 +6595,7 @@ D. The log-likelihood (almost) always decreases as K increases.<br>
 
 <b>12. Calculating Likelihood Differences</b><br>
 While doing a hill-climbing search, you run into the following two graphs, and need to choose between them using the likelihood score.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/3_8_2_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/3_8_2_3.png"/></center>
 </p>
 <p align="justify">
 <b>What is the difference in likelihood scores, $\text{score}_{L}(G_{1}: D) - \text{score}_{L}(G_{2}: D)$, given a dataset D of size M?</b> Give your answer in terms of the entropy H and mutual information I. The subscripts below denote empirical values according to D: for example, $H_{D}(X)$ is the empirical entropy of the variable X in the dataset D.<br>
@@ -6618,7 +6618,7 @@ $\bigstar$ PGMs are the marriage of statistics and computer science<br>
 -- Computer science: Data structure and algorithms for exploiting them<br><br>
 
 <b>Declarative Representation</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/4_1_1_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/4_1_1_1.png"/></center>
 </p>
 <p align="justify">
 <b>When PGM?</b><br>
@@ -6637,7 +6637,7 @@ $\bigstar$ Learning algorithm<br>
 -- Learnability imposes modeling constraints<br><br>
 
 <b>Example: Image Segmentation</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/4_1_1_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/4_1_1_2.png"/></center>
 </p>
 <p align="justify">
 $\bigstar$ BNs vs MRFs vs CRFs<br>
@@ -6671,7 +6671,7 @@ $\bigstar$ Much work to be done, both on applications and on foundational method
 
 ## 5. Honor Code
 <p align="justify">
-All Matlab codes are available <a href="https://github.com/chaopan1995/PROJECTS/tree/master/Probabilistic-Graphical-Models-Honor-Code">here</a>.<br><br>
+All Matlab codes are available <a href="https://github.com/chaopan95/PROJECTS/tree/master/Probabilistic-Graphical-Models-Honor-Code">here</a>.<br><br>
 </p>
 
 ### 5.1 Simple BN
@@ -6690,7 +6690,7 @@ $\bigstar$ 6. The more assets a person has and the higher the person’s income,
 $\bigstar$ 7. All other things being equal, reliable people are more likely to be credit-worthy than unreliable people. Likewise, people who have promising future incomes, or who have low ratios of debts to income, are more likely to be credit-worthy than people who do not.<br><br>
 
 Here is the network diagram<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/5_1_1_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/5_1_1_1.png"/></center>
 </p>
 <p align="justify">
 Before implementing our code, it's necessary to introduce a basic data structure to represent factors or probabilities.<br><br>
@@ -6830,17 +6830,17 @@ Be careful that V + E is not equal to all variables. For example, we have a join
 <p align="justify">
 <b>Bayesian Network</b><br>
 We sue template model to construct our Bayesian network for genetic inheritance. We have learned that a phenotype depends on its genotype and a genotype is produced by its two parent genotype.<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/5_2_1_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/5_2_1_1.png"/></center>
 </p>
 <p align="justify">
 <b>Decoupled Bayesian Network</b><br>
 In a decoupled Bayesian network, a phenotype has two parents, one is a copy of genotype1 and the other is a cope of genotype 2. One anvantage of using decoupled Bayesian network is fewer parameters required to calculate.<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/5_2_1_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/5_2_1_2.png"/></center>
 </p>
 <p align="justify">
 <b>Sigmoid CPDs</b><br>
 A sigmoid CPD is used to calculate a probability of phenotype with regards to more than one genotypes.<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/5_2_1_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/5_2_1_3.png"/></center>
 </p>
 <p align="justify">
 <b>Code implementation [78 points]</b><br>
@@ -6989,7 +6989,7 @@ Since Ira's wife has spinal muscular atrophy (SMA), this helps explain away why 
 #### 5.3.1 Programming Assignment
 <p align="justify">
 Markov network is designed for this task. One image represents one characters. Besides, we can always observe one image but we cannot observe its character. We have to establish one model to predict the character and words (a sequence of characters). We have three factors to use: singleton factor, pairwise factor and triplet factors. Singleton factor can represent image-character, but pairwise factor and triplet factor are used to describe a relationship between 2 neighbor characters and 3 consecutive characters because a word is continuous.<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/5_3_1_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/5_3_1_1.png"/></center>
 </p>
 <p align="justify">
 Since I is always observed, Markov networks like these can be seen as modeling the conditional distribution P(C | I) in lieu of the joint distribution P(C, I). They are therefore also known as conditional random fields (CRFs).<br><br>
@@ -7019,7 +7019,7 @@ $\bigstar$ ChooseTopSimilarityFactors.m<br>
 <p align="justify">
 <b>Calculating Expected Utility Given A Decision Rule</b><br>
 U is a utility node, D is decision node and others are Bayesian network nodes.<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/5_4_1_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/5_4_1_1.png"/></center>
 </p>
 <p align="justify">
 $\delta$-rule is a deterministic CPD. For example, D depends only on variable T (test for ARVD). Our decision rule is to have a surgery if $T = t^{2}$ and to not have a surgery if $T = t^{1}$.<br>
@@ -7390,7 +7390,7 @@ Then we pick up the class with the highest probability. Besides, this conditiona
 We seek the maximum likelihood CLG parameters given ESS.<br><br>
 
 <b>HMM action models</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/PGM/5_9_1_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/5_9_1_1.png"/></center>
 </p>
 <p align="justify">
 One action can be composed of more than 1 pose (each pose has 10 bodies parts). Besides, each pose can be regarded as a state, but the state isn't observed (in other word, hidden). So, we take HMM model to predict action class. In this programming, we have 3 action categories: clap, high kick, low kick.<br><br>
