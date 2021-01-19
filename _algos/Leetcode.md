@@ -2653,6 +2653,43 @@ public:
 };
 {% endhighlight %}
 
+## 0096. Unique Binary Search Trees
+<p align="justify">
+Given an integer n, return the number of structurally unique BST's (binary search trees) which has exactly n nodes of unique values from 1 to n.<br><br>
+
+<b>Example:</b><br>
+Input: n = 3<br>
+Output: 5<br><br>
+
+Input: n = 1<br>
+Output: 1<br><br>
+
+<b>Constraints:</b><br>
+1 <= n <= 19<br><br>
+
+<b>Solution:</b>
+$$
+C_{n} =
+\begin{cases}
+1, &\quad n = 0 \\
+\frac{2(2n+1)}{n+2} C_{n-1}, &\quad n = 1, 2, 3, ...
+\end{cases}
+$$
+</p>
+{% highlight C++ %}
+class Solution {
+public:
+    int numTrees(int n) {
+        long C = 1;
+        for (int i = 0; i < n; i++)
+        {
+            C = C * 2 * (2 * i + 1) / (i + 2) ;
+        }
+        return int(C);
+    }
+};
+{% endhighlight %}
+
 ## 0121. Best Time to Buy and Sell Stock
 <p align="justify">
 Say you have an array for which the ith element is the price of a given stock on day i. If you were only permitted to complete at most one transaction (i.e., buy one and sell one share of the stock), design an algorithm to find the maximum profit. Note that you cannot sell a stock before you buy one.<br><br>
