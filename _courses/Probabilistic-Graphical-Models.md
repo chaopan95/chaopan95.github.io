@@ -2141,7 +2141,7 @@ B. Impossible to tell without more information on the exact grades observed.<br>
 C. A fully connected bipartite graph where instantiations of the Difficulty variables are on one side and instantiations of the Intelligence variables are on the other side.<br>
 D. A graph over instantiations of the Difficulty variables and instantiations of the Intelligence variables, not necessarily bipartite; there could be edges between different Difficulty variables, and there could also be edges between different Intelligence variables.<br>
 E. A bipartite graph where instantiations of the Difficulty variables are on one side and instantiations of the Intelligence variables are on the other side. In general, this graph will not be fully connected.<br>
-<b>Answer:</b> C.<br>
+<b>Answer:</b> C.<br><br>
 
 <b>5. Grounded Plates.</b><br>
 Which of the following is a valid grounded model for the plate shown? You may select 1 or more options.
@@ -2151,7 +2151,7 @@ Which of the following is a valid grounded model for the plate shown? You may se
 A. (a)<br>
 B. (b)<br>
 C. (c)<br>
-<b>Answer:</b> C.<br>
+<b>Answer:</b> C.<br><br>
 
 <b>6. Independencies in Markov Networks</b><br>
 Consider the following set of factors: $\Phi = \{\Phi_1(A, B), \Phi_2(B, C, D), \Phi_3(D), \Phi_4(C, E, F)\}$. Now, consider a Markov Network G such that $P_\Phi$ factorizes over G. <b>Which of the following is an independence statement that holds in the network? You may select 1 or more options.</b><br>
