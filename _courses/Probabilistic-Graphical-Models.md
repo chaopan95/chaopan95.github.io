@@ -1186,14 +1186,19 @@ Here, we have a set of factors that we used to construct this distribution
   <tr><td>$a^{1}$</td><td>$b^{0}$</td><td>0.14</td></tr>
   <tr><td>$a^{1}$</td><td>$b^{1}$</td><td>0.04</td></tr>
 </table>
-<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_5_1_4.png"/></center>
 </p>
 <p align="justify">
 The probability of A and B is defines by a factor $\Phi = \{ \phi_{1}, \phi_{2}, \phi_{3}, \phi_{4} \}$. We note it $P_{\Phi}(A, B)$<br><br>
 
 We can see $\Phi$ respect that A and B like to agree with each other.
-$$\phi_{1}(A = a^{0}, B = b^{0}) = 30, \quad \phi_{1}(A = a^{1}, B = b^{1}) = 10$$
-$$P(A = a^{0}, B = b^{0}) = 0.13, \quad P(A = a^{1}, B = b^{1}) = 0.04$$
+$$
+\begin{aligned}
+& \phi_{1}(A = a^{0}, B = b^{0}) = 30 \\
+& \phi_{1}(A = a^{1}, B = b^{1}) = 10 \\
+& P(A = a^{0}, B = b^{0}) = 0.13 \\
+& P(A = a^{1}, B = b^{1}) = 0.04
+\end{aligned}
+$$
 
 Why do we have the highest propability when $a^{0}b^{1}$? B really likes to aggree with C and A and D are closely tied, while C and D strongly disagree. Now all three of these factors are actually stronger. So, it doesn't work that D agrees with A, A agrees with B, B agrees with C and C disagrees with D. In other word, somewhere in this loop has to be broken. The place where it gets broken is A and B and it's a week factor.<br><br>
 
