@@ -2216,7 +2216,7 @@ For Bayesian network
 $$\sum_{C, D, I, G, S, L, J, H} \phi_{C}(C) \cdot \phi_{D}(C, D) \cdot \phi_{I}(I) \cdot \phi_{G}(G, I, D) \cdot \phi_{S}(S, I) \cdot \phi_{L}(L, G) \cdot \phi_{J}(J, L, S) \cdot \phi_{H}(H, G, J)$$
 
 For Markov network
-$$\sum_{A, B, C, D} = \phi_{1}(A, B) \cdot \phi_{2}(B, C) \cdot \phi_{3}(C, D) \cdot \phi_{4}(A, D)$$
+$$\sum_{A, B, C, D} \phi_{1}(A, B) \cdot \phi_{2}(B, C) \cdot \phi_{3}(C, D) \cdot \phi_{4}(A, D)$$
 
 <b>Evidence: Reduced Factors</b><br>
 $$P(Y \mid E=e) = \frac{P(Y, E=e)}{P(E=e)}$$
