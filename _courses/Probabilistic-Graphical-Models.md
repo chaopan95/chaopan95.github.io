@@ -1296,7 +1296,7 @@ Normalized conditional distribution
 $$P_{\Phi}(Y \mid X) = \frac{1}{Z_{\Phi}(X)} \widetilde{P}_{\Phi}(X, Y)$$
 
 Consider a new factor $\phi(\mathbf{D})$ such that $\mathbf{D} \subseteq X$.<b>What is the effect of adding this factor $\phi$ on the distribution P(Y∣X)?</b><br>
-A. Introducing \phi can change the distribution P(Y∣X).<br>
+A. Introducing $\phi$ can change the distribution P(Y∣X).<br>
 B. $\phi$ multiplies both the unnormalized measure and the partition function and therefore cancels out, so P(Y∣X) remains unchanged.<br>
 C. $\phi$ affects only the partition function and therefore P(Y∣X) remains unchanged.<br>
 D. Introducing $\phi$ doesn't change P(Y∣X) only if D is a single variable.<br>
