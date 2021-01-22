@@ -1179,6 +1179,13 @@ D. None of the above<br>
 <b>Answer:</b> D.<br><br>
 
 Here, we have a set of factors that we used to construct this distribution
+<table class="c">
+  <tr><th>A</th><th>B</th><th>Prob</th></tr>
+  <tr><td>$a^{0}$</td><td>$b^{0$</td><td>0.13</td></tr>
+  <tr><td>$a^{0}$</td><td>$b^{1$</td><td>0.69</td></tr>
+  <tr><td>$a^{1}$</td><td>$b^{0$</td><td>0.14</td></tr>
+  <tr><td>$a^{1}$</td><td>$b^{1$</td><td>0.04</td></tr>
+</table>
 <center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/PGM/1_5_1_4.png"/></center>
 </p>
 <p align="justify">
