@@ -108,7 +108,7 @@ Conditional probability $P(I, D \mid g^{1})$<br>
 </table><br>
 </p>
 <p align="justify">
-Marginalization $\sum_{I} P(I \mid D) = P(D)$<br>
+Marginalization $\sum_{I} P(I, D) = P(D)$<br>
 <table class="a">
   <tr><th>D</th><th>Prob</th></tr>
   <tr><td>$d^{0}$</td><td>0.846</td></tr>
