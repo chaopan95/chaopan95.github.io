@@ -988,7 +988,7 @@ A solution set is:<br>
 $$
 \begin{matrix}
 -4 & -1 & -1 & 0 & 1 & 2 \\
-\uparrow & \uparrow &  &  &  & \uparrow \\
+\Uparrow & \Uparrow &  &  &  & \Uparrow \\
 i & j &   &  &  & k
 \end{matrix}
 $$
