@@ -278,26 +278,26 @@ This problem requires a time complexity in <b>O(log(m+n))</b>, which determines 
 
 $\bigstar$ Cut two sorted arrays<br>
 In fact, median is a statistique term, which means a value in middle position. If we want acquire a median value in one sorted array, it is easy to take the value in middlle position.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/ALGOS/Leetcode/1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/ALGOS/Leetcode/1.png"/></center>
 </p>
 <p align="justify">
 For example, the cutting line split an array into two parts with same size, l1 and r1 are left value and right value of cut postion.<br>
 Left example is odd array, l1 = r1 = 3, while right example is even array, l1 = 3, r1 = 4.<br><br>
 Similarly, we can generalize this to two arrays. If we can find such a cut for two arrays that the number of left cut and the number of right cut are equal, we can determine a median value for the 2 arrays. For example, we determine cut position k1, k2 for A, B respectively.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/ALGOS/Leetcode/2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/ALGOS/Leetcode/2.png"/></center>
 $$\text{Median} = \frac{\text{max}(l1, l2) + \text{min}(r1, r2)}{2} = 4$$
 
 $\bigstar$ Unify odd and even number<br>
 According to traditional way, we have to treat case-by-case: it is different to calculate median value for odd array and even array.<br>
 In order to conquer this problem, we introuce a virtual placeholder. For example, an original array A is <b>1 2 3 4 5</b> and we insert a virtual placeholder <b>#</b> into A, which becomes A' = <b>#1#2#3#4#5#</b>. We see, lenghth of the original array is 5, while length of the new array is 5*2+1. If we cut A' at position 4(5th character from left),
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/ALGOS/Leetcode/3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/ALGOS/Leetcode/3.png"/></center>
 </p>
 <p align="justify">
 With this method, it's easy to get value in the original. Cut position c = 4
 $$l1 = A[(c-1)/2] = A[1] = 2, r1 = A[c/2] = A[2] = 3$$
 
 If cut position for A' is in first # or last #, it will cause a overflow problem.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/ALGOS/Leetcode/4.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/ALGOS/Leetcode/4.png"/></center>
 </p>
 <p align="justify">
 As the example shows, if cut position at first #, left = min(A[0], B[0]), while cut position at last #, right = max(A[-1], B[-1]).
@@ -712,7 +712,7 @@ public:
 Given n non-negative integers a1, a2, ..., an , where each represents a point at coordinate (i, ai). n vertical lines are drawn such that the two endpoints of line i is at (i, ai) and (i, 0). Find two lines, which together with x-axis forms a container, such that the container contains the most water.<br><br>
 
 Note: You may not slant the container and n is at least 2.<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/ALGOS/Leetcode/5.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/ALGOS/Leetcode/5.png"/></center>
 </p>
 <p align="justify">
 The above vertical lines are represented by array [1,8,6,2,5,4,8,3,7]. In this case, the max area of water (blue section) the container can contain is 49.<br><br>
@@ -985,7 +985,7 @@ A solution set is:<br>
 ]<br><br>
 
 <b>Solution:</b>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/ALGOS/Leetcode/6.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/ALGOS/Leetcode/6.png"/></center>
 </p>
 <p align="justify">
 1) sort the array<br>
