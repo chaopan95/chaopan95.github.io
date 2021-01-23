@@ -985,9 +985,14 @@ A solution set is:<br>
 ]<br><br>
 
 <b>Solution:</b>
-<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/ALGOS/Leetcode/6.png"/></center>
-</p>
-<p align="justify">
+$$
+\begin{matrix}
+-4 & -1 & -1 & 0 & 1 & 2 \\
+\uparrow & \uparrow &  &  &  & \uparrow \\
+i & j &   &  &  & k
+\end{matrix}
+$$
+
 1) sort the array<br>
 2) set 3 position variable i, j, k: i is from 0 to n-3, j is initialised as i+1 and k is n-1 initially.<br>
 3) compute sum of nums for i, j, k. if sum < 0, j++; if sum > 0, k--; if sum is 0, append this tuple into our resuslt array. Conitnue to move j rightward until no repetiton and continue to move k until no duplicate.<br>
