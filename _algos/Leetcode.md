@@ -2479,13 +2479,13 @@ public:
 <p align="justify">
 Given an unsorted integer array, find the smallest missing positive integer.<br><br>
 
-<b>Example 1:</b><br>
+<b>Example:</b><br>
 Input: [1,2,0]<br>
-Output: 3<br>
-<b>Example 2:</b><br>
+Output: 3<br><br>
+
 Input: [3,4,-1,1]<br>
-Output: 2<br>
-<b>Example 3:</b><br>
+Output: 2<br><br>
+
 Input: [7,8,9,11,12]<br>
 Output: 1<br><br>
 
