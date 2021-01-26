@@ -2540,6 +2540,80 @@ public:
 };
 {% endhighlight %}
 
+## 0040. Combination Sum II*
+<p align="justify">
+Given a collection of candidate numbers (candidates) and a target number (target), find all unique combinations in candidates where the candidate numbers sum to target. Each number in candidates may only be used once in the combination. Note: The solution set must not contain duplicate combinations.<br><br>
+
+<b>Example:</b><br>
+Input: candidates = [10,1,2,7,6,1,5], target = 8<br>
+Output: <br>
+[<br>
+[1,1,6],<br>
+[1,2,5],<br>
+[1,7],<br>
+[2,6]<br>
+]<br><br>
+
+Input: candidates = [2,5,2,1,2], target = 5<br>
+Output: <br>
+[<br>
+[1,2,2],<br>
+[5]<br>
+]<br><br>
+
+<b>Constraints:</b><br>
+1 <= candidates.length <= 100<br>
+1 <= candidates[i] <= 50<br>
+1 <= target <= 30<br><br>
+
+<b>Solution:</b>
+</p>
+{% highlight C++ %}
+class Solution {
+public:
+    vector<vector<int>> combinationSum2(vector<int>& candidates, int target) {
+        vector<vector<int>> res;
+        vector<int> arr;
+        int n = int(candidates.size());
+        if (n == 0) { return res; }
+        map<int, int> dict;
+        map<int, int>::iterator iter;
+        for (int num: candidates)
+        {
+            iter = dict.find(num);
+            if (iter == dict.end()) { dict[num] = 1; }
+            else { dict[num]++; }
+        }
+        vector<pair<int, int>> nums;
+        int size = 0;
+        for (iter = dict.begin(); iter != dict.end(); iter++)
+        {
+            nums.emplace_back(iter->first, iter->second);
+            size++;
+        }
+        DFS(res, arr, candidates, target, 0, size, nums);
+        return res;
+    }
+    void DFS(vector<vector<int>> &res, vector<int> &arr,
+             vector<int> candidates, int target, int idx,
+             int size, vector<pair<int, int>> nums)
+    {
+        if (target <= 0 || idx >= size)
+        {
+            if (target == 0) { res.push_back(arr); }
+            return;
+        }
+        for (int j = 1; j <= nums[idx].second; j++)
+        {
+            for (int k = 0; k < j; k++) { arr.push_back(nums[idx].first); }
+            DFS(res, arr, candidates, target-j*nums[idx].first, idx+1, size, nums);
+            for (int k = 0; k < j; k++) { arr.pop_back(); }
+        }
+        DFS(res, arr, candidates, target, idx+1, size, nums);
+    }
+};
+{% endhighlight %}
+
 ## 0041. First Missing Positive
 <p align="justify">
 Given an unsorted integer array, find the smallest missing positive integer.<br><br>
