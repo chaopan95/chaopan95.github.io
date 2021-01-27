@@ -65,3 +65,5 @@ table.d {
 <p align="justify">
 <a href="https://chaopan95.github.io/algos/Leetcode/#0072-edit-distance"> Edit Distance</a><br>
 </p>
+
+## 3. Divider and Conquer
