@@ -39,6 +39,11 @@ If $\text{LD}_{a, b}(i, j) = \text{LD}_{a, b}(i, j-1) + 1$, insert $b_{j}$ at $a
 If $\text{LD}_{a, b}(i, j) = \text{LD}_{a, b}(i-1, j-1) + 1_{a_{i} \neq b_{j}}$, replace $a_{i}$ with $b_{j}$
 </p>
 {% highlight C++ %}
+int min(int a, int b, int c)
+{
+    int d = a < b ? a : b;
+    return d < c ? d : c;
+}
 int editDistance(string word1, string word2) {
     // write code here
     int n1 = int(word1.length()), n2 = int(word2.length());
@@ -63,11 +68,6 @@ int editDistance(string word1, string word2) {
     for (int i = 0; i <= n1; i++) { delete []dp[i]; }
     delete []dp;
     return res;
-}
-int min(int a, int b, int c)
-{
-    int d = a < b ? a : b;
-    return d < c ? d : c;
 }
 {% endhighlight %}
 
