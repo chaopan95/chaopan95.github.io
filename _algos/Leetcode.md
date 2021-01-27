@@ -2750,6 +2750,46 @@ public:
 };
 {% endhighlight %}
 
+## 0070. Climbing Stairs
+<p align="justify">
+You are climbing a staircase. It takes n steps to reach the top. Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?<br><br>
+
+<b>Example:</b><br>
+Input: n = 2<br>
+Output: 2<br>
+Explanation: There are two ways to climb to the top.<br>
+1. 1 step + 1 step<br>
+2. 2 steps<br><br>
+
+Input: n = 3<br>
+Output: 3<br>
+Explanation: There are three ways to climb to the top.<br>
+1. 1 step + 1 step + 1 step<br>
+2. 1 step + 2 steps<br>
+3. 2 steps + 1 step<br><br>
+
+<b>Constraints:</b><br>
+1 <= n <= 45<br><br>
+
+<b>Solution:</b>
+</p>
+{% highlight C++ %}
+class Solution {
+public:
+    int climbStairs(int n) {
+        int a = 1, b = 2;
+        if (n <= 2) { return n; }
+        for (int i = 3; i <= n; i++)
+        {
+            int c = a + b;
+            a = b;
+            b = c;
+        }
+        return b;
+    }
+};
+{% endhighlight %}
+
 ## 0072. Edit Distance
 <p align="justify">
 Given two strings word1 and word2, return the minimum number of operations required to convert word1 to word2. You have the following three operations permitted on a word:<br>
