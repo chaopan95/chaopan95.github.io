@@ -2614,7 +2614,7 @@ public:
 };
 {% endhighlight %}
 
-## 0041. First Missing Positive
+## 0041. First Missing Positive*
 <p align="justify">
 Given an unsorted integer array, find the smallest missing positive integer.<br><br>
 
@@ -2632,29 +2632,40 @@ Output: 1<br><br>
 Your algorithm should run in O(n) time and uses constant extra space.<br><br>
 
 <b>Solution:</b>
+$$
+\begin{matrix}
+3 & 4 & -1 & 1 \\
+ & & \Downarrow & \\
+3 & 4 & 5 & 1 \\
+ & & \Downarrow & \\
+3 & 4 & -5 & 1 \\
+3 & 4 & -5 & -1 \\
+-3 & 4 & -5 & -1
+\end{matrix}
+$$
 </p>
 {% highlight C++ %}
 class Solution {
 public:
     int firstMissingPositive(vector<int>& nums) {
-        int len = int(nums.size());
-        if (len == 0) { return 1; }
-        vector<int> arr;
-        for (int i = 0; i < len; i++)
+        int n = int(nums.size());
+        for (int i = 0; i < n; i++)
         {
-            arr.push_back(nums[i]);
+            if (nums[i] <= 0) { nums[i] = n + 1; }
         }
-        sort(arr.begin(), arr.end());
-        int res = 1;
-        if (arr[0] > 1) { return 1; }
-        if (arr[0] == 1) { res++; }
-        for (int i = 1; i < len; i++)
+        for (int i = 0; i < n; i++)
         {
-            if (arr[i] <= 0 || arr[i] == arr[i-1]) { continue; }
-            if (arr[i] != res) { return res; }
-            res++;
+            int num = abs(nums[i]);
+            if (num <= n)
+            {
+                nums[num-1] = -abs(nums[num-1]);
+            }
         }
-        return res;
+        for (int i = 0; i < n; i++)
+        {
+            if (nums[i] > 0) { return i + 1; }
+        }
+        return n + 1;
     }
 };
 {% endhighlight %}
