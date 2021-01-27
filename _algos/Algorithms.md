@@ -60,3 +60,8 @@ table.d {
 <a href="https://chaopan95.github.io/algos/Leetcode/#0039-combination-sum"> Combination Sum</a><br>
 <a href="https://chaopan95.github.io/algos/Leetcode/#0040-combination-sum-ii"> Combination Sum II</a><br>
 </p>
+
+## 2. Dynamic Programming
+<p align="justify">
+<a href="https://chaopan95.github.io/algos/Leetcode/#0072-edit-distance"> Edit Distance</a><br>
+</p>
