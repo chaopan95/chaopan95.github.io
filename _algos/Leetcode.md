@@ -2739,6 +2739,66 @@ public:
 };
 {% endhighlight %}
 
+## 0072. Edit Distance
+<p align="justify">
+Given two strings word1 and word2, return the minimum number of operations required to convert word1 to word2. You have the following three operations permitted on a word:<br>
+Insert a character<br>
+Delete a character<br>
+Replace a character<br><br>
+
+<b>Example:</b><br>
+Input: word1 = "horse", word2 = "ros"<br>
+Output: 3<br>
+Explanation: <br>
+horse -> rorse (replace 'h' with 'r')<br>
+rorse -> rose (remove 'r')<br>
+rose -> ros (remove 'e')<br><br>
+
+Input: word1 = "intention", word2 = "execution"<br>
+Output: 5<br>
+Explanation: <br>
+intention -> inention (remove 't')<br>
+inention -> enention (replace 'i' with 'e')<br>
+enention -> exention (replace 'n' with 'x')<br>
+exention -> exection (replace 'n' with 'c')<br>
+exection -> execution (insert 'u')<br><br>
+
+<b>Constraints:</b><br>
+0 <= word1.length, word2.length <= 500<br>
+word1 and word2 consist of lowercase English letters.<br><br>
+
+<b>Solution:</b>
+</p>
+{% highlight C++ %}
+class Solution {
+public:
+    int minDistance(string word1, string word2) {
+        string s1 = word1, s2 = word2;
+        int n1 = int(s1.length()), n2 = int(s2.length());
+        int **dp = new int *[n1+1];
+        for (int i = 0; i <= n1; i++) { dp[i] = new int [n2+1]{}; }
+        for (int i = 0; i <= n1; i++)
+        {
+            for (int j = 0; j <= n2; j++)
+            {
+                if (i == 0 || j == 0) { dp[i][j] = max(i, j); }
+                else
+                {
+                    int a = dp[i-1][j] + 1;
+                    int b = dp[i][j-1] + 1;
+                    int c = dp[i-1][j-1] + (s1[i-1] != s2[j-1]);
+                    dp[i][j] = min(min(a, b), c);
+                }
+            }
+        }
+        int ans = dp[n1][n2];
+        for (int i = 0; i <= n1; i++) { delete []dp[i]; }
+        delete []dp;
+        return ans;
+    }
+};
+{% endhighlight %}
+
 ## 0094. Binary Tree Inorder Traversal*
 <p align="justify">
 Given the root of a binary tree, return the inorder traversal of its nodes' values.<br><br>
