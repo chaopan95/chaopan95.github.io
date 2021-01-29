@@ -327,6 +327,15 @@ In order to conquer this problem, we introuce a virtual placeholder. For example
 <center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/ALGOS/Leetcode/3.png"/></center>
 </p>
 <p align="justify">
+$$
+\begin{matrix}
+ & & & & \text{cut} & & & & & \\
+ & & & & \Downarrow & & & & & \\
+\# & 1 & \# & 2 & \# & 3 & \# & 4 & \# & 5 \\
+ & & & & \Uparrow & & & & & \\
+ & & & & \text{cut} & & & & &
+\end{matrix}
+$$
 With this method, it's easy to get value in the original. Cut position c = 4
 $$l1 = A[(c-1)/2] = A[1] = 2, r1 = A[c/2] = A[2] = 3$$
 
@@ -334,6 +343,23 @@ If cut position for A' is in first # or last #, it will cause a overflow problem
 <center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/ALGOS/Leetcode/4.png"/></center>
 </p>
 <p align="justify">
+$$
+\begin{matrix}
+ & & & &  & & \text{cut} & & & & &  & \\
+ & & & &  & & \Downarrow & & & & &  & \\
+\# & 1 & \# & 2 & \#  & 3 & \# & & & & & & \\
+\\
+ & & & & & & \# & 4 & \# & 5 & \# & 6 & \# \\
+ & & & &  & & \Uparrow & & & & &  & \\
+ & & & &  & & \text{cut} & & & & &  &
+\end{matrix}
+\quad \quad
+\begin{matrix}
+l_{1} \text{ = 3, } r_{1} \text{ = 6} \\
+\\
+l_{2} \text{ = 1, } r_{2} \text{ = 4} \\
+\end{matrix}
+$$
 As the example shows, if cut position at first #, left = min(A[0], B[0]), while cut position at last #, right = max(A[-1], B[-1]).
 </p>
 {% highlight C++ %}
