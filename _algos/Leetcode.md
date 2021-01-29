@@ -301,7 +301,25 @@ For example, the cutting line split an array into two parts with same size, l1 a
 Left example is odd array, l1 = r1 = 3, while right example is even array, l1 = 3, r1 = 4.<br><br>
 Similarly, we can generalize this to two arrays. If we can find such a cut for two arrays that the number of left cut and the number of right cut are equal, we can determine a median value for the 2 arrays. For example, we determine cut position k1, k2 for A, B respectively.
 <center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/ALGOS/Leetcode/2.png"/></center>
-$$\text{Median} = \frac{\text{max}(l1, l2) + \text{min}(r1, r2)}{2} = 4$$
+$$
+\begin{matrix}
+ & & & \text{cut} & & & \\
+ & & & \Downarrow & & & \\
+1 & & 3 & & 5 & & 7\\
+\\
+ & 2 & & 4 & & 6 \\
+ & & & \Uparrow & & \\
+ & & & \text{cut} & & &
+\end{matrix}
+\quad \quad
+\begin{matrix}
+l_{1} \text{ = 3, } r_{1} \text{ = 5} \\
+\\
+l_{2} \text{ = 4, } r_{2} \text{ = 4} \\
+\end{matrix}
+\Rightarrow
+\text{Median} = \frac{\max(l_{1}, l_{2}) + \min(r_{1}, r_{2})}{2} = 4
+$$
 
 $\bigstar$ Unify odd and even number<br>
 According to traditional way, we have to treat case-by-case: it is different to calculate median value for odd array and even array.<br>
