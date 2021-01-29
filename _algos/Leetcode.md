@@ -3110,32 +3110,46 @@ The number of nodes in the tree is in the range [0, 100].<br>
 <b>Solution:</b>
 </p>
 {% highlight C++ %}
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
- *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
- * };
- */
 class Solution {
 public:
     vector<int> preorderTraversal(TreeNode* root) {
         vector<int> ans;
-        preOrder(root, ans);
+        if (root == nullptr) { return ans; }
+        TreeNode *curNode = root;
+        stack<TreeNode*> st;
+        st.push(root);
+        while (!st.empty())
+        {
+            curNode = st.top();
+            st.pop();
+            ans.push_back(curNode->val);
+            if (curNode->right != nullptr) { st.push(curNode->right); }
+            if (curNode->left != nullptr) { st.push(curNode->left); }
+        }
         return ans;
     }
-    void preOrder(TreeNode *root, vector<int> &ans)
-    {
-        if (root != nullptr)
+};
+
+class Solution {
+public:
+    vector<int> preorderTraversal(TreeNode* root) {
+        vector<int> ans;
+        if (root == nullptr) { return ans; }
+        TreeNode *curNode = root;
+        stack<TreeNode*> st;
+        while (true)
         {
-            ans.emplace_back(root->val);
-            preOrder(root->left, ans);
-            preOrder(root->right, ans);
+            while (curNode != nullptr)
+            {
+                ans.push_back(curNode->val);
+                if (curNode->right != nullptr) { st.push(curNode->right); }
+                curNode = curNode->left;
+            }
+            if (st.empty()) { break; }
+            curNode = st.top();
+            st.pop();
         }
+        return ans;
     }
 };
 {% endhighlight %}
