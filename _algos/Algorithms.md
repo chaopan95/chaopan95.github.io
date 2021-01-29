@@ -55,15 +55,27 @@ table.d {
 </style>
 
 
-## 1. Backtracking
+## 1. Algorithms
+### 1.1 Backtracking
 <p align="justify">
 <a href="https://chaopan95.github.io/algos/Leetcode/#0039-combination-sum"> Combination Sum</a><br>
 <a href="https://chaopan95.github.io/algos/Leetcode/#0040-combination-sum-ii"> Combination Sum II</a><br>
 </p>
 
-## 2. Dynamic Programming
+### 1.2 Dynamic Programming
 <p align="justify">
 <a href="https://chaopan95.github.io/algos/Leetcode/#0072-edit-distance"> Edit Distance</a><br>
 </p>
 
-## 3. Divider and Conquer
+### 1.3 Divider and Conquer
+
+
+## 2. Data Structures
+### 2.1 Vector
+### 2.2 List
+### 2.3 Stack
+### 2.4 Queue
+### 2.5 Tree
+### 2.6 Graph
+### 2.7 Heapd
+### 2.8 String
