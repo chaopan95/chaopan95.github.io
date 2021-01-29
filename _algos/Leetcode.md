@@ -295,12 +295,10 @@ $$
  & &  & &  & \text{cut} &  & &  & &
 \end{matrix} \quad
 $$
-</p>
-<p align="justify">
+
 For example, the cutting line split an array into two parts with same size, l1 and r1 are left value and right value of cut postion.<br>
 Left example is odd array, l1 = r1 = 3, while right example is even array, l1 = 3, r1 = 4.<br><br>
 Similarly, we can generalize this to two arrays. If we can find such a cut for two arrays that the number of left cut and the number of right cut are equal, we can determine a median value for the 2 arrays. For example, we determine cut position k1, k2 for A, B respectively.
-<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/ALGOS/Leetcode/2.png"/></center>
 $$
 \begin{matrix}
  & & & \text{cut} & & & \\
@@ -323,26 +321,23 @@ $$
 
 $\bigstar$ Unify odd and even number<br>
 According to traditional way, we have to treat case-by-case: it is different to calculate median value for odd array and even array.<br>
-In order to conquer this problem, we introuce a virtual placeholder. For example, an original array A is <b>1 2 3 4 5</b> and we insert a virtual placeholder <b>#</b> into A, which becomes A' = <b>#1#2#3#4#5#</b>. We see, lenghth of the original array is 5, while length of the new array is 5*2+1. If we cut A' at position 4(5th character from left),
-<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/ALGOS/Leetcode/3.png"/></center>
-</p>
-<p align="justify">
+In order to conquer this problem, we introuce a virtual placeholder. For example, an original array A is <b>1 2 3 4 5</b> and we insert a virtual placeholder <b>#</b> into A, which becomes A' = <b>#1#2#3#4#5#</b>. We see, lenghth of the original array is 5, while length of the new array is 5*2+1. If we cut A' at position 4(5th character from left). With this method, it's easy to get value in the original. Cut position c = 4
 $$
+\begin{aligned}
+&
 \begin{matrix}
  & & & & \text{cut} & & & & & \\
  & & & & \Downarrow & & & & & \\
-\# & 1 & \# & 2 & \# & 3 & \# & 4 & \# & 5 \\
+\# & 1 & \# & 2 & \# & 3 & \# & 4 & \# & 5 & \# \\
  & & & & \Uparrow & & & & & \\
  & & & & \text{cut} & & & & &
-\end{matrix}
+\end{matrix} \\
+& l_{1} = A[\frac{c-1}{2}] = A[1] = 2 \\
+& r_{1} = A[\frac{c}{2}] = A[2] = 3
+\end{aligned}
 $$
-With this method, it's easy to get value in the original. Cut position c = 4
-$$l1 = A[(c-1)/2] = A[1] = 2, r1 = A[c/2] = A[2] = 3$$
 
 If cut position for A' is in first # or last #, it will cause a overflow problem.
-<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/ALGOS/Leetcode/4.png"/></center>
-</p>
-<p align="justify">
 $$
 \begin{matrix}
  & & & &  & & \text{cut} & & & & &  & \\
