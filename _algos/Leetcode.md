@@ -278,7 +278,23 @@ This problem requires a time complexity in <b>O(log(m+n))</b>, which determines 
 
 $\bigstar$ Cut two sorted arrays<br>
 In fact, median is a statistique term, which means a value in middle position. If we want acquire a median value in one sorted array, it is easy to take the value in middlle position.
-<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/ALGOS/Leetcode/1.png"/></center>
+$$
+\begin{matrix}
+ & &  & & \text{cut} & &  & &  \\
+ & &  & & \Downarrow & &  & &  \\
+1 & & 2 & & 3 & & 4 & & 5 \\
+ & &  & & \Uparrow & &  & &  \\
+ & &  & & \text{cut} & &  & &
+\end{matrix}
+\quad \quad \quad \text{or} \quad \quad \quad
+\begin{matrix}
+ & &  & &  & \text{cut} &  & &  & & \\
+ & &  & &  & \Downarrow &  & &  & & \\
+1 & & 2 & & 3 & & 4 & & 5 & & 6\\
+ & &  & &  & \Uparrow &  & &  & & \\
+ & &  & &  & \text{cut} &  & &  & &
+\end{matrix} \quad
+$$
 </p>
 <p align="justify">
 For example, the cutting line split an array into two parts with same size, l1 and r1 are left value and right value of cut postion.<br>
