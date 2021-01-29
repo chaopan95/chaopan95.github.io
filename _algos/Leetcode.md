@@ -263,12 +263,11 @@ public:
 <p align="justify">
 There are two sorted arrays nums1 and nums2 of size m and n respectively. Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)). You may assume nums1 and nums2 cannot be both empty.<br><br>
 
-<b>Example 1:</b><br>
+<b>Example:</b><br>
 nums1 = [1, 3]<br>
 nums2 = [2]<br>
 The median is 2.0<br><br>
 
-<b>Example 2:</b><br>
 nums1 = [1, 2]<br>
 nums2 = [3, 4]<br>
 The median is (2 + 3)/2 = 2.5<br><br>
