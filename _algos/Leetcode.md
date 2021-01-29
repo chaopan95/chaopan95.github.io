@@ -3083,6 +3083,63 @@ public:
 };
 {% endhighlight %}
 
+## 0144. Binary Tree Preorder Traversal
+<p align="justify">
+Given the root of a binary tree, return the preorder traversal of its nodes' values.<br><br>
+
+<b>Example:</b><br>
+Input: root = [1,null,2,3]<br>
+Output: [1,2,3]<br><br>
+
+Input: root = []<br>
+Output: []<br><br>
+
+Input: root = [1]<br>
+Output: [1]<br><br>
+
+Input: root = [1,2]<br>
+Output: [1,2]<br><br>
+
+Input: root = [1,null,2]<br>
+Output: [1,2]<br><br>
+
+<b>Constraints:</b><br>
+The number of nodes in the tree is in the range [0, 100].<br>
+-100 <= Node.val <= 100<br><br>
+
+<b>Solution:</b>
+</p>
+{% highlight C++ %}
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    vector<int> preorderTraversal(TreeNode* root) {
+        vector<int> ans;
+        preOrder(root, ans);
+        return ans;
+    }
+    void preOrder(TreeNode *root, vector<int> &ans)
+    {
+        if (root != nullptr)
+        {
+            ans.emplace_back(root->val);
+            preOrder(root->left, ans);
+            preOrder(root->right, ans);
+        }
+    }
+};
+{% endhighlight %}
+
 ## 0543. Diameter of Binary Tree
 <p align="justify">
 Given a binary tree, you need to compute the length of the diameter of the tree. The diameter of a binary tree is the length of the longest path between any two nodes in a tree. This path may or may not pass through the root.<br><br>
