@@ -833,24 +833,20 @@ X can be placed before L (50) and C (100) to make 40 and 90.<br>
 C can be placed before D (500) and M (1000) to make 400 and 900.<br>
 Given an integer, convert it to a roman numeral. Input is guaranteed to be within the range from 1 to 3999.<br><br>
 
-<b>Example 1:</b><br>
+<b>Example:</b><br>
 Input: 3<br>
 Output: "III"<br><br>
 
-<b>Example 2:</b><br>
 Input: 4<br>
 Output: "IV"<br><br>
 
-<b>Example 3:</b><br>
 Input: 9<br>
 Output: "IX"<br><br>
 
-<b>Example 4:</b><br>
 Input: 58<br>
 Output: "LVIII"<br>
 Explanation: L = 50, V = 5, III = 3.<br><br>
 
-<b>Example 5:</b><br>
 Input: 1994<br>
 Output: "MCMXCIV"<br>
 Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.<br><br>
@@ -1962,20 +1958,20 @@ public:
 You are given a string s and an array of strings words of the same length. Return all starting indices of substring(s) in s that is a concatenation of each word in words exactly once, in any order, and without any intervening characters.<br>
 You can return the answer in any order.<br><br>
 
-<b>Example 1:</b><br>
+<b>Example:</b><br>
 Input: s = "barfoothefoobarman", words = ["foo","bar"]<br>
 Output: [0,9]<br>
 Explanation: Substrings starting at index 0 and 9 are "barfoo" and "foobar" respectively.<br>
 The output order does not matter, returning [9,0] is fine too.<br>
-<b>Example 2:</b><br>
+
 Input: s = "wordgoodgoodgoodbestword", words = ["word","good","best","word"]<br>
 Output: []<br>
-<b>Example 3:</b><br>
+
 Input: s = "barfoofoobarthefoobarman", words = ["bar","foo","the"]<br>
 Output: [6,9,12]<br><br>
 
 <b>Constraints:</b><br>
-1 <= s.length <= 104<br>
+1 <= s.length <= $10^{4}$<br>
 s consists of lower-case English letters.<br>
 1 <= words.length <= 5000<br>
 1 <= words[i].length <= 30<br>
@@ -2815,12 +2811,11 @@ class Solution {
 public:
     int maxSubArray(vector<int>& nums) {
         int n = int(nums.size());
-        if (n == 0) { return 0; }
-        int maxSum = nums[0], curSum = nums[0];
-        for (int i = 1; i < n; i++)
+        int maxSum = -(1ll << 31), curSum = 0;
+        for (int i = 0; i < n; i++)
         {
-            if (curSum < 0) { curSum = 0; }
-            curSum += nums[i];
+            if (curSum >= 0) { curSum += nums[i]; }
+            else { curSum = nums[i]; }
             if (curSum > maxSum) { maxSum = curSum; }
         }
         return maxSum;
