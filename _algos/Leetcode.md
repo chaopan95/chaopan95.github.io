@@ -2663,7 +2663,8 @@ public:
         for (int j = 1; j <= nums[idx].second; j++)
         {
             for (int k = 0; k < j; k++) { arr.push_back(nums[idx].first); }
-            DFS(res, arr, candidates, target-j*nums[idx].first, idx+1, size, nums);
+            DFS(res, arr, candidates, target-j*nums[idx].first, idx+1, size,
+                nums);
             for (int k = 0; k < j; k++) { arr.pop_back(); }
         }
         DFS(res, arr, candidates, target, idx+1, size, nums);
