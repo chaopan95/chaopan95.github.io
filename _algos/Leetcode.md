@@ -3054,6 +3054,64 @@ public:
 };
 {% endhighlight %}
 
+## 0098. Validate Binary Search Tree
+<p align="justify">
+Given the root of a binary tree, determine if it is a valid binary search tree (BST). A valid BST is defined as follows:<br>
+The left subtree of a node contains only nodes with keys less than the node's key.<br>
+The right subtree of a node contains only nodes with keys greater than the node's key.<br>
+Both the left and right subtrees must also be binary search trees.<br><br>
+
+<b>Example:</b><br>
+Input: root = [2,1,3]<br>
+Output: true<br><br>
+
+Input: root = [5,1,4,null,null,3,6]<br>
+Output: false<br>
+Explanation: The root node's value is 5 but its right child's value is 4.<br><br>
+
+<b>Constraints:</b><br>
+The number of nodes in the tree is in the range [1, $10^{4}$].<br>
+-$2^{31}$ <= Node.val <= $2^{31}$  - 1<br><br>
+
+<b>Solution:</b>
+</p>
+{% highlight C++ %}
+/*
+   2
+ /   \
+1     3
+is a BST
+
+    5
+  /   \
+ 1     4
+      / \
+     3   6
+is not a BST
+*/
+class Solution {
+public:
+    bool isValidBST(TreeNode* root) {
+        TreeNode *prec = nullptr;
+        return isBST(root, prec);
+    }
+    bool isBST(TreeNode* root, TreeNode *&prec)
+    {
+        if (root != nullptr)
+        {
+            bool left = isBST(root->left, prec);
+            if (left == false) { return false; }
+            if (prec == nullptr) { prec = root; }
+            else if (prec->val >= root->val) { return false; }
+            prec = root;
+            bool right = isBST(root->right, prec);
+            if (right == false) { return false; }
+        }
+        return true;
+    }
+};
+{% endhighlight %}
+
 ## 0121. Best Time to Buy and Sell Stock
 <p align="justify">
 Say you have an array for which the ith element is the price of a given stock on day i. If you were only permitted to complete at most one transaction (i.e., buy one and sell one share of the stock), design an algorithm to find the maximum profit. Note that you cannot sell a stock before you buy one.<br><br>
