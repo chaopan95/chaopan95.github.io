@@ -2770,32 +2770,31 @@ public:
 
 ## 0053. Maximum Subarray*
 <p align="justify">
-Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum. Follow up: If you have figured out the O(n) solution, try coding another solution using the divide and conquer approach, which is more subtle.<br><br>
-
-<b>Example:</b><br>
-Input: nums = [-2,1,-3,4,-1,2,1,-5,4]<br>
-Output: 6<br>
-Explanation: [4,-1,2,1] has the largest sum = 6.<br><br>
-
-Input: nums = [1]<br>
-Output: 1<br><br>
-
-Input: nums = [0]<br>
-Output: 0<br><br>
-
-Input: nums = [-1]<br>
-Output: -1<br><br>
-
-Input: nums = [-2147483647]<br>
-Output: -2147483647<br><br>
-
-<b>Constraints:</b><br>
-1 <= nums.length <= 2 * 10^4<br>
--2^31 <= nums[i] <= 2^31 - 1<br><br>
-
-<b>Solution:</b>
+Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum. Follow up: If you have figured out the O(n) solution, try coding another solution using the divide and conquer approach, which is more subtle.
 </p>
 {% highlight C++ %}
+/*
+Example:
+Input: nums = [-2,1,-3,4,-1,2,1,-5,4]
+Output: 6
+Explanation: [4,-1,2,1] has the largest sum = 6.
+
+Input: nums = [1]
+Output: 1
+
+Input: nums = [0]
+Output: 0
+
+Input: nums = [-1]
+Output: -1
+
+Input: nums = [-2147483647]
+Output: -2147483647
+
+Constraints:
+1 <= nums.length <= 2 * 10^4
+-2^31 <= nums[i] <= 2^31 - 1
+*/
 class Solution {
 public:
     int maxSubArray(vector<int>& nums) {
