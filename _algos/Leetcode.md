@@ -3109,7 +3109,8 @@ Given the root of a binary tree, return its maximum depth. A binary tree's maxim
  9    20
      /  \
     15  7
-depth = 3
+max depth = 3
+*/
 class Solution {
 public:
     int maxDepth(TreeNode* root) {
@@ -3119,8 +3120,34 @@ public:
         return 1 + max(leftDep, rightDep);
     }
 };
-*/
+{% endhighlight %}
 
+## 0111. Minimum Depth of Binary Tree
+<p align="justify">
+Given a binary tree, find its minimum depth. The minimum depth is the number of nodes along the shortest path from the root node down to the nearest leaf node. Note: A leaf is a node with no children.
+</p>
+{% highlight C++ %}
+/*
+    3
+  /   \
+ 9    20
+     /  \
+    15  7
+min depth = 2
+*/
+class Solution {
+public:
+    int minDepth(TreeNode* root) {
+        if (root == nullptr) { return 0; }
+        int leftDep = minDepth(root->left);
+        int rightDep = minDepth(root->right);
+        if (leftDep != 0 && rightDep != 0)
+        {
+            return 1 + min(leftDep, rightDep);
+        }
+        else { return 1 + max(leftDep, rightDep); }
+    }
+};
 {% endhighlight %}
 
 ## 0121. Best Time to Buy and Sell Stock
