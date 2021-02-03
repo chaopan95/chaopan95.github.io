@@ -3098,6 +3098,31 @@ public:
 };
 {% endhighlight %}
 
+## 0104. Maximum Depth of Binary Tree
+<p align="justify">
+Given the root of a binary tree, return its maximum depth. A binary tree's maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.
+</p>
+{% highlight C++ %}
+/*
+    3
+  /   \
+ 9    20
+     /  \
+    15  7
+depth = 3
+class Solution {
+public:
+    int maxDepth(TreeNode* root) {
+        if (root == nullptr) { return 0; }
+        int leftDep = maxDepth(root->left);
+        int rightDep = maxDepth(root->right);
+        return 1 + max(leftDep, rightDep);
+    }
+};
+*/
+
+{% endhighlight %}
+
 ## 0121. Best Time to Buy and Sell Stock
 <p align="justify">
 Say you have an array for which the ith element is the price of a given stock on day i. If you were only permitted to complete at most one transaction (i.e., buy one and sell one share of the stock), design an algorithm to find the maximum profit. Note that you cannot sell a stock before you buy one.<br><br>
