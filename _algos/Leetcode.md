@@ -2718,50 +2718,40 @@ public:
 
 ## 0046. Permutations
 <p align="justify">
-Given an array nums of distinct integers, return all the possible permutations. You can return the answer in any order.<br><br>
-
-<b>Example:</b><br>
-Input: nums = [1,2,3]<br>
-Output: [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]<br><br>
-
-Input: nums = [0,1]<br>
-Output: [[0,1],[1,0]]<br><br>
-
-Input: nums = [1]<br>
-Output: [[1]]<br><br>
-
-<b>Constraints:</b><br>
-1 <= nums.length <= 6<br>
--10 <= nums[i] <= 10<br>
-All the integers of nums are unique.<br><br>
-
-<b>Solution:</b>
+Given an array nums of distinct integers, return all the possible permutations. You can return the answer in any order.
 </p>
 {% highlight C++ %}
+/*
+Input: nums = [1,2,3]
+Output: [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
+
+Input: nums = [0,1]
+Output: [[0,1],[1,0]]
+
+Input: nums = [1]
+Output: [[1]]
+*/
 class Solution {
 public:
     vector<vector<int>> permute(vector<int>& nums) {
-        vector<vector<int>> ans;
         int n = int(nums.size());
+        vector<vector<int>> ans;
         if (n == 0) { return ans; }
-        permutation(nums, n, ans, 0);
+        permute(nums, 0, n, ans);
         return ans;
     }
-    void permutation(vector<int> &nums, int n,
-                     vector<vector<int>> &ans,
-                     int idx)
+    void permute(vector<int> &nums, int idx, int n,
+                 vector<vector<int>> &ans)
     {
         if (idx == n)
         {
-            vector<int> arr;
-            for (int i = 0; i < n; i++) { arr.push_back(nums[i]); }
-            ans.push_back(arr);
+            ans.push_back(nums);
             return;
         }
         for (int i = idx; i < n; i++)
         {
             swap(nums[i], nums[idx]);
-            permutation(nums, n, ans, idx+1);
+            permute(nums, idx+1, n, ans);
             swap(nums[i], nums[idx]);
         }
     }
