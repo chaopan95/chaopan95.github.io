@@ -2758,7 +2758,7 @@ public:
 };
 {% endhighlight %}
 
-## 0047. Permutations II
+## 0047. Permutations II*
 <p align="justify">
 Given a collection of numbers, nums, that might contain duplicates, return all possible unique permutations in any order.
 </p>
