@@ -2758,6 +2758,59 @@ public:
 };
 {% endhighlight %}
 
+## 0047. Permutations II
+<p align="justify">
+Given a collection of numbers, nums, that might contain duplicates, return all possible unique permutations in any order.
+</p>
+{% highlight C++ %}
+/*
+Input: nums = [1,1,2]
+Output:
+[[1,1,2],
+ [1,2,1],
+ [2,1,1]]
+
+Input: nums = [1,2,3]
+Output: [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
+
+class Solution {
+public:
+    vector<vector<int>> permuteUnique(vector<int>& nums) {
+        vector<vector<int>> ans;
+        int n = (int)nums.size();
+        if (n == 0) { return ans; }
+        sort(nums.begin(), nums.end());
+        bool *isVisited = new bool [n]{};
+        vector<int> arr;
+        permute(nums, 0, n, ans, arr, isVisited);
+        delete []isVisited;
+        return ans;
+    }
+    void permute(vector<int> &nums, int idx, int n,
+                 vector<vector<int>> &ans,
+                 vector<int> &arr,
+                 bool *isVisited)
+    {
+        if (idx == n)
+        {
+            ans.push_back(arr);
+            return;
+        }
+        for (int i = 0; i < n; i++)
+        {
+            if (isVisited[i] || (i > 0 && nums[i] == nums[i-1] &&
+                                 !isVisited[i-1])) { continue; }
+            isVisited[i] = true;
+            arr.emplace_back(nums[i]);
+            permute(nums, idx+1, n, ans, arr, isVisited);
+            isVisited[i] = false;
+            arr.pop_back();
+        }
+    }
+};
+*/
+{% endhighlight %}
+
 ## 0053. Maximum Subarray*
 <p align="justify">
 Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum. Follow up: If you have figured out the O(n) solution, try coding another solution using the divide and conquer approach, which is more subtle.
