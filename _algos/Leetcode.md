@@ -1070,21 +1070,15 @@ public:
 
 ## 0016. 3Sum Closest
 <p align="justify">
-Given an array nums of n integers and an integer target, find three integers in nums such that the sum is closest to target. Return the sum of the three integers. You may assume that each input would have exactly one solution.<br><br>
-
-<b>Example:</b><br>
-Input: nums = [-1,2,1,-4], target = 1<br>
-Output: 2<br>
-Explanation: The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).<br><br>
-
-<b>Constraints:</b><br>
-3 <= nums.length <= 10^3<br>
--10^3 <= nums[i] <= 10^3<br>
--10^4 <= target <= 10^4<br><br>
-
-<b>Solution:</b>
+Given an array nums of n integers and an integer target, find three integers in nums such that the sum is closest to target. Return the sum of the three integers. You may assume that each input would have exactly one solution.
 </p>
 {% highlight C++ %}
+/*
+Input: nums = [-1,2,1,-4], target = 1
+Output: 2
+Explanation:
+The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).
+*/
 class Solution {
 public:
     void swap(vector<int>& nums, int i, int j){
