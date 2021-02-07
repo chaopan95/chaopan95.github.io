@@ -3178,6 +3178,46 @@ public:
 };
 {% endhighlight %}
 
+## 0112. Path Sum
+<p align="justify">
+Given the root of a binary tree and an integer targetSum, return true if the tree has a root-to-leaf path such that adding up all the values along the path equals targetSum. A leaf is a node with no children.
+</p>
+{% highlight C++ %}
+/*
+                    5
+                /       \
+               4         8
+              /        /   \
+            11        13    4
+           /  \            / \
+          7    2          5   1
+Input: root = [5,4,8,11,null,13,4,7,2,null,null,null,1], targetSum = 22
+Output: true
+
+     1
+   /   \
+  2     3
+Input: root = [1,2,3], targetSum = 5
+Output: false
+*/
+class Solution {
+public:
+    bool hasPathSum(TreeNode* root, int targetSum) {
+        if (root == nullptr) { return false; }
+        if (root->left == nullptr && root->right == nullptr)
+        {
+            if (root->val == targetSum) { return true; }
+            return false;
+        }
+        bool isInLeft = hasPathSum(root->left, targetSum-root->val);
+        if (isInLeft) { return true; }
+        bool isInRight = hasPathSum(root->right, targetSum-root->val);
+        if (isInRight) { return true; }
+        return false;
+    }
+};
+{% endhighlight %}
+
 ## 0113. Path Sum II
 <p align="justify">
 Given the root of a binary tree and an integer targetSum, return all root-to-leaf paths where each path's sum equals targetSum. A leaf is a node with no children.
