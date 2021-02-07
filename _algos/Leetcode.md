@@ -3279,6 +3279,50 @@ public:
 };
 {% endhighlight %}
 
+## 0257. Binary Tree Paths
+<p align="justify">
+Given a binary tree, return all root-to-leaf paths. Note: A leaf is a node with no children.
+</p>
+{% highlight C++ %}
+/*
+Input:
+   1
+ /   \
+2     3
+ \
+  5
+Output: ["1->2->5", "1->3"]
+Explanation: All root-to-leaf paths are: 1->2->5, 1->3
+*/
+class Solution {
+public:
+    vector<string> binaryTreePaths(TreeNode* root) {
+        vector<int> arr;
+        vector<string> ans;
+        if (root == nullptr) { return ans; }
+        getPaths(root, ans, arr);
+        return ans;
+    }
+    void getPaths(TreeNode* root, vector<string> &ans,
+                  vector<int> &arr)
+    {
+        if (root == nullptr) { return; }
+        if (root->left == nullptr && root->right == nullptr)
+        {
+            string str = "";
+            for (int ele : arr) { str += to_string(ele) + "->"; }
+            str += to_string(root->val);
+            ans.emplace_back(str);
+            return;
+        }
+        arr.emplace_back(root->val);
+        getPaths(root->left, ans, arr);
+        getPaths(root->right, ans, arr);
+        arr.pop_back();
+    }
+};
+{% endhighlight %}
+
 ## 0543. Diameter of Binary Tree
 <p align="justify">
 Given a binary tree, you need to compute the length of the diameter of the tree. The diameter of a binary tree is the length of the longest path between any two nodes in a tree. This path may or may not pass through the root.
