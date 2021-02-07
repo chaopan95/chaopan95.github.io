@@ -1015,19 +1015,7 @@ public:
 
 ## 0015. 3Sum*
 <p align="justify">
-Given an array nums of n integers, are there elements a, b, c in nums such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.<br><br>
-
-Note:<br>
-The solution set must not contain duplicate triplets.<br><br>
-
-<b>Example:</b><br>
-Given array nums = [-1, 0, 1, 2, -1, -4],<br><br>
-
-A solution set is:<br>
-[<br>
-  [-1, 0, 1],<br>
-  [-1, -1, 2]<br>
-]<br><br>
+Given an array nums of n integers, are there elements a, b, c in nums such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero. Note: The solution set must not contain duplicate triplets.<br><br>
 
 <b>Solution:</b>
 $$
@@ -1044,58 +1032,38 @@ $$
 4) repeat 3) until i ends<br>
 </p>
 {% highlight C++ %}
+/*
+Given array nums = [-1, 0, 1, 2, -1, -4],
+A solution set is:
+[[-1, 0, 1],[-1, -1, 2]]
+*/
 class Solution {
 public:
-    void swap(vector<int>& nums, int i, int j){
-        int temp = nums[i];
-        nums[i] = nums[j];
-        nums[j] = temp;
-    }
-    void quickSort(vector<int>& nums, int start, int end){
-        if (start < end)
-        {
-            int i = start, j = end;
-            while (i < j)
-            {
-                while (nums[i] <= nums[j] && i < j) { j--; }
-                swap(nums, i, j);
-                while (nums[i] <= nums[j] && i < j) { i++; }
-                swap(nums, i, j);
-            }
-            quickSort(nums, start, i-1);
-            quickSort(nums, j+1, end);
-        }
-    }
     vector<vector<int>> threeSum(vector<int>& nums) {
-        vector<vector<int>> res;
         int n = int(nums.size());
-        if (n < 3) { return res; }
-        quickSort(nums, 0, n-1);
-        
+        vector<vector<int>> ans;
+        if (n < 3) { return ans; }
+        sort(nums.begin(), nums.end());
         for (int i = 0; i < n - 2; i++)
         {
             int j = i + 1, k = n - 1;
-            if (i > 0  && nums[i] == nums[i-1]) { continue; }
             while (j < k)
             {
-                int temp = nums[i] + nums[j] + nums[k];
-                if (temp < 0) { j++; }
-                else if (temp > 0) { k--; }
+                int sum = nums[i] + nums[j] + nums[k];
+                if (sum < 0) { j++; }
+                else if (sum > 0) { k--; }
                 else
                 {
-                    vector<int> tuple;
-                    tuple.push_back(nums[i]);
-                    tuple.push_back(nums[j]);
-                    tuple.push_back(nums[k]);
-                    res.push_back(tuple);
+                    while (i < k && nums[i] == nums[i+1]) { i++; }
                     while (j < k && nums[j] == nums[j+1]) { j++; }
                     while (j < k && nums[k] == nums[k-1]) { k--; }
+                    ans.push_back({nums[i], nums[j], nums[k]});
                     j++;
                     k--;
                 }
             }
         }
-        return res;
+        return ans;
     }
 };
 {% endhighlight %}
