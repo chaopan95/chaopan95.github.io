@@ -3178,6 +3178,53 @@ public:
 };
 {% endhighlight %}
 
+## 0113. Path Sum II
+<p align="justify">
+Given the root of a binary tree and an integer targetSum, return all root-to-leaf paths where each path's sum equals targetSum. A leaf is a node with no children.
+</p>
+{% highlight C++ %}
+/*
+                    5
+                /       \
+               4         8
+              /        /   \
+            11        13    4
+           /  \            / \
+          7    2          5   1
+Input: root = [5,4,8,11,null,13,4,7,2,null,null,5,1], targetSum = 22
+Output: [[5,4,11,2],[5,8,4,5]]
+*/
+class Solution {
+public:
+    vector<vector<int>> pathSum(TreeNode* root, int targetSum) {
+        vector<vector<int>> ans;
+        if (root == nullptr) { return ans; }
+        vector<int> arr;
+        findPaths(root, targetSum, ans, arr);
+        return ans;
+    }
+    void findPaths(TreeNode *root, int resVal, vector<vector<int>> &ans,
+                   vector<int> &arr)
+    {
+        if (root == nullptr) { return; }
+        if (root->left == nullptr && root->right == nullptr)
+        {
+            if (resVal == root->val)
+            {
+                arr.emplace_back(root->val);
+                ans.emplace_back(arr);
+                arr.pop_back();
+            }
+            return;
+        }
+        arr.emplace_back(root->val);
+        findPaths(root->left, resVal-root->val, ans, arr);
+        findPaths(root->right, resVal-root->val, ans, arr);
+        arr.pop_back();
+    }
+};
+{% endhighlight %}
+
 ## 0121. Best Time to Buy and Sell Stock
 <p align="justify">
 Say you have an array for which the ith element is the price of a given stock on day i. If you were only permitted to complete at most one transaction (i.e., buy one and sell one share of the stock), design an algorithm to find the maximum profit. Note that you cannot sell a stock before you buy one.<br><br>
