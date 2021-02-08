@@ -1771,7 +1771,7 @@ Detection, <b>location</b>, couting and enumeration.
 Knuth-Morris-Pratt<br><br>
 
 If T[i] $\neq$ P[j], T[i-j, i] = P[0, j]. P can slide right t units instead of one.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/kmp_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/kmp_1.png"/></center>
 </p>
 {% highlight C++ %}
 int KMP(char *P, char *T)
@@ -1804,7 +1804,7 @@ In fact, we need to find t to replace y
 $$N(P, j) = \{ 0 \leq t < j | P[0, t) == P[j-t, j) \}$$
 
 It is possible to have more than 1 value satisfying our requirment. Among them, we pick the maximum t in order to avoid <b>backtracking</b>.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/kmp_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/kmp_2.png"/></center>
 </p>
 <p align="justify">
 How to get <b>next</b> table?<br>
@@ -1879,7 +1879,7 @@ BM: Boyer–Moore<br><br>
 
 <b>Bad-Character</b><br>
 We compare T and P from the last one to the first one. A mismatch at some position is called bad character. Similar to KMP, BC['x'] depends on itself instead of T.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/bm_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/bm_1.png"/></center>
 </p>
 <p align="justify">
 If more than 1 successor of some a bad character, we pick up the one with the biggest rank in P (right-most). If no successor, we pick up [-1]. If one successor exists but in the right of x, this will make P move left. In this case, we move P right one cell.<br><br>
@@ -1908,12 +1908,12 @@ Worst condition: $O(n*m)$<br><br>
 
 <b>Good-Suffix</b><br>
 If we fail to match at 'X', we assume a suffix of 'X' must be matched.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/bm_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/bm_2.png"/></center>
 </p>
 <p align="justify">
 MS[j]: Among all suffix of P[0, j], the longest one mathcing with some a P's suffix.<br>
 For example, P = "ICED RICE PRICE". P[8] = 'E', MS[8] = 'RICE' becasue 'RICE' matches with P'ssuffix 'RICE'.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/bm_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/bm_3.png"/></center>
 </p>
 <p align="justify">
 ss[j] = |MS[j]| = max{0 $\leq$ s $\leq$ j+1 | P(j-s, j] = P[m-s, m)} means a length of MS[j]. For eample, P[2] = 'E', MS[2] = 'ICE', ss[2] = 3.
@@ -1922,7 +1922,7 @@ ss[j] = |MS[j]| = max{0 $\leq$ s $\leq$ j+1 | P(j-s, j] = P[m-s, m)} means a len
 From ss[] to gs[]<br>
 If ss[j] = j+1, MS[j] must be a prefix of P. If we fail to match at i (i < m-j-1), [m-j-1, m) must be already matched, gs[i] = m-j-1, which means move P right (m-j-1).<br>
 If ss[j] $\leq$ j, we fail to match at m-ss[j]-1, gs[m-ss[j]-1] = m-j-1.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/bm_4.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/bm_4.png"/></center>
 </p>
 <p align="justify">
 In space: bc[] + gs[] = $O(\Sigma + m)$, where $\Sigma$ is a alphabet size.<br><br>
@@ -2026,7 +2026,7 @@ bool vector<T>::bubble(Rank lo, Rank hi)
 <p align="justify">
 (1) Divide an array into 2 sub-array recursively until each sub-array has 1 element<br>
 (2) Merge 2 ordered arrays
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/mege_sort_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/mege_sort_1.png"/></center>
 </p>
 <p align="justify">
 $$T(n) = 2T(\frac{n}{2}) + O(n)$$
@@ -2067,11 +2067,11 @@ We have two containers, one unsorted container an one sorted container. Initiall
 (1) Pick up one element from the unsorted container (usually we choose the first one)<br>
 (2) Insert the selected element into the sorted container by finding its proper position (its value is between its last one and next one)<br>
 (3) Repeat (1) and (2)
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/insert_sort1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/insert_sort1.png"/></center>
 </p>
 <p align="justify">
 Instead of using two container, we can only use one container to implement this algorithm. Precisely, when we enter into the $r^{th}$ position, that is to say, segment [0, r) is well sorted. At this time, we pick up $r^{th}$ element a, we put it into the segment [0, r]. Suppose we find a proper position k to insert a, we have $k \in [0, r]$. So, we put a in the position k and push all elements in [k, r) backward one cell. To implement this algorithm, it is better to take list structure.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/insert_sort2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/insert_sort2.png"/></center>
 </p>
 <p align="justify">
 <b>Complexity</b><br>
@@ -2099,7 +2099,7 @@ which denotes I compares and n inserts
 ### 12.5 Bucket Sort
 <p align="justify">
 We apply hash table to sorting. If we know a range of unsorted number, for example, 26 english alphabets. We can etablish a bucket array called count with a length of 26. Besides, we prepare another array called accum with a same size. In advance, we define A to Z by 0 to 25, which corresponds to our bucket array.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/bucket_sort_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/bucket_sort_1.png"/></center>
 </p>
 <p align="justify">
 We scan an unsorted array, we put each alphabet into our bucket array by counting its appearance time. For example, 'A' for count[0]++. Then we traverse from 0 to 25 to update accum: accum[i] = accum[i-1] + count[i] for i = 1 to 25 and accum[0] = count[0].<br><br>
@@ -2128,7 +2128,7 @@ $$S = S_{1} + S_{2}$$
 $$max(S_{1}) \leq min(S_{2})$$
 
 If two sub-sequence is sorted, S will be sorted.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/quick_sort_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/quick_sort_1.png"/></center>
 </p>
 {% highlight C++ %}
 template <typename T>
@@ -2200,7 +2200,7 @@ Similarly, we want to find a pivot
 $$L < pivot \leq G$$
 
 If Spivot \leq $[ k ]$, put k into G (k++); otherwise, swap(S[ ++mi ], S[ k++ ]).
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/quick_sort_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/quick_sort_2.png"/></center>
 </p>
 {% highlight C++ %}
 template <typename T>
@@ -2235,7 +2235,7 @@ Unbalanced space is 1 - (0.8 * 0.1 * 0.1 * 6+ 0.8 * 0.8 * 0.1 * 6+0.8^3) = 1 - 0
 <p align="justify">
 <b>Select mode</b><br>
 Consider vector A has a prefix P (|P| is even), P has an element x which exactly appears $\frac{|P|}{2}$ in P. If A-P has a mod m, A has a mod m.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/select_mode_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/select_mode_1.png"/></center>
 </p>
 {% highlight C++ %}
 template <typename T> T majEleCandidate (vector<T> A)
@@ -2256,7 +2256,7 @@ template <typename T> T majEleCandidate (vector<T> A)
 <p align="justify">
 <b>Quick select</b><br>
 Consider an unsorted sequence, we can find its povot x, if a target element < x, turn to L; otherwise, turn to G.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/quick_select_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/quick_select_1.png"/></center>
 </p>
 {% highlight C++ %}
 template <typename T>
@@ -2288,7 +2288,7 @@ Q is a small constant<br>
 if k $\leq$ |L|, return linearSelect(L, k)<br>
 if k $\leq$ |L| + |E|, return M<br>
 return linearSelect(G, k-|L|-|E|)
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/linear_select_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/linear_select_1.png"/></center>
 </p>
 <p align="justify">
 Complexity:<br>
@@ -2406,7 +2406,7 @@ Attetion: both 3 beads' elimination and 4 beads' elimination are possible
 <p align="justify">
 <b>Description</b><br>
 As shown in the following figure, If another lighthouse is in gray area, they can beacon each other. For example, in following figure, (B, R) is a pair of lighthouse which can beacon each other, while (B, G), (R, G) are NOT.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/ALGOS/DSA/13_3_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/ALGOS/DSA/13_3_1.png"/></center>
 </p>
 <p align="justify">
 <b>Input</b><br>
@@ -2448,7 +2448,7 @@ This problem can be converted into an inverted sort pair problem. How many pairs
 <p align="justify">
 <b>Description</b><br>
 Figure shows the structure of a station for train dispatching.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/ALGOS/DSA/13_4_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/ALGOS/DSA/13_4_1.png"/></center>
 </p>
 <p align="justify">
 In this station, A is the entrance for each train and B is the exit. S is the transfer end. All single tracks are one-way, which means that the train can enter the station from A to S, and pull out from S to B. Note that the overtaking is not allowed. Because the compartments can reside in S, the order that they pull out at B may differ from that they enter at A. However, because of the limited capacity of S, no more that m compartments can reside at S simultaneously.<br>
@@ -2498,7 +2498,7 @@ This is a question of stack permutation. We repeat this process, if some element
 <p align="justify">
 <b>Description</b><br>
 In general, given the preorder traversal sequence and postorder traversal sequence of a binary tree, we cannot determine the binary tree.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/ALGOS/DSA/13_5_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/ALGOS/DSA/13_5_1.png"/></center>
 </p>
 <p align="justify">
 For example, although they are two different binary tree, their preorder traversal sequence and postorder traversal sequence are both of the same.
@@ -2529,7 +2529,7 @@ Memory: 256 MB<br>
 You can only use the C++ language. STL is forbidden.<br><br>
 
 <b>Hints</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/ALGOS/DSA/13_5_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/ALGOS/DSA/13_5_2.png"/></center>
 </p>
 <p align="justify">
 observe the positions of the left and right children in preorder and postorder traversal sequence.<br><br>
