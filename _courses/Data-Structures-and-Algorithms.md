@@ -214,13 +214,14 @@ int sum(int A[], int lo, int hi)
 {% endhighlight %}
 <p align="justify">
 solve recursive equation
-$$T(n) = 2T(\frac{n}{2}) + O(1) \quad T(1) = O(1)$$
-
-$$T(n) = 2T(\frac{n}{2}) + c_{1}$$
-
-$$T(n) + c_{1} = 2(T(\frac{n}{2}) + c_{1}) = 2^{2}(T(\frac{n}{4}) + c_{1}) = \cdots = 2^{logn}(T(1)+c_{1}) = n(c_{2} + c_{1})$$
-
-$$T(n) = O(n)$$
+$$
+\begin{aligned}
+& T(n) = 2T(\frac{n}{2}) + O(1) \quad T(1) = O(1) \\
+& T(n) = 2T(\frac{n}{2}) + c_{1} \\
+& T(n) + c_{1} = 2(T(\frac{n}{2}) + c_{1}) = 2^{2}(T(\frac{n}{4}) + c_{1}) = \cdots = 2^{logn}(T(1)+c_{1}) = n(c_{2} + c_{1}) \\
+& T(n) = O(n)
+\end{aligned}
+$$
 </p>
 
 ### 1.7. Dynamic programming
@@ -1544,7 +1545,7 @@ Logically: complete binary heap is equal to a complete binary tree<br>
 Physically: complete binary heap is equal to a vector<br><br>
 
 If an element's rank is i, its parent (if exists) has a rank of $\frac{i-1}{2}$, its left child (if exists) has a rank of 2i+1, its right child (if exists) has a rank of 2i+2.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/complete_binary_tree_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/complete_binary_tree_1.png"/></center>
 </p>
 
 ### 10.2 Max heap
@@ -2325,10 +2326,6 @@ PS, Pratt, Sedgewick
 
 
 ## 13. Programming Exercises
-<p align="justify">
-
-</p>
-
 ### 13.1 Range
 <p align="justify">
 <b>Descriptioin</b><br>
