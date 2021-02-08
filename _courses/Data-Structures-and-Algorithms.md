@@ -1581,10 +1581,10 @@ We insert all elements at the end of heap by the first one then percolate up to 
 {% highlight C++ %}
 void heapify(rank n)
 {
-	for (int i=1; i < n; i++)
-	{
-		percolateUp(i);
-	}
+    for (int i=1; i < n; i++)
+    {
+        percolateUp(i);
+    }
 }
 {% endhighlight %}
 <p align="justify">
@@ -1594,7 +1594,7 @@ For worst condition, complexity is in $O(nlogn)$. In fact, we can sort them with
 #### 10.5.2 Down-to-Up percolate down
 <p align="justify">
 Consider a case: we have two sub-heap $r_{0}$ and $r_{1}$ which are children of p. How to adjust the heap?
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/heapification_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/heapification_1.png"/></center>
 </p>
 <p align="justify">
 Answer is percolate dowm p. Besides, we know there oare more than 50% nodes are all leaf nodes. So, we only need do this operation for internal nodes. Last internal node's position is $\left \lfloor \frac{n}{2} \right \rfloor - 1$
@@ -1602,13 +1602,12 @@ Answer is percolate dowm p. Besides, we know there oare more than 50% nodes are 
 {% highlight C++ %}
 void heapify(rank n)
 {
-	for (int i = n/2-1; i>=0; i--)
-	{
-		percolateDown(i);
-	}
+    for (int i = n/2-1; i>=0; i--)
+    {
+        percolateDown(i);
+    }
 }
 {% endhighlight %}
-</p>
 <p align="justify">
 For worst condition, complexity is in $\sum_{i} height(i) = O(n)$.
 </p>
@@ -1639,7 +1638,7 @@ $$
 Where lc(x) is x's left child adn rc(x) is x's right child<br><br>
 
 In fact, if we change min with max, we will get a height of tree.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/NPL_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/NPL_1.png"/></center>
 </p>
 <p align="justify">
 For example, NPL for node 3 is 3.<br><br>
@@ -1672,7 +1671,7 @@ $$d \leq \left \lfloor log_{2}(n+1) \right \rfloor - 1 = O(logn)$$
 Leftist heap breaks structure of normal heap because of leftist property, so we take use of binary tree to realize leftist heap instead of vector.<br><br>
 
 Suppose we have 2 leftist heaps with root A and B (A > B), we take A's right sub-heap and recursively merge it and B. Then we put the merged heap as A's right sub-heap. If NPL(A's left sub-heap) < NPL(new sight sub-heap), we swap the two.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/leftist_heap_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/leftist_heap_1.png"/></center>
 </p>
 {% highlight C++ %}
 template <typename T>
