@@ -1212,127 +1212,14 @@ public:
 
 ## 0018. 4Sum
 <p align="justify">
-Given an array nums of n integers and an integer target, are there elements a, b, c, and d in nums such that a + b + c + d = target? Find all unique quadruplets in the array which gives the sum of target.<br>
-Note:<br>
-The solution set must not contain duplicate quadruplets.<br><br>
-
-<b>Example:</b><br>
-Given array nums = [1, 0, -1, 0, -2, 2], and target = 0.<br>
-A solution set is:<br>
-[<br>
-&emsp;[-1,  0, 0, 1],<br>
-&emsp;[-2, -1, 1, 2],<br>
-&emsp;[-2,  0, 0, 2]<br>
-]<br><br>
-
-<b>Solution:</b>
+Given an array nums of n integers and an integer target, are there elements a, b, c, and d in nums such that a + b + c + d = target? Find all unique quadruplets in the array which gives the sum of target. Note: The solution set must not contain duplicate quadruplets.
 </p>
 {% highlight C++ %}
-class Solution {
-public:
-    vector<vector<int>> fourSum(vector<int>& nums, int target) {
-        vector<vector<int>> res;
-        int n = int(nums.size());
-        
-        if (n < 4) { return res; }
-        sort(nums.begin(), nums.end());
-        if (n == 4)
-        {
-            if (nums[0]+nums[1]+nums[2]+nums[3] == target)
-            {
-                res.push_back(nums);
-            }
-            return res;
-        }
-        for (int i = 0; i < n-3; i++)
-        {
-            //if (nums[i] == nums[i+1]) { continue; }
-            for (int j = i+1; j < n-2; j++)
-            {
-                //if (nums[j] == nums[j+1]) { continue; }
-                int b = j+1, e = n-1;
-                while (b < e)
-                {
-                    int sum = nums[i] + nums[j] + nums[b] + nums[e];
-                    if (sum < target) { b++; }
-                    else if (sum > target) { e--; }
-                    else
-                    {
-                        while (b < e && nums[b] == nums[b+1]) { b++; }
-                        while (b < e && nums[e] == nums[e-1]) { e--; }
-                        vector<int> temp;
-                        temp.push_back(nums[i]);
-                        temp.push_back(nums[j]);
-                        temp.push_back(nums[b]);
-                        temp.push_back(nums[e]);
-                        res.push_back(temp);
-                        b++;
-                        e--;
-                    }
-                }
-            }
-        }
-        if (int(res.size()) == 0)
-        {
-            return res;
-        }
-        quickSort(res, 0, int(res.size())-1);
-        int pos = 1;
-        for (int i = 1; i < int(res.size()); i++)
-        {
-            if (res[i-1][0] == res[i][0] && res[i-1][1] == res[i][1] &&
-                res[i-1][2] == res[i][2] && res[i-1][3] == res[i][3])
-            {
-                continue;
-            }
-            for (int j = 0; j < 4; j++)
-            {
-                res[pos][j] = res[i][j];
-            }
-            pos++;
-        }
-        res.resize(pos);
-
-        return res;
-    }
-    void swap(vector<vector<int>> &arr, int i, int j)
-    {
-        for (int k = 0; k < 4; k++)
-        {
-            int temp = arr[i][k];
-            arr[i][k] = arr[j][k];
-            arr[j][k] = temp;
-        }
-    }
-    bool isLEQ(vector<vector<int>> arr, int i, int j)
-    {
-        for (int k = 0; k < 4; k++)
-        {
-            if (arr[i][k] < arr[j][k]) { return true; }
-            if (arr[i][k] > arr[j][k]) { return false; }
-        }
-        return true;
-    }
-    void quickSort(vector<vector<int>> &arr, int b, int e)
-    {
-        if (b < e)
-        {
-            int i = b, j = e;
-            while (i < j)
-            {
-                while (i < j && isLEQ(arr, i, j)) { j--; }
-                swap(arr, i, j);
-                while (i < j && isLEQ(arr, i, j)) { i++; }
-                swap(arr, i, j);
-            }
-            quickSort(arr, b, i-1);
-            quickSort(arr, j+1, e);
-        }
-    }
-};
-{% endhighlight %}
-
-{% highlight C++ %}
+/*
+Given array nums = [1, 0, -1, 0, -2, 2], and target = 0.
+A solution set is:
+[[-1,  0, 0, 1], [-2, -1, 1, 2], [-2,  0, 0, 2]]
+*/
 class Solution {
 public:
     vector<vector<int>> fourSum(vector<int>& nums, int target) {
