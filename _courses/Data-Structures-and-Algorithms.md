@@ -1576,7 +1576,7 @@ We have n elements in an array and we want build a heap with them.
 
 #### 10.5.1 Top-to-Down percolate up
 <p align="justify">
-We insert all elements at the end of heap by the first one then percolate up to adjust the heap.
+We insert all elements at the end of heap by the first one then percolate up to adjust the heap. For worst condition, complexity is in $O(nlogn)$. In fact, we can sort them with such time. So, this way don't saisfy our demand.
 </p>
 {% highlight C++ %}
 void percolateUp(vector<int> &arr, int idx)
@@ -1601,17 +1601,10 @@ void heapify(vector<int> &arr)
     for (int i = 1; i < n; i++) { percolateUp(arr, i); }
 }
 {% endhighlight %}
-<p align="justify">
-For worst condition, complexity is in $O(nlogn)$. In fact, we can sort them with such time. So, this way don't saisfy our demand.
-</p>
 
 #### 10.5.2 Down-to-Up percolate down
 <p align="justify">
-Consider a case: we have two sub-heap $r_{0}$ and $r_{1}$ which are children of p. How to adjust the heap?
-<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/heapification_1.png"/></center>
-</p>
-<p align="justify">
-Answer is percolate dowm p. Besides, we know there oare more than 50% nodes are all leaf nodes. So, we only need do this operation for internal nodes. Last internal node's position is $\left \lfloor \frac{n}{2} \right \rfloor - 1$
+Consider a case: we have two sub-heap $r_{0}$ and $r_{1}$ which are children of p. How to adjust the heap? Answer is percolate dowm p. Besides, we know there are more than 50% nodes are all leaf nodes. So, we only need do this operation for internal nodes. Last internal node's position is $\left \lfloor \frac{n}{2} \right \rfloor - 1$. For worst condition, complexity is in $\sum_{i} height(i) = O(n)$.
 </p>
 {% highlight C++ %}
 void percolateDown(vector<int> &arr, int idx)
@@ -1643,9 +1636,6 @@ void heapify(vector<int> &arr)
     for (int i = n-1; i >= 0; i--) { percolateDown(arr, i); }
 }
 {% endhighlight %}
-<p align="justify">
-For worst condition, complexity is in $\sum_{i} height(i) = O(n)$.
-</p>
 
 ### 10.6 Leftist Heap
 <p align="justify">
