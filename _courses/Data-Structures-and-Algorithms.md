@@ -1600,12 +1600,33 @@ Consider a case: we have two sub-heap $r_{0}$ and $r_{1}$ which are children of 
 Answer is percolate dowm p. Besides, we know there oare more than 50% nodes are all leaf nodes. So, we only need do this operation for internal nodes. Last internal node's position is $\left \lfloor \frac{n}{2} \right \rfloor - 1$
 </p>
 {% highlight C++ %}
-void heapify(rank n)
+void percolateDown(vector<int> &arr, int idx)
 {
-    for (int i = n/2-1; i>=0; i--)
+    int n = int(arr.size());
+    if (idx < 0 || idx >= n) { return; }
+    while (idx < n)
     {
-        percolateDown(i);
+        int leftIdx = idx * 2 + 1, rightIdx = idx * 2 + 2;
+        if (leftIdx >= n) { break; }
+        if (rightIdx >= n) { rightIdx = leftIdx; }
+        if (arr[idx] < min(arr[leftIdx], arr[rightIdx])) { return; }
+        if (arr[leftIdx] < arr[rightIdx])
+        {
+            swap(arr[idx], arr[leftIdx]);
+            idx = leftIdx;
+        }
+        else
+        {
+            swap(arr[idx], arr[rightIdx]);
+            idx = rightIdx;
+        }
     }
+}
+
+void heapify(vector<int> &arr)
+{
+    int n = int(arr.size());
+    for (int i = n-1; i >= 0; i--) { percolateDown(arr, i); }
 }
 {% endhighlight %}
 <p align="justify">
