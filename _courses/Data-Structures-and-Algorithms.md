@@ -1579,12 +1579,26 @@ We have n elements in an array and we want build a heap with them.
 We insert all elements at the end of heap by the first one then percolate up to adjust the heap.
 </p>
 {% highlight C++ %}
-void heapify(rank n)
+void percolateUp(vector<int> &arr, int idx)
 {
-    for (int i=1; i < n; i++)
+    int n = int(arr.size());
+    if (idx < 0 || idx >= n) { return; }
+    while (idx > 0)
     {
-        percolateUp(i);
+        int parIdx = (idx - 1) / 2;
+        if (arr[parIdx] > arr[idx])
+        {
+            swap(arr[parIdx], arr[idx]);
+            idx = parIdx;
+        }
+        else { return; }
     }
+}
+
+void heapify(vector<int> &arr)
+{
+    int n = int(arr.size());
+    for (int i = 1; i < n; i++) { percolateUp(arr, i); }
 }
 {% endhighlight %}
 <p align="justify">
