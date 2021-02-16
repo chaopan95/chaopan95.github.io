@@ -3442,6 +3442,37 @@ public:
 };
 {% endhighlight %}
 
+## 1748. Sum of Unique Elements
+<p align="justify">
+You are given an integer array nums. The unique elements of an array are the elements that appear exactly once in the array. Return the sum of all the unique elements of nums.
+</p>
+{% highlight C++ %}
+/*
+Input: nums = [1,2,3,2]
+Output: 4
+Explanation: The unique elements are [1,3], and the sum is 4.
+*/
+class Solution {
+public:
+    int sumOfUnique(vector<int>& nums) {
+        int ans = 0;
+        unordered_map<int, int> dict;
+        unordered_map<int, int>::iterator iter;
+        for (int ele : nums)
+        {
+            iter = dict.find(ele);
+            if (iter == dict.end()) { dict[ele] = 1; }
+            else { dict[ele]++; }
+        }
+        for (iter = dict.begin(); iter != dict.end(); iter++)
+        {
+            if (iter->second == 1) { ans += iter->first; }
+        }
+        return ans;
+    }
+};
+{% endhighlight %}
+
 ## 
 <p align="justify">
 
