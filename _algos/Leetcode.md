@@ -3456,17 +3456,21 @@ class Solution {
 public:
     int sumOfUnique(vector<int>& nums) {
         int ans = 0;
-        unordered_map<int, int> dict;
-        unordered_map<int, int>::iterator iter;
+        unordered_map<int, bool> dict;
+        unordered_map<int, bool>::iterator iter;
         for (int ele : nums)
         {
             iter = dict.find(ele);
-            if (iter == dict.end()) { dict[ele] = 1; }
-            else { dict[ele]++; }
-        }
-        for (iter = dict.begin(); iter != dict.end(); iter++)
-        {
-            if (iter->second == 1) { ans += iter->first; }
+            if (iter == dict.end())
+            {
+                ans += ele;
+                dict[ele] = true;
+            }
+            else if (dict[ele])
+            {
+                dict[ele] = false;
+                ans -= ele;
+            }
         }
         return ans;
     }
