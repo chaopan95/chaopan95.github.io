@@ -2769,26 +2769,23 @@ public:
 
 ## 0069 Sqrt(x)*
 <p align="justify">
-Given a non-negative integer x, compute and return the square root of x. Since the return type is an integer, the decimal digits are truncated, and only the integer part of the result is returned.<br><br>
-
-<b>Example:</b><br>
-Input: x = 4<br>
-Output: 2<br>
-Input: x = 8<br>
-Output: 2<br>
-Explanation: The square root of 8 is 2.82842..., and since the decimal part is truncated, 2 is returned.<br><br>
-
-<b>Constraints:</b><br>
-0 <= x <= 2^31 - 1<br><br>
-
-<b>Solution:</b>
-Binary search
+Given a non-negative integer x, compute and return the square root of x. Since the return type is an integer, the decimal digits are truncated, and only the integer part of the result is returned.
 </p>
 {% highlight C++ %}
+/*
+Input: x = 4
+Output: 2
+
+Input: x = 8
+Output: 2
+Explanation: The square root of 8 is 2.82842..., and
+since the decimal part is truncated, 2 is returned.
+*/
 class Solution {
 public:
     int mySqrt(int x)
     {
+        // Binary search
         long lo = 1, hi = x;
         while (lo <= hi)
         {
@@ -2843,35 +2840,26 @@ public:
 
 ## 0072. Edit Distance
 <p align="justify">
-Given two strings word1 and word2, return the minimum number of operations required to convert word1 to word2. You have the following three operations permitted on a word:<br>
-Insert a character<br>
-Delete a character<br>
-Replace a character<br><br>
-
-<b>Example:</b><br>
-Input: word1 = "horse", word2 = "ros"<br>
-Output: 3<br>
-Explanation: <br>
-horse -> rorse (replace 'h' with 'r')<br>
-rorse -> rose (remove 'r')<br>
-rose -> ros (remove 'e')<br><br>
-
-Input: word1 = "intention", word2 = "execution"<br>
-Output: 5<br>
-Explanation: <br>
-intention -> inention (remove 't')<br>
-inention -> enention (replace 'i' with 'e')<br>
-enention -> exention (replace 'n' with 'x')<br>
-exention -> exection (replace 'n' with 'c')<br>
-exection -> execution (insert 'u')<br><br>
-
-<b>Constraints:</b><br>
-0 <= word1.length, word2.length <= 500<br>
-word1 and word2 consist of lowercase English letters.<br><br>
-
-<b>Solution:</b>
+Given two strings word1 and word2, return the minimum number of operations required to convert word1 to word2. You have the following three operations permitted on a word: Insert a character, Delete a character, Replace a character
 </p>
 {% highlight C++ %}
+/*
+Input: word1 = "horse", word2 = "ros"
+Output: 3
+Explanation:
+horse -> rorse (replace 'h' with 'r')
+rorse -> rose (remove 'r')
+rose -> ros (remove 'e')
+
+Input: word1 = "intention", word2 = "execution"
+Output: 5
+Explanation: 
+intention -> inention (remove 't')
+inention -> enention (replace 'i' with 'e')
+enention -> exention (replace 'n' with 'x')
+exention -> exection (replace 'n' with 'c')
+exection -> execution (insert 'u')
+*/
 class Solution {
 public:
     int minDistance(string word1, string word2) {
@@ -2932,27 +2920,25 @@ public:
 
 ## 0094. Binary Tree Inorder Traversal*
 <p align="justify">
-Given the root of a binary tree, return the inorder traversal of its nodes' values.<br><br>
-
-<b>Example:</b><br>
-Input: root = [1,null,2,3]<br>
-Output: [1,3,2]<br><br>
-
-Input: root = []<br>
-Output: []<br><br>
-
-Input: root = [1]<br>
-Output: [1]<br><br>
-
-Input: root = [1,2]<br>
-Output: [2,1]<br><br>
-
-Input: root = [1,null,2]<br>
-Output: [1,2]<br><br>
-
-<b>Solution:</b>
+Given the root of a binary tree, return the inorder traversal of its nodes' values.
 </p>
 {% highlight C++ %}
+/*
+Input: root = [1,null,2,3]
+Output: [1,3,2]
+
+Input: root = []
+Output: []
+
+Input: root = [1]
+Output: [1]
+
+Input: root = [1,2]
+Output: [2,1]
+
+Input: root = [1,null,2]
+Output: [1,2]
+*/
 class Solution {
 public:
     vector<int> inorderTraversal(TreeNode* root) {
@@ -2990,28 +2976,26 @@ public:
 
 ## 0096. Unique Binary Search Trees
 <p align="justify">
-Given an integer n, return the number of structurally unique BST's (binary search trees) which has exactly n nodes of unique values from 1 to n.<br><br>
-
-<b>Example:</b><br>
-Input: n = 3<br>
-Output: 5<br><br>
-
-Input: n = 1<br>
-Output: 1<br><br>
-
-<b>Constraints:</b><br>
-1 <= n <= 19<br><br>
-
-<b>Solution:</b>
+Given an integer n, return the number of structurally unique BST's (binary search trees) which has exactly n nodes of unique values from 1 to n.
 $$
-C_{n} =
+\begin{aligned}
+& C_{n} =
 \begin{cases}
 1, &\quad n = 0 \\
 \frac{2(2n+1)}{n+2} C_{n-1}, &\quad n = 1, 2, 3, ...
-\end{cases}
+\end{cases} \\
+& C_{n} = \frac{(2n)!}{(n+1)! n!}
+\end{aligned}
 $$
 </p>
 {% highlight C++ %}
+/*
+Input: n = 3
+Output: 5
+
+Input: n = 1
+Output: 1
+*/
 class Solution {
 public:
     int numTrees(int n) {
