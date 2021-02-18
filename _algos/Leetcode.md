@@ -3368,36 +3368,29 @@ public:
 
 ## 1143. Longest Common Subsequence
 <p align="justify">
-Given two strings text1 and text2, return the length of their longest common subsequence.<br>
-A subsequence of a string is a new string generated from the original string with some characters(can be none) deleted without changing the relative order of the remaining characters. (eg, "ace" is a subsequence of "abcde" while "aec" is not). A common subsequence of two strings is a subsequence that is common to both strings.<br>
-If there is no common subsequence, return 0.<br><br>
-
-<b>Example:</b><br>
-Input: text1 = "abcde", text2 = "ace" <br>
-Output: 3<br>
-Explanation: The longest common subsequence is "ace" and its length is 3.<br><br>
-
-Input: text1 = "abc", text2 = "abc"<br>
-Output: 3<br>
-Explanation: The longest common subsequence is "abc" and its length is 3.<br><br>
-
-Input: text1 = "abc", text2 = "def"<br>
-Output: 0<br>
-Explanation: There is no such common subsequence, so the result is 0.<br><br>
-
-<b>Solution:</b>
+Given two strings text1 and text2, return the length of their longest common subsequence. A subsequence of a string is a new string generated from the original string with some characters(can be none) deleted without changing the relative order of the remaining characters. (eg, "ace" is a subsequence of "abcde" while "aec" is not). A common subsequence of two strings is a subsequence that is common to both strings. If there is no common subsequence, return 0.
 </p>
 {% highlight C++ %}
+/*
+Input: text1 = "abcde", text2 = "ace" 
+Output: 3
+Explanation: The longest common subsequence is "ace" and its length is 3.
+
+Input: text1 = "abc", text2 = "abc"
+Output: 3
+Explanation: The longest common subsequence is "abc" and its length is 3.
+
+Input: text1 = "abc", text2 = "def"
+Output: 0
+Explanation: There is no such common subsequence, so the result is 0.
+*/
 class Solution {
 public:
     int longestCommonSubsequence(string text1, string text2) {
         string s1 = text1, s2 = text2;
         int n1 = int(s1.length()), n2 = int(s2.length());
         int **dp = new int *[n1+1];
-        for (int i = 0; i < n1+1; i++)
-        {
-            dp[i] = new int [n2+1]{};
-        }
+        for (int i = 0; i < n1+1; i++) { dp[i] = new int [n2+1]{}; }
         for (int i = 1; i < n1+1; i++)
         {
             for (int j = 1; j < n2+1; j++)
@@ -3411,10 +3404,7 @@ public:
             }
         }
         int lcs = dp[n1][n2];
-        for (int i = 0; i < n1+1; i++)
-        {
-            delete []dp[i];
-        }
+        for (int i = 0; i < n1+1; i++) { delete []dp[i]; }
         delete []dp;
         return lcs;
     }
