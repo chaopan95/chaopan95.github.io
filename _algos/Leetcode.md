@@ -3355,7 +3355,7 @@ public:
         if (idx == -1) { return N; }
         int pos = idx - 1;
         while (pos >= 1 && str[pos] == str[pos-1]) { pos--; }
-        str[pos]--;  // [pos]--;
+        str[pos]--;  // current position decrease by 1
         for (int i = pos + 1; i < len; i++) { str[i] = '9'; }
         for (int i = len-1, pow = 1; i >= 0; i--, pow *= 10)
         {
