@@ -2702,6 +2702,71 @@ public:
 };
 {% endhighlight %}
 
+## 0067. Add Binary
+<p align="justify">
+Given two binary strings a and b, return their sum as a binary string.
+</p>
+{% highlight C++ %}
+/*
+Input: a = "11", b = "1"
+Output: "100"
+
+Input: a = "1010", b = "1011"
+Output: "10101"
+*/
+class Solution {
+public:
+    string addBinary(string a, string b) {
+        string str = "";
+        int aLen = int(a.length()), bLen = int(b.length());
+        int i = aLen - 1, j = bLen - 1, add = 0;
+        if (aLen < bLen)
+        {
+            swap(a, b);
+            swap(aLen, bLen);
+            swap(i, j);
+        }
+        while (i >= 0 && j >= 0)
+        {
+            int sum = a[i] - '0' + b[j] - '0' + add;
+            if (sum >= 2)
+            {
+                char tempChar = '0' + sum - 2;
+                str.insert(0, 1, tempChar);
+                add = 1;
+            }
+            else
+            {
+                char tempChar = '0' + sum;
+                str.insert(0, 1, tempChar);
+                add = 0;
+            }
+            i--;
+            j--;
+        }
+        while (i >= 0)
+        {
+            int sum = a[i] - '0' + add;
+            if (sum >= 2)
+            {
+                char tempChar = '0' + sum - 2;
+                str.insert(0, 1, tempChar);
+                add = 1;
+            }
+            else
+            {
+                char tempChar = '0' + sum;
+                str.insert(0, 1, tempChar);
+                add = 0;
+            }
+            i--;
+        }
+        if (add == 1) { str.insert(0, 1, '1'); }
+        return str;
+    }
+};
+{% endhighlight %}
+
 ## 0069 Sqrt(x)*
 <p align="justify">
 Given a non-negative integer x, compute and return the square root of x. Since the return type is an integer, the decimal digits are truncated, and only the integer part of the result is returned.<br><br>
