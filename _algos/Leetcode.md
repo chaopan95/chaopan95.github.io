@@ -2702,6 +2702,49 @@ public:
 };
 {% endhighlight %}
 
+## 0062. Unique Paths
+<p align="justify">
+A robot is located at the top-left corner of a m x n grid (marked 'Start' in the diagram below). The robot can only move either down or right at any point in time. The robot is trying to reach the bottom-right corner of the grid (marked 'Finish' in the diagram below). How many possible unique paths are there?
+$$
+\begin{aligned}
+& dp[i][1] = 1, \quad i = 1, 2, ..., m \\
+& dp[1][j] = 1, \quad j = 1, 2, ..., n \\
+& dp[i][j] = dp[i-1][j] + dp[i][j-1], \quad i = 2, 3, ..., m \quad j = 2, 3, ..., n
+\end{aligned}
+$$
+</p>
+{% highlight C++ %}
+/*
+Input: m = 3, n = 2
+Output: 3
+Explanation:
+From the top-left corner, there are a total of 3 ways to reach the bottom-right corner:
+1. Right -> Down -> Down
+2. Down -> Down -> Right
+3. Down -> Right -> Down
+*/
+class Solution {
+public:
+    int uniquePaths(int m, int n) {
+        int **dp = new int *[m];
+        for (int i = 0; i < m; i++) { dp[i] = new int [n]{}; }
+        for (int i = 0; i < m; i++) { dp[i][0] = 1; }
+        for (int j = 0; j < n; j++) { dp[0][j] = 1; }
+        for (int i = 1; i < m; i++)
+        {
+            for (int j = 1; j < n; j++)
+            {
+                dp[i][j] = dp[i-1][j] + dp[i][j-1];
+            }
+        }
+        int ans = dp[m-1][n-1];
+        for (int i = 0; i < m; i++) { delete []dp[i]; }
+        delete []dp;
+        return ans;
+    }
+};
+{% endhighlight %}
+
 ## 0067. Add Binary
 <p align="justify">
 Given two binary strings a and b, return their sum as a binary string.
