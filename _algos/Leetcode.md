@@ -3411,7 +3411,6 @@ public:
 };
 {% endhighlight %}
 
-
 ## 1585. Check If String Is Transformable With Substring Sort Operations*
 <p align="justify">
 Given two strings s and t, you want to transform string s into string t using the following operation any number of times:<br>
