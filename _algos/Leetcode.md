@@ -3323,6 +3323,49 @@ public:
 };
 {% endhighlight %}
 
+## 0738. Monotone Increasing Digits*
+<p align="justify">
+Given a non-negative integer N, find the largest number that is less than or equal to N with monotone increasing digits. (Recall that an integer has monotone increasing digits if and only if each pair of adjacent digits x and y satisfy x <= y.)
+</p>
+{% highlight C++ %}
+/*
+Input: N = 10
+Output: 9
+
+Input: N = 1234
+Output: 1234
+
+Input: N = 332
+Output: 299
+*/
+class Solution {
+public:
+    int monotoneIncreasingDigits(int N) {
+        int ans = 0;
+        string str = to_string(N);
+        int len = int(str.length()), idx = -1;
+        for (int i = 1; i < len; i++)
+        {
+            if (str[i] < str[i-1])
+            {
+                idx = i;
+                break;
+            }
+        }
+        if (idx == -1) { return N; }
+        int pos = idx - 1;
+        while (pos >= 1 && str[pos] == str[pos-1]) { pos--; }
+        str[pos]--;  // [pos]--;
+        for (int i = pos + 1; i < len; i++) { str[i] = '9'; }
+        for (int i = len-1, pow = 1; i >= 0; i--, pow *= 10)
+        {
+            ans += (str[i] - '0') * pow;
+        }
+        return ans;
+    }
+};
+{% endhighlight %}
+
 ## 1143. Longest Common Subsequence
 <p align="justify">
 Given two strings text1 and text2, return the length of their longest common subsequence.<br>
