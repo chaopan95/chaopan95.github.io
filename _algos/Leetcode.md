@@ -2797,6 +2797,51 @@ public:
 };
 {% endhighlight %}
 
+## 0066. Plus One
+<p align="justify">
+Given a non-empty array of decimal digits representing a non-negative integer, increment one to the integer. The digits are stored such that the most significant digit is at the head of the list, and each element in the array contains a single digit. You may assume the integer does not contain any leading zero, except the number 0 itself.
+</p>
+{% highlight C++ %}
+/*
+Input: digits = [1,2,3]
+Output: [1,2,4]
+Explanation: The array represents the integer 123.
+
+Input: digits = [4,3,2,1]
+Output: [4,3,2,2]
+Explanation: The array represents the integer 4321.
+
+Input: digits = [0]
+Output: [1]
+*/
+class Solution {
+public:
+    vector<int> plusOne(vector<int>& digits) {
+        vector<int> ans;
+        vector<int>::iterator iter;
+        int n = int(digits.size()), add = 1;
+        for (int i = n-1; i >= 0; i--)
+        {
+            int res = digits[i] + add;
+            iter = ans.begin();
+            if (res >= 10)
+            {
+                ans.insert(iter, res-10);
+                add = 1;
+            }
+            else
+            {
+                ans.insert(iter, res);
+                add = 0;
+            }
+        }
+        iter = ans.begin();
+        if (add) { ans.insert(iter, 1); }
+        return ans;
+    }
+};
+{% endhighlight %}
+
 ## 0067. Add Binary
 <p align="justify">
 Given two binary strings a and b, return their sum as a binary string.
