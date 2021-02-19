@@ -2797,6 +2797,46 @@ public:
 };
 {% endhighlight %}
 
+## 0064. Minimum Path Sum
+<p align="justify">
+Given a m x n grid filled with non-negative numbers, find a path from top left to bottom right, which minimizes the sum of all numbers along its path. Note: You can only move either down or right at any point in time.
+</p>
+{% highlight C++ %}
+/*
+1 3 1
+1 5 1
+4 2 1
+Input: grid = [[1,3,1],[1,5,1],[4,2,1]]
+Output: 7
+Explanation: Because the path 1 → 3 → 1 → 1 → 1 minimizes the sum.
+*/
+class Solution {
+public:
+    int minPathSum(vector<vector<int>>& grid) {
+        int m = int(grid.size());
+        if (m == 0) { return 0; }
+        int n = int(grid[0].size());
+        if (n == 0) { return 0; }
+        int **dp = new int *[m];
+        for (int i = 0; i < m; i++) { dp[i] = new int [n]{}; }
+        dp[0][0] = grid[0][0];
+        for (int i = 1; i < m; i++) { dp[i][0] = dp[i-1][0] + grid[i][0]; }
+        for (int j = 1; j < n; j++) { dp[0][j] = dp[0][j-1] + grid[0][j]; }
+        for (int i = 1; i < m; i++)
+        {
+            for (int j = 1; j < n; j++)
+            {
+                dp[i][j] = min(dp[i-1][j], dp[i][j-1]) + grid[i][j];
+            }
+        }
+        int ans = dp[m-1][n-1];
+        for (int i = 0; i < m; i++) { delete []dp[i]; }
+        delete []dp;
+        return ans;
+    }
+};
+{% endhighlight %}
+
 ## 0066. Plus One
 <p align="justify">
 Given a non-empty array of decimal digits representing a non-negative integer, increment one to the integer. The digits are stored such that the most significant digit is at the head of the list, and each element in the array contains a single digit. You may assume the integer does not contain any leading zero, except the number 0 itself.
