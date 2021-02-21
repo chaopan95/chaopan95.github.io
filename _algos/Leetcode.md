@@ -3381,12 +3381,64 @@ public:
 };
 {% endhighlight %}
 
-## 
-<p align="justify">
-
-</p>
+## 0103. Binary Tree Zigzag Level Order Traversal
 {% highlight C++ %}
-
+/*
+    3
+   / \
+  9  20
+    /  \
+   15   7
+[
+  [3],
+  [20,9],
+  [15,7]
+]
+*/
+class Solution {
+public:
+    vector<vector<int>> zigzagLevelOrder(TreeNode* root) {
+        vector<vector<int>> ans;
+        vector<int> arr;
+        if (root == nullptr) { return ans; }
+        queue<TreeNode*> qTree;
+        qTree.push(root);
+        TreeNode *front = root, *last = root, *nextLast = root;
+        int level = 1;
+        while(!qTree.empty())
+        {
+            front = qTree.front();
+            qTree.pop();
+            arr.emplace_back(front->val);
+            if (front->left != nullptr)
+            {
+                qTree.push(front->left);
+                nextLast = front->left;
+            }
+            if (front->right != nullptr)
+            {
+                qTree.push(front->right);
+                nextLast = front->right;
+            }
+            if (front == last)
+            {
+                if (level % 2 == 0)
+                {
+                    int n = int(arr.size());
+                    for (int i = 0; i < n/2; i++)
+                    {
+                        swap(arr[i], arr[n-1-i]);
+                    }
+                }
+                ans.emplace_back(arr);
+                arr.clear();
+                last = nextLast;
+                level++;
+            }
+        }
+        return ans;
+    }
+};
 {% endhighlight %}
 
 ## 0104. Maximum Depth of Binary Tree
