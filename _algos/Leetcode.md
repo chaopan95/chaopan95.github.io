@@ -2702,6 +2702,39 @@ public:
 };
 {% endhighlight %}
 
+## 0058. Length of Last Word
+<p align="justify">
+Given a string s consists of some words separated by spaces, return the length of the last word in the string. If the last word does not exist, return 0. A word is a maximal substring consisting of non-space characters only.
+</p>
+{% highlight C++ %}
+/*
+Input: s = "Hello World"
+Output: 5
+*/
+class Solution {
+public:
+    int lengthOfLastWord(string s) {
+        int ans = 0, n = int(s.length());
+        if (n == 0) { return ans; }
+        bool isCount = false;
+        int i = n - 1;
+        while (i >= 0)
+        {
+            if (s[i] == ' ' && isCount) { break; }
+            if (s[i] == ' ')
+            {
+                i--;
+                continue;
+            }
+            ans++;
+            i--;
+            isCount = true;
+        }
+        return ans;
+    }
+};
+{% endhighlight %}
+
 ## 0062. Unique Paths*
 <p align="justify">
 A robot is located at the top-left corner of a m x n grid (marked 'Start' in the diagram below). The robot can only move either down or right at any point in time. The robot is trying to reach the bottom-right corner of the grid (marked 'Finish' in the diagram below). How many possible unique paths are there?
