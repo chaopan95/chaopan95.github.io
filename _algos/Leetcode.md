@@ -3586,6 +3586,36 @@ public:
 };
 {% endhighlight %}
 
+## 0230. Kth Smallest Element in a BST
+<p align="justify">
+Given the root of a binary search tree, and an integer k, return the kth (1-indexed) smallest element in the tree.
+</p>
+{% highlight C++ %}
+/*
+     3
+   /   \
+  1     4
+   \
+    2
+k = 1, kth min = 1
+*/
+class Solution {
+public:
+    int kthSmallest(TreeNode* root, int &k) {
+        if (root != nullptr)
+        {
+            int left = kthSmallest(root->left, k);
+            if (left >= 0) { return left; }
+            if (k == 1) { return root->val; }
+            k--;
+            int right = kthSmallest(root->right, k);
+            if (right >= 0) { return right; }
+        }
+        return -1;
+    }
+};
+{% endhighlight %}
+
 ## 0257. Binary Tree Paths
 <p align="justify">
 Given a binary tree, return all root-to-leaf paths. Note: A leaf is a node with no children.
