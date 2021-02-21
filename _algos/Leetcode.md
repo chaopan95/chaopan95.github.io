@@ -3315,7 +3315,7 @@ public:
 /*
 Input: p = [1,2,3], q = [1,2,3]
 Output: true
-
+*/
 class Solution {
 public:
     bool isSameTree(TreeNode* p, TreeNode* q) {
@@ -3330,7 +3330,6 @@ public:
         return true;
     }
 };
-*/
 {% endhighlight %}
 
 ## 0104. Maximum Depth of Binary Tree
