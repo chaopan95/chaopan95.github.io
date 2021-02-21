@@ -3343,6 +3343,52 @@ public:
 };
 {% endhighlight %}
 
+## 0102. Binary Tree Level Order Traversal
+{% highlight C++ %}
+class Solution {
+public:
+    vector<vector<int>> levelOrder(TreeNode* root) {
+        vector<vector<int>> ans;
+        vector<int> arr;
+        if (root == nullptr) { return ans; }
+        queue<TreeNode*> qTree;
+        qTree.push(root);
+        TreeNode *front = root, *last = root, *nextLast = root;
+        while(!qTree.empty())
+        {
+            front = qTree.front();
+            qTree.pop();
+            arr.emplace_back(front->val);
+            if (front->left != nullptr)
+            {
+                qTree.push(front->left);
+                nextLast = front->left;
+            }
+            if (front->right != nullptr)
+            {
+                qTree.push(front->right);
+                nextLast = front->right;
+            }
+            if (front == last)
+            {
+                ans.emplace_back(arr);
+                arr.clear();
+                last = nextLast;
+            }
+        }
+        return ans;
+    }
+};
+{% endhighlight %}
+
+## 
+<p align="justify">
+
+</p>
+{% highlight C++ %}
+
+{% endhighlight %}
+
 ## 0104. Maximum Depth of Binary Tree
 <p align="justify">
 Given the root of a binary tree, return its maximum depth. A binary tree's maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.
