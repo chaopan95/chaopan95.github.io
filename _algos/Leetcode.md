@@ -3465,6 +3465,27 @@ public:
 };
 {% endhighlight %}
 
+## 0110. Balanced Binary Tree
+{% highlight C++ %}
+class Solution {
+public:
+    bool isBalanced(TreeNode* root) {
+        if (root == nullptr) { return true; }
+        bool ans = true;
+        getDepth(root, ans);
+        return ans;
+    }
+    int getDepth(TreeNode *root, bool &isBal)
+    {
+        if (root == nullptr) { return 0; }
+        int leftDep = getDepth(root->left, isBal);
+        int rightDep = getDepth(root->right, isBal);
+        if (abs(leftDep - rightDep) > 1) { isBal = false; }
+        return 1 + max(leftDep, rightDep);
+    }
+};
+{% endhighlight %}
+
 ## 0111. Minimum Depth of Binary Tree
 <p align="justify">
 Given a binary tree, find its minimum depth. The minimum depth is the number of nodes along the shortest path from the root node down to the nearest leaf node. Note: A leaf is a node with no children.
