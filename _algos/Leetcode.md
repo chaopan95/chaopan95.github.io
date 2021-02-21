@@ -3131,6 +3131,50 @@ public:
 };
 {% endhighlight %}
 
+## 86. Partition List
+<p align="justify">
+Given the head of a linked list and a value x, partition it such that all nodes less than x come before nodes greater than or equal to x. You should preserve the original relative order of the nodes in each of the two partitions.
+</p>
+{% highlight C++ %}
+/*
+from 1 -> 4 -> 3 -> 2 -> 5 -> 2
+to   1 -> 2 -> 2 -> 4 -> 3 -> 5
+*/
+Input: head = [1,4,3,2,5,2], x = 3
+Output: [1,2,2,4,3,5]
+
+class Solution {
+public:
+    ListNode* partition(ListNode* head, int x) {
+        if (head == nullptr) { return head; }
+        ListNode *h1 = new ListNode(0), *h2 = new ListNode(0);
+        ListNode *p1 = head, *p2 = head->next, *cur1 = h1, *cur2 = h2;
+        while (p1 != nullptr)
+        {
+            if (p1->val < x)
+            {
+                cur1->next = p1;
+                cur1 = p1;
+            }
+            else
+            {
+                cur2->next = p1;
+                cur2 = p1;
+            }
+            p1 = p2;
+            if (p2 == nullptr) { break; }
+            p2 = p2->next;
+        }
+        cur2->next = nullptr;
+        cur1->next = h2->next;
+        head = h1->next;
+        delete h1;
+        delete h2;
+        return head;
+    }
+};
+{% endhighlight %}
+
 ## 0094. Binary Tree Inorder Traversal*
 <p align="justify">
 Given the root of a binary tree, return the inorder traversal of its nodes' values.
