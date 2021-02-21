@@ -3332,6 +3332,36 @@ public:
 };
 {% endhighlight %}
 
+## 0101. Symmetric Tree
+{% highlight C++ %}
+/*
+    1
+   / \
+  2   2
+ / \ / \
+3  4 4  3
+*/
+class Solution {
+public:
+    bool isSymmetric(TreeNode* root) {
+        if (root == nullptr) { return true; }
+        return isSymmetricTree(root->left, root->right);
+    }
+    bool isSymmetricTree(TreeNode *leftTree, TreeNode *rightTree)
+    {
+        if (leftTree == nullptr && rightTree == nullptr) { return true; }
+        if ((leftTree != nullptr && rightTree == nullptr) ||
+            (leftTree == nullptr && rightTree != nullptr) ||
+            leftTree->val != rightTree->val) { return false; }
+        bool left = isSymmetricTree(leftTree->left, rightTree->right);
+        if (!left) { return false; }
+        bool right = isSymmetricTree(leftTree->right, rightTree->left);
+        if (!right) { return false; }
+        return true;
+    }
+};
+{% endhighlight %}
+
 ## 0104. Maximum Depth of Binary Tree
 <p align="justify">
 Given the root of a binary tree, return its maximum depth. A binary tree's maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.
@@ -3972,11 +4002,6 @@ public:
 ## 
 <p align="justify">
 
-<b>Example:</b><br>
-
-<b>Constraints:</b><br>
-
-<b>Solution:</b>
 </p>
 {% highlight C++ %}
 
