@@ -3131,7 +3131,7 @@ public:
 };
 {% endhighlight %}
 
-## 86. Partition List
+## 0086. Partition List
 <p align="justify">
 Given the head of a linked list and a value x, partition it such that all nodes less than x come before nodes greater than or equal to x. You should preserve the original relative order of the nodes in each of the two partitions.
 </p>
@@ -3176,26 +3176,7 @@ public:
 {% endhighlight %}
 
 ## 0094. Binary Tree Inorder Traversal*
-<p align="justify">
-Given the root of a binary tree, return the inorder traversal of its nodes' values.
-</p>
 {% highlight C++ %}
-/*
-Input: root = [1,null,2,3]
-Output: [1,3,2]
-
-Input: root = []
-Output: []
-
-Input: root = [1]
-Output: [1]
-
-Input: root = [1,2]
-Output: [2,1]
-
-Input: root = [1,null,2]
-Output: [1,2]
-*/
 class Solution {
 public:
     vector<int> inorderTraversal(TreeNode* root) {
