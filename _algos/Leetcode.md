@@ -3310,6 +3310,29 @@ public:
 };
 {% endhighlight %}
 
+## 0100. Same Tree
+{% highlight C++ %}
+/*
+Input: p = [1,2,3], q = [1,2,3]
+Output: true
+
+class Solution {
+public:
+    bool isSameTree(TreeNode* p, TreeNode* q) {
+        if (p == nullptr && q == nullptr) { return true; }
+        if ((p == nullptr && q != nullptr) ||
+            (p != nullptr && q == nullptr) ||
+            (p->val != q->val)) { return false; }
+        bool left = isSameTree(p->left, q->left);
+        if (!left) { return false; }
+        bool right = isSameTree(p->right, q->right);
+        if (!right) { return false; }
+        return true;
+    }
+};
+*/
+{% endhighlight %}
+
 ## 0104. Maximum Depth of Binary Tree
 <p align="justify">
 Given the root of a binary tree, return its maximum depth. A binary tree's maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.
