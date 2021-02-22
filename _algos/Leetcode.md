@@ -3812,6 +3812,45 @@ public:
 };
 {% endhighlight %}
 
+## 0516. Longest Palindromic Subsequence*
+<p align="justify">
+
+</p>
+{% highlight C++ %}
+/*
+Given a string s, find the longest palindromic subsequence's
+length in s. You may assume that the maximum length of s is
+1000.
+Input: "bbbab"
+Output: 4
+*/
+class Solution {
+public:
+    int longestPalindromeSubseq(string s) {
+        int n = int(s.length());
+        if (n <= 1) { return n; }
+        int **dp = new int *[n];
+        for (int i = 0; i < n; i++)
+        {
+            dp[i] = new int [n]{};
+            dp[i][i] = 1;
+        }
+        for (int i = n-2; i >= 0; i--)
+        {
+            for (int j = i+1; j < n; j++)
+            {
+                if (s[i] == s[j]) { dp[i][j] = dp[i+1][j-1] + 2; }
+                else { dp[i][j] = max(dp[i+1][j], dp[i][j-1]); }
+            }
+        }
+        int ans = dp[0][n-1];
+        for (int i = 0; i < n; i++) { delete []dp[i]; }
+        delete []dp;
+        return ans;
+    }
+};
+{% endhighlight %}
+
 ## 0543. Diameter of Binary Tree
 <p align="justify">
 Given a binary tree, you need to compute the length of the diameter of the tree. The diameter of a binary tree is the length of the longest path between any two nodes in a tree. This path may or may not pass through the root.
