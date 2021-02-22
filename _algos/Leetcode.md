@@ -3844,6 +3844,41 @@ public:
 };
 {% endhighlight %}
 
+## 0343. Integer Break
+{% highlight C++ %}
+/*
+Input: 10
+Output: 36
+Explanation: 10 = 3 + 3 + 4, 3 × 3 × 4 = 36.
+*/
+class Solution {
+public:
+    int integerBreak(int n) {
+        if (n < 2) { return n; }
+        if (n == 2 || n == 3) { return n-1; }
+        int *dp = new int [n+1]{};
+        dp[1] = 1;
+        dp[2] = 2;
+        dp[3] = 3;
+        for (int i = 4; i <= n; i++)
+        {
+            int prod = 1;
+            for (int j = 1; j <= i/2; j++)
+            {
+                if (prod < dp[j] * dp[i-j])
+                {
+                    prod = dp[j] * dp[i-j];
+                }
+            }
+            dp[i] = prod;
+        }
+        int ans = dp[n];
+        delete []dp;
+        return ans;
+    }
+};
+{% endhighlight %}
+
 ## 0344. Reverse String
 {% highlight C++ %}
 /*
