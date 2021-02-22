@@ -3812,6 +3812,25 @@ public:
 };
 {% endhighlight %}
 
+## 0344. Reverse String
+{% highlight C++ %}
+/*
+Input: ["h","e","l","l","o"]
+Output: ["o","l","l","e","h"]
+*/
+class Solution {
+public:
+    void reverseString(vector<char>& s) {
+        int n = int(s.size());
+        if (n == 0) { return; }
+        for (int i = 0; i < n/2; i++)
+        {
+            swap(s[i], s[n-1-i]);
+        }
+    }
+};
+{% endhighlight %}
+
 ## 0516. Longest Palindromic Subsequence*
 {% highlight C++ %}
 /*
