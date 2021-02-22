@@ -2735,6 +2735,38 @@ public:
 };
 {% endhighlight %}
 
+## 0061. Rotate List
+{% highlight C++ %}
+/*
+Input: head = [1,2,3,4,5], k = 2
+Output: [4,5,1,2,3]
+*/
+class Solution {
+public:
+    ListNode* rotateRight(ListNode* head, int k) {
+        if (head == nullptr || k <= 0) { return head; }
+        ListNode *p1 = head, *p2 = head;
+        int num = 1;
+        while (p2->next != nullptr)
+        {
+            num++;
+            p2 = p2->next;
+        }
+        k = k % num;
+        k = num - k;
+        while (--k)
+        {
+            head = head->next;
+        }
+        p2->next = p1;
+        p1 = head;
+        head = head->next;
+        p1->next = nullptr;
+        return head;
+    }
+};
+{% endhighlight %}
+
 ## 0062. Unique Paths*
 <p align="justify">
 A robot is located at the top-left corner of a m x n grid (marked 'Start' in the diagram below). The robot can only move either down or right at any point in time. The robot is trying to reach the bottom-right corner of the grid (marked 'Finish' in the diagram below). How many possible unique paths are there?
