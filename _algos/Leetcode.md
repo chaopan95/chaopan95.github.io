@@ -3992,6 +3992,41 @@ public:
 };
 {% endhighlight %}
 
+## 0766. Toeplitz Matrix
+{% highlight C++ %}
+/*
+1 2 3 4
+5 1 2 3
+9 5 1 2
+*/
+class Solution {
+public:
+    bool isToeplitzMatrix(vector<vector<int>>& matrix) {
+        int m = int(matrix.size());
+        if (m == 0) { return false; }
+        int n = int(matrix[0].size());
+        if (n == 0) { return false; }
+        for (int j = 0; j < n; j++)
+        {
+            int first = matrix[0][j];
+            for (int i = 0; i < min(m, n-j); i++)
+            {
+                if (first != matrix[i][i+j]) { return false; }
+            }
+        }
+        for (int i = 1; i < m; i++)
+        {
+            int first = matrix[i][0];
+            for (int j = 0; j < min(n, m-i); j++)
+            {
+                if (first != matrix[i+j][j]) { return false; }
+            }
+        }
+        return true;
+    }
+};
+{% endhighlight %}
+
 ## 1143. Longest Common Subsequence
 <p align="justify">
 Given two strings text1 and text2, return the length of their longest common subsequence. A subsequence of a string is a new string generated from the original string with some characters(can be none) deleted without changing the relative order of the remaining characters. (eg, "ace" is a subsequence of "abcde" while "aec" is not). A common subsequence of two strings is a subsequence that is common to both strings. If there is no common subsequence, return 0.
