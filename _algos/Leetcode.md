@@ -3813,9 +3813,6 @@ public:
 {% endhighlight %}
 
 ## 0516. Longest Palindromic Subsequence*
-<p align="justify">
-
-</p>
 {% highlight C++ %}
 /*
 Given a string s, find the longest palindromic subsequence's
