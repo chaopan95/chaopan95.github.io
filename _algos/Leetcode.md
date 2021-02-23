@@ -4113,6 +4113,35 @@ public:
 };
 {% endhighlight %}
 
+## 1052. Grumpy Bookstore Owner
+{% highlight C++ %}
+/*
+Input: customers = [1,0,1,2,1,1,7,5], grumpy = [0,1,0,1,0,1,0,1], X = 3
+Output: 16
+Explanation: The bookstore owner keeps themselves not grumpy for the last 3 minutes. 
+The maximum number of customers that can be satisfied = 1 + 1 + 1 + 1 + 7 + 5 = 16.
+*/
+class Solution {
+public:
+    int maxSatisfied(vector<int>& customers, vector<int>& grumpy, int X) {
+        int ans = 0, n = int(customers.size());
+        if (n == 0) { return ans; }
+        for (int i = 0; i < n; i++)
+        {
+            if (grumpy[i] == 0) { ans += customers[i]; }
+        }
+        int add = 0, maxAdd = 0;
+        for (int i = 0; i < X; i++) { ans += customers[i] * grumpy[i]; }
+        for (int i = 1; i < n - X + 1; i++)
+        {
+            add += -customers[i-1] * grumpy[i-1] + customers[i+X-1] * grumpy[i+X-1];
+            if (maxAdd < add) { maxAdd = add; }
+        }
+        return ans + maxAdd;
+    }
+};
+{% endhighlight %}
+
 ## 1143. Longest Common Subsequence
 <p align="justify">
 Given two strings text1 and text2, return the length of their longest common subsequence. A subsequence of a string is a new string generated from the original string with some characters(can be none) deleted without changing the relative order of the remaining characters. (eg, "ace" is a subsequence of "abcde" while "aec" is not). A common subsequence of two strings is a subsequence that is common to both strings. If there is no common subsequence, return 0.
