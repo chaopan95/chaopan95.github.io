@@ -3506,6 +3506,41 @@ public:
 };
 {% endhighlight %}
 
+## 0120. Triangle
+{% highlight C++ %}
+/*
+   2
+  3 4
+ 6 5 7
+4 1 8 3
+The minimum path sum from top to bottom
+is 2 + 3 + 5 + 1 = 11 (underlined above).
+*/
+class Solution {
+public:
+    int minimumTotal(vector<vector<int>>& triangle) {
+        int n = int(triangle.size());
+        if (n == 0) { return 0; }
+        int **dp = new int *[n];
+        for (int i = 0; i < n; i++) { dp[i] = new int [n]{}; }
+        dp[0][0] = triangle[0][0];
+        for (int i = 1; i < n; i++)
+        {
+            dp[i][0] = dp[i-1][0] + triangle[i][0];
+            for (int j = 1; j < i; j++)
+            {
+                dp[i][j] = min(dp[i-1][j-1], dp[i-1][j]) + triangle[i][j];
+            }
+            dp[i][i] = dp[i-1][i-1] + triangle[i][i];
+        }
+        int ans = *min_element(dp[n - 1], dp[n - 1] + n);
+        for (int i = 0; i < n; i++) { delete []dp[i]; }
+        delete []dp;
+        return ans;
+    }
+};
+{% endhighlight %}
+
 ## 0121. Best Time to Buy and Sell Stock
 <p align="justify">
 Say you have an array for which the ith element is the price of a given stock on day i. If you were only permitted to complete at most one transaction (i.e., buy one and sell one share of the stock), design an algorithm to find the maximum profit. Note that you cannot sell a stock before you buy one.<br><br>
