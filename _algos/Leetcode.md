@@ -1295,35 +1295,23 @@ public:
 {% endhighlight %}
 
 ## 0020. Valid Parentheses
-<p align="justify">
-Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.<br>
-An input string is valid if:<br>
-Open brackets must be closed by the same type of brackets.<br>
-Open brackets must be closed in the correct order.<br><br>
-
-<b>Example 1:</b><br>
-Input: s = "()"<br>
-Output: true<br>
-<b>Example 2:</b><br>
-Input: s = "()[]{}"<br>
-Output: true<br>
-<b>Example 3:</b><br>
-Input: s = "(]"<br>
-Output: false<br>
-<b>Example 4:</b><br>
-Input: s = "([)]"<br>
-Output: false<br>
-<b>Example 5:</b><br>
-Input: s = "{[]}"<br>
-Output: true<br><br>
-
-<b>Constraints:</b><br>
-1 <= s.length <= $10^{4}$<br>
-s consists of parentheses only '()[]{}'.<br><br>
-
-<b>Solution:</b>
-</p>
 {% highlight C++ %}
+/*
+Input: s = "()"
+Output: true
+
+Input: s = "()[]{}"
+Output: true
+
+Input: s = "(]"
+Output: false
+
+Input: s = "([)]"
+Output: false
+
+Input: s = "{[]}"
+Output: true
+*/
 class Solution {
 public:
     bool isValid(string s) {
