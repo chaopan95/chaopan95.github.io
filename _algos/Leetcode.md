@@ -1337,26 +1337,11 @@ public:
 {% endhighlight %}
 
 ## 0021. Merge Two Sorted Lists
-<p align="justify">
-Merge two sorted linked lists and return it as a new sorted list. The new list should be made by splicing together the nodes of the first two lists.<br><br>
-
-<b>Example:</b><br>
-Input: 1->2->4, 1->3->4<br>
-Output: 1->1->2->3->4->4<br><br>
-
-<b>Solution:</b>
-</p>
 {% highlight C++ %}
-/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode() : val(0), next(nullptr) {}
- *     ListNode(int x) : val(x), next(nullptr) {}
- *     ListNode(int x, ListNode *next) : val(x), next(next) {}
- * };
- */
+/*
+Input: 1->2->4, 1->3->4
+Output: 1->1->2->3->4->4
+*/
 class Solution {
 public:
     ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
@@ -1388,21 +1373,17 @@ public:
 {% endhighlight %}
 
 ## 0022. Generate Parentheses
-<p align="justify">
-Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.<br><br>
-
-For example, given n = 3, a solution set is:<br>
-[<br>
-&emsp;"((()))",<br>
-&emsp;"(()())",<br>
-&emsp;"(())()",<br>
-&emsp;"()(())",<br>
-&emsp;"()()()"<br>
-]<br><br>
-
-<b>Solution:</b>
-</p>
 {% highlight C++ %}
+/*
+For example, given n = 3, a solution set is:
+[
+"((()))",
+"(()())",
+"(())()",
+"()(())",
+"()()()"
+]
+*/
 class Solution {
 public:
     vector<string> generateParenthesis(int n) {
@@ -1430,48 +1411,11 @@ public:
 {% endhighlight %}
 
 ## 0023. Merge k Sorted Lists
-<p align="justify">
-You are given an array of k linked-lists lists, each linked-list is sorted in ascending order. Merge all the linked-lists into one sorted linked-list and return it.<br><br>
-
-<b>Example 1:</b><br>
-Input: lists = [[1,4,5],[1,3,4],[2,6]]<br>
-Output: [1,1,2,3,4,4,5,6]<br>
-Explanation: The linked-lists are:<br>
-[<br>
-&emsp;1->4->5,<br>
-&emsp;1->3->4,<br>
-&emsp;2->6<br>
-]<br>
-merging them into one sorted list:<br>
-1->1->2->3->4->4->5->6<br>
-<b>Example 2:</b><br>
-Input: lists = []<br>
-Output: []<br>
-<b>Example 3:</b><br>
-Input: lists = [[]]<br>
-Output: []<br><br>
-
-<b>Constraints:</b><br>
-k == lists.length<br>
-0 <= k <= 10^4<br>
-0 <= lists[i].length <= 500<br>
--10^4 <= lists[i][j] <= 10^4<br>
-lists[i] is sorted in ascending order.<br>
-The sum of lists[i].length won't exceed 10^4.<br><br>
-
-<b>Solution:</b>
-</p>
 {% highlight C++ %}
-/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode() : val(0), next(nullptr) {}
- *     ListNode(int x) : val(x), next(nullptr) {}
- *     ListNode(int x, ListNode *next) : val(x), next(next) {}
- * };
- */
+/*
+Input: lists = [[1,4,5],[1,3,4],[2,6]]
+Output: [1,1,2,3,4,4,5,6]
+*/
 class Solution {
 public:
     ListNode* mergeKLists(vector<ListNode*>& lists) {
@@ -1503,26 +1447,10 @@ public:
 {% endhighlight %}
 
 ## 0024. Swap Nodes in Pairs
-<p align="justify">
-Given a linked list, swap every two adjacent nodes and return its head.<br>
-You may not modify the values in the list's nodes, only nodes itself may be changed.<br><br>
-
-<b>Example:</b><br>
-Given 1->2->3->4, you should return the list as 2->1->4->3.<br><br>
-
-<b>Solution:</b>
-</p>
 {% highlight C++ %}
-/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode() : val(0), next(nullptr) {}
- *     ListNode(int x) : val(x), next(nullptr) {}
- *     ListNode(int x, ListNode *next) : val(x), next(next) {}
- * };
- */
+/*
+Given 1->2->3->4, you should return the list as 2->1->4->3.
+*/
 class Solution {
 public:
     ListNode* swapPairs(ListNode* head) {
@@ -1548,32 +1476,12 @@ public:
 {% endhighlight %}
 
 ## 0025. Reverse Nodes in k-Group
-<p align="justify">
-Given a linked list, reverse the nodes of a linked list k at a time and return its modified list.<br>
-k is a positive integer and is less than or equal to the length of the linked list. If the number of nodes is not a multiple of k then left-out nodes in the end should remain as it is.<br><br>
-
-<b>Example:</b><br>
-Given this linked list: 1->2->3->4->5<br>
-For k = 2, you should return: 2->1->4->3->5<br>
-For k = 3, you should return: 3->2->1->4->5<br><br>
-
-<b>Note:</b><br>
-Only constant extra memory is allowed.<br>
-You may not alter the values in the list's nodes, only nodes itself may be changed.<br><br>
-
-<b>Solution:</b>
-</p>
 {% highlight C++ %}
-/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode() : val(0), next(nullptr) {}
- *     ListNode(int x) : val(x), next(nullptr) {}
- *     ListNode(int x, ListNode *next) : val(x), next(next) {}
- * };
- */
+/*
+Given this linked list: 1->2->3->4->5
+For k = 2, you should return: 2->1->4->3->5
+For k = 3, you should return: 3->2->1->4->5
+*/
 class Solution {
 public:
     ListNode* reverseKGroup(ListNode* head, int k) {
@@ -1616,22 +1524,11 @@ public:
 {% endhighlight %}
 
 ## 0026. Remove Duplicates from Sorted Array
-<p align="justify">
-Given a sorted array nums, remove the duplicates in-place such that each element appear only once and return the new length.<br>
-Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory.<br><br>
-
-<b>Example 1:</b><br>
-Given nums = [1,1,2],<br>
-Your function should return length = 2, with the first two elements of nums being 1 and 2 respectively.<br>
-It doesn't matter what you leave beyond the returned length.<br>
-<b>Example 2:</b><br>
-Given nums = [0,0,1,1,1,2,2,3,3,4],<br>
-Your function should return length = 5, with the first five elements of nums being modified to 0, 1, 2, 3, and 4 respectively.<br>
-It doesn't matter what values are set beyond the returned length.<br><br>
-
-<b>Solution:</b>
-</p>
 {% highlight C++ %}
+/*
+Given nums = [0,0,1,1,1,2,2,3,3,4]
+Your function should return length = 5
+*/
 class Solution {
 public:
     int removeDuplicates(vector<int>& nums) {
@@ -1649,24 +1546,11 @@ public:
 {% endhighlight %}
 
 ## 0027. Remove Element
-<p align="justify">
-Given an array nums and a value val, remove all instances of that value in-place and return the new length.<br>
-Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory.<br>
-The order of elements can be changed. It doesn't matter what you leave beyond the new length.<br><br>
-
-<b>Example 1:</b><br>
-Given nums = [3,2,2,3], val = 3,<br>
-Your function should return length = 2, with the first two elements of nums being 2.<br>
-It doesn't matter what you leave beyond the returned length.<br>
-<b>Example 2:</b><br>
-Given nums = [0,1,2,2,3,0,4,2], val = 2,<br>
-Your function should return length = 5, with the first five elements of nums containing 0, 1, 3, 0, and 4.<br>
-Note that the order of those five elements can be arbitrary.<br>
-It doesn't matter what values are set beyond the returned length.<br><br>
-
-<b>Solution:</b><br>
-</p>
 {% highlight C++ %}
+/*
+Given nums = [0,1,2,2,3,0,4,2], val = 2,
+Your function should return length = 5, 
+*/
 class Solution {
 public:
     int removeElement(vector<int>& nums, int val) {
@@ -1682,20 +1566,11 @@ public:
 {% endhighlight %}
 
 ## 0028. Implement strStr()*
-<p align="justify">
-Implement strStr().<br>
-Return the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.<br><br>
-
-<b>Example 1:</b><br>
-Input: haystack = "hello", needle = "ll"<br>
-Output: 2<br>
-<b>Example 2:</b><br>
-Input: haystack = "aaaaa", needle = "bba"<br>
-Output: -1<br><br>
-
-<b>Solution:</b>
-</p>
 {% highlight C++ %}
+/*
+Input: haystack = "hello", needle = "ll"
+Output: 2
+*/
 class Solution {
 public:
     int strStr(string haystack, string needle) {
