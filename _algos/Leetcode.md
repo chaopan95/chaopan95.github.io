@@ -2565,7 +2565,7 @@ public:
 };
 {% endhighlight %}
 
-## 45. Jump Game II*
+## 0045. Jump Game II*
 {% highlight C++ %}
 /*
 Input: nums = [2,3,1,1,4]
@@ -4139,6 +4139,34 @@ public:
             }
         }
         return true;
+    }
+};
+{% endhighlight %}
+
+## 0832. Flipping an Image
+{% highlight C++ %}
+/*
+Input: [[1,1,0],[1,0,1],[0,0,0]]
+Output: [[1,0,0],[0,1,0],[1,1,1]]
+Explanation: First reverse each row: [[0,1,1],[1,0,1],[0,0,0]].
+Then, invert the image: [[1,0,0],[0,1,0],[1,1,1]]
+*/
+class Solution {
+public:
+    vector<vector<int>> flipAndInvertImage(vector<vector<int>>& A) {
+        int m = int(A.size()), n = int(A[0].size());
+        for (int i = 0; i < m; i++)
+        {
+            for (int j = 0; j < n/2; j++)
+            {
+                swap(A[i][j], A[i][n-1-j]);
+            }
+            for (int j = 0; j < n; j++)
+            {
+                A[i][j] = 1 - A[i][j];
+            }
+        }
+        return A;
     }
 };
 {% endhighlight %}
