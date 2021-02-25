@@ -3877,6 +3877,52 @@ public:
 };
 {% endhighlight %}
 
+## 0647. Palindromic Substrings
+{% highlight C++ %}
+/*
+Input: "aaa"
+Output: 6
+Explanation: Six palindromic strings: "a", "a",
+"a", "aa", "aa", "aaa".
+*/
+class Solution {
+public:
+    int countSubstrings(string s) {
+        int n = int(s.length()), ans = n;
+        if (n == 0) { return ans; }
+        bool **dp = new bool *[n];
+        for (int i = 0; i < n; i++)
+        {
+            dp[i] = new bool [n]{};
+            dp[i][i] = true;
+        }
+        for (int i = 1; i < n; i++)
+        {
+            if (s[i-1] == s[i])
+            {
+                dp[i-1][i] = true;
+                ans++;
+            }
+        }
+        for (int k = 2; k < n; k++)
+        {
+            for (int i = 0; i < n-k; i++)
+            {
+                int j = i + k;
+                if (s[i] == s[j] && dp[i+1][j-1])
+                {
+                    dp[i][j] = true;
+                    ans++;
+                }
+            }
+        }
+        for (int i = 0; i < n; i++) { delete []dp[i]; }
+        delete []dp;
+        return ans;
+    }
+};
+{% endhighlight %}
+
 ## 0738. Monotone Increasing Digits*
 <p align="justify">
 Given a non-negative integer N, find the largest number that is less than or equal to N with monotone increasing digits. (Recall that an integer has monotone increasing digits if and only if each pair of adjacent digits x and y satisfy x <= y.)
