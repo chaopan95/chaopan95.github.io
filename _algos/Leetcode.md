@@ -2575,6 +2575,34 @@ public:
 };
 {% endhighlight %}
 
+## 0055. Jump Game
+{% highlight C++ %}
+/*
+Input: nums = [2,3,1,1,4]
+Output: true
+Explanation: Jump 1 step from index 0 to 1,
+then 3 steps to the last index.
+*/
+class Solution {
+public:
+    bool canJump(vector<int>& nums) {
+        int n = int(nums.size());
+        if (n == 0) { return false; }
+        int count = 0, end = 0, maxPos = 0;
+        for (int i = 0; i < n - 1; i++)
+        {
+            maxPos = max(nums[i] + i, maxPos);
+            if (i == end)
+            {
+                end = maxPos;
+                count++;
+            }
+        }
+        return end >= n - 1;
+    }
+};
+{% endhighlight %}
+
 ## 0058. Length of Last Word
 <p align="justify">
 Given a string s consists of some words separated by spaces, return the length of the last word in the string. If the last word does not exist, return 0. A word is a maximal substring consisting of non-space characters only.
