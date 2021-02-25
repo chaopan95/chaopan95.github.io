@@ -4126,8 +4126,9 @@ public:
 /*
 Input: customers = [1,0,1,2,1,1,7,5], grumpy = [0,1,0,1,0,1,0,1], X = 3
 Output: 16
-Explanation: The bookstore owner keeps themselves not grumpy for the last 3 minutes. 
-The maximum number of customers that can be satisfied = 1 + 1 + 1 + 1 + 7 + 5 = 16.
+Explanation: The bookstore owner keeps themselves not grumpy for the last 3
+minutes. The maximum number of customers that can be satisfied = 1 + 1 + 1 +
+1 + 7 + 5 = 16.
 */
 class Solution {
 public:
@@ -4142,7 +4143,8 @@ public:
         for (int i = 0; i < X; i++) { ans += customers[i] * grumpy[i]; }
         for (int i = 1; i < n - X + 1; i++)
         {
-            add += -customers[i-1] * grumpy[i-1] + customers[i+X-1] * grumpy[i+X-1];
+            add += -customers[i-1] * grumpy[i-1] +
+            customers[i+X-1] * grumpy[i+X-1];
             if (maxAdd < add) { maxAdd = add; }
         }
         return ans + maxAdd;
