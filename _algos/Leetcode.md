@@ -4283,6 +4283,29 @@ public:
 };
 {% endhighlight %}
 
+## 0896. Monotonic Array
+{% highlight C++ %}
+/*
+Input: [1,2,2,3]
+Output: true
+*/
+class Solution {
+public:
+    bool isMonotonic(vector<int>& A) {
+        int n = int(A.size());
+        if (n == 1) { return true; }
+        bool isIncrease = false, isDecrease = false;
+        for (int i = 1; i < n; i++)
+        {
+            if (A[i] > A[i-1]) { isIncrease = true; }
+            if (A[i] < A[i-1]) { isDecrease = true; }
+            if (isIncrease && isDecrease) { return false; }
+        }
+        return true;
+    }
+};
+{% endhighlight %}
+
 ## 1052. Grumpy Bookstore Owner
 {% highlight C++ %}
 /*
