@@ -3780,6 +3780,40 @@ public:
 };
 {% endhighlight %}
 
+## 279. Perfect Squares
+{% highlight C++ %}
+/*
+Input: n = 12
+Output: 3
+Explanation: 12 = 4 + 4 + 4.
+*/
+class Solution {
+public:
+    int numSquares(int n) {
+        if (n < 1) { return 0; }
+        int *dp = new int [n+1]{};
+        dp[1] = 1;
+        for (int i = 2; i <= n; i++)
+        {
+            if (i * i <= n) { dp[i * i] = 1; }
+            if (dp[i]) { continue; }
+            int min = INT_MAX;
+            for (int j = 1; j <= i/2; j++)
+            {
+                if (min > dp[j] + dp[i-j])
+                {
+                    min = dp[j] + dp[i-j];
+                }
+            }
+            dp[i] = min;
+        }
+        int ans = dp[n];
+        delete []dp;
+        return ans;
+    }
+};
+{% endhighlight %}
+
 ## 0343. Integer Break
 {% highlight C++ %}
 /*
