@@ -3834,6 +3834,62 @@ public:
 };
 {% endhighlight %}
 
+## 0395. Longest Substring with At Least K Repeating Characters*
+{% highlight C++ %}
+/*
+Input: s = "ababbc", k = 2
+Output: 5
+Explanation: The longest substring is "ababb",
+as 'a' is repeated 2 times and 'b' is repeated
+3 times.
+*/
+class Solution {
+public:
+    int longestSubstring(string s, int k) {
+        int n = int(s.length()), ans = 0;
+        for (int t = 1; t <= 26; t++)
+        {
+            int l = 0, r = 0, tot = 0, numLessK = 0;
+            int *count = new int [26]{};
+            while (r < n)
+            {
+                count[s[r] - 'a']++;
+                if (count[s[r] - 'a'] == 1)
+                {
+                    tot++;
+                    numLessK++;
+                }
+                if (count[s[r] - 'a'] == k)
+                {
+                    numLessK--;
+                }
+                while (tot > t)
+                {
+                    count[s[l] - 'a']--;
+                    if (count[s[l] - 'a'] == k-1)
+                    {
+                        numLessK++;
+                    }
+                    if (count[s[l] - 'a'] == 0)
+                    {
+                        numLessK--;
+                        tot--;
+                    }
+                    l++;
+                }
+                if (numLessK == 0)
+                {
+                    ans = max(ans, r - l + 1);
+                }
+                r++;
+            }
+            delete []count;
+        }
+        return ans;
+    }
+};
+{% endhighlight %}
+
 ## 0516. Longest Palindromic Subsequence*
 {% highlight C++ %}
 /*
