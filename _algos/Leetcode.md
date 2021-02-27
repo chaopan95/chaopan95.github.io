@@ -3035,6 +3035,50 @@ public:
 };
 {% endhighlight %}
 
+## 0076. Minimum Window Substring*
+{% highlight C++ %}
+/*
+Input: s = "ADOBECODEBANC", t = "ABC"
+Output: "BANC"
+*/
+class Solution {
+public:
+    string minWindow(string s, string t) {
+        unordered_map<char, int> tDict, sDict;
+        for (const auto &c : t) { tDict[c]++; }
+        int ns = int(s.length());
+        int l = 0, r = -1, ansL = -1, minLen = INT_MAX;
+        while (r < ns)
+        {
+            if (tDict.find(s[++r]) != tDict.end()) { sDict[s[r]]++; }
+            while (isCover(tDict, sDict) && l <= r)
+            {
+                if (r - l + 1 < minLen)
+                {
+                    minLen = r - l + 1;
+                    ansL = l;
+                }
+                if (tDict.find(s[l]) != tDict.end())
+                {
+                    sDict[s[l]]--;
+                }
+                l++;
+            }
+        }
+        return -1 == ansL ? string() : s.substr(ansL, minLen);
+    }
+    bool isCover(unordered_map<char, int> &tDict,
+                 unordered_map<char, int> &sDict)
+    {
+        for (const auto &item : tDict)
+        {
+            if (sDict[item.first] < item.second) { return false; }
+        }
+        return true;
+    }
+};
+{% endhighlight %}
+
 ## 0080. Remove Duplicates from Sorted Array II*
 <p align="justify">
 Given a sorted array nums, remove the duplicates in-place such that duplicates appeared at most twice and return the new length. Do not allocate extra space for another array; you must do this by modifying the input array in-place with O(1) extra memory.
