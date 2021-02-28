@@ -2408,6 +2408,46 @@ public:
 };
 {% endhighlight %}
 
+## 0042. Trapping Rain Water
+<p align="justify">
+
+</p>
+{% highlight C++ %}
+/*
+Input: height = [0,1,0,2,1,0,1,3,2,1,2,1]
+Output: 6
+Explanation: The above elevation map (black section) is
+represented by array [0,1,0,2,1,0,1,3,2,1,2,1]. In this
+case, 6 units of rain water (blue section) are being
+trapped.
+*/
+class Solution {
+public:
+    int trap(vector<int>& height) {
+        int ans = 0, n = int(height.size());
+        if (n < 3) { return ans; }
+        int i = 0, j = n-1;
+        int leftMax = 0, rightMax = 0;
+        while (i < j)
+        {
+            if (height[i] < height[j])
+            {
+                if (height[i] >= leftMax) { leftMax = height[i]; }
+                else { ans += leftMax - height[i]; }
+                i++;
+            }
+            else
+            {
+                if (height[j] >= rightMax) { rightMax = height[j]; }
+                else { ans += rightMax - height[j]; }
+                j--;
+            }
+        }
+        return ans;
+    }
+};
+{% endhighlight %}
+
 ## 0045. Jump Game II*
 {% highlight C++ %}
 /*
