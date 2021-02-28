@@ -3750,6 +3750,39 @@ public:
 };
 {% endhighlight %}
 
+## 0209. Minimum Size Subarray Sum
+<p align="justify">
+Given an array of positive integers nums and a positive integer target, return the minimal length of a contiguous subarray [numsl, numsl+1, ..., numsr-1, numsr] of which the sum is greater than or equal to target. If there is no such subarray, return 0 instead.
+</p>
+{% highlight C++ %}
+/*
+Input: target = 7, nums = [2,3,1,2,4,3]
+Output: 2
+*/
+class Solution {
+public:
+    int minSubArrayLen(int target, vector<int>& nums) {
+        int n = int(nums.size());
+        if (n == 0) { return 0; }
+        int minLen = INT_MAX, l = 0, r = 0, sum = nums[0];
+        while (r < n && l <= r)
+        {
+            if (sum < target)
+            {
+                if (r + 1 < n) { sum += nums[r+1]; }
+                r++;
+            }
+            else
+            {
+                if (minLen > r - l + 1) { minLen = r - l + 1; }
+                sum -= nums[l++];
+            }
+        }
+        return minLen == INT_MAX ? 0 : minLen;
+    }
+};
+{% endhighlight %}
+
 ## 0230. Kth Smallest Element in a BST
 <p align="justify">
 Given the root of a binary search tree, and an integer k, return the kth (1-indexed) smallest element in the tree.
