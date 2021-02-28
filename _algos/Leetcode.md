@@ -2408,10 +2408,7 @@ public:
 };
 {% endhighlight %}
 
-## 0042. Trapping Rain Water
-<p align="justify">
-
-</p>
+## 0042. Trapping Rain Water*
 {% highlight C++ %}
 /*
 Input: height = [0,1,0,2,1,0,1,3,2,1,2,1]
