@@ -4382,6 +4382,70 @@ public:
 };
 {% endhighlight %}
 
+## 1178. Number of Valid Words for Each Puzzle
+<p align="justify">
+With respect to a given puzzle string, a word is valid if both the following conditions are satisfied:<br>
+word contains the first letter of puzzle.<br>
+For each letter in word, that letter is in puzzle.<br>
+For example, if the puzzle is "abcdefg", then valid words are "faced", "cabbage", and "baggage"; while invalid words are "beefed" (doesn't include "a") and "based" (includes "s" which isn't in the puzzle).<br>
+Return an array answer, where answer[i] is the number of words in the given word list words that are valid with respect to the puzzle puzzles[i].
+</p>
+{% highlight C++ %}
+/*
+words = ["aaaa","asas","able","ability","actt","actor","access"], 
+puzzles = ["aboveyz","abrodyz","abslute","absoryz","actresz","gaswxyz"]
+Output: [1,1,3,2,4,0]
+Explanation:
+1 valid word for "aboveyz" : "aaaa" 
+1 valid word for "abrodyz" : "aaaa"
+3 valid words for "abslute" : "aaaa", "asas", "able"
+2 valid words for "absoryz" : "aaaa", "asas"
+4 valid words for "actresz" : "aaaa", "asas", "actt", "access"
+There're no valid words for "gaswxyz" cause none of the words in
+the list contains letter 'g'.
+*/
+class Solution {
+public:
+    vector<int> findNumOfValidWords(vector<string>& words,
+                                    vector<string>& puzzles) {
+        int n = int(puzzles.size());
+        unordered_map<int, int> dict;
+        for (const string &word : words)
+        {
+            int mask = 0;
+            for (const char &c : word)
+            {
+                mask |= (1 << (c - 'a'));
+            }
+            if (__builtin_popcount(mask) <= 7)
+            {
+                dict[mask]++;
+            }
+        }
+        vector<int> ans;
+        for (const string &puzzle : puzzles)
+        {
+            int tot = 0;
+            for (int choose = 0; choose < (1 << 6); choose++)
+            {
+                int mask = 0;
+                for (int i = 0; i < 6; i++)
+                {
+                    if (choose & (1 << i))
+                    {
+                        mask |= (1 << (puzzle[i + 1] - 'a'));
+                    }
+                }
+                mask |= (1 << (puzzle[0] - 'a'));
+                tot += dict[mask];
+            }
+            ans.emplace_back(tot);
+        }
+        return ans;
+    }
+};
+{% endhighlight %}
+
 ## 1585. Check If String Is Transformable With Substring Sort Operations*
 <p align="justify">
 Given two strings s and t, you want to transform string s into string t using the following operation any number of times:<br>
