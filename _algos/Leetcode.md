@@ -4382,7 +4382,7 @@ public:
 };
 {% endhighlight %}
 
-## 1178. Number of Valid Words for Each Puzzle
+## 1178. Number of Valid Words for Each Puzzle*
 <p align="justify">
 With respect to a given puzzle string, a word is valid if both the following conditions are satisfied:<br>
 word contains the first letter of puzzle.<br>
