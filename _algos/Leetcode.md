@@ -2524,6 +2524,49 @@ public:
 };
 {% endhighlight %}
 
+## 0044. Wildcard Matching
+{% highlight C++ %}
+/*
+Given an input string (s) and a pattern (p),
+implement wildcard pattern matching with support
+for '?' and '*' where:
+'?' Matches any single character.
+'*' Matches any sequence of characters (including
+the empty sequence).
+The matching should cover the entire input string
+(not partial).
+Input: s = "adceb", p = "*a*b"
+Output: true
+*/
+class Solution {
+public:
+    bool isMatch(string s, string p) {
+        int ns = int(s.length()), np = int(p.length());
+        int **dp = new int *[ns+1];
+        for (int i = 0; i <= ns; i++) { dp[i] = new int [np+1]{}; }
+        dp[ns][np] = true;
+        for (int i = ns; i >= 0; i--)
+        {
+            for (int j = np-1; j >= 0; j--)
+            {
+                bool ijMat = i < ns && (s[i] == p[j] || p[j] == '?' ||
+                                        p[j] == '*');
+                if (p[j] == '*')
+                {
+                    dp[i][j] = dp[i][j+1] || (ijMat && dp[i+1][j]);
+                }
+                else { dp[i][j] = ijMat && dp[i+1][j+1];
+                }
+            }
+        }
+        bool ans = dp[0][0];
+        for (int i = 0; i <= ns; i++) { delete []dp[i]; }
+        delete []dp;
+        return ans;
+    }
+};
+{% endhighlight %}
+
 ## 0045. Jump Game II*
 {% highlight C++ %}
 /*
