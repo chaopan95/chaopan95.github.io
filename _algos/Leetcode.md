@@ -2445,6 +2445,85 @@ public:
 };
 {% endhighlight %}
 
+## 0043. Multiply Strings
+{% highlight C++ %}
+/*
+Input: num1 = "123", num2 = "456"
+Output: "56088"
+*/
+class Solution {
+public:
+    string multiply(string num1, string num2) {
+        string ans = "";
+        if (num1 == "0" || num2 == "0") { return "0"; }
+        int n2 = int(num2.length());
+        for (int j = n2-1; j >= 0; j--)
+        {
+            string str = strMultiChar(num1, num2[j]);
+            str.insert(str.length(), n2-1-j, '0');
+            ans = strAdd(ans, str);
+        }
+        return ans;
+    }
+    string strAdd(string s1, string s2)
+    {
+        int n1 = int(s1.length()), n2 = int(s2.length());
+        if (n1 < n2)
+        {
+            swap(s1, s2);
+            swap(n1, n2);
+        }
+        string ans = "";
+        int i = n1-1, j = n2-1, add1 = 0;
+        while (i >= 0 && j >= 0)
+        {
+            int sum = (s1[i--] - '0') + (s2[j--] - '0') + add1;
+            add1 = 0;
+            if (sum > 9)
+            {
+                sum -= 10;
+                add1 = 1;
+            }
+            char insertChar = '0' + sum;
+            ans.insert(0, 1, insertChar);
+        }
+        while (i >= 0)
+        {
+            int sum = (s1[i--] - '0') + add1;
+            add1 = 0;
+            if (sum > 9)
+            {
+                sum -= 10;
+                add1 = 1;
+            }
+            char insertChar = '0' + sum;
+            ans.insert(0, 1, insertChar);
+        }
+        if (add1) { ans.insert(0, 1, '1'); }
+        return ans;
+    }
+    string strMultiChar(string str, char c)
+    {
+        string ans = "";
+        int n = int(str.length()), add1 = 0;
+        for (int i = n-1; i >= 0; i--)
+        {
+            int res = (str[i] - '0') * (c - '0') + add1;
+            add1 = 0;
+            if (res > 9)
+            {
+                add1 = res / 10;
+                res = res % 10;
+            }
+            char insertChar = '0' + res;
+            ans.insert(0, 1, insertChar);
+        }
+        if (add1) { ans = to_string(add1) + ans; }
+        return ans;
+    }
+};
+{% endhighlight %}
+
 ## 0045. Jump Game II*
 {% highlight C++ %}
 /*
