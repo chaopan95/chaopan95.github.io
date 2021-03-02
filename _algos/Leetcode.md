@@ -4050,6 +4050,45 @@ public:
 };
 {% endhighlight %}
 
+## 0303. Range Sum Query - Immutable
+{% highlight C++ %}
+/*
+Input
+["NumArray", "sumRange", "sumRange", "sumRange"]
+[[[-2, 0, 3, -5, 2, -1]], [0, 2], [2, 5], [0, 5]]
+Output
+[null, 1, -1, -3]
+
+Explanation
+NumArray numArray = new NumArray([-2, 0, 3, -5, 2, -1]);
+numArray.sumRange(0, 2); // return 1 ((-2) + 0 + 3)
+numArray.sumRange(2, 5); // return -1 (3 + (-5) + 2 + (-1)) 
+numArray.sumRange(0, 5); // return -3 ((-2) + 0 + 3 + (-5) + 2 + (-1))
+*/
+class NumArray {
+    vector<int> arr;
+public:
+    NumArray(vector<int>& nums) {
+        int n = int(nums.size());
+        arr.resize(n + 1);
+        for (int i = 0; i < n; i++)
+        {
+            arr[i+1] = arr[i] + nums[i];
+        }
+    }
+    
+    int sumRange(int i, int j) {
+        return arr[j+1] - arr[i];
+    }
+};
+
+/**
+ * Your NumArray object will be instantiated and called as such:
+ * NumArray* obj = new NumArray(nums);
+ * int param_1 = obj->sumRange(i,j);
+ */
+{% endhighlight %}
+
 ## 0304. Range Sum Query 2D - Immutable*
 {% highlight C++ %}
 /*
