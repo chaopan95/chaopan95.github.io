@@ -4050,6 +4050,55 @@ public:
 };
 {% endhighlight %}
 
+## 0304. Range Sum Query 2D - Immutable*
+{% highlight C++ %}
+/*
+Given matrix = [
+  [3, 0, 1, 4, 2],
+  [5, 6, 3, 2, 1],
+  [1, 2, 0, 1, 5],
+  [4, 1, 0, 1, 7],
+  [1, 0, 3, 0, 5]
+]
+
+sumRegion(2, 1, 4, 3) -> 8
+sumRegion(1, 1, 2, 2) -> 11
+sumRegion(1, 2, 2, 4) -> 12
+*/
+class NumMatrix {
+    vector<vector<int>> accum;
+public:
+    NumMatrix(vector<vector<int>>& matrix) {
+        int nRow = int(matrix.size());
+        if (nRow == 0) { return; }
+        int nCol = int(matrix[0].size());
+        if (nCol == 0) { return; }
+        accum.resize(nRow, vector<int> (nCol+1, 0));
+        for (int i = 0; i < nRow; i++)
+        {
+            for (int j = 0; j < nCol; j++)
+            {
+                accum[i][j+1] = accum[i][j] + matrix[i][j];
+            }
+        }
+    }
+    int sumRegion(int row1, int col1, int row2, int col2) {
+        int ans = 0;
+        for (int i = row1; i <= row2; i++)
+        {
+            ans += accum[i][col2+1] - accum[i][col1];
+        }
+        return ans;
+    }
+};
+
+/**
+ * Your NumMatrix object will be instantiated and called as such:
+ * NumMatrix* obj = new NumMatrix(matrix);
+ * int param_1 = obj->sumRegion(row1,col1,row2,col2);
+ */
+{% endhighlight %}
+
 ## 0343. Integer Break
 {% highlight C++ %}
 /*
