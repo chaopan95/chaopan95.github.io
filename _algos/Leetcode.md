@@ -4138,6 +4138,25 @@ public:
  */
 {% endhighlight %}
 
+## 0338. Counting Bits
+{% highlight C++ %}
+/*
+Input: 5
+Output: [0,1,1,2,1,2]
+*/
+class Solution {
+public:
+    vector<int> countBits(int num) {
+        vector<int> ans(num+1, 0);
+        for (int i = 1; i <= num; i++)
+        {
+            ans[i] = ans[i/2] + i % 2;
+        }
+        return ans;
+    }
+};
+{% endhighlight %}
+
 ## 0343. Integer Break
 {% highlight C++ %}
 /*
