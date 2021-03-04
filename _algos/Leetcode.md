@@ -3972,6 +3972,65 @@ public:
 };
 {% endhighlight %}
 
+## 0232. Implement Queue using Stacks
+{% highlight C++ %}
+/*
+Input
+["MyQueue", "push", "push", "peek", "pop", "empty"]
+[[], [1], [2], [], [], []]
+Output
+[null, null, null, 1, 1, false]
+
+Explanation
+MyQueue myQueue = new MyQueue();
+myQueue.push(1); // queue is: [1]
+myQueue.push(2); // queue is: [1, 2] (leftmost is front of the queue)
+myQueue.peek(); // return 1
+myQueue.pop(); // return 1, queue is [2]
+myQueue.empty(); // return false
+*/
+
+// s1 is input stack, s2 is output stack
+class MyQueue {
+    stack<int> s1, s2;
+public:
+    /** Initialize your data structure here. */
+    MyQueue() {
+
+    }
+    
+    /** Push element x to the back of queue. */
+    void push(int x) {
+        s1.push(x);
+    }
+    
+    /** Removes the element from in front of queue and returns that element. */
+    int pop() {
+        int ans = peek();
+        s2.pop();
+        return ans;
+    }
+    
+    /** Get the front element. */
+    int peek() {
+        if (s2.empty())
+        {
+            while (!s1.empty())
+            {
+                s2.push(s1.top());
+                s1.pop();
+            }
+        }
+        return s2.top();
+    }
+    
+    /** Returns whether the queue is empty. */
+    bool empty() {
+        return s1.empty() && s2.empty();
+    }
+};
+{% endhighlight %}
+
 ## 0257. Binary Tree Paths
 <p align="justify">
 Given a binary tree, return all root-to-leaf paths. Note: A leaf is a node with no children.
