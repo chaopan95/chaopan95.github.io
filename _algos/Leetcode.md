@@ -4326,6 +4326,37 @@ public:
 };
 {% endhighlight %}
 
+## 0503. Next Greater Element II*
+{% highlight C++ %}
+/*
+Input: [1,2,1]
+Output: [2,-1,2]
+Explanation: The first 1's next greater number is 2; 
+The number 2 can't find next greater number; 
+The second 1's next greater number needs to search
+circularly, which is also 2.
+*/
+class Solution {
+public:
+    vector<int> nextGreaterElements(vector<int>& nums) {
+        int n = int(nums.size());
+        if (n == 0) { return vector<int> {}; }
+        vector<int> ans(n, -1);
+        stack<int> st;
+        for (int i = 0; i < 2 * n - 1; i++)
+        {
+            while (!st.empty() && nums[st.top()] < nums[i % n])
+            {
+                ans[st.top()] = nums[i % n];
+                st.pop();
+            }
+            st.push(i % n);
+        }
+        return ans;
+    }
+};
+{% endhighlight %}
+
 ## 0516. Longest Palindromic Subsequence*
 {% highlight C++ %}
 /*
