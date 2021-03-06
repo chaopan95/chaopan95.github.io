@@ -4109,6 +4109,47 @@ public:
 };
 {% endhighlight %}
 
+## 0300. Longest Increasing Subsequence*
+{% highlight C++ %}
+/*
+Input: nums = [10,9,2,5,3,7,101,18]
+Output: 4
+Explanation: The longest increasing subsequence
+is [2,3,7,101], therefore the length is 4.
+*/
+class Solution {
+public:
+    int lengthOfLIS(vector<int>& nums) {
+        int ans = 0, n = int(nums.size());
+        if (n < 2) { return n; }
+        int *dp = new int [n+1]{}, len = 1;
+        dp[1] = nums[0];
+        for (int i = 1; i < n; i++)
+        {
+            if (nums[i] > dp[len]) { dp[++len] = nums[i]; }
+            else
+            {
+                int l = 1, r = len, pos = 0;
+                while (l <= r)
+                {
+                    int m = (l + r) >> 1;
+                    if (dp[m] < nums[i])
+                    {
+                        pos = m;
+                        l = m + 1;
+                    }
+                    else { r = m - 1; }
+                }
+                dp[pos+1] = nums[i];
+            }
+        }
+        delete []dp;
+        ans = len;
+        return ans;
+    }
+};
+{% endhighlight %}
+
 ## 0303. Range Sum Query - Immutable
 {% highlight C++ %}
 /*
