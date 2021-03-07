@@ -3802,6 +3802,63 @@ public:
 };
 {% endhighlight %}
 
+## 0131. Palindrome Partitioning
+{% highlight C++ %}
+/*
+Input: s = "aab"
+Output: [["a","a","b"],["aa","b"]]
+*/
+class Solution {
+public:
+    vector<vector<string>> partition(string s) {
+        vector<vector<string>> ans;
+        int n = (int)s.length();
+        if (n == 0) { return ans; }
+        bool **dp = new bool *[n];
+        for (int i = 0; i < n; i++)
+        {
+            dp[i] = new bool [n]{};
+            dp[i][i] = true;
+        }
+        for (int i = 0; i < n-1; i++)
+        {
+            if (s[i] == s[i+1]) { dp[i][i+1] = true; }
+        }
+        for (int k = 2; k < n; k++)
+        {
+            for (int i = 0; i < n-k; i++)
+            {
+                int j = i + k;
+                if (s[i] == s[j] && dp[i+1][j-1]) { dp[i][j] = true; }
+            }
+        }
+        vector<string> arr;
+        move(ans, arr, dp, n, 0, s);
+        for (int i = 0; i < n; i++) { delete []dp[i]; }
+        delete []dp;
+        return ans;
+    }
+    void move(vector<vector<string>> &ans, vector<string> &arr,
+              bool **dp, int n, int pos, string &s)
+    {
+        if (pos >= n)
+        {
+            if (!arr.empty()) { ans.emplace_back(arr); }
+            return;
+        }
+        for (int len = 0; len < n - pos; len++)
+        {
+            if (dp[pos][pos+len])
+            {
+                arr.emplace_back(s.substr(pos, len+1));
+                move(ans, arr, dp, n, pos+len+1, s);
+                arr.pop_back();
+            }
+        }
+    }
+};
+{% endhighlight %}
+
 ## 0144. Binary Tree Preorder Traversal
 <p align="justify">
 Given the root of a binary tree, return the preorder traversal of its nodes' values.<br><br>
