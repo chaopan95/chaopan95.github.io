@@ -4933,6 +4933,34 @@ public:
 };
 {% endhighlight %}
 
+## 1411. Number of Ways to Paint N × 3 Grid
+{% highlight C++ %}
+/*
+Input: n = 1
+Output: 12
+Explanation: There are 12 possible way to paint the grid as shown.
+*/
+class Solution {
+public:
+    int numOfWays(int n) {
+        int aba = 6, abc = 6;
+        /*
+        aba = aba * 3 + abc * 2
+        abc = aba * 2 + abc * 2;
+        */
+        const int MOD = 1000000007;
+        for (int i = 1; i < n; i++)
+        {
+            int new_aba = (aba * 3ll + abc * 2ll) % MOD;
+            int new_abc = (aba * 2ll + abc * 2ll) % MOD;
+            aba = new_aba;
+            abc = new_abc;
+        }
+        return (aba + abc) % MOD;
+    }
+};
+{% endhighlight %}
+
 ## 1585. Check If String Is Transformable With Substring Sort Operations*
 <p align="justify">
 Given two strings s and t, you want to transform string s into string t using the following operation any number of times:<br>
