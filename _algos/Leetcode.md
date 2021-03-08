@@ -3859,32 +3859,68 @@ public:
 };
 {% endhighlight %}
 
+## 0132. Palindrome Partitioning II*
+{% highlight C++ %}
+/*
+Input: s = "aab"
+Output: 1
+Explanation: The palindrome partitioning ["aa","b"]
+could be produced using 1 cut.
+*/
+class Solution {
+public:
+    int minCut(string s) {
+        int n = int(s.length());
+        if (n < 2) { return 0; }
+        bool **dp = new bool *[n];
+        int *cut = new int [n]{};
+        for (int i = 0; i < n; i++)
+        {
+            dp[i] = new bool [n]{};
+            dp[i][i] = true;
+        }
+        for (int i = 0; i < n-1; i++)
+        {
+            if (s[i] == s[i+1]) { dp[i][i+1] = true; }
+        }
+        for (int k = 2; k < n; k++)
+        {
+            for (int i = 0; i < n - k; i++)
+            {
+                int j = i + k;
+                if (s[i] == s[j] && dp[i+1][j-1]) { dp[i][j] = true; }
+            }
+        }
+        for (int j = 1; j < n; j++)
+        {
+            if (dp[0][j])
+            {
+                cut[j] = 0;
+                continue;
+            }
+            int cutNum = INT_MAX;
+            for (int i = j; i > 0; i--)
+            {
+                if (dp[i][j] && cutNum > cut[i-1] + 1)
+                {
+                    cutNum = cut[i-1] + 1;
+                }
+            }
+            cut[j] = cutNum;
+        }
+        int ans = cut[n-1];
+        for (int i = 0; i < n; i++)
+        {
+            delete []dp[i];
+        }
+        delete []dp;
+        delete []cut;
+        return ans;
+    }
+};
+{% endhighlight %}
+
 ## 0144. Binary Tree Preorder Traversal
-<p align="justify">
-Given the root of a binary tree, return the preorder traversal of its nodes' values.<br><br>
-
-<b>Example:</b><br>
-Input: root = [1,null,2,3]<br>
-Output: [1,2,3]<br><br>
-
-Input: root = []<br>
-Output: []<br><br>
-
-Input: root = [1]<br>
-Output: [1]<br><br>
-
-Input: root = [1,2]<br>
-Output: [1,2]<br><br>
-
-Input: root = [1,null,2]<br>
-Output: [1,2]<br><br>
-
-<b>Constraints:</b><br>
-The number of nodes in the tree is in the range [0, 100].<br>
--100 <= Node.val <= 100<br><br>
-
-<b>Solution:</b>
-</p>
 {% highlight C++ %}
 class Solution {
 public:
