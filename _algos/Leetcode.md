@@ -4905,6 +4905,37 @@ public:
 };
 {% endhighlight %}
 
+## 1047. Remove All Adjacent Duplicates In String
+{% highlight C++ %}
+/*
+Input: "abbaca"
+Output: "ca"
+Explanation: 
+For example, in "abbaca" we could remove "bb" since
+the letters are adjacent and equal, and this is the
+only possible move.  The result of this move is that
+the string is "aaca", of which only "aa" is possible,
+so the final string is "ca".
+*/
+class Solution {
+public:
+    string removeDuplicates(string S) {
+        int n = int(S.length());
+        if (n <= 1) { return S; }
+        string ans = "";
+        for (const char &c : S)
+        {
+            if (!ans.empty() && ans.back() == c)
+            {
+                ans.pop_back();
+            }
+            else { ans.push_back(c); }
+        }
+        return ans;
+    }
+};
+{% endhighlight %}
+
 ## 1178. Number of Valid Words for Each Puzzle*
 <p align="justify">
 With respect to a given puzzle string, a word is valid if both the following conditions are satisfied:<br>
