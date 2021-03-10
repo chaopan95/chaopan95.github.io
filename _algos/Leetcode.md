@@ -2691,6 +2691,48 @@ public:
 };
 {% endhighlight %}
 
+## 50. Pow(x, n)
+{% highlight C++ %}
+/*
+Input: x = 2.00000, n = -2
+Output: 0.25000
+Explanation: 2-2 = 1/22 = 1/4 = 0.25
+*/
+class Solution {
+public:
+    double myPow(double x, int n) {
+        double ans = 1.0, tmp = x;
+        bool isNeg = false;
+        long pow = n;
+        if (n < 0)
+        {
+            pow = -pow;
+            isNeg = true;
+        }
+        long k = 1;
+        while (pow > 0)
+        {
+            if (pow == 1)
+            {
+                ans *= x;
+                break;
+            }
+            tmp *= tmp;
+            k *= 2;
+            if (k * 2 > pow)
+            {
+                ans *= tmp;
+                tmp = x;
+                pow = pow - k;
+                k = 1;
+            }
+        }
+        if (isNeg) { return 1 / ans; }
+        return ans;
+    }
+};
+{% endhighlight %}
+
 ## 0053. Maximum Subarray*
 <p align="justify">
 Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum. Follow up: If you have figured out the O(n) solution, try coding another solution using the divide and conquer approach, which is more subtle.
