@@ -2691,7 +2691,7 @@ public:
 };
 {% endhighlight %}
 
-## 50. Pow(x, n)
+## 0050. Pow(x, n)
 {% highlight C++ %}
 /*
 Input: x = 2.00000, n = -2
@@ -4073,6 +4073,79 @@ public:
             }
         }
         return minLen == INT_MAX ? 0 : minLen;
+    }
+};
+{% endhighlight %}
+
+## 0224. Basic Calculator
+{% highlight C++ %}
+/*
+Input: s = "(1+(4+5+2)-3)+(6+8)"
+Output: 23
+*/
+class Solution {
+public:
+    int calculate(string s) {
+        stack<int> sn;
+        stack<char> so;
+        int num = 0, n = int(s.length()), i = n-1;
+        while (i >= 0)
+        {
+            if (s[i] == ' ') { i--; continue; }
+            if (s[i] == ')') { so.push(')'); }
+            else if (s[i] == '(')
+            {
+                while (so.top() != ')')
+                {
+                    int n1 = sn.top();
+                    sn.pop();
+                    int n2 = sn.top();
+                    sn.pop();
+                    if (so.top() == '+') { n1 += n2; }
+                    else if (so.top() == '-') { n1 -= n2; }
+                    else { printf("wrong operator: %c\n", so.top()); }
+                    so.pop();
+                    sn.push(n1);
+                }
+                so.pop();
+            }
+            else if (s[i] == '+' || s[i] == '-') { so.push(s[i]); }
+            else
+            {
+                long times = 1;
+                while (i >= 0 && s[i] >= '0' && s[i] <= '9')
+                {
+                    num += (s[i--] - '0') * times;
+                    times *= 10;
+                }
+                sn.push(num);
+                //printf("num=%d\n", num);
+                num = 0;
+                continue;
+            }
+            i--;
+        }
+        if (s[0] == '-') { sn.push(0); }
+        while (!so.empty())
+        {
+            int n1 = sn.top();
+            sn.pop();
+            if (sn.empty())
+            {
+                sn.push(n1);
+                break;
+            }
+            int n2 = sn.top();
+            sn.pop();
+            if (so.top() == '+') { n1 += n2; }
+            else if (so.top() == '-') { n1 -= n2; }
+            else { printf("%c\n", so.top()); }
+            so.pop();
+            sn.push(n1);
+        }
+
+        if (!so.empty() && so.top() == '-') { return -sn.top(); }
+        return sn.top();
     }
 };
 {% endhighlight %}
