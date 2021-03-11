@@ -4150,6 +4150,78 @@ public:
 };
 {% endhighlight %}
 
+## 0227. Basic Calculator II
+{% highlight C++ %}
+/*
+Input: s = " 3+5 / 2 "
+Output: 5
+*/
+class Solution {
+public:
+   int calculate(string s) {
+        stack<int> sn;
+        stack<char> so;
+        int n = int(s.length()), i = n-1;
+        long num = 0;
+        while (i >= 0)
+        {
+            if (s[i] == ' ') { i--; continue; }
+            if (s[i] == '*' || s[i] == '/') { so.push(s[i]); }
+            else if (s[i] == '+' || s[i] == '-')
+            {
+                while (!so.empty() && (so.top() == '*' || so.top() == '/'))
+                {
+                    int n1 = sn.top();
+                    sn.pop();
+                    int n2 = sn.top();
+                    sn.pop();
+                    if (so.top() == '*') { n1 *= n2; }
+                    else { n1 /= n2; }
+                    sn.push(n1);
+                    so.pop();
+                }
+                so.push(s[i]);
+            }
+            else
+            {
+                long times = 1;
+                while (i >= 0 && s[i] >= '0' && s[i] <= '9')
+                {
+                    num += (s[i] - '0') * times;
+                    times *= 10;
+                    i--;
+                }
+                sn.push(int(num));
+                num = 0;
+                continue;
+            }
+            i--;
+        }
+        while (!so.empty())
+        {
+            int n1 = sn.top();
+            sn.pop();
+            if (sn.empty())
+            {
+                sn.push(n1);
+                break;
+            }
+            int n2 = sn.top();
+            sn.pop();
+            if (so.top() == '+') { n1 += n2; }
+            else if (so.top() == '-') { n1 -= n2; }
+            else if (so.top() == '*') { n1 *= n2; }
+            else if (so.top() == '/') { n1 /= n2; }
+            else { printf("wrong operator %c\n", so.top()); }
+            so.pop();
+            sn.push(n1);
+        }
+        if (!so.empty() && so.top() == '-') { return -sn.top(); }
+        return sn.top();
+    }
+};
+{% endhighlight %}
+
 ## 0230. Kth Smallest Element in a BST
 <p align="justify">
 Given the root of a binary search tree, and an integer k, return the kth (1-indexed) smallest element in the tree.
