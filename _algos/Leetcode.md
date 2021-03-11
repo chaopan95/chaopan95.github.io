@@ -2555,8 +2555,7 @@ public:
                 {
                     dp[i][j] = dp[i][j+1] || (ijMat && dp[i+1][j]);
                 }
-                else { dp[i][j] = ijMat && dp[i+1][j+1];
-                }
+                else { dp[i][j] = ijMat && dp[i+1][j+1]; }
             }
         }
         bool ans = dp[0][0];
