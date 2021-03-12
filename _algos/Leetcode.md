@@ -4551,6 +4551,42 @@ public:
  */
 {% endhighlight %}
 
+## 0331. Verify Preorder Serialization of a Binary Tree*
+{% highlight C++ %}
+/*
+     _9_
+    /   \
+   3     2
+  / \   / \
+ 4   1  #  6
+/ \ / \   / \
+# # # #   # #
+*/
+class Solution {
+public:
+    bool isValidSerialization(string preorder) {
+        int n = int(preorder.length()), i = 0, numNull = 1;
+        if (n == 0) { return true; }
+        while (i < n)
+        {
+            if (numNull <= 0) { return false; }
+            if (preorder[i] == '#')
+            {
+                numNull--;
+                i++;
+            }
+            else if (preorder[i] == ',') { i++; }
+            else
+            {
+                while (i < n && preorder[i] >= '0' && preorder[i] <= '9') { i++; }
+                numNull++;
+            }
+        }
+        return numNull == 0;
+    }
+};
+{% endhighlight %}
+
 ## 0338. Counting Bits
 {% highlight C++ %}
 /*
