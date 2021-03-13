@@ -178,11 +178,15 @@ $x^{1}$ = 2104, $y^{3}$ = 315<br>
 Here is a model diagram
 $$
 \begin{matrix}
-& & & \text{Training Set} & & & \\
-& & & \Downarrow & & & \\
-& & & \text{Learning Algorithm} & & & \\
-& & & \Downarrow & & & \\
-\text{Size of house} & \Rightarrow & & h & & \Rightarrow & \text{Estimated price} \\
+& & & & \text{Training Set} & & & & \\
+\\
+& & & & \Downarrow & & & & \\
+\\
+& & & & \text{Learning Algorithm} & & & & \\
+\\
+& & & & \Downarrow & & & & \\
+\\
+\text{Size of house} & & \Rightarrow & & h & & \Rightarrow & & \text{Estimated price} \\
 \end{matrix}
 $$
 
