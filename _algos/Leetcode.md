@@ -2893,12 +2893,89 @@ public:
 };
 {% endhighlight %}
 
-## 
-<p align="justify">
-
-</p>
+## 0054. Spiral Matrix
 {% highlight C++ %}
-
+/*
+1 -> 2 -> 3
+          |
+          v
+4 -> 5    6
+^         |
+|         v
+7 <- 8 <- 9
+*/
+class Solution {
+public:
+    vector<int> spiralOrder(vector<vector<int>>& matrix) {
+        vector<int> ans;
+        int m = int(matrix.size());
+        if (m == 0) { return ans; }
+        int n = int(matrix[0].size());
+        if (n == 0) { return ans; }
+        bool *vis = new bool [m*n]{};
+        int i = 0, j = 0;
+        while (true)
+        {
+            bool updated = false;
+            while (true)
+            {
+                if (j >= n || vis[i*n+j])
+                {
+                    j--;
+                    i++;
+                    break;
+                }
+                ans.emplace_back(matrix[i][j]);
+                vis[i*n+j] = true;
+                updated = true;
+                j++;
+                
+            }
+            while (true)
+            {
+                if (i >= m || vis[i*n+j])
+                {
+                    i--;
+                    j--;
+                    break;
+                }
+                ans.emplace_back(matrix[i][j]);
+                vis[i*n+j] = true;
+                updated = true;
+                i++;
+            }
+            while (true)
+            {
+                if (j < 0 || vis[i*n+j])
+                {
+                    j++;
+                    i--;
+                    break;
+                }
+                ans.emplace_back(matrix[i][j]);
+                vis[i*n+j] = true;
+                updated = true;
+                j--;
+            }
+            while (true)
+            {
+                if (i < 0 || vis[i*n+j])
+                {
+                    i++;
+                    j++;
+                    break;
+                }
+                ans.emplace_back(matrix[i][j]);
+                vis[i*n+j] = true;
+                updated = true;
+                i--;
+            }
+            if (!updated) { break; }
+        }
+        delete []vis;
+        return ans;
+    }
+};
 {% endhighlight %}
 
 ## 0055. Jump Game
