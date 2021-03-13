@@ -3006,12 +3006,39 @@ public:
 };
 {% endhighlight %}
 
-## 
-<p align="justify">
-
-</p>
+## 0056. Merge Intervals
 {% highlight C++ %}
-
+/*
+Input: intervals = [[1,3],[2,6],[8,10],[15,18]]
+Output: [[1,6],[8,10],[15,18]]
+Explanation: Since intervals [1,3] and [2,6] overlaps,
+merge them into [1,6].
+*/
+class Solution {
+public:
+    vector<vector<int>> merge(vector<vector<int>>& intervals) {
+        vector<vector<int>> ans;
+        int n = int(intervals.size());
+        sort(intervals.begin(), intervals.end());
+        int b = 0, rightMax = intervals[b][1];
+        for (int i = 1; i < n; i++)
+        {
+            if (rightMax < intervals[i-1][1]) { rightMax = intervals[i-1][1]; }
+            if (rightMax < intervals[i][0])
+            {
+                ans.emplace_back(vector<int> {
+                    intervals[b][0], rightMax
+                });
+                b = i;
+                rightMax = intervals[i][1];
+            }
+        }
+        ans.emplace_back(vector<int> {
+            intervals[b][0], max(intervals[n-1][1], rightMax)
+        });
+        return ans;
+    }
+};
 {% endhighlight %}
 
 ## 
