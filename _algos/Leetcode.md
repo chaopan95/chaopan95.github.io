@@ -2732,6 +2732,63 @@ public:
 };
 {% endhighlight %}
 
+## 0051. N-Queens
+{% highlight C++ %}
+/*
+Input: n = 4
+Output: [[".Q..","...Q","Q...","..Q."],
+        ["..Q.","Q...","...Q",".Q.."]]
+*/
+class Solution {
+public:
+    vector<vector<string>> solveNQueens(int n) {
+        vector<vector<string>> ans;
+        string str = "";
+        for (int i = 0; i < n; i++) { str += "."; }
+        vector<string> res(n, str);
+        unordered_set<int> col, diag1, diag2;
+        DFS(col, diag1, diag2, n, 0, ans, res);
+        return ans;
+    }
+    void DFS(unordered_set<int> &col,
+             unordered_set<int> &diag1,
+             unordered_set<int> &diag2,
+             int n, int i,
+             vector<vector<string>> &ans,
+             vector<string> &res)
+    {
+        if (i == n)
+        {
+            ans.emplace_back(res);
+            return;
+        }
+        for (int j = 0; j < n; j++)
+        {
+            if (isOkPos(col, diag1, diag2, i, j))
+            {
+                res[i][j] = 'Q';
+                col.insert(j);
+                diag1.insert(i-j);
+                diag2.insert(i+j);
+                DFS(col, diag1, diag2, n, i+1, ans, res);
+                res[i][j] = '.';
+                col.erase(j);
+                diag1.erase(i-j);
+                diag2.erase(i+j);
+            }
+        }
+    }
+    bool isOkPos(unordered_set<int> &col, unordered_set<int> &diag1,
+                    unordered_set<int> &diag2, int i, int j)
+    {
+        if (col.find(j) != col.end() ||
+            diag1.find(i-j) != diag1.end() ||
+            diag2.find(i+j) != diag2.end()) { return false; }
+        return true;
+    }
+};
+{% endhighlight %}
+
 ## 0053. Maximum Subarray*
 <p align="justify">
 Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum. Follow up: If you have figured out the O(n) solution, try coding another solution using the divide and conquer approach, which is more subtle.
