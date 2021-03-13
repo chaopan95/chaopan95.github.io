@@ -175,10 +175,17 @@ For example, we have a dataset about house price<br>
 </p>
 <p align="justify">
 $x^{1}$ = 2104, $y^{3}$ = 315<br>
-Here is a model diagram<br>
-<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/ML/1_2_1_2.png"/></center>
-</p>
-<p align="justify">
+Here is a model diagram
+$$
+\begin{matrix}
+& & & \text{Training Set} & & & \\
+& & & \Downarrow & & & \\
+& & & \text{Learning Algorithm} & & & \\
+& & & \Downarrow & & & \\
+\text{Size of house} & \Rightarrow & & h & & \Rightarrow & \text{Estimated price} \\
+\end{matrix}
+$$
+
 h is our hypothesis for this model. We can use a linear regression to represent h<br>
 $$h_{\theta}(x) = \theta_{0} + \theta_{1}x$$
 In this case, this is an univariate linear regression, in other word, only one variable in linear regression<br><br>
