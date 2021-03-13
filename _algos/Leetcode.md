@@ -3082,12 +3082,70 @@ public:
 };
 {% endhighlight %}
 
-## 
-<p align="justify">
-
-</p>
+## 0059. Spiral Matrix II
 {% highlight C++ %}
-
+/*
+Input: n = 3
+Output: [[1,2,3],[8,9,4],[7,6,5]]
+1 -> 2 -> 3
+          |
+          v
+8 -> 9    4
+^         |
+|         v
+7 <- 6 <- 5
+*/
+class Solution {
+public:
+    vector<vector<int>> generateMatrix(int n) {
+        vector<vector<int>> ans(n, vector<int>(n, 0));
+        int i = 0, j = 0, num = 1;
+        while (num <= n * n)
+        {
+            while (true)
+            {
+                if (j >= n || ans[i][j])
+                {
+                    j--;
+                    i++;
+                    break;
+                }
+                ans[i][j++] = num++;
+            }
+            while (true)
+            {
+                if (i >= n || ans[i][j])
+                {
+                    i--;
+                    j--;
+                    break;
+                }
+                ans[i++][j] = num++;
+            }
+            while (true)
+            {
+                if (j < 0 || ans[i][j])
+                {
+                    j++;
+                    i--;
+                    break;
+                }
+                ans[i][j--] = num++;
+            }
+            while (true)
+            {
+                if (i <= 0 || ans[i][j])
+                {
+                    i++;
+                    j++;
+                    break;
+                }
+                ans[i--][j] = num++;
+            }
+        }
+        return ans;
+    }
+};
 {% endhighlight %}
 
 ## 
