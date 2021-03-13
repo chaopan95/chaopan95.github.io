@@ -3041,12 +3041,77 @@ public:
 };
 {% endhighlight %}
 
-## 
-<p align="justify">
-
-</p>
+## 0057. Insert Interval
 {% highlight C++ %}
-
+/*
+Input: intervals = [[1,2],[3,5],[6,7],[8,10],[12,16]],
+newInterval = [4,8]
+Output: [[1,2],[3,10],[12,16]]
+Explanation: Because the new interval [4,8] overlaps
+with [3,5],[6,7],[8,10].
+*/
+class Solution {
+public:
+    vector<vector<int>> insert(vector<vector<int>>& intervals,
+                               vector<int>& newInterval)
+    {
+        vector<vector<int>> ans;
+        int n = int(intervals.size());
+        if (n == 0 || (intervals[0][0] >= newInterval[0] &&
+                       intervals[n-1][1] <= newInterval[1]))
+        {
+            ans.emplace_back(newInterval);
+            return ans;
+        }
+        int b = 0, e = -1;
+        while (b < n)
+        {
+            if (intervals[b][0] > newInterval[1])
+            {
+                ans.emplace_back(newInterval);
+                for (int i = b; i < n; i++) { ans.emplace_back(intervals[i]); }
+                return ans;
+            }
+            if (intervals[b][0] <= newInterval[0] &&
+                intervals[b][1] >=newInterval[1]) { return intervals; }
+            if (intervals[b][0] <= newInterval[0] &&
+                intervals[b][1] >= newInterval[0]) { break; }
+            if (intervals[b][0] > newInterval[0])
+            {
+                intervals[b][0] = newInterval[0];
+                break;
+            }
+            ans.emplace_back(intervals[b++]);
+        }
+        if (b == n)
+        {
+            ans.emplace_back(newInterval);
+            return ans;
+        }
+        e = b + 1;
+        while (e < n &&
+               (
+                (intervals[e][0] <= newInterval[1] &&
+               intervals[e][1] >= newInterval[1]) ||
+                (intervals[e][0] >= newInterval[0] &&
+                intervals[e][1] <= newInterval[1])
+                )
+               ) { e++; }
+        if (e == n)
+        {
+            ans.emplace_back(vector<int> {
+                min(newInterval[0], intervals[b][0]),
+                max(newInterval[1], intervals[n-1][1])
+            });
+            return ans;
+        }
+        ans.emplace_back(vector<int> {
+            intervals[b][0], max(intervals[e-1][1], newInterval[1])
+        });
+        for (int i = e; i < n; i++) { ans.emplace_back(intervals[i]); }
+        return ans;
+    }
+};
 {% endhighlight %}
 
 ## 0058. Length of Last Word
