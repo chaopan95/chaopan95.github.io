@@ -1898,63 +1898,22 @@ public:
 {% endhighlight %}
 
 ## 0035. Search Insert Position
-<p align="justify">
-Given a sorted array of distinct integers and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.<br><br>
-
-<b>Example:</b><br>
-Input: nums = [1,3,5,6], target = 5<br>
-Output: 2<br><br>
-
-Input: nums = [1,3,5,6], target = 2<br>
-Output: 1<br><br>
-
-Input: nums = [1,3,5,6], target = 7<br>
-Output: 4<br><br>
-
-Input: nums = [1,3,5,6], target = 0<br>
-Output: 0<br><br>
-
-Input: nums = [1], target = 0<br>
-Output: 0<br><br>
-
-<b>Solution:</b>
-</p>
 {% highlight C++ %}
+/*
+Input: nums = [1,3,5,6], target = 2
+Output: 1
+*/
 class Solution {
 public:
     int searchInsert(vector<int>& nums, int target) {
-        int n = int(nums.size());
-        if (n == 0) { return 0; }
-        return binSear(nums, 0, n-1, target);;
-    }
-    int binSear(vector<int> arr, int b, int e, int target)
-    {
-        if (target > arr[e]) { return e+1; }
-        if (target < arr[b]) { return b; }
-        int m = (b + e) / 2;
-        if (arr[m] == target) { return m; }
-        else if (arr[m] < target) { return binSear(arr, m+1, e, target); }
-        else { return binSear(arr, b, m-1, target); }
-    }
-};
-
-class Solution {
-public:
-    int searchInsert(vector<int>& nums, int target) {
-        int n = int(nums.size());
-        if (n == 0) { return 0; }
-        int b = 0, e = n - 1;
-        while (b <= e)
+        int l = 0, r = int(nums.size()) - 1;
+        while (l <= r)
         {
-            int m = (b + e) / 2;
-            if (nums[b] >= target) { return b; }
-            if (nums[e] == target) { return e; }
-            if (nums[m] > target) { e = m - 1; }
-            else if (nums[m] < target) { b = m + 1; }
-            else { return m; }
+            int m = (l + r) / 2;
+            if (nums[m] < target) { l = m + 1; }
+            else { r = m - 1; }
         }
-        if (nums[e] < target) { return e + 1; }
-        else { return e; }
+        return l;
     }
 };
 {% endhighlight %}
