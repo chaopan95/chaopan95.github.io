@@ -3752,12 +3752,58 @@ public:
 
 {% endhighlight %}
 
-## 
-<p align="justify">
-
-</p>
+## 0079. Word Search
 {% highlight C++ %}
-
+/*
+board =
+A   B   C   E
+S   F   C   S
+A   D   E   E
+word = "ABCCED", return true
+*/
+class Solution {
+public:
+    bool exist(vector<vector<char>>& board, string word) {
+        int nRow = int(board.size());
+        if (nRow == 0) { return false; }
+        int nCol = int(board[0].size());
+        if (nCol == 0) { return false; }
+        int len = int(word.length());
+        bool ans = false;
+        bool *vis = new bool [nRow*nCol ]{};
+        for (int i = 0; i < nRow; i++)
+        {
+            for (int j = 0; j < nCol; j++)
+            {
+                if (board[i][j] != word[0]) { continue; }
+                ans = isExistWord(board, word, nRow, nCol, i, j, vis, len, 0);
+                if (ans) { break; }
+            }
+            if (ans) { break; }
+        }
+        delete []vis;
+        return ans;
+    }
+    bool isExistWord(vector<vector<char>> &board, string word,
+                     int nRow, int nCol, int i, int j, bool *vis,
+                     int len, int k)
+    {
+        if (i < 0 || i >= nRow || j < 0 || j >= nCol || vis[i*nCol+j ] ||
+            board[i][j] != word[k]) { return false; }
+        if (k == len-1) { return true; }
+        vis[i*nCol+j ] = true;
+        bool u = isExistWord(board, word, nRow, nCol, i-1, j, vis, len, k+1);
+        if (u) { return true; }
+        bool d = isExistWord(board, word, nRow, nCol, i+1, j, vis, len, k+1);
+        if (d) { return true; }
+        bool l = isExistWord(board, word, nRow, nCol, i, j-1, vis, len, k+1);
+        if (l) { return true; }
+        bool r = isExistWord(board, word, nRow, nCol, i, j+1, vis, len, k+1);
+        if (r) { return true; }
+        vis[i*nCol+j ] = false;
+        return false;
+    }
+};
 {% endhighlight %}
 
 ## 0080. Remove Duplicates from Sorted Array II*
