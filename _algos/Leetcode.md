@@ -6807,6 +6807,139 @@ public:
 };
 {% endhighlight %}
 
+## 
+<p align="justify">
+
+</p>
+{% highlight C++ %}
+
+{% endhighlight %}
+
+## 
+<p align="justify">
+
+</p>
+{% highlight C++ %}
+
+{% endhighlight %}
+
+## 
+<p align="justify">
+
+</p>
+{% highlight C++ %}
+
+{% endhighlight %}
+
+## 
+<p align="justify">
+
+</p>
+{% highlight C++ %}
+
+{% endhighlight %}
+
+## 
+<p align="justify">
+
+</p>
+{% highlight C++ %}
+
+{% endhighlight %}
+
+## 
+<p align="justify">
+
+</p>
+{% highlight C++ %}
+
+{% endhighlight %}
+
+## 
+<p align="justify">
+
+</p>
+{% highlight C++ %}
+
+{% endhighlight %}
+
+## 
+<p align="justify">
+
+</p>
+{% highlight C++ %}
+
+{% endhighlight %}
+
+## 
+<p align="justify">
+
+</p>
+{% highlight C++ %}
+
+{% endhighlight %}
+
+## 
+<p align="justify">
+
+</p>
+{% highlight C++ %}
+
+{% endhighlight %}
+
+## 0752. Open the Lock*
+{% highlight C++ %}
+/*
+Input: deadends = ["0201","0101","0102","1212","2002"],
+target = "0202"
+Output: 6
+Explanation:
+A sequence of valid moves would be "0000" -> "1000" ->
+"1100" -> "1200" -> "1201" -> "1202" -> "0202".
+Note that a sequence like "0000" -> "0001" -> "0002" ->
+"0102" -> "0202" would be invalid,
+because the wheels of the lock become stuck after the
+display becomes the dead end "0102".
+*/
+class Solution {
+public:
+    int openLock(vector<string>& deadends, string target) {
+        string init = "0000";
+        int n = int(init.length()), ans = 0;
+        unordered_set<string> vis;
+        for (string &str : deadends) { vis.insert(str); }
+        if (vis.find(init) != vis.end()) { return -1; }
+        queue<string> qLock;
+        qLock.push(init);
+        while (!qLock.empty())
+        {
+            int num = int(qLock.size());
+            while (num--)
+            {
+                string str = qLock.front();
+                qLock.pop();
+                if (str == target) { return ans; }
+                for (int i = 0; i < n; i++)
+                {
+                    string tmp = str;
+                    for (int d = -1; d <= 1; d += 2)
+                    {
+                        tmp[i] = (str[i] - '0' + 10 + d) % 10 + '0';
+                        if (vis.find(tmp) == vis.end())
+                        {
+                            vis.insert(tmp);
+                            qLock.push(tmp);
+                        }
+                    }
+                }
+            }
+            ans++;
+        }
+        return -1;
+    }
+};
+{% endhighlight %}
+
 ## 0766. Toeplitz Matrix
 {% highlight C++ %}
 /*
