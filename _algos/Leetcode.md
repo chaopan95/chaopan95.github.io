@@ -6627,6 +6627,56 @@ public:
 };
 {% endhighlight %}
 
+## 0416. Partition Equal Subset Sum*
+{% highlight C++ %}
+/*
+Input: nums = [1,5,11,5]
+Output: true
+Explanation: The array can be partitioned as
+[1, 5, 5] and [11].
+
+dp[i][j] means first i elements' sum is equal to j or not
+*/
+class Solution {
+public:
+    bool canPartition(vector<int>& nums) {
+        int n = int(nums.size());
+        if (n < 2) { return false; }
+        int sum = 0, max = 0;
+        for (const int &ele : nums)
+        {
+            sum += ele;
+            max = max > ele ? max : ele;
+        }
+        if (sum % 2) { return false; }
+        sum /= 2;
+        if (max > sum) { return false; }
+        bool **dp = new bool *[n];
+        for (int i = 0; i < n; i++) { dp[i] = new bool [sum+1]{}; }
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j <= sum; j++)
+            {
+                if (j == 0) { dp[i][j] = true; }
+                else if (i == 0)
+                {
+                    dp[i][j] = (j == nums[0]);
+                }
+                else
+                {
+                    if (j < nums[i]) { dp[i][j] = dp[i-1][j]; }
+                    else { dp[i][j] = dp[i-1][j] || dp[i-1][j-nums[i]]; }
+                }
+            }
+        }
+        int ans = dp[n-1][sum];
+        for (int i = 0; i < n; i++) { delete []dp[i]; }
+        delete []dp;
+        return ans;
+    }
+};
+{% endhighlight %}
+
 ## 0503. Next Greater Element II*
 {% highlight C++ %}
 /*
