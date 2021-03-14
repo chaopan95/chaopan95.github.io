@@ -6502,8 +6502,9 @@ public:
     int maxEnvelopes(vector<vector<int>>& envelopes) {
         int n = int(envelopes.size()), len = 1;
         if (n <= 1) { return n; }
-        sort(envelopes.begin(), envelopes.end(), [](const auto& e1, const auto& e2) {
-                    return e1[0] < e2[0] || (e1[0] == e2[0] && e1[1] > e2[1]);
+        sort(envelopes.begin(), envelopes.end(),
+             [](const auto& e1, const auto& e2) {
+            return e1[0] < e2[0] || (e1[0] == e2[0] && e1[1] > e2[1]);
                 });
         vector<vector<int>> dp(n+1, vector<int>{0, 0});
         dp[len] = envelopes[0];
@@ -6519,7 +6520,8 @@ public:
                 while (l <= r)
                 {
                     int m = (l + r) / 2;
-                    if (dp[m][0] < envelopes[i][0] && dp[m][1] < envelopes[i][1])
+                    if (dp[m][0] < envelopes[i][0] &&
+                        dp[m][1] < envelopes[i][1])
                     {
                         l = m + 1;
                     }
