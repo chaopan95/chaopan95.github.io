@@ -6123,6 +6123,37 @@ public:
 };
 {% endhighlight %}
 
+## 0264. Ugly Number II
+{% highlight C++ %}
+/*
+Input: n = 10
+Output: 12
+Explanation: [1, 2, 3, 4, 5, 6, 8, 9, 10, 12]
+is the sequence of the first 10 ugly numbers.
+*/
+class Solution {
+public:
+    int nthUglyNumber(int n) {
+        int ans = 0;
+        if (n <= 6) { return n; }
+        int *dp = new int [n]{};
+        dp[0] = 1;
+        int f2 = 0, f3 = 0, f5 = 0;
+        for (int i = 1; i < n; i++)
+        {
+            dp[i] = min(dp[f2]*2, min(dp[f3]*3, dp[f5]*5));
+            while (dp[f2]*2 <= dp[i]) { f2++; }
+            while (dp[f3]*3 <= dp[i]) { f3++; }
+            while (dp[f5]*5 <= dp[i]) { f5++; }
+        }
+        
+        ans = dp[n-1];
+        delete []dp;
+        return ans;
+    }
+};
+{% endhighlight %}
+
 ## 0279. Perfect Squares
 {% highlight C++ %}
 /*
