@@ -3706,12 +3706,31 @@ public:
 };
 {% endhighlight %}
 
-## 
-<p align="justify">
-
-</p>
+## 0075. Sort Colors*
 {% highlight C++ %}
-
+/*
+Input: nums = [2,0,2,1,1,0]
+Output: [0,0,1,1,2,2]
+*/
+class Solution {
+public:
+    void sortColors(vector<int>& nums) {
+        int n = int(nums.size());
+        if (n == 0) { return; }
+        int p0 = 0, p1 = 0;
+        for (int i = 0; i < n; i++)
+        {
+            if (nums[i] == 0)
+            {
+                swap(nums[i], nums[p0]);
+                if (p0 < p1) { swap(nums[i], nums[p1]); }
+                p0++;
+                p1++;
+            }
+            else if (nums[i] == 1) { swap(nums[i], nums[p1++]); }
+        }
+    }
+};
 {% endhighlight %}
 
 ## 0076. Minimum Window Substring*
