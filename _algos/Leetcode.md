@@ -6336,6 +6336,38 @@ public:
 };
 {% endhighlight %}
 
+## 
+<p align="justify">
+
+</p>
+{% highlight C++ %}
+
+{% endhighlight %}
+
+## 
+<p align="justify">
+
+</p>
+{% highlight C++ %}
+
+{% endhighlight %}
+
+## 
+<p align="justify">
+
+</p>
+{% highlight C++ %}
+
+{% endhighlight %}
+
+## 
+<p align="justify">
+
+</p>
+{% highlight C++ %}
+
+{% endhighlight %}
+
 ## 0343. Integer Break
 {% highlight C++ %}
 /*
@@ -6386,6 +6418,113 @@ public:
         {
             swap(s[i], s[n-1-i]);
         }
+    }
+};
+{% endhighlight %}
+
+## 
+<p align="justify">
+
+</p>
+{% highlight C++ %}
+
+{% endhighlight %}
+
+## 
+<p align="justify">
+
+</p>
+{% highlight C++ %}
+
+{% endhighlight %}
+
+## 
+<p align="justify">
+
+</p>
+{% highlight C++ %}
+
+{% endhighlight %}
+
+## 
+<p align="justify">
+
+</p>
+{% highlight C++ %}
+
+{% endhighlight %}
+
+## 
+<p align="justify">
+
+</p>
+{% highlight C++ %}
+
+{% endhighlight %}
+
+## 
+<p align="justify">
+
+</p>
+{% highlight C++ %}
+
+{% endhighlight %}
+
+## 
+<p align="justify">
+
+</p>
+{% highlight C++ %}
+
+{% endhighlight %}
+
+## 
+<p align="justify">
+
+</p>
+{% highlight C++ %}
+
+{% endhighlight %}
+
+## 
+<p align="justify">
+
+</p>
+{% highlight C++ %}
+
+{% endhighlight %}
+
+## 0354. Russian Doll Envelopes*
+{% highlight C++ %}
+/*
+Input: envelopes = [[5,4],[6,4],[6,7],[2,3]]
+Output: 3
+Explanation: The maximum number of envelopes
+you can Russian doll is 3 ([2,3] => [5,4] => [6,7]).
+*/
+class Solution {
+public:
+    int maxEnvelopes(vector<vector<int>>& envelopes) {
+        int n = int(envelopes.size());
+        if (n <= 1) { return n; }
+        sort(envelopes.begin(), envelopes.end());
+        int *dp = new int[n]{}, ans = 1;
+        dp[0] = 1;
+        for (int i = 1; i < n; i++)
+        {
+            dp[i] = 1;
+            for (int j = 0; j < i; j++)
+            {
+                if (envelopes[j][0] < envelopes[i][0] &&
+                    envelopes[j][1] < envelopes[i][1])
+                {
+                    dp[i] = max(dp[i], dp[j] + 1);
+                }
+            }
+            ans = max(ans, dp[i]);
+        }
+        delete []dp;
+        return ans;
     }
 };
 {% endhighlight %}
