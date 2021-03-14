@@ -6163,8 +6163,8 @@ is [2,3,7,101], therefore the length is 4.
 class Solution {
 public:
     int lengthOfLIS(vector<int>& nums) {
-        int ans = 0, n = int(nums.size());
-        if (n < 2) { return n; }
+        int n = int(nums.size());
+        if (n <= 1) { return n; }
         int *dp = new int [n+1]{}, len = 1;
         dp[1] = nums[0];
         for (int i = 1; i < n; i++)
@@ -6172,23 +6172,18 @@ public:
             if (nums[i] > dp[len]) { dp[++len] = nums[i]; }
             else
             {
-                int l = 1, r = len, pos = 0;
+                int l = 1, r = len;
                 while (l <= r)
                 {
-                    int m = (l + r) >> 1;
-                    if (dp[m] < nums[i])
-                    {
-                        pos = m;
-                        l = m + 1;
-                    }
-                    else { r = m - 1; }
+                    int m = (l + r) / 2;
+                    if (dp[m] >= nums[i]) { r = m - 1; }
+                    else { l = m + 1; }
                 }
-                dp[pos+1] = nums[i];
+                dp[l] = nums[i];
             }
         }
         delete []dp;
-        ans = len;
-        return ans;
+        return len;
     }
 };
 {% endhighlight %}
