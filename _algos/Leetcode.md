@@ -3927,12 +3927,27 @@ public:
 
 {% endhighlight %}
 
-## 
-<p align="justify">
-
-</p>
+## 0088. Merge Sorted Array
 {% highlight C++ %}
-
+/*
+Input: nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3
+Output: [1,2,2,3,5,6]
+*/
+class Solution {
+public:
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+        int pos = int(nums1.size()) - 1;
+        if (pos < 0) { return; }
+        int i = m - 1, j = n - 1;
+        while (i >= 0 && j >= 0)
+        {
+            if (nums1[i] > nums2[j]) { nums1[pos--] = nums1[i--]; }
+            else { nums1[pos--] = nums2[j--]; }
+        }
+        while (i >= 0) { nums1[pos--] = nums1[i--]; }
+        while (j >= 0) { nums1[pos--] = nums2[j--]; }
+    }
+};
 {% endhighlight %}
 
 ## 
