@@ -3736,12 +3736,40 @@ public:
 };
 {% endhighlight %}
 
-## 
-<p align="justify">
-
-</p>
+## 0077. Combinations
 {% highlight C++ %}
-
+/*
+Input: n = 4, k = 2
+Output:
+1, 4
+3, 4
+2, 3
+1, 2
+1, 3
+1, 4
+*/
+class Solution {
+public:
+    vector<vector<int>> combine(int n, int k) {
+        vector<vector<int>> ans;
+        if (n < 0 || k < 0 || n < k) { return ans; }
+        vector<int> arr;
+        combination(ans, arr, n, k, 1);
+        return ans;
+    }
+    void combination(vector<vector<int>> &ans,
+                     vector<int> &arr,
+                     int n, int k, int idx)
+    {
+        if (k == 0) { ans.emplace_back(arr); return; }
+        for (int i = idx; i <= n; i++)
+        {
+            arr.emplace_back(i);
+            combination(ans, arr, n, k-1, i+1);
+            arr.pop_back();
+        }
+    }
+};
 {% endhighlight %}
 
 ## 
