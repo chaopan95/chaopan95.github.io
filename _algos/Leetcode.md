@@ -2657,12 +2657,36 @@ public:
 
 {% endhighlight %}
 
-## 
-<p align="justify">
-
-</p>
+## 0049. Group Anagrams
 {% highlight C++ %}
-
+/*
+An Anagram is a word or phrase formed by rearranging
+the letters of a different word or phrase, typically
+using all the original letters exactly once.
+Input: strs = ["eat","tea","tan","ate","nat","bat"]
+Output: [["bat"],["nat","tan"],["ate","eat","tea"]]
+*/
+class Solution {
+public:
+    vector<vector<string>> groupAnagrams(vector<string>& strs) {
+        vector<vector<string>> ans;
+        int n = int(strs.size());
+        if (n == 0) { return ans; }
+        unordered_map<string, vector<string>> dict;
+        for (string &str : strs)
+        {
+            string tmp = str;
+            sort(tmp.begin(), tmp.end());
+            dict[tmp].emplace_back(str);
+        }
+        unordered_map<string, vector<string>>::iterator iter;
+        for (iter = dict.begin(); iter != dict.end(); iter++)
+        {
+            ans.emplace_back(iter->second);
+        }
+        return ans;
+    }
+};
 {% endhighlight %}
 
 ## 0050. Pow(x, n)
