@@ -2649,12 +2649,32 @@ public:
 };
 {% endhighlight %}
 
-## 
-<p align="justify">
-
-</p>
+## 0048. Rotate Image
 {% highlight C++ %}
-
+/*
+1   2   3       7   4   1
+4   5   6   ->  8   5   2
+7   8   9       9   6   3
+*/
+class Solution {
+public:
+    void rotate(vector<vector<int>>& matrix) {
+        int n = int(matrix.size());
+        if (n <= 1) { return; }
+        for (int i = 0; i < n / 2; i++)
+        {
+            for (int j = i; j < n - 1 - i; j++)
+            {
+                int b = i, e = n - 1 - i;
+                int first = matrix[i][j];
+                matrix[i][j] = matrix[b+e-j][b];
+                matrix[b+e-j][b] = matrix[n-1-i][n-1-j];
+                matrix[n-1-i][n-1-j] = matrix[b+j-i][e];
+                matrix[b+j-i][e] = first;
+            }
+        }
+    }
+};
 {% endhighlight %}
 
 ## 0049. Group Anagrams
