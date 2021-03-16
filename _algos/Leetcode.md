@@ -5439,12 +5439,49 @@ public:
 };
 {% endhighlight %}
 
-## 
-<p align="justify">
-
-</p>
+## 0200. Number of Islands
 {% highlight C++ %}
-
+/*
+grid = {
+    {'1', '1', '0', '0', '0'},
+    {'1', '1', '0', '0', '0'},
+    {'0', '0', '1', '0', '0'},
+    {'0', '0', '0', '1', '1'}
+}
+number of islands is 3
+*/
+class Solution {
+public:
+    int numIslands(vector<vector<char>>& grid) {
+        int ans = 0;
+        int nRow = int(grid.size());
+        if (nRow == 0) { return 0; }
+        int nCol = int(grid[0].size());
+        if (nCol == 0) { return 0; }
+        for (int i = 0; i < nRow; i++)
+        {
+            for (int j = 0; j < nCol; j++)
+            {
+                if (grid[i][j] == '0') { continue; }
+                if (isIsland(grid, nRow, nCol, i, j)) { ans++; }
+            }
+        }
+        return ans;
+    }
+    bool isIsland(vector<vector<char>> &grid, int nRow, int nCol,
+              int i, int j)
+    {
+        if (i < 0 || i >= nRow || j < 0 || j >= nCol ||
+            grid[i][j] == '0') { return false; }
+        bool res = true;
+        grid[i][j] = '0';
+        bool u = isIsland(grid, nRow, nCol, i-1, j);
+        bool d = isIsland(grid, nRow, nCol, i+1, j);
+        bool l = isIsland(grid, nRow, nCol, i, j-1);
+        bool r = isIsland(grid, nRow, nCol, i, j+1);
+        return res || u || d || l || r;
+    }
+};
 {% endhighlight %}
 
 ## 
