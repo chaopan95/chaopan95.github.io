@@ -1781,58 +1781,47 @@ public:
 {% endhighlight %}
 
 ## 0033. Search in Rotated Sorted Array
-<p align="justify">
-You are given an integer array nums sorted in ascending order, and an integer target. Suppose that nums is rotated at some pivot unknown to you beforehand (i.e., [0,1,2,4,5,6,7] might become [4,5,6,7,0,1,2]). If target is found in the array return its index, otherwise, return -1.<br><br>
-
-<b>Example:</b><br>
-Input: nums = [4,5,6,7,0,1,2], target = 0<br>
-Output: 4<br><br>
-
-Input: nums = [4,5,6,7,0,1,2], target = 3<br>
-Output: -1<br><br>
-
-Input: nums = [1], target = 0<br>
-Output: -1<br><br>
-
-<b>Solution:</b><br>
-</p>
 {% highlight C++ %}
+/*
+Input: nums = [4,5,6,7,0,1,2], target = 3
+Output: -1
+*/
 class Solution {
 public:
     int search(vector<int>& nums, int target) {
         int n = int(nums.size());
-        if (n == 0) { return -1; }
-        return binSear(nums, target, 0, n-1);
-    }
-    int binSear(vector<int> nums, int target, int b, int e)
-    {
-        if (b > e) { return -1; }
-        if (nums[b] == target) { return b; }
-        if (nums[e] == target) { return e; }
-        int m = (b + e) / 2;
-        if (nums[b] < nums[e])  //sorted array
+        int l = 0, r = n - 1;
+        while (l <= r)
         {
-            if (nums[m] > target) { return binSear(nums, target, b, m-1); }
-            else if (nums[m] == target) { return m; }
-            else { return binSear(nums, target, m+1, e); }
-        }
-        else  //rotated array
-        {
-            if (nums[m] < nums[e] && target > nums[b])
+            int m = (l + r) >> 1;
+            if (nums[m] == target) { return m; }
+            if (nums[l] <= nums[r])
             {
-                return binSear(nums, target, b, m-1);
-            }
-            else if (nums[m] > nums[b] && target < nums[e])
-            {
-                return binSear(nums, target, m+1, e);
+                if (nums[m] < target) { l = m + 1; }
+                else if (nums[m] > target) { r = m - 1; }
             }
             else
             {
-                if (nums[m] < target) { return binSear(nums, target, m+1, e); }
-                else if (nums[m] == target) { return m; }
-                else { return binSear(nums, target, b, m-1); }
+                if (target >= nums[l] && nums[m] >= nums[l])
+                {
+                    if (nums[m] > target) { r = m - 1; }
+                    else { l = m + 1; }
+                }
+                else if (target >= nums[l] && nums[m] <= nums[r]) { r = m - 1; }
+                else if (target <= nums[r] && nums[m] <= nums[r])
+                {
+                    if (nums[m] > target) { r = m - 1; }
+                    else { l = m + 1; }
+                }
+                else if (target <= nums[r] && nums[m] >= nums[l]) { l = m + 1; }
+                else
+                {
+                    if (nums[m] < target) { r = m - 1; }
+                    else { l = m + 1; }
+                }
             }
         }
+        return -1;
     }
 };
 {% endhighlight %}
