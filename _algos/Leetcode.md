@@ -3896,12 +3896,48 @@ public:
 };
 {% endhighlight %}
 
-## 
-<p align="justify">
-
-</p>
+## 0081. Search in Rotated Sorted Array II*
 {% highlight C++ %}
-
+/*
+Input: nums = [2,5,6,0,0,1,2], target = 0
+Output: true
+*/
+class Solution {
+public:
+    bool search(vector<int>& nums, int target) {
+        int n = int(nums.size());
+        if (n == 0) { return false; }
+        int l = 0, r = n - 1;
+        while (l <= r)
+        {
+            int m = (l + r) >> 1;
+            if (nums[m] == target) { return true; }
+            if (nums[l] < nums[r])
+            {
+                if (nums[m] > target) { r = m - 1; }
+                else { l = m + 1; }
+            }
+            else
+            {
+                if (nums[m] == nums[l] && nums[m] == nums[r]) { l++; r--; }
+                else if ((target >= nums[l] && nums[m] >= nums[l]) ||
+                    (target <= nums[r] && nums[m] <= nums[r]))
+                {
+                    if (nums[m] > target) { r = m - 1; }
+                    else { l = m + 1; }
+                }
+                else if (target >= nums[l] && nums[m] <= nums[r]) { r = m - 1; }
+                else if (target <= nums[r] && nums[m] >= nums[l]) { l = m + 1; }
+                else
+                {
+                    if (nums[m] > target) { l = m + 1; }
+                    else { r = m - 1; }
+                }
+            }
+        }
+        return false;
+    }
+};
 {% endhighlight %}
 
 ## 
