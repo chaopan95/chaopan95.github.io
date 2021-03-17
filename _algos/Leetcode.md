@@ -4585,12 +4585,48 @@ public:
 
 {% endhighlight %}
 
-## 
-<p align="justify">
-
-</p>
+## 0115. Distinct Subsequences*
 {% highlight C++ %}
-
+/*
+Input: s = "babgbag", t = "bag"
+Output: 5
+Explanation:
+As shown below, there are 5 ways you can generate "bag" from S.
+babgbag
+babgbag
+babgbag
+babgbag
+babgbag
+*/
+class Solution {
+public:
+    int numDistinct(string s, string t) {
+        int ns = int(s.length()), nt = int(t.length());
+        if (ns < nt) { return 0; }
+        long **dp = new long *[ns+1];
+        for (int i = 0; i <= ns; i++) { dp[i] = new long [nt+1]{}; }
+        for (int i = ns; i >= 0; i--)
+        {
+            for (int j = nt; j >= 0; j--)
+            {
+                if (j == nt) { dp[i][j] = 1; }
+                else if (i == ns) { dp[i][j] = 0; }
+                else
+                {
+                    if (s[i] == t[j])
+                    {
+                        dp[i][j] = dp[i+1][j+1] + dp[i+1][j];
+                    }
+                    else { dp[i][j] = dp[i+1][j]; }
+                }
+            }
+        }
+        int ans = dp[0][0];
+        for (int i = 0; i <= ns; i++) { delete []dp[i]; }
+        delete []dp;
+        return ans;
+    }
+};
 {% endhighlight %}
 
 ## 
