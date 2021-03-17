@@ -4577,12 +4577,43 @@ public:
 };
 {% endhighlight %}
 
-## 
-<p align="justify">
-
-</p>
+## 0114. Flatten Binary Tree to Linked List
 {% highlight C++ %}
-
+/*
+        1                1
+      /   \               \
+    2       5       ->      2
+   / \       \               \
+  3   4       6               3
+                               \
+                                4
+                                 \
+                                  5
+                                   \
+                                    6
+*/
+class Solution {
+public:
+    void flatten(TreeNode* root) {
+        TreeNode *prec = nullptr;
+        preOrder(root, prec);
+    }
+    void preOrder(TreeNode *root, TreeNode *&prec)
+    {
+        if (root != nullptr)
+        {
+            TreeNode *left = root->left, *right = root->right;
+            if (prec != nullptr)
+            {
+                prec->left = nullptr;
+                prec->right = root;
+            }
+            prec = root;
+            preOrder(left, prec);
+            preOrder(right, prec);
+        }
+    }
+};
 {% endhighlight %}
 
 ## 0115. Distinct Subsequences*
