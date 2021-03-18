@@ -3846,12 +3846,36 @@ public:
 };
 {% endhighlight %}
 
-## 
-<p align="justify">
-
-</p>
+## 0078. Subsets
 {% highlight C++ %}
-
+/*
+Input: nums = [1,2,3]
+Output: [[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]
+*/
+class Solution {
+public:
+    vector<vector<int>> subsets(vector<int>& nums) {
+        vector<vector<int>> ans;
+        int n = int(nums.size());
+        vector<int> arr;
+        dfs(ans, arr, nums, n, 0);
+        return ans;
+    }
+    void dfs(vector<vector<int>> &ans,
+             vector<int> &arr,
+             vector<int> &nums,
+             int n, int idx)
+    {
+        if (idx == n) { ans.emplace_back(arr); }
+        else
+        {
+            arr.emplace_back(nums[idx]);
+            dfs(ans, arr, nums, n, idx+1);
+            arr.pop_back();
+            dfs(ans, arr, nums, n, idx+1);
+        }
+    }
+};
 {% endhighlight %}
 
 ## 0079. Word Search
