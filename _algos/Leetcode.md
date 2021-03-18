@@ -4128,12 +4128,68 @@ public:
 };
 {% endhighlight %}
 
-## 
-<p align="justify">
-
-</p>
+## 0093. Restore IP Addresses
 {% highlight C++ %}
-
+/*
+Input: s = "25525511135"
+Output: ["255.255.11.135","255.255.111.35"]
+*/
+class Solution {
+public:
+    vector<string> restoreIpAddresses(string s) {
+        vector<string> ans;
+        int n = int(s.length());
+        if (n < 4 || n > 12) { return ans; }
+        unordered_map<string, bool> dict;
+        vector<string> sol;
+        find(ans, s, 0, n, dict, sol);
+        return ans;
+    }
+    void find(vector<string> &ans, string &s, int i,
+              int n, unordered_map<string, bool> &dict,
+              vector<string> &sol)
+    {
+        if (sol.size() > 4) { return; }
+        if (i >= n)
+        {
+            if (sol.size() != 4) { return; }
+            string res = "";
+            for (int i = 0; i < 3; i++)
+            {
+                res += sol[i];
+                res.push_back('.');
+            }
+            res += sol[3];
+            ans.emplace_back(res);
+            return;
+        }
+        for (int k = 1; k <= 3; k++)
+        {
+            if (i + k > n) { continue; }
+            string str = s.substr(i, k);
+            if (dict.find(str) == dict.end())
+            {
+                dict[str] = isLegalIp(str);
+            }
+            if (!dict[str]) { continue; }
+            sol.emplace_back(str);
+            find(ans, s, i + k, n, dict, sol);
+            sol.pop_back();
+        }
+    }
+    bool isLegalIp(string str)
+    {
+        int len = int(str.length());
+        if (len > 1 && str[0] == '0') { return false; }
+        int val = 0;
+        for (int i = 0; i < len; i++)
+        {
+            if (str[i] > '9' || str[i] < '0') { return false; }
+            val = val * 10 + (str[i] - '0');
+        }
+        return val < 256;
+    }
+};
 {% endhighlight %}
 
 ## 0094. Binary Tree Inorder Traversal*
