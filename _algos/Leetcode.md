@@ -4071,12 +4071,61 @@ public:
 
 {% endhighlight %}
 
-## 
-<p align="justify">
-
-</p>
+## 0092. Reverse Linked List II
 {% highlight C++ %}
-
+/*
+Input: head = [1,2,3,4,5], left = 2, right = 4
+Output: [1,4,3,2,5]
+1 -> 2 -> 3 -> 4 -> 5
+          |
+          v
+1 -> 4 -> 3 -> 2 -> 5
+*/
+class Solution {
+public:
+    ListNode* reverseBetween(ListNode* head, int left, int right) {
+        if (left >= right || head == nullptr) { return head; }
+        ListNode *pre = new ListNode(0);
+        pre->next = head;
+        ListNode *p1 = head, *p0 = pre;
+        int i = 1;
+        while (i < left)
+        {
+            p1 = p1->next;
+            p0 = p0->next;
+            i++;
+            if (p1 == nullptr) { delete pre; return head; }
+        }
+        ListNode *tail = p1, *p2 = p1->next;
+        if (p2 == nullptr)
+        {
+            delete pre;
+            return head;
+        }
+        ListNode *p3 = p2->next;
+        while (i < right)
+        {
+            p2->next = p1;
+            p1 = p2;
+            p2 = p3;
+            if (p3 == nullptr)
+            {
+                p0->next = p1;
+                tail->next = p2;
+                head = pre->next;
+                delete pre;
+                return head;
+            }
+            p3 = p3->next;
+            i++;
+        }
+        p0->next = p1;
+        tail->next = p2;
+        head = pre->next;
+        delete pre;
+        return head;
+    }
+};
 {% endhighlight %}
 
 ## 
