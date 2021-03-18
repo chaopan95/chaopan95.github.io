@@ -7852,6 +7852,35 @@ public:
 };
 {% endhighlight %}
 
+## 1603. Design Parking System
+<p align="justify">
+ParkingSystem(int big, int medium, int small) Initializes object of the ParkingSystem class. The number of slots for each parking space are given as part of the constructor. bool addCar(int carType) Checks whether there is a parking space of carType for the car that wants to get into the parking lot. carType can be of three kinds: big, medium, or small, which are represented by 1, 2, and 3 respectively. A car can only park in a parking space of its carType. If there is no space available, return false, else park the car in that size space and return true.
+</p>
+{% highlight C++ %}
+class ParkingSystem {
+    vector<int> park;
+public:
+    ParkingSystem(int big, int medium, int small) {
+        park.resize(3, 0);
+        park[0] = big;
+        park[1] = medium;
+        park[2] = small;
+    }
+    
+    bool addCar(int carType) {
+        if (!park[carType-1]) { return false; }
+        park[carType-1]--;
+        return true;
+    }
+};
+
+/**
+ * Your ParkingSystem object will be instantiated and called as such:
+ * ParkingSystem* obj = new ParkingSystem(big, medium, small);
+ * bool param_1 = obj->addCar(carType);
+ */
+{% endhighlight %}
+
 ## 1748. Sum of Unique Elements
 <p align="justify">
 You are given an integer array nums. The unique elements of an array are the elements that appear exactly once in the array. Return the sum of all the unique elements of nums.
