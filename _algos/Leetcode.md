@@ -4120,12 +4120,37 @@ public:
 
 {% endhighlight %}
 
-## 
-<p align="justify">
-
-</p>
+## 0090. Subsets II*
 {% highlight C++ %}
-
+/*
+Input: nums = [1,2,2]
+Output: [[],[1],[1,2],[1,2,2],[2],[2,2]]
+*/
+class Solution {
+public:
+    vector<vector<int>> subsetsWithDup(vector<int>& nums) {
+        vector<vector<int>> ans;
+        int n = int(nums.size());
+        sort(nums.begin(), nums.end());
+        vector<int> arr;
+        dfs(ans, arr, nums, 0, n);
+        return ans;
+    }
+    void dfs(vector<vector<int>> &ans,
+             vector<int> &arr,
+             vector<int> &nums,
+             int idx, int n)
+    {
+        for (int i = idx; i < n; i++)
+        {
+            if (i > idx && nums[i] == nums[i-1]) { continue; }
+            arr.emplace_back(nums[i]);
+            dfs(ans, arr, nums, i+1, n);
+            arr.pop_back();
+        }
+        ans.emplace_back(arr);
+    }
+};
 {% endhighlight %}
 
 ## 
