@@ -3577,12 +3577,53 @@ public:
 };
 {% endhighlight %}
 
-## 
-<p align="justify">
-
-</p>
+## 0071. Simplify Path
 {% highlight C++ %}
-
+/*
+Input: path = "/a/./b/../../c/"
+Output: "/c"
+*/
+class Solution {
+public:
+    string simplifyPath(string path) {
+        int n = int(path.length());
+        if (n <= 1) { return "/"; }
+        stack<string> stk;
+        int i = 0;
+        string file = "";
+        path.push_back('/');
+        while (i <= n)
+        {
+            if (path[i] == '/')
+            {
+                if (file.length() == 0) { i++; continue; }
+                if (file == "..")
+                {
+                    if (!stk.empty()) { stk.pop(); }
+                }
+                else if (file != ".") { stk.push(file); }
+                file = "";
+                i++;
+                continue;
+            }
+            if (path[i] != '/')
+            {
+                file.push_back(path[i]);
+            }
+            i++;
+        }
+        if (stk.empty()) { return "/"; }
+        file = stk.top();
+        stk.pop();
+        while (!stk.empty())
+        {
+            file = stk.top() + "/" + file;
+            stk.pop();
+        }
+        file = "/" + file;
+        return file;
+    }
+};
 {% endhighlight %}
 
 ## 0072. Edit Distance
