@@ -64,7 +64,19 @@ table.d {
 
 ### 1.2 Dynamic Programming
 <p align="justify">
+<a href="https://chaopan95.github.io/algos/Leetcode/#0005-longest-palindromic-substring"> Longest Palindromic Substring</a><br>
+<a href="https://chaopan95.github.io/algos/Leetcode/#0010-regular-expression-matching"> Regular Expression Matching</a><br>
+<a href="https://chaopan95.github.io/algos/Leetcode/#0032-longest-valid-parentheses"> Longest Valid Parentheses</a><br>
+<a href="https://chaopan95.github.io/algos/Leetcode/#0042-trapping-rain-water"> Trapping Rain Water</a><br>
+<a href="https://chaopan95.github.io/algos/Leetcode/#0044-wildcard-matching"> Wildcard Matching</a><br>
+<a href="https://chaopan95.github.io/algos/Leetcode/#0053-maximum-subarray"> Maximum Subarray</a><br>
+<a href="https://chaopan95.github.io/algos/Leetcode/#0062-unique-paths"> Unique Paths</a><br>
+<a href="https://chaopan95.github.io/algos/Leetcode/#0063-unique-paths-ii"> Unique Paths II</a><br>
+<a href="https://chaopan95.github.io/algos/Leetcode/#0064-minimum-path-sum"> Minimum Path Sum</a><br>
 <a href="https://chaopan95.github.io/algos/Leetcode/#0072-edit-distance"> Edit Distance</a><br>
+<a href=""> </a><br>
+<a href="https://chaopan95.github.io/algos/Leetcode/#0087-scramble-string"> Scramble String</a><br>
+<a href=""> </a><br>
 </p>
 
 ### 1.3 Divider and Conquer
