@@ -6060,12 +6060,80 @@ public:
 
 {% endhighlight %}
 
-## 
-<p align="justify">
-
-</p>
+## 0212. Word Search II
 {% highlight C++ %}
-
+/*
+board = 
+o   a   a   n
+e   t   a   e
+i   h   k   r
+i   f   l   v
+words = "oath","pea","eat","rain"
+Output: 
+"eat","oath"
+*/
+class Solution {
+public:
+    vector<string> findWords(vector<vector<char>>& board,
+                             vector<string>& words) {
+        vector<string> ans;
+        int nRow = int(board.size());
+        if (nRow == 0) { return ans; }
+        int nCol = int(board[0].size());
+        if (nCol == 0) { return ans; }
+        unordered_set<string> hash;
+        unordered_set<string> res;
+        int maxLen = 0;
+        for (string &word : words)
+        {
+            hash.insert(word);
+            maxLen = max(maxLen, int(word.length()));
+        }
+        
+        for (int i = 0; i < nRow; i++)
+        {
+            for (int j = 0; j < nCol; j++)
+            {
+                bool *vis = new bool [nRow * nCol]{};
+                string str = "";
+                collect(board, str, nRow, nCol, i, j, 0,
+                        maxLen, hash, res, vis);
+                delete []vis;
+            }
+        }
+        unordered_set<string>::iterator iter;
+        for (iter = res.begin(); iter != res.end(); iter++)
+        {
+            ans.emplace_back(*iter);
+        }
+        return ans;
+    }
+    void collect(vector<vector<char>> &board,
+                 string &str,
+                 int nRow, int nCol,
+                 int i, int j, int len,
+                 int maxLen,
+                 unordered_set<string> &hash,
+                 unordered_set<string> &res,
+                 bool *vis)
+    {
+        if (i < 0 || i >= nRow || j < 0 || j >= nCol ||
+            len > maxLen || vis[i*nCol + j]) { return; }
+        str.push_back(board[i][j]);
+        vis[i*nCol+j] = true;
+        if (hash.find(str) != hash.end() &&
+            res.find(str) == res.end())
+        {
+            res.insert(str);
+        }
+        collect(board, str, nRow, nCol, i-1, j, len+1, maxLen, hash, res, vis);
+        collect(board, str, nRow, nCol, i+1, j, len+1, maxLen, hash, res, vis);
+        collect(board, str, nRow, nCol, i, j-1, len+1, maxLen, hash, res, vis);
+        collect(board, str, nRow, nCol, i, j+1, len+1, maxLen, hash, res, vis);
+        str.pop_back();
+        vis[i*nCol+j] = false;
+    }
+};
 {% endhighlight %}
 
 ## 
