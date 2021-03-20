@@ -6847,6 +6847,102 @@ public:
  */
 {% endhighlight %}
 
+## 
+<p align="justify">
+
+</p>
+{% highlight C++ %}
+
+{% endhighlight %}
+
+## 
+<p align="justify">
+
+</p>
+{% highlight C++ %}
+
+{% endhighlight %}
+
+## 
+<p align="justify">
+
+</p>
+{% highlight C++ %}
+
+{% endhighlight %}
+
+## 
+<p align="justify">
+
+</p>
+{% highlight C++ %}
+
+{% endhighlight %}
+
+## 
+<p align="justify">
+
+</p>
+{% highlight C++ %}
+
+{% endhighlight %}
+
+## 
+<p align="justify">
+
+</p>
+{% highlight C++ %}
+
+{% endhighlight %}
+
+## 
+<p align="justify">
+
+</p>
+{% highlight C++ %}
+
+{% endhighlight %}
+
+## 0312. Burst Balloons*
+{% highlight C++ %}
+/*
+Input: nums = [3,1,5,8]
+Output: 167
+Explanation:
+nums = [3,1,5,8] --> [3,5,8] --> [3,8] --> [8] --> []
+coins =  3*1*5 + 3*5*8 + 1*3*8 + 1*8*1 = 167
+*/
+class Solution {
+public:
+    int maxCoins(vector<int>& nums) {
+        int n = int(nums.size());
+        if (n == 0) { return 0; }
+        int **dp = new int *[n + 2];
+        for (int i = 0; i <= n + 1; i++) { dp[i] = new int [n+2]{}; }
+        for (int i = n - 1; i >= 0; i--)
+        {
+            for (int j = i + 2; j <= n + 1; j++)
+            {
+                int MAX = 0;
+                for (int k = i + 1; k < j; k++)
+                {
+                    int left = (i == 0 ? 1 : nums[i-1]);
+                    int mid = nums[k-1];
+                    int right = (j == n + 1 ? 1 : nums[j-1]);
+                    int prod = left * mid * right;
+                    MAX = max(MAX, dp[i][k] + prod + dp[k][j]);
+                }
+                dp[i][j] = MAX;
+            }
+        }
+        int ans = dp[0][n+1];
+        for (int i = 0; i <= n+1; i++) { delete []dp[i]; }
+        delete []dp;
+        return ans;
+    }
+};
+{% endhighlight %}
+
 ## 0331. Verify Preorder Serialization of a Binary Tree*
 {% highlight C++ %}
 /*
