@@ -5374,12 +5374,78 @@ public:
 
 {% endhighlight %}
 
-## 
-<p align="justify">
-
-</p>
+## 00150. Evaluate Reverse Polish Notation
 {% highlight C++ %}
-
+/*
+Input: tokens = [
+    "10","6","9","3","+","-11","*","/","*","17","+","5","+"    
+]
+Output: 22
+Explanation: ((10 * (6 / ((9 + 3) * -11))) + 17) + 5
+= ((10 * (6 / (12 * -11))) + 17) + 5
+= ((10 * (6 / -132)) + 17) + 5
+= ((10 * 0) + 17) + 5
+= (0 + 17) + 5
+= 17 + 5
+= 22
+*/
+class Solution {
+public:
+    int evalRPN(vector<string>& tokens) {
+        stack<int> stk;
+        int num1 = 0, num2 = 0;
+        for (string &token : tokens)
+        {
+            if (token == "+")
+            {
+                num2 = stk.top();
+                stk.pop();
+                num1 = stk.top();
+                stk.pop();
+                stk.push(num1 + num2);
+            }
+            else if (token == "-")
+            {
+                num2 = stk.top();
+                stk.pop();
+                num1 = stk.top();
+                stk.pop();
+                stk.push(num1 - num2);
+            }
+            else if (token == "*")
+            {
+                num2 = stk.top();
+                stk.pop();
+                num1 = stk.top();
+                stk.pop();
+                stk.push(num1 * num2);
+            }
+            else if (token == "/")
+            {
+                num2 = stk.top();
+                stk.pop();
+                num1 = stk.top();
+                stk.pop();
+                stk.push(num1 / num2);
+            }
+            else { stk.push(stringToInt(token)); }
+            
+        }
+        return stk.top();
+    }
+    int stringToInt(string num)
+    {
+        int n = int(num.length());
+        int ans = 0;
+        if (num[0] != '-') { ans = num[0] - '0'; }
+        for (int i = 1; i < n; i++)
+        {
+            ans = ans * 10 + (num[i] - '0');
+        }
+        if (num[0] == '-') { ans = -ans; }
+        return ans;
+    }
+};
 {% endhighlight %}
 
 ## 
