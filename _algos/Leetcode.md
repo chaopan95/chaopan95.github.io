@@ -3677,12 +3677,43 @@ public:
 };
 {% endhighlight %}
 
-## 
-<p align="justify">
-
-</p>
+## 0073. Set Matrix Zeroes
 {% highlight C++ %}
-
+/*
+0   1   2   0       0   0   0   0
+3   4   5   2   ->  0   4   5   0
+1   3   1   5       0   3   1   0
+*/
+class Solution {
+public:
+    void setZeroes(vector<vector<int>>& matrix) {
+        int nRow = int(matrix.size());
+        int nCol = int(matrix[0].size());
+        unordered_set<int> cols, rows;
+        for (int i = 0; i < nRow; i++)
+        {
+            for (int j = 0; j < nCol; j++)
+            {
+                if (matrix[i][j] == 0)
+                {
+                    rows.insert(i);
+                    cols.insert(j);
+                }
+            }
+        }
+        unordered_set<int>::iterator iter;
+        for (iter = rows.begin(); iter != rows.end(); iter++)
+        {
+            int i = *iter;
+            for (int j = 0; j < nCol; j++) { matrix[i][j] = 0; }
+        }
+        for (iter = cols.begin(); iter != cols.end(); iter++)
+        {
+            int j = *iter;
+            for (int i = 0; i < nRow; i++) { matrix[i][j] = 0; }
+        }
+    }
+};
 {% endhighlight %}
 
 ## 0074. Search a 2D Matrix
