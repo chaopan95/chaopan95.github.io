@@ -5081,12 +5081,79 @@ public:
 
 {% endhighlight %}
 
-## 
-<p align="justify">
-
-</p>
+## 0127. Word Ladder*
 {% highlight C++ %}
-
+/*
+Input: beginWord = "hit", endWord = "cog",
+wordList = "hot","dot","dog","lot","log","cog"
+Output: 5
+Explanation: One shortest transformation sequence
+is "hit" -> "hot" -> "dot" -> "dog" -> cog", which
+is 5 words long.
+*/
+class Solution {
+public:
+    unordered_map<string, int> wordid;
+    vector<vector<int>> edges;
+    int numNode = 0;
+    void addWord(string &word)
+    {
+        if (wordid.find(word) == wordid.end())
+        {
+            wordid[word] = numNode++;
+            edges.emplace_back();
+        }
+    }
+    void addEdge(string &word)
+    {
+        addWord(word);
+        int i = wordid[word];
+        for (char &c : word)
+        {
+            char tmp = c;
+            c = '*';
+            addWord(word);
+            int j = wordid[word];
+            edges[i].emplace_back(j);
+            edges[j].emplace_back(i);
+            c = tmp;
+        }
+    }
+    int ladderLength(string beginWord, string endWord,
+                     vector<string>& wordList) {
+        for (string &word : wordList) { addEdge(word); }
+        if (wordid.find(endWord) == wordid.end()) { return 0; }
+        addEdge(beginWord);
+        vector<int> level(numNode, INT_MAX);
+        int s = wordid[beginWord], t = wordid[endWord];
+        queue<int> qWord;
+        qWord.push(s);
+        int dep = 1;
+        while (!qWord.empty())
+        {
+            int nWord = int(qWord.size());
+            for (int i = 0; i < nWord; i++)
+            {
+                int front = qWord.front();
+                qWord.pop();
+                if (front == t) { return dep / 2 + 1; }
+                else
+                {
+                    for (int nextId : edges[front])
+                    {
+                        if (dep <= level[nextId])
+                        {
+                            qWord.push(nextId);
+                            level[nextId] = dep;
+                        }
+                    }
+                }
+            }
+            dep++;
+        }
+        return 0;
+    }
+};
 {% endhighlight %}
 
 ## 
