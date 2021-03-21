@@ -5370,12 +5370,31 @@ public:
 
 {% endhighlight %}
 
-## 
-<p align="justify">
-
-</p>
+## 0142. Linked List Cycle II
 {% highlight C++ %}
-
+class Solution {
+public:
+    ListNode *detectCycle(ListNode *head) {
+        if (head == NULL) { return head; }
+        ListNode *p1 = head, *p2 = head;
+        while (true)
+        {
+            if (p2 == NULL) { return NULL; }
+            p2 = p2->next;
+            if (p2 == NULL) { return NULL; }
+            p2 = p2->next;
+            p1 = p1->next;
+            if (p1 == p2) { break; }
+        }
+        p1 = head;
+        while (p1 != p2)
+        {
+            p2 = p2->next;
+            p1 = p1->next;
+        }
+        return p1;
+    }
+};
 {% endhighlight %}
 
 ## 
