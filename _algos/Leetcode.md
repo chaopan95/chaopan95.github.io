@@ -5093,63 +5093,68 @@ is 5 words long.
 */
 class Solution {
 public:
-    unordered_map<string, int> wordid;
+    unordered_map<string, int> wordId;
+    vector<string> idWord;
     vector<vector<int>> edges;
+    unordered_set<string> dict;
     int numNode = 0;
     void addWord(string &word)
     {
-        if (wordid.find(word) == wordid.end())
+        if (wordId.find(word) == wordId.end())
         {
-            wordid[word] = numNode++;
+            wordId[word] = numNode++;
+            idWord.emplace_back(word);
             edges.emplace_back();
         }
     }
     void addEdge(string &word)
     {
         addWord(word);
-        int i = wordid[word];
+        int i = wordId[word];
         for (char &c : word)
         {
             char tmp = c;
             c = '*';
             addWord(word);
-            int j = wordid[word];
+            int j = wordId[word];
             edges[i].emplace_back(j);
             edges[j].emplace_back(i);
             c = tmp;
         }
     }
-    int ladderLength(string beginWord, string endWord,
-                     vector<string>& wordList) {
-        for (string &word : wordList) { addEdge(word); }
-        if (wordid.find(endWord) == wordid.end()) { return 0; }
-        addEdge(beginWord);
+    int ladderLength(string beginWord, string endWord, vector<string>& wordList) {
+        for (string &word : wordList)
+        {
+            addEdge(word);
+            dict.insert(word);
+        }
+        if (wordId.find(endWord) == wordId.end()) { return 0; }
+        if (dict.find(beginWord) == dict.end())
+        {
+            addEdge(beginWord);
+            dict.insert(beginWord);
+        }
         vector<int> level(numNode, INT_MAX);
-        int s = wordid[beginWord], t = wordid[endWord];
+        int s = wordId[beginWord], t = wordId[endWord];
         queue<int> qWord;
         qWord.push(s);
-        int dep = 1;
+        level[s] = 0;
         while (!qWord.empty())
         {
-            int nWord = int(qWord.size());
-            for (int i = 0; i < nWord; i++)
+            int front = qWord.front();
+            qWord.pop();
+            if (front == t) { return level[t] / 2 + 1; }
+            else
             {
-                int front = qWord.front();
-                qWord.pop();
-                if (front == t) { return dep / 2 + 1; }
-                else
+                for (int nextId : edges[front])
                 {
-                    for (int nextId : edges[front])
+                    if (level[nextId] >= level[front] + 1)
                     {
-                        if (dep <= level[nextId])
-                        {
-                            qWord.push(nextId);
-                            level[nextId] = dep;
-                        }
+                        qWord.push(nextId);
+                        level[nextId] = level[front] + 1;
                     }
                 }
             }
-            dep++;
         }
         return 0;
     }
