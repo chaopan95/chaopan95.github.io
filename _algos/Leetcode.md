@@ -5094,16 +5094,13 @@ is 5 words long.
 class Solution {
 public:
     unordered_map<string, int> wordId;
-    vector<string> idWord;
     vector<vector<int>> edges;
-    unordered_set<string> dict;
     int numNode = 0;
     void addWord(string &word)
     {
         if (wordId.find(word) == wordId.end())
         {
             wordId[word] = numNode++;
-            idWord.emplace_back(word);
             edges.emplace_back();
         }
     }
@@ -5123,17 +5120,9 @@ public:
         }
     }
     int ladderLength(string beginWord, string endWord, vector<string>& wordList) {
-        for (string &word : wordList)
-        {
-            addEdge(word);
-            dict.insert(word);
-        }
+        for (string &word : wordList) { addEdge(word); }
         if (wordId.find(endWord) == wordId.end()) { return 0; }
-        if (dict.find(beginWord) == dict.end())
-        {
-            addEdge(beginWord);
-            dict.insert(beginWord);
-        }
+        if (wordId.find(beginWord) == wordId.end()) { addEdge(beginWord); }
         vector<int> level(numNode, INT_MAX);
         int s = wordId[beginWord], t = wordId[endWord];
         queue<int> qWord;
