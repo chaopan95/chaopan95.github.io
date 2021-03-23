@@ -5073,12 +5073,113 @@ public:
 
 {% endhighlight %}
 
-## 
-<p align="justify">
-
-</p>
+## 0126. Word Ladder II*
 {% highlight C++ %}
-
+/*
+Input: beginWord = "hit", endWord = "cog",
+wordList = ["hot", "dot", "dog", "lot", "log", "cog"]
+Output: [
+    ["hit", "hot", "dot", "dog", "cog"],
+    ["hit", "hot", "lot", "log", "cog"]
+]
+Explanation: There are 2 shortest transformation sequences:
+"hit" -> "hot" -> "dot" -> "dog" -> "cog"
+"hit" -> "hot" -> "lot" -> "log" -> "cog"
+*/
+class Solution {
+public:
+    unordered_map<string, int> wordId;
+    vector<string> idWord;
+    vector<vector<int>> edges;
+    unordered_set<string> dict;
+    int numNode = 0;
+    void addWord(string &word)
+    {
+        if (wordId.find(word) == wordId.end())
+        {
+            wordId[word] = numNode++;
+            idWord.emplace_back(word);
+            edges.emplace_back();
+        }
+    }
+    void addEdge(string &word)
+    {
+        addWord(word);
+        int i = wordId[word];
+        for (char &c : word)
+        {
+            char tmp = c;
+            c = '*';
+            addWord(word);
+            int j = wordId[word];
+            edges[i].emplace_back(j);
+            edges[j].emplace_back(i);
+            c = tmp;
+        }
+    }
+    void dfs(vector<vector<string>> &ans, int &maxDep, int dep,
+             vector<string> &arr, int id, int &t,
+             vector<int> &level)
+    {
+        if (dict.find(idWord[id]) != dict.end())
+        {
+            arr.emplace_back(idWord[id]);
+        }
+        if (id == t) { ans.emplace_back(arr); }
+        for (int &nextId : edges[id])
+        {
+            if (level[nextId] > level[id])
+            {
+                dfs(ans, maxDep, dep+1, arr, nextId, t, level);
+            }
+        }
+        if (dict.find(idWord[id]) != dict.end())
+        {
+            arr.pop_back();
+        }
+    }
+    vector<vector<string>> findLadders(string beginWord, string endWord,
+                                       vector<string>& wordList) {
+        vector<vector<string>> ans;
+        for (string &word : wordList)
+        {
+            addEdge(word);
+            dict.insert(word);
+        }
+        if (wordId.find(endWord) == wordId.end()) { return ans; }
+        if (dict.find(beginWord) == dict.end())
+        {
+            addEdge(beginWord);
+            dict.insert(beginWord);
+        }
+        vector<int> level(numNode, INT_MAX);
+        int s = wordId[beginWord], t = wordId[endWord];
+        queue<int> qWord;
+        qWord.push(s);
+        level[s] = 0;
+        while (!qWord.empty())
+        {
+            int front = qWord.front();
+            qWord.pop();
+            if (front == t) { break; }
+            else
+            {
+                for (int nextId : edges[front])
+                {
+                    if (level[nextId] >= level[front] + 1)
+                    {
+                        qWord.push(nextId);
+                        level[nextId] = level[front] + 1;
+                    }
+                }
+            }
+        }
+        if (level[t] == INT_MAX) { return ans; }
+        vector<string> arr;
+        dfs(ans, level[t], 0, arr, s, t, level);
+        return ans;
+    }
+};
 {% endhighlight %}
 
 ## 0127. Word Ladder*
