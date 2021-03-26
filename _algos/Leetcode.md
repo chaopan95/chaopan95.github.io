@@ -4036,12 +4036,37 @@ public:
 };
 {% endhighlight %}
 
-## 
-<p align="justify">
-
-</p>
+## 0082. Remove Duplicates from Sorted List II*
 {% highlight C++ %}
-
+/*
+1 -> 2 -> 3 -> 3 -> 4 -> 4 ->5
+1 -> 2 -> 5
+*/
+class Solution {
+public:
+    ListNode* deleteDuplicates(ListNode* head) {
+        if (head == nullptr || head->next == nullptr) { return head; }
+        ListNode *pre = new ListNode(0);
+        pre->next = head;
+        ListNode *p1 = pre, *p2 = head;
+        while (p2 != nullptr)
+        {
+            bool isDup = false;
+            while (p2->next != nullptr &&
+                   p2->next->val == p2->val)
+            {
+                p2 = p2->next;
+                isDup = true;
+            }
+            p2 = p2->next;
+            if (isDup) { p1->next = p2; }
+            else { p1 = p1->next; }
+        }
+        head = pre->next;
+        delete pre;
+        return head;
+    }
+};
 {% endhighlight %}
 
 ## 
