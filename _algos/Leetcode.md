@@ -3222,23 +3222,27 @@ Output: [4,5,1,2,3]
 class Solution {
 public:
     ListNode* rotateRight(ListNode* head, int k) {
-        if (head == nullptr || k <= 0) { return head; }
-        ListNode *p1 = head, *p2 = head;
-        int num = 1;
-        while (p2->next != nullptr)
+        if (head == nullptr || head->next == nullptr || k <= 0)
         {
-            num++;
-            p2 = p2->next;
+            return head;
         }
-        k = k % num;
-        k = num - k;
-        while (--k)
+        int cnt = 0;
+        ListNode *curNode = head, *tail = head;
+        while (curNode != nullptr)
         {
-            head = head->next;
+            cnt++;
+            if (curNode->next == nullptr) { tail = curNode; }
+            curNode = curNode->next;
         }
-        p2->next = p1;
-        p1 = head;
-        head = head->next;
+        k %= cnt;
+        k = cnt - k;
+        ListNode *p1 = head;
+        for (int i = 1; i < k; i++)
+        {
+            p1 = p1->next;
+        }
+        tail->next = head;
+        head = p1->next;
         p1->next = nullptr;
         return head;
     }
