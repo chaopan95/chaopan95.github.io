@@ -3733,36 +3733,13 @@ public:
         if (nRow == 0) { return false; }
         int nCol = int(matrix[0].size());
         if (nCol == 0) { return false; }
-        int bi = 0, bj = 0, ei = nRow - 1, ej = nCol - 1;
-        while (bi * nCol + bj <= ei * nCol + ej)
+        int l = 0, r = nRow * nCol - 1;
+        while (l <= r)
         {
-            int dist = ((ei - bi) * nCol + ej - bj) / 2;
-            int mi = bi + dist / nCol, mj = bj + dist % nCol;
-            if (mj >= nCol)
-            {
-                mj -= nCol;
-                mi++;
-            }
-            if (matrix[mi][mj] > target)
-            {
-                ei = mi;
-                ej = mj - 1;
-                if (ej < 0)
-                {
-                    ej += nCol;
-                    ei--;
-                }
-            }
-            else if (matrix[mi][mj] < target)
-            {
-                bi = mi;
-                bj = mj + 1;
-                if (bj == nCol)
-                {
-                    bj = 0;
-                    bi++;
-                }
-            }
+            int m = (l + r) >> 1;
+            int i = m / nCol, j = m % nCol;
+            if (matrix[i][j] < target) { l = m + 1; }
+            else if (matrix[i][j] > target) { r = m - 1; }
             else { return true; }
         }
         return false;
