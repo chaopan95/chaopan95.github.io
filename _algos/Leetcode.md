@@ -8177,6 +8177,54 @@ public:
 };
 {% endhighlight %}
 
+## 
+<p align="justify">
+
+</p>
+{% highlight C++ %}
+
+{% endhighlight %}
+
+## 
+<p align="justify">
+
+</p>
+{% highlight C++ %}
+
+{% endhighlight %}
+
+## 0769. Max Chunks To Make Sorted*
+{% highlight C++ %}
+/*
+Input: arr = [1,0,2,3,4]
+Output: 4
+Explanation:
+We can split into two chunks, such as [1, 0], [2, 3, 4].
+However, splitting into [1, 0], [2], [3], [4] is
+the highest number of chunks possible.
+*/
+class Solution {
+public:
+    int maxChunksToSorted(vector<int>& arr) {
+        int ans = 1, n = (int)arr.size();
+        if (n <= 1) { return ans; }
+        vector<int> rightMin(n, 0);
+        rightMin[n-1] = arr[n-1];
+        for (int i = n - 2; i >= 0; i--)
+        {
+            rightMin[i] = min(rightMin[i+1], arr[i]);
+        }
+        int leftMax = arr[0];
+        for (int i = 1; i < n; i++)
+        {
+            if (leftMax <= rightMin[i]) { ans++; }
+            leftMax = max(leftMax, arr[i]);
+        }
+        return ans;
+    }
+};
+{% endhighlight %}
+
 ## 0832. Flipping an Image
 {% highlight C++ %}
 /*
