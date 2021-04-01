@@ -8383,6 +8383,38 @@ public:
 };
 {% endhighlight %}
 
+## 0912. Sort an Array
+{% highlight C++ %}
+/*
+Input: nums = [5,2,3,1]
+Output: [1,2,3,5]
+*/
+class Solution {
+public:
+    vector<int> sortArray(vector<int>& nums) {
+        int n = int(nums.size());
+        quickSort(nums, 0, n-1);
+        return nums;
+    }
+    void quickSort(vector<int> &nums, int b, int e)
+    {
+        if (b < e)
+        {
+            int i = b, j = e;
+            while (i < j)
+            {
+                while (i < j && nums[i] <= nums[j]) { j--; }
+                swap(nums[i], nums[j]);
+                while (i < j && nums[i] <= nums[j]) { i++; }
+                swap(nums[i], nums[j]);
+            }
+            quickSort(nums, b, i-1);
+            quickSort(nums, j+1, e);
+        }
+    }
+};
+{% endhighlight %}
+
 ## 1006. Clumsy Factorial*
 {% highlight C++ %}
 /*
