@@ -6263,12 +6263,22 @@ public:
 };
 {% endhighlight %}
 
-## 
-<p align="justify">
-
-</p>
+## 0201. Bitwise AND of Numbers Range*
 {% highlight C++ %}
-
+/*
+Input: left = 5, right = 7
+Output: 4
+*/
+class Solution {
+public:
+    int rangeBitwiseAnd(int left, int right) {
+        while (left < right)
+        {
+            right &= right - 1;
+        }
+        return right;
+    }
+};
 {% endhighlight %}
 
 ## 
