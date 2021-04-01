@@ -5666,12 +5666,47 @@ public:
 };
 {% endhighlight %}
 
-## 
-<p align="justify">
-
-</p>
+## 0151. Reverse Words in a String
 {% highlight C++ %}
-
+/*
+Input: s = "  hello world  "
+Output: "world hello"
+Explanation: Your reversed string should
+not contain leading or trailing spaces.
+*/
+class Solution {
+public:
+    string reverseWords(string s) {
+        int pos = 0;
+        for (int i = 0; i < (int)s.length(); i++, pos++)
+        {
+            if (s[i] != ' ') { break; }
+        }
+        string str = "";
+        for (int i = pos; i < (int)s.length(); i++)
+        {
+            if (i > 0 && s[i] == ' ' && s[i-1] == ' ') { continue; }
+            str.push_back(s[i]);
+        }
+        int n = int(str.length());
+        if (str[n-1] == ' ') { n--; }
+        str.resize(n);
+        printf("%s\n", str.c_str());
+        for (int i = 0; i < n / 2; i++) { swap(str[i], str[n-1-i]); }
+        str.push_back(' ');
+        for (int i = 0, j = 0; i <= n; i++)
+        {
+            if (str[i] == ' ')
+            {
+                int b = j, e = i - 1;
+                while (b < e) { swap(str[b++], str[e--]); }
+                j = i + 1;
+            }
+        }
+        str.resize(n);
+        return str;
+    }
+};
 {% endhighlight %}
 
 ## 
