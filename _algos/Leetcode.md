@@ -6557,12 +6557,35 @@ public:
 
 {% endhighlight %}
 
-## 
-<p align="justify">
-
-</p>
+## 0215. Kth Largest Element in an Array
 {% highlight C++ %}
-
+/*
+Input: nums = [3,2,3,1,2,4,5,5,6], k = 4
+Output: 4
+*/
+class Solution {
+public:
+    int findKthLargest(vector<int>& nums, int k) {
+        int n = int(nums.size());
+        k = n - k;
+        int b = 0, e = n - 1;
+        while (true)
+        {
+            int i = b, j = e;
+            while (i < j)
+            {
+                while (i < j && nums[i] <= nums[j]) { j--; }
+                swap(nums[i], nums[j]);
+                while (i < j && nums[i] <= nums[j]) { i++; }
+                swap(nums[i], nums[j]);
+            }
+            if (i == k) { return nums[i]; }
+            else if (i > k) { e = i - 1; }
+            else { b = i + 1; }
+        }
+        return 0;
+    }
+};
 {% endhighlight %}
 
 ## 
