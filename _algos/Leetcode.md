@@ -5691,7 +5691,6 @@ public:
         int n = int(str.length());
         if (str[n-1] == ' ') { n--; }
         str.resize(n);
-        printf("%s\n", str.c_str());
         for (int i = 0; i < n / 2; i++) { swap(str[i], str[n-1-i]); }
         str.push_back(' ');
         for (int i = 0, j = 0; i <= n; i++)
