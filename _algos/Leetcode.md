@@ -6347,12 +6347,49 @@ public:
 
 {% endhighlight %}
 
-## 
-<p align="justify">
-
-</p>
+## 0206. Reverse Linked List
 {% highlight C++ %}
-
+/*
+from 1 -> 2 -> 3 -> 4 -> 5
+to   5 -> 4 -> 3 -> 2 -> 1
+*/
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) {
+        if (head == nullptr || head->next == nullptr) { return head; }
+        ListNode *p1 = head, *p2 = head->next, *p3 = head->next->next;
+        while (p3 != nullptr)
+        {
+            p2->next = p1;
+            p1 = p2;
+            p2 = p3;
+            p3 = p3->next;
+        }
+        p2->next = p1;
+        head->next = nullptr;
+        return p2;
+    }
+};
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) {
+        if (head == nullptr || head->next == nullptr) { return head; }
+        ListNode *ans = reverse(head, head->next);
+        head->next = nullptr;
+        return ans;
+    }
+    ListNode *reverse(ListNode *p1, ListNode *p2)
+    {
+        if (p2->next != nullptr)
+        {
+            ListNode *p3 = p2->next;
+            p2->next = p1;
+            return reverse(p2, p3);
+        }
+        p2->next = p1;
+        return p2;
+    }
+};
 {% endhighlight %}
 
 ## 
