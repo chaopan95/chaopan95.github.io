@@ -7837,6 +7837,57 @@ public:
 };
 {% endhighlight %}
 
+## 00415. Add Strings
+{% highlight C++ %}
+/*
+Input: num1 = "456", num2 = "77"
+Output: "533"
+*/
+class Solution {
+public:
+    string addStrings(string num1, string num2) {
+        string ans = "";
+        int len1 = (int)num1.length(), len2 = (int)num2.length();
+        if (len1 < len2)
+        {
+            swap(len1, len2);
+            swap(num1, num2);
+        }
+        int i = len1 - 1, j = len2 - 1;
+        int res = 0;
+        while (j >= 0)
+        {
+            int sum = (num1[i] - '0') + (num2[j] - '0') + res;
+            res = 0;
+            if (sum >= 10)
+            {
+                res = 1;
+                sum -= 10;
+            }
+            char sumChar = sum + '0';
+            ans.insert(0, 1, sumChar);
+            i--;
+            j--;
+        }
+        while (i >= 0)
+        {
+            int sum = (num1[i] - '0') + res;
+            res = 0;
+            if (sum >= 10)
+            {
+                res = 1;
+                sum -= 10;
+            }
+            char sumChar = sum + '0';
+            ans.insert(0, 1, sumChar);
+            i--;
+        }
+        if (res) { ans.insert(0, 1, '1'); }
+        return ans;
+    }
+};
+{% endhighlight %}
+
 ## 0416. Partition Equal Subset Sum*
 {% highlight C++ %}
 /*
