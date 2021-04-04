@@ -8411,6 +8411,63 @@ public:
 };
 {% endhighlight %}
 
+## 0781. Rabbits in Forest
+{% highlight C++ %}
+/*
+Examples:
+Input: answers = [1, 1, 2]
+Output: 5
+Explanation:
+The two rabbits that answered "1" could both be
+the same color, say red. The rabbit than answered "2"
+can't be red or the answers would be inconsistent.
+Say the rabbit that answered "2" was blue.
+Then there should be 2 other blue rabbits in the forest
+that didn't answer into the array.
+The smallest possible number of rabbits in the forest is
+therefore 5: 3 that answered plus 2 that didn't.
+
+Input: answers = [10, 10, 10]
+Output: 11
+
+Input: answers = []
+Output: 0
+*/
+class Solution {
+public:
+    int numRabbits(vector<int>& answers) {
+        int ans = 0;
+        unordered_map<int, int> dict;
+        for (int &ele : answers) { dict[ele]++; }
+        unordered_map<int, int>::iterator iter;
+        for (iter = dict.begin(); iter != dict.end(); iter++)
+        {
+            if (iter->first == 0) { ans += iter->second; }
+            else
+            {
+                if (iter->first + 1 >= iter->second)
+                {
+                    ans += iter->first + 1;
+                }
+                else
+                {
+                    if (iter->second % (iter->first + 1) == 0)
+                    {
+                        ans += iter->second;
+                    }
+                    else
+                    {
+                        ans += (iter->second / (iter->first + 1) + 1) *
+                                (iter->first + 1);
+                    }
+                }
+            }
+        }
+        return ans;
+    }
+};
+{% endhighlight %}
+
 ## 0832. Flipping an Image
 {% highlight C++ %}
 /*
