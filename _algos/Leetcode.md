@@ -5716,12 +5716,26 @@ public:
 
 {% endhighlight %}
 
-## 
-<p align="justify">
-
-</p>
+## 0153. Find Minimum in Rotated Sorted Array
 {% highlight C++ %}
-
+/*
+Input: nums = [3,4,5,1,2]
+Output: 1
+*/
+class Solution {
+public:
+    int findMin(vector<int>& nums) {
+        int l = 0, r = int(nums.size()) - 1;
+        while (l <= r)
+        {
+            if (nums[l] < nums[r]) { return nums[l]; }
+            int m = (l + r) >> 1;
+            if (nums[m] >= nums[l]) { l = m + 1; }
+            else { r = m; }
+        }
+        return nums[r];
+    }
+};
 {% endhighlight %}
 
 ## 
