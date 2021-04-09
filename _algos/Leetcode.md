@@ -8510,6 +8510,38 @@ public:
 };
 {% endhighlight %}
 
+## 0845. Longest Mountain in Array*
+{% highlight C++ %}
+/*
+Input: arr = [2,1,4,7,3,2,5]
+Output: 5
+Explanation: The largest mountain is [1,4,7,3,2] which has length 5.
+*/
+class Solution {
+public:
+    int longestMountain(vector<int>& arr) {
+        int ans = 0, n = int(arr.size());
+        if (n < 3) { return 0; }
+        vector<int> left(n, 0), right(n, 0);
+        for (int i = 1; i < n - 1; i++)
+        {
+            if (arr[i] > arr[i-1]) { left[i] = left[i-1] + 1; }
+            if (arr[n-1-i] > arr[n-i]) { right[n-1-i] = right[n-i] + 1; }
+        }
+        if (arr[n-1] > arr[n-2]) { left[n-1] = left[n-2] + 1; }
+        if (arr[0] > arr[1]) { right[0] = right[1] + 1; }
+        for (int i = 0; i < n; i++)
+        {
+            if (left[i] && right[i])
+            {
+                ans = max(left[i] + right[i] + 1, ans);
+            }
+        }
+        return ans;
+    }
+};
+{% endhighlight %}
+
 ## 0867. Transpose Matrix
 {% highlight C++ %}
 /*
