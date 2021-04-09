@@ -5708,12 +5708,28 @@ public:
 };
 {% endhighlight %}
 
-## 
-<p align="justify">
-
-</p>
+## 0152. Maximum Product Subarray*
 {% highlight C++ %}
-
+/*
+Input: nums = [2,3,-2,4]
+Output: 6
+Explanation: [2,3] has the largest product 6.
+*/
+class Solution {
+public:
+    int maxProduct(vector<int>& nums) {
+        int n = int(nums.size());
+        int minF = nums[0], maxF = nums[0], ans = nums[0];
+        for (int i = 1; i < n; i++)
+        {
+            int _min = minF, _max = maxF;
+            minF = min(nums[i], min(_min * nums[i], _max * nums[i]));
+            maxF = max(nums[i], max(_min * nums[i], _max * nums[i]));
+            ans = max(ans, maxF);
+        }
+        return ans;
+    }
+};
 {% endhighlight %}
 
 ## 0153. Find Minimum in Rotated Sorted Array
