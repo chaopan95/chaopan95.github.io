@@ -5592,7 +5592,7 @@ public:
 
 {% endhighlight %}
 
-## 00150. Evaluate Reverse Polish Notation
+## 0150. Evaluate Reverse Polish Notation
 {% highlight C++ %}
 /*
 Input: tokens = [
