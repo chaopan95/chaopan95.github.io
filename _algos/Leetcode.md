@@ -4108,12 +4108,53 @@ public:
 };
 {% endhighlight %}
 
-## 
-<p align="justify">
-
-</p>
+## 0085. Maximal Rectangle*
 {% highlight C++ %}
-
+/*
+1 0 1 0 0
+1 0 1 1 1
+1 1 1 1 1
+1 0 0 1 0
+max area = 6
+*/
+class Solution {
+public:
+    int maximalRectangle(vector<vector<char>>& matrix) {
+        int ans = 0;
+        int nRow = int(matrix.size());
+        if (nRow == 0) { return ans; }
+        int nCol = int(matrix[0].size());
+        vector<int> heights(nCol, 0);
+        for (int i = 0; i < nRow; i++)
+        {
+            for (int j = 0; j < nCol; j++)
+            {
+                heights[j] = (heights[j] + 1) * (matrix[i][j] - '0');
+            }
+            ans = max(ans, getRecArea(heights));
+        }
+        return ans;
+    }
+    int getRecArea(vector<int> heights)
+    {
+        int ans = 0, n = int(heights.size());
+        stack<int> stk;
+        heights.emplace_back(0);
+        for (int i = 0; i <= n; i++)
+        {
+            while (!stk.empty() && heights[stk.top()] > heights[i])
+            {
+                int H = heights[stk.top()];
+                int W = i;
+                stk.pop();
+                if (!stk.empty()) { W = i - stk.top() - 1; }
+                ans = max(ans, W * H);
+            }
+            stk.push(i);
+        }
+        return ans;
+    }
+};
 {% endhighlight %}
 
 ## 0086. Partition List
