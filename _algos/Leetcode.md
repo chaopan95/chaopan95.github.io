@@ -7241,6 +7241,25 @@ public:
 };
 {% endhighlight %}
 
+## 0263. Ugly Number
+{% highlight C++ %}
+/*
+Input: n = 6
+Output: true
+Explanation: 6 = 2 × 3
+*/
+class Solution {
+public:
+    bool isUgly(int n) {
+        if (n <= 0) { return false; }
+        while (n % 2 == 0) { n /= 2; }
+        while (n % 3 == 0) { n /= 3; }
+        while (n % 5 == 0) { n /= 5; }
+        return n == 1;
+    }
+};
+{% endhighlight %}
+
 ## 0264. Ugly Number II
 {% highlight C++ %}
 /*
