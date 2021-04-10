@@ -8684,6 +8684,30 @@ public:
 };
 {% endhighlight %}
 
+## 0921. Minimum Add to Make Parentheses Valid*
+{% highlight C++ %}
+/*
+Input: "()))(("
+Output: 4
+*/
+class Solution {
+public:
+    int minAddToMakeValid(string S) {
+        int left = 0, ans = 0;
+        for (const char &c : S)
+        {
+            if (c == '(') { left++; }
+            else
+            {
+                if (left > 0) { left--; }
+                else { ans++; }
+            }
+        }
+        return ans + left;
+    }
+};
+{% endhighlight %}
+
 ## 1006. Clumsy Factorial*
 {% highlight C++ %}
 /*
