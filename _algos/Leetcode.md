@@ -4058,12 +4058,38 @@ public:
 
 {% endhighlight %}
 
-## 
-<p align="justify">
-
-</p>
+## 0084. Largest Rectangle in Histogram*
 {% highlight C++ %}
-
+/*
+Input: heights = [2,1,5,6,2,3]
+Output: 10
+Explanation: The above is a histogram where width of each bar is 1.
+The largest rectangle is shown in the red area, which has an area = 10 units.
+*/
+class Solution {
+public:
+    int largestRectangleArea(vector<int>& heights) {
+        int ans = 0, n = int(heights.size());
+        if (n == 0) { return ans; }
+        heights.emplace_back(0);
+        stack<int> stk;
+        for (int i = 0; i <= n; i++)
+        {
+            while (!stk.empty() && heights[stk.top()] > heights[i])
+            {
+                int H = heights[stk.top()];
+                int W = i;
+                stk.pop();
+                if (!stk.empty()) { W = i - stk.top() - 1; }
+                int area = H * W;
+                if (ans < area) { ans = area; }
+            }
+            stk.push(i);
+        }
+        heights.pop_back();
+        return ans;
+    }
+};
 {% endhighlight %}
 
 ## 
