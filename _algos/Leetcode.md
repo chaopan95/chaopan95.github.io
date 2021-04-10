@@ -4050,12 +4050,28 @@ public:
 };
 {% endhighlight %}
 
-## 
-<p align="justify">
-
-</p>
+## 0083. Remove Duplicates from Sorted List
 {% highlight C++ %}
-
+/*
+Input: 1 -> 1 -> 2
+Output: 1 -> 2
+*/
+class Solution {
+public:
+    ListNode* deleteDuplicates(ListNode* head) {
+        if (head == nullptr) { return head; }
+        ListNode *p1 = head, *p2 = head->next;
+        while (true)
+        {
+            while (p2 != nullptr && p1->val == p2->val) { p2 = p2->next; }
+            p1->next = p2;
+            p1 = p2;
+            if (p2 == nullptr) { break; }
+            p2 = p2->next;
+        }
+        return head;
+    }
+};
 {% endhighlight %}
 
 ## 0084. Largest Rectangle in Histogram*
