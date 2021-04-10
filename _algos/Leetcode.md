@@ -7995,7 +7995,7 @@ public:
 };
 {% endhighlight %}
 
-## 00415. Add Strings
+## 0415. Add Strings
 {% highlight C++ %}
 /*
 Input: num1 = "456", num2 = "77"
