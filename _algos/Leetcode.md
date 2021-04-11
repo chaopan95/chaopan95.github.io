@@ -8110,6 +8110,31 @@ public:
 };
 {% endhighlight %}
 
+## 0470. Implement Rand10() Using Rand7()*
+{% highlight C++ %}
+/*
+Input: n = 3
+Output: [3,8,10]
+*/
+// The rand7() API is already defined for you.
+// int rand7();
+// @return a random integer in the range 1 to 7
+
+class Solution {
+public:
+    int rand10() {
+        int ans = 0, i = 0, j = 0;
+        do {
+            i = rand7();
+            j = rand7();
+            ans = (i - 1) * 7 + j;
+        }
+        while (ans > 40);
+        return ans % 10 + 1;
+    }
+};
+{% endhighlight %}
+
 ## 0503. Next Greater Element II*
 {% highlight C++ %}
 /*
