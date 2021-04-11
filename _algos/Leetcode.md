@@ -6182,12 +6182,28 @@ public:
 
 {% endhighlight %}
 
-## 
-<p align="justify">
-
-</p>
+## 0179. Largest Number*
 {% highlight C++ %}
-
+/*
+Input: nums = [3,30,34,5,9]
+Output: "9534330"
+*/
+class Solution {
+public:
+    string largestNumber(vector<int>& nums) {
+        string ans = "";
+        if (nums.empty()) { return ans; }
+        sort(nums.begin(), nums.end(), [](const int &x, const int &y) {
+            long i = 10, j = 10;
+            while (i <= x) { i *= 10; }
+            while (j <= y) { j *= 10; }
+            return j * x + y > i * y + x;
+        });
+        if (nums[0] == 0) { return "0"; }
+        for (const int &ele : nums) { ans += to_string(ele); }
+        return ans;
+    }
+};
 {% endhighlight %}
 
 ## 
