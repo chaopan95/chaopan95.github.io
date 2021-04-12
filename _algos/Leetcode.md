@@ -5340,12 +5340,38 @@ public:
 };
 {% endhighlight %}
 
-## 
-<p align="justify">
-
-</p>
+## 0128. Longest Consecutive Sequence*
 {% highlight C++ %}
-
+/*
+Input: nums = [100,4,200,1,3,2]
+Output: 4
+Explanation: The longest consecutive elements sequence
+is [1, 2, 3, 4]. Therefore its length is 4.
+*/
+class Solution {
+public:
+    int longestConsecutive(vector<int>& nums) {
+        if (nums.empty()) { return 0; }
+        int ans = 1;
+        unordered_set<int> hash;
+        for (const auto &ele : nums) { hash.insert(ele); }
+        for (const int &ele : nums)
+        {
+            if (hash.find(ele - 1) != hash.end())
+            {
+                int curNum = ele;
+                int len = 1;
+                while (hash.find(curNum) != hash.end())
+                {
+                    curNum++;
+                    len++;
+                }
+                ans = max(ans, len);
+            }
+        }
+        return ans;
+    }
+};
 {% endhighlight %}
 
 ## 
