@@ -8245,6 +8245,142 @@ public:
 };
 {% endhighlight %}
 
+## 
+<p align="justify">
+
+</p>
+{% highlight C++ %}
+
+{% endhighlight %}
+
+## 
+<p align="justify">
+
+</p>
+{% highlight C++ %}
+
+{% endhighlight %}
+
+## 
+<p align="justify">
+
+</p>
+{% highlight C++ %}
+
+{% endhighlight %}
+
+## 
+<p align="justify">
+
+</p>
+{% highlight C++ %}
+
+{% endhighlight %}
+
+## 
+<p align="justify">
+
+</p>
+{% highlight C++ %}
+
+{% endhighlight %}
+
+## 
+<p align="justify">
+
+</p>
+{% highlight C++ %}
+
+{% endhighlight %}
+
+## 
+<p align="justify">
+
+</p>
+{% highlight C++ %}
+
+{% endhighlight %}
+
+## 
+<p align="justify">
+
+</p>
+{% highlight C++ %}
+
+{% endhighlight %}
+
+## 
+<p align="justify">
+
+</p>
+{% highlight C++ %}
+
+{% endhighlight %}
+
+## 
+<p align="justify">
+
+</p>
+{% highlight C++ %}
+
+{% endhighlight %}
+
+## 
+<p align="justify">
+
+</p>
+{% highlight C++ %}
+
+{% endhighlight %}
+
+## 
+<p align="justify">
+
+</p>
+{% highlight C++ %}
+
+{% endhighlight %}
+
+## 
+<p align="justify">
+
+</p>
+{% highlight C++ %}
+
+{% endhighlight %}
+
+## 0530. Minimum Absolute Difference in BST
+{% highlight C++ %}
+/*
+        1
+          \
+           3
+          /
+         2
+output: 1
+*/
+class Solution {
+public:
+    int getMinimumDifference(TreeNode* root) {
+        TreeNode *last = nullptr;
+        int ans = INT_MAX;
+        inOrder(root, last, ans);
+        return ans;
+    }
+    void inOrder(TreeNode *root, TreeNode *&last, int &diff)
+    {
+        if (root != nullptr)
+        {
+            inOrder(root->left, last, diff);
+            if (last == nullptr) { last = root; }
+            else { diff = min(diff, abs(root->val - last->val)); }
+            last = root;
+            inOrder(root->right, last, diff);
+        }
+    }
+};
+{% endhighlight %}
+
 ## 0543. Diameter of Binary Tree
 <p align="justify">
 Given a binary tree, you need to compute the length of the diameter of the tree. The diameter of a binary tree is the length of the longest path between any two nodes in a tree. This path may or may not pass through the root.
