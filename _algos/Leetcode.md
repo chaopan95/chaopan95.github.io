@@ -6394,11 +6394,28 @@ public:
 
 {% endhighlight %}
 
-## 
-<p align="justify">
-
-</p>
+## 0198. House Robber
 {% highlight C++ %}
+/*
+Input: nums = [2,7,9,3,1]
+Output: 12
+Explanation: Rob house 1 (money = 2), rob house 3 (money = 9) and
+rob house 5 (money = 1). Total amount you can rob = 2 + 9 + 1 = 12.
+*/class Solution {
+public:
+    int rob(vector<int>& nums) {
+        int n = int(nums.size());
+        if (n == 0) { return 0; }
+        vector<vector<int>> dp(n, vector<int>(2, 0));
+        dp[0][1] = nums[0];
+        for (int i = 1; i < n; i++)
+        {
+            dp[i][0] = max(dp[i-1][0], dp[i-1][1]);
+            dp[i][1] = dp[i-1][0] + nums[i];
+        }
+        return max(dp[n-1][0], dp[n-1][1]);
+    }
+};
 
 {% endhighlight %}
 
