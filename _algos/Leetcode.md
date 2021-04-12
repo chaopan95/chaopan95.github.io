@@ -8740,6 +8740,46 @@ public:
 };
 {% endhighlight %}
 
+## 
+<p align="justify">
+
+</p>
+{% highlight C++ %}
+
+{% endhighlight %}
+
+## 0783. Minimum Distance Between BST Nodes
+{% highlight C++ %}
+/*
+        4
+      /   \
+     2     6
+   /  \
+  1    5  
+output: 1
+*/
+class Solution {
+public:
+    int minDiffInBST(TreeNode* root) {
+        int ans = INT_MAX;
+        TreeNode *last = nullptr;
+        inOrder(root, last, ans);
+        return ans;
+    }
+    void inOrder(TreeNode *root, TreeNode *&last, int &ans)
+    {
+        if (root != nullptr)
+        {
+            inOrder(root->left, last, ans);
+            if (last == nullptr) { last = root; }
+            else { ans = min(ans, abs(root->val - last->val)); }
+            last = root;
+            inOrder(root->right, last, ans);
+        }
+    }
+};
+{% endhighlight %}
+
 ## 0832. Flipping an Image
 {% highlight C++ %}
 /*
