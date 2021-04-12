@@ -8283,6 +8283,38 @@ public:
 };
 {% endhighlight %}
 
+## 0718. Maximum Length of Repeated Subarray*
+{% highlight C++ %}
+/*
+Input:
+A: [1,2,3,2,1]
+B: [3,2,1,4,7]
+Output: 3
+Explanation: 
+The repeated subarray with maximum length is [3, 2, 1].
+*/
+class Solution {
+public:
+    int findLength(vector<int>& A, vector<int>& B) {
+        int na = int(A.size()), nb = int(B.size());
+        vector<vector<int>> dp(na+1, vector<int>(nb+1, 0));
+        int ans = 0;
+        for (int i = 1; i <= na; i++)
+        {
+            for (int j = 1; j <= nb; j++)
+            {
+                if (A[i-1] == B[j-1])
+                {
+                    dp[i][j] = dp[i-1][j-1] + 1;
+                    ans = max(ans, dp[i][j]);
+                }
+            }
+        }
+        return ans;
+    }
+};
+{% endhighlight %}
+
 ## 0738. Monotone Increasing Digits*
 <p align="justify">
 Given a non-negative integer N, find the largest number that is less than or equal to N with monotone increasing digits. (Recall that an integer has monotone increasing digits if and only if each pair of adjacent digits x and y satisfy x <= y.)
