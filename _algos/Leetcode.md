@@ -7230,12 +7230,30 @@ public:
 
 {% endhighlight %}
 
-## 
-<p align="justify">
-
-</p>
+## 0240. Search a 2D Matrix II*
 {% highlight C++ %}
-
+/*
+1   4   7
+2   5   8
+3   6   9
+find(5) = true
+*/
+class Solution {
+public:
+    bool searchMatrix(vector<vector<int>>& matrix, int target) {
+        int nRow = (int)matrix.size();
+        if (nRow == 0) { return false; }
+        int nCol = (int)matrix[0].size();
+        if (nCol == 0) { return false; }
+        int row = nRow - 1, col = 0;
+        while (row >= 0 && col < nCol) {
+            if (matrix[row][col] == target) { return true; }
+            else if (matrix[row][col] > target) { row--; }
+            else { col++; }
+        }
+        return false;
+    }
+};
 {% endhighlight %}
 
 ## 
