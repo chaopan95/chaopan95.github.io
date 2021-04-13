@@ -7289,12 +7289,50 @@ public:
 
 {% endhighlight %}
 
-## 
-<p align="justify">
-
-</p>
+## 0236. Lowest Common Ancestor of a Binary Tree
 {% highlight C++ %}
-
+/*
+                3
+            /       \
+           5         1
+         /   \     /   \
+        6     2   0     8
+             / \
+            7   4
+p = 5,  q = 1
+nearest common ancester is 3
+*/
+class Solution {
+public:
+    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+        vector<TreeNode*> t1, t2, tmp;
+        dfs(root, p, tmp, t1);
+        tmp.clear();
+        dfs(root, q, tmp, t2);
+        int n1 = (int)t1.size(), n2 = (int)t2.size();
+        int i = 0, j = 0;
+        while (i < n1 && j < n2) {
+            if (t1[i] != t2[j]) { break; }
+            i++;
+            j++;
+        }
+        if (i == n1) { return t1[i-1]; }
+        if (j == n2) { return t2[j-1]; }
+        return t1[i-1];
+    }
+    void dfs(TreeNode *root, TreeNode *&node,
+             vector<TreeNode*> &t, vector<TreeNode*> &res) {
+        if (root == nullptr) { return; }
+        t.emplace_back(root);
+        if (root == node) {
+            res = t;
+            return;
+        }
+        dfs(root->left, node, t, res);
+        dfs(root->right, node, t, res);
+        t.pop_back();
+    }
+};
 {% endhighlight %}
 
 ## 
