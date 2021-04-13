@@ -5382,12 +5382,51 @@ public:
 
 {% endhighlight %}
 
-## 
-<p align="justify">
-
-</p>
+## 0130. Surrounded Regions*
 {% highlight C++ %}
-
+/*
+X   X   X   X               X   X   X   X
+X   O   O   X       ->      X   X   X   X
+X   X   O   X               X   X   X   X
+X   O   X   X               X   O   X   X
+*/
+class Solution {
+public:
+    void solve(vector<vector<char>>& board) {
+        int nRow = (int)board.size();
+        if (nRow <= 2) { return; }
+        int nCol = (int)board[0].size();
+        if (nCol <= 2) { return; }
+        for (int i = 0; i < nRow; i++) {
+            if (board[i][0] == 'O') { dfs(board, nRow, nCol, i, 0); }
+            if (board[i][nCol-1] == 'O') {
+                dfs(board, nRow, nCol, i, nCol-1);
+            }
+        }
+        for (int j = 0; j < nCol; j++) {
+            if (board[0][j] == 'O') { dfs(board, nRow, nCol, 0, j); }
+            if (board[nRow-1][j] == 'O') {
+                dfs(board, nRow, nCol, nRow-1, j);
+            }
+        }
+        for (int i = 0; i < nRow; i++) {
+            for (int j = 0; j < nCol; j++) {
+                if (board[i][j] == 'O') { board[i][j] = 'X'; }
+                if (board[i][j] == 'A') { board[i][j] = 'O'; }
+            }
+        }
+    }
+    void dfs(vector<vector<char>> &board, int nRow, int nCol,
+             int i, int j) {
+        if (i < 0 || i >= nRow || j < 0 || j >= nCol ||
+            board[i][j] == 'A' || board[i][j] == 'X') { return; }
+        board[i][j] = 'A';
+        dfs(board, nRow, nCol, i+1, j);
+        dfs(board, nRow, nCol, i-1, j);
+        dfs(board, nRow, nCol, i, j+1);
+        dfs(board, nRow, nCol, i, j-1);
+    }
+};
 {% endhighlight %}
 
 ## 0131. Palindrome Partitioning
