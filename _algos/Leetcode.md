@@ -6768,12 +6768,41 @@ public:
 };
 {% endhighlight %}
 
-## 
-<p align="justify">
-
-</p>
+## 0213. House Robber II*
 {% highlight C++ %}
-
+/*
+Input: nums = [2,3,2]
+Output: 3
+Explanation: You cannot rob house 1 (money = 2) and
+then rob house 3 (money = 2), because they are
+adjacent houses
+*/
+class Solution {
+public:
+    int rob(vector<int>& nums) {
+        int n = int(nums.size());
+        if (n == 0) { return 0; }
+        if (n == 1) { return nums[0]; }
+        int dp0 = 0, dp1 = nums[0];
+        for (int i = 1; i < n - 1; i++) {
+            int _dp0 = max(dp0, dp1);
+            int _dp1 = dp0 + nums[i];
+            dp0 = _dp0;
+            dp1 = _dp1;
+        }
+        int ans = max(dp0, dp1);
+        dp0 = 0;
+        dp1 = nums[1];
+        for (int i = 2; i < n; i++) {
+            int _dp0 = max(dp0, dp1);
+            int _dp1 = dp0 + nums[i];
+            dp0 = _dp0;
+            dp1 = _dp1;
+        }
+        ans = max(ans, max(dp0, dp1));
+        return ans;
+    }
+};
 {% endhighlight %}
 
 ## 
