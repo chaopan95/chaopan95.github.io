@@ -6718,12 +6718,77 @@ public:
 
 {% endhighlight %}
 
-## 
-<p align="justify">
-
-</p>
+## 0208. Implement Trie (Prefix Tree)
 {% highlight C++ %}
+struct TrieNode {
+    vector<char> val;
+    vector<TrieNode*> next;
+    bool isEnd;
+    TrieNode() {
+        val.resize(26, ' ');
+        next.resize(26, nullptr);
+        isEnd = false;
+    }
+    TrieNode(char x) {
+        val.resize(26, ' ');
+        val[x - 'a'] = x;
+        next.resize(26, nullptr);
+        isEnd = false;
+    }
+};
 
+class Trie {
+    TrieNode *root;
+public:
+    /** Initialize your data structure here. */
+    Trie() {
+        root = new TrieNode();
+    }
+    
+    /** Inserts a word into the trie. */
+    void insert(string word) {
+        TrieNode *curNode = root;
+        for (const char &ch : word) {
+            int idx = ch - 'a';
+            if (curNode->next[idx] == nullptr) {
+                curNode->val[idx] = ch;
+                curNode->next[idx] = new TrieNode();
+            }
+            curNode = curNode->next[idx];
+        }
+        curNode->isEnd = true;
+    }
+    
+    /** Returns if the word is in the trie. */
+    bool search(string word) {
+        TrieNode *curNode = root;
+        for (const char &ch : word) {
+            int idx = ch - 'a';
+            if (curNode->val[idx] != ch) { return false; }
+            curNode = curNode->next[idx];
+        }
+        return curNode->isEnd;
+    }
+    
+    /** Returns if there is any word in the trie that starts with the given prefix. */
+    bool startsWith(string prefix) {
+        TrieNode *curNode = root;
+        for (const char &ch : prefix) {
+            int idx = ch - 'a';
+            if (curNode->val[idx] != ch) { return false; }
+            curNode = curNode->next[idx];
+        }
+        return true;
+    }
+};
+
+/**
+ * Your Trie object will be instantiated and called as such:
+ * Trie* obj = new Trie();
+ * obj->insert(word);
+ * bool param_2 = obj->search(word);
+ * bool param_3 = obj->startsWith(prefix);
+ */
 {% endhighlight %}
 
 ## 0209. Minimum Size Subarray Sum
