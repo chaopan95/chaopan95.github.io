@@ -7962,6 +7962,31 @@ public:
 };
 {% endhighlight %}
 
+## 0337. House Robber III*
+{% highlight C++ %}
+/*
+            2
+        /       \
+       1         3
+      /
+     4
+max 
+*/
+class Solution {
+public:
+    unordered_map<TreeNode*, int> t, f;
+    int rob(TreeNode* root) {
+        if (root == nullptr) { return 0; }
+        rob(root->left);
+        rob(root->right);
+        t[root] = f[root->left] + f[root->right] + root->val;
+        f[root] = max(f[root->left], t[root->left]) +
+                  max(f[root->right], t[root->right]);
+        return max(t[root], f[root]);
+    }
+};
+{% endhighlight %}
+
 ## 0338. Counting Bits
 {% highlight C++ %}
 /*
