@@ -8728,6 +8728,29 @@ public:
 };
 {% endhighlight %}
 
+## 0704. Binary Search
+{% highlight C++ %}
+/*
+Input: nums = [-1,0,3,5,9,12], target = 9
+Output: 4
+*/
+class Solution {
+public:
+    int search(vector<int>& nums, int target) {
+        int n = (int)nums.size();
+        if (n == 0) { return -1; }
+        int l = 0, r = n - 1;
+        while (l <= r) {
+            int m = (l + r) >> 1;
+            if (nums[m] == target) { return m; }
+            else if (nums[m] < target) { l = m + 1; }
+            else { r = m - 1; }
+        }
+        return -1;
+    }
+};
+{% endhighlight %}
+
 ## 0718. Maximum Length of Repeated Subarray*
 {% highlight C++ %}
 /*
