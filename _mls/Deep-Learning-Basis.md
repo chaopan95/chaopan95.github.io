@@ -122,7 +122,7 @@ $\bigstar$ Notations<br>
 -- $a_{4}^{[2]}$ is the activation output by the 4th neuron of the 2nd layer<br><br>
 
 Number of layers is equal to number of hidden layers + 1 output layer. For example, 2 layers NN with one input (3 features) in next picture
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/ML/DLB/1_1_1_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/ML/DLB/1_1_1_1.png"/></center>
 </p>
 <p align="justify">
 $\bigstar$ Forward Propagation<br>
@@ -540,7 +540,7 @@ $$
 \end{bmatrix}
 $$
 $\bigstar$ Sharpening kernel doesn't change an image for solid fills but adds a little intensity on the edges
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/ML/DLB/1_2_1_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/ML/DLB/1_2_1_1.png"/></center>
 </p>
 <p align="justify">
 $\bigstar$ Convolutions is translation equivariant
@@ -599,7 +599,7 @@ $\bigstar$ $C_{out}$ kernels of $W \times H \times C_{in}$<br>
 <b>Answer:</b> $(3 \times 3 \times 3 + 1) \times 10 + (3 \times 3 \times 10 + 1) \times 20 = 2100$.<br><br>
 
 $\bigstar$ Receptive field
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/ML/DLB/1_2_1_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/ML/DLB/1_2_1_2.png"/></center>
 </p>
 <p align="justify">
 <b>Quiz:</b> What receptive field do we have after stacking n convolutional layers with kernel size k×k and stride 1? Layers numeration starts with 1. The resulting receptive field will be a square, input its side as an answer.<br>
@@ -904,7 +904,7 @@ $$\widetilde{Z}^{[l](i)} = \gamma Z_{\text{norm}}^{[l](i)} + \beta$$
 $\gamma$ and $\beta$ are learnable parameters. Here's $\beta$ is different form $\beta$ in momentum.<br><br>
 
 Adding Batch Norm to a network<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/ML/DLB/2_2_4_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/ML/DLB/2_2_4_1.png"/></center>
 </p>
 <p align="justify">
 Now, besides $W^{[1]}$, $b^{[1]}$, ..., $W^{[L]}$, $b^{[L]}$, we have $\gamma^{[1]}$, $\beta^{[1]}$, ..., $\gamma^{[L]}$, $\beta^{[L]}$ to learn. Luckily, gradient descent still works for them.<br>
@@ -1105,7 +1105,7 @@ $$
 & \vdots
 \end{aligned}
 $$
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/ML/DLB/2_3_2_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/ML/DLB/2_3_2_1.png"/></center>
 </p>
 <p align="justify">
 $V_{t}$ is an exponential average over $\frac{1}{1 - \beta}$ days<br>
@@ -1360,7 +1360,7 @@ Key question: do we have sufficient data to learn a function of the complexity n
 Problem Statement<br><br>
 
 This example is adapted from a real production application, but with details disguised to protect confidentiality.<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/ML/DLB/3_2_1_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/ML/DLB/3_2_1_1.png"/></center>
 </p>
 <p align="justify">
 You are a famous researcher in the City of Peacetopia. The people of Peacetopia have a common characteristic: they are afraid of birds. To save them, you have to build an algorithm that will detect any bird flying over Peacetopia and alert the population.<br><br>
@@ -1578,7 +1578,7 @@ D. Pick false negative rate as the new metric, and use this new metric to drive 
 
 <b>14.</b><br>
 You’ve handily beaten your competitor, and your system is now deployed in Peacetopia and is protecting the citizens from birds! But over the last few months, a new species of bird has been slowly migrating into the area, so the performance of your system slowly degrades because your data is being tested on a new type of data.<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/ML/DLB/3_2_1_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/ML/DLB/3_2_1_2.png"/></center>
 </p>
 <p align="justify">
 You have only 1,000 images of the new species of bird. The city expects a better system from you within the next 3 months. Which of these should you do first?<br>
@@ -1603,7 +1603,7 @@ D. Having built a good Bird detector, you should be able to take the same model 
 To help you practice strategies for machine learning, in this week we’ll present another scenario and ask how you would act. We think this “simulator” of working in a machine learning project will give a task of what leading a machine learning project could be like!<br><br>
 
 You are employed by a startup building self-driving cars. You are in charge of detecting road signs (stop sign, pedestrian crossing sign, construction ahead sign) and traffic signals (red and green lights) in images. The goal is to recognize which of these objects appear in each image. As an example, the above image contains a pedestrian crossing sign and red traffic lights<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/ML/DLB/3_2_2_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/ML/DLB/3_2_2_1.png"/></center>
 </p>
 <p align="justify">
 Your 100,000 labeled images are taken using the front-facing camera of your car. This is also the distribution of data you care most about doing well on. You think you might be able to get a much larger dataset off the internet, that could be helpful for training even if the distribution of internet data is not the same.<br><br>
@@ -1728,7 +1728,7 @@ D. 2.2% would be a reasonable estimate of how much this windshield wiper could w
 
 <b>10.</b><br>
 You decide to use data augmentation to address foggy images. You find 1,000 pictures of fog off the internet, and “add” them to clean images to synthesize foggy days, like this:<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/ML/DLB/3_2_2_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/ML/DLB/3_2_2_1.png"/></center>
 </p>
 <p align="justify">
 Which of the following statements do you agree with?<br>
