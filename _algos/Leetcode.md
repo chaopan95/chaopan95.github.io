@@ -7032,12 +7032,31 @@ public:
 
 {% endhighlight %}
 
-## 
-<p align="justify">
-
-</p>
+## 0220. Contains Duplicate III*
 {% highlight C++ %}
-
+/*
+Input: nums = [1,5,9,1,5,9], k = 2, t = 3
+Output: false
+*/
+class Solution {
+public:
+    bool containsNearbyAlmostDuplicate(vector<int>& nums, int k, int t) {
+        int n = (int)nums.size();
+        if (n <= 1) { return false; }
+        set<int> hash;
+        set<int>::iterator iter;
+        for (int i = 0; i < n; i++) {
+            iter = hash.lower_bound(max(nums[i], INT_MIN + t) - t);
+            if (iter != hash.end() &&
+                *iter <= min(nums[i], INT_MAX - t) + t) {
+                return true;
+            }
+            hash.insert(nums[i]);
+            if (i >= k) { hash.erase(nums[i-k]); }
+        }
+        return false;
+    }
+};
 {% endhighlight %}
 
 ## 
