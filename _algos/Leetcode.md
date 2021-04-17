@@ -7024,12 +7024,26 @@ public:
 
 {% endhighlight %}
 
-## 
-<p align="justify">
-
-</p>
+## 0219. Contains Duplicate II
 {% highlight C++ %}
-
+/*
+Input: nums = [1,2,3,1,2,3], k = 2
+Output: false
+*/
+class Solution {
+public:
+    bool containsNearbyDuplicate(vector<int>& nums, int k) {
+        int n = (int)nums.size();
+        if (n <= 1) { return false; }
+        set<int> hash;
+        for (int i = 0; i < n; i++) {
+            if (hash.find(nums[i]) != hash.end()) { return true; }
+            hash.insert(nums[i]);
+            if (i >= k) { hash.erase(nums[i-k]); }
+        }
+        return false;
+    }
+};
 {% endhighlight %}
 
 ## 0220. Contains Duplicate III*
