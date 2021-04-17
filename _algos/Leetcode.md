@@ -7008,12 +7008,23 @@ public:
 
 {% endhighlight %}
 
-## 
-<p align="justify">
-
-</p>
+## 0217. Contains Duplicate
 {% highlight C++ %}
-
+/*
+Input: nums = [1,2,3,4]
+Output: false
+*/
+class Solution {
+public:
+    bool containsDuplicate(vector<int>& nums) {
+        set<int> hash;
+        for (const int &ele : nums) {
+            if (hash.find(ele) != hash.end()) { return true; }
+            hash.insert(ele);
+        }
+        return false;
+    }
+};
 {% endhighlight %}
 
 ## 
