@@ -7487,12 +7487,58 @@ public:
 
 {% endhighlight %}
 
-## 
-<p align="justify">
-
-</p>
+## 0239. Sliding Window Maximum
 {% highlight C++ %}
-
+/*
+Input: nums = [1,3,-1,-3,5,3,6,7], k = 3
+Output: [3,3,5,5,6,7]
+Explanation: 
+Window position                Max
+---------------               -----
+[1  3  -1] -3  5  3  6  7       3
+ 1 [3  -1  -3] 5  3  6  7       3
+ 1  3 [-1  -3  5] 3  6  7       5
+ 1  3  -1 [-3  5  3] 6  7       5
+ 1  3  -1  -3 [5  3  6] 7       6
+ 1  3  -1  -3  5 [3  6  7]      7
+*/
+class Solution {
+public:
+    vector<int> maxSlidingWindow(vector<int>& nums, int k) {
+        vector<int> ans;
+        multiset<int> hash;
+        int n = (int)nums.size();
+        for (int i = 0; i < k; i++) {
+            hash.insert(nums[i]);
+        }
+        for (int i = k; i < n; i++) {
+            ans.emplace_back(*--hash.end());
+            hash.erase(hash.find(nums[i-k]));
+            hash.insert(nums[i]);
+        }
+        ans.emplace_back(*--hash.end());
+        return ans;
+    }
+};
+class Solution {
+public:
+    vector<int> maxSlidingWindow(vector<int>& nums, int k) {
+        vector<int> ans;
+        int n = (int)nums.size();
+        priority_queue<pair<int, int>> pq;
+        for (int i = 0; i < k; i++) {
+            pq.emplace(nums[i], i);
+        }
+        for (int i = k; i <= n; i++) {
+            while (pq.top().second + k < i) {
+                pq.pop();
+            }
+            ans.emplace_back(pq.top().first);
+            if (i < n) { pq.emplace(nums[i], i); }
+        }
+        return ans;
+    }
+};
 {% endhighlight %}
 
 ## 0240. Search a 2D Matrix II*
