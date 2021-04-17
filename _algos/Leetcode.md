@@ -5571,12 +5571,22 @@ public:
 
 {% endhighlight %}
 
-## 
-<p align="justify">
-
-</p>
+## 0136. Single Number
 {% highlight C++ %}
-
+/*
+Input: nums = [4,1,2,1,2]
+Output: 4
+*/
+class Solution {
+public:
+    int singleNumber(vector<int>& nums) {
+        int ans = 0;
+        for (const int &ele : nums) {
+            ans ^= ele;
+        }
+        return ans;
+    }
+};
 {% endhighlight %}
 
 ## 
