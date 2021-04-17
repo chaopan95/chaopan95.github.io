@@ -5374,12 +5374,32 @@ public:
 };
 {% endhighlight %}
 
-## 
-<p align="justify">
-
-</p>
+## 0129. Sum Root to Leaf Numbers
 {% highlight C++ %}
-
+/*
+            4
+          /   \
+         9     0
+        / \
+       5   1
+sum = 495 + 491 + 40 = 1026
+*/
+class Solution {
+public:
+    int sumNumbers(TreeNode* root) {
+        int num = 0;
+        return dfs(root, num);
+    }
+    int dfs(TreeNode *root, int num) {
+        if (root == nullptr) { return 0; }
+        if (root->left == nullptr && root->right == nullptr) {
+            return num * 10 + root->val;;
+        }
+        int left = dfs(root->left, num * 10 + root->val);
+        int right = dfs(root->right, num * 10 + root->val);
+        return left + right;
+    }
+};
 {% endhighlight %}
 
 ## 0130. Surrounded Regions*
