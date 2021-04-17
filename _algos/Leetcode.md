@@ -7000,12 +7000,39 @@ public:
 };
 {% endhighlight %}
 
-## 
-<p align="justify">
-
-</p>
+## 0216. Combination Sum III
 {% highlight C++ %}
-
+/*
+Input: k = 3, n = 9
+Output: [[1,2,6],[1,3,5],[2,3,4]]
+Explanation:
+1 + 2 + 6 = 9
+1 + 3 + 5 = 9
+2 + 3 + 4 = 9
+There are no other valid combinations.
+*/
+class Solution {
+public:
+    vector<vector<int>> combinationSum3(int k, int n) {
+        vector<vector<int>> ans;
+        if (k == 0 || n > 45) { return ans; }
+        vector<int> arr;
+        dfs(ans, arr, k, n, 1);
+        return ans;
+    }
+    void dfs(vector<vector<int>> &ans, vector<int> &arr,
+             int k, int n, int idx) {
+        if (k <= 0 || n <= 0 || idx > 9) {
+            if (k == 0 && n == 0) { ans.emplace_back(arr); }
+            return;
+        }
+        for (int i = idx; i < 10; i++) {
+            arr.emplace_back(i);
+            dfs(ans, arr, k-1, n-i, i+1);
+            arr.pop_back();
+        }
+    }
+};
 {% endhighlight %}
 
 ## 0217. Contains Duplicate
