@@ -8109,6 +8109,30 @@ public:
 };
 {% endhighlight %}
 
+## 0322. Coin Change*
+{% highlight C++ %}
+/*
+Input: coins = [186, 419, 83, 408], amount = 6249
+Output: 20
+*/
+class Solution {
+public:
+    int coinChange(vector<int>& coins, int amount) {
+        vector<int> dp(amount+1, 0);
+        for (int s = 1; s <= amount; s++) {
+            int MIN = amount + 1;
+            for (const int &coin : coins) {
+                if (s >= coin) {
+                    MIN = min(MIN, dp[s - coin] + 1);
+                }
+            }
+            dp[s] = MIN;
+        }
+        return dp[amount] < amount + 1 ? dp[amount] : -1;
+    }
+};
+{% endhighlight %}
+
 ## 0337. House Robber III*
 {% highlight C++ %}
 /*
