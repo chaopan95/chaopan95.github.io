@@ -7887,6 +7887,53 @@ public:
         return len;
     }
 };
+
+/*
+给定数组arr，设长度为n，输出arr的最长递增子序列。
+（如果有多个答案，请输出其中字典序最小的）
+input: 1,2,8,6,4
+output: 1,2,4
+*/
+class Solution {
+public:
+    /**
+     * retrun the longest increasing subsequence
+     * @param arr int整型vector the array
+     * @return int整型vector
+     */
+    vector<int> LIS(vector<int>& arr) {
+        // write code here
+        vector<int> ans;
+        int n = (int)arr.size();
+        if (n == 0) { return ans; }
+        vector<int> dp(n, 1);
+        int len = 0;
+        for (int i = 0; i < n; i++) {
+            int ele = arr[i];
+            if (ans.empty() || ans.back() < ele) {
+                ans.emplace_back(ele);
+                len++;
+                dp[i] = len;
+            }
+            else {
+                int l = 0, r = len - 1;
+                while (l <= r) {
+                    int m = (l + r) >> 1;
+                    if (ans[m] >= ele) { r = m - 1; }
+                    else { l = m + 1; }
+                }
+                ans[l] = ele;
+                dp[i] = l + 1;
+            }
+        }
+        for (int i = n - 1; i >= 0; i--) {
+            if (dp[i] == len) {
+                ans[--len] = arr[i];
+            }
+        }
+        return ans;
+    }
+};
 {% endhighlight %}
 
 ## 0303. Range Sum Query - Immutable
