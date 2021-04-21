@@ -4331,12 +4331,53 @@ public:
 };
 {% endhighlight %}
 
-## 
-<p align="justify">
-
-</p>
+## 0091. Decode Ways
 {% highlight C++ %}
+/*
+'A' -> "1"
+'B' -> "2"
+...
+'Z' -> "26"
 
+Input: s = "226"
+Output: 3
+Explanation: "226" could be decoded as "BZ" (2 26),
+"VF" (22 6), or "BBF" (2 2 6).
+
+Input: s = "06"
+Output: 0
+Explanation: "06" cannot be mapped to "F" because
+of the leading zero ("6" is different from "06").
+*/
+class Solution {
+public:
+    int numDecodings(string s) {
+        int n = (int)s.length();
+        if (n == 0 || s[0] == '0') { return 0; }
+        if (n == 1) { return 1; }
+        int a = (s[n-1] != '0');
+        int b = 0;
+        if (s[n-2] != '0') {
+            b = a + ((s[n-2]-'0')*10 + s[n-1]-'0' <= 26);
+        }
+        if (n == 2) { return b; }
+        for (int i = n - 3; i >= 0; i--) {
+            int c = 0;
+            if (s[i] == '0') {
+                a = b;
+                b = c;
+                continue;
+            }
+            c += b;
+            if (i < n - 1 && (s[i] - '0') * 10 + (s[i+1] - '0') <= 26) {
+                c += a;
+            }
+            a = b;
+            b = c;
+        }
+        return b;
+    }
+};
 {% endhighlight %}
 
 ## 0092. Reverse Linked List II
