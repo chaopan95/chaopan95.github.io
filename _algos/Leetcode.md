@@ -8521,6 +8521,52 @@ public:
 };
 {% endhighlight %}
 
+## 0368. Largest Divisible Subset
+{% highlight C++ %}
+/*
+Given a set of distinct positive integers nums, return the largest
+subset answer such that every pair (answer[i], answer[j]) of elements
+in this subset satisfies:
+answer[i] % answer[j] == 0, or
+answer[j] % answer[i] == 0
+If there are multiple solutions, return any of them.
+
+Input: nums = [1,2,3]
+Output: [1,2]
+Explanation: [1,3] is also accepted.
+*/
+class Solution {
+public:
+    vector<int> largestDivisibleSubset(vector<int>& nums) {
+        vector<int> ans;
+        int n = (int)nums.size();
+        if (n < 2) { return nums; }
+        sort(nums.begin(), nums.end());
+        vector<int> dp(n, 1);
+        vector<int> par(n, -1);
+        int len = 1;
+        for (int i = 1; i < n; i++) {
+            for (int j = i - 1; j >= 0; j--) {
+                if (nums[i] % nums[j] == 0 && dp[j] + 1 > dp[i]) {
+                    dp[i] = max(dp[i], dp[j] + 1);
+                    par[i] = j;
+                }
+            }
+            len = max(len, dp[i]);
+        }
+        ans.resize(len);
+        for (int i = n - 1; i >= 0;) {
+            if (dp[i] == len) {
+                ans[--len] = nums[i];
+                i = par[i];
+            }
+            else { i--; }
+        }
+        return ans;
+    }
+};
+{% endhighlight %}
+
 ## 0395. Longest Substring with At Least K Repeating Characters*
 {% highlight C++ %}
 /*
