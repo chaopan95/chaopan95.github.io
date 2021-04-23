@@ -530,7 +530,7 @@ D. The number of failed lightbulbs in a batch of 5000 after 100 hours in service
 
 <b>5.</b><br>
 If X $\sim$ Uniform(2, 6), <b>which of the following is the PDF of X?</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/BS/1_3_5_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/BS/1_3_5_1.png"/></center>
 </p>
 <p align="justify">
 <b>Answer</b>: D.<br><br>
@@ -541,7 +541,7 @@ If X $\sim$ Uniform(2, 6). <b>what is P(2 < X < 3)?</b> Round your answer to two
 
 <b>7.</b><br>
 If X $\sim$ N(0, 1), <b>which of the following is the PDF of X?</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/BS/1_3_5_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/BS/1_3_5_1.png"/></center>
 </p>
 <p align="justify">
 <b>Answer</b>: E.<br><br>
@@ -1086,7 +1086,7 @@ $$F(2) = P(Y \leq 2) = \int_{t = -\infty}^{2} e^{-t} I_{t \geq 0} dt = \int_{t =
 
 The CDF is convenient for calculating probabilities of intervals. Let a and b be any real numbers with a < b. Then the probability that X falls between a and b is equal to<br>
 $$P(a < x \leq b) = p(X \leq b) - P(X \leq a) = F(b) - F(a)$$
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/BS/1_5_1_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/BS/1_5_1_1.png"/></center>
 </p>
 <p align="justify">
 <b>Quantile Function</b><br>
@@ -1399,20 +1399,20 @@ The posterior PDF of θ favors high values because we observed data consistent w
 $$f(\theta \mid Y = 0) = 2(1 - \theta) \mathbf{I}_{0 \leq \theta \leq 1}$$
 
 <b>Q</b>: <b>Which of the following is the graph of this PDF?</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/BS/1_5_6_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/BS/1_5_6_1.png"/></center>
 </p>
 <p align="justify">
 <b>Answer</b>: B.<br><br>
 
 <b>Q</b>: <b>The shaded region in which of the following graphs corresponds to an equal-tailed interval for the normal distribution?</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/BS/1_5_6_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/BS/1_5_6_2.png"/></center>
 </p>
 <p align="justify">
 <b>Answer</b>: D.<br>
 The probability of being to the right of this interval is equal to the probability of being to the left of the interval.<br><br>
 
 <b>Q</b>: Each of the following graphs depicts a 70% credible interval from a posterior distribution. <b>Which of the intervals represents the highest posterior density (HPD) interval?</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/BS/1_5_6_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/BS/1_5_6_3.png"/></center>
 </p>
 <p align="justify">
 A. 70% credible interval: $\theta \in$ (0.82, 3.89)<br>
@@ -1506,7 +1506,7 @@ D. Highest point distance interval<br><br>
 
 <b>8.</b><br>
 Each of the following graphs depicts a 50% credible interval from a posterior distribution. Which of the intervals represents the HPD interval?<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/BS/1_5_7_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/BS/1_5_7_1.png"/></center>
 </p>
 <p align="justify">
 A. 50% interval $\theta \in$ (0.326, 0.674)<br>
@@ -1540,7 +1540,7 @@ $$P(\theta = \frac{1}{2}) = 1$$
 $$f(\theta \mid y) \propto f(y \mid \theta) f(\theta) = f(\theta)$$
 
 <b>Q</b>: Suppose you are tasked with eliciting a prior distribution for θ, the proportion of taxpayers who file their returns after the deadline. After speaking with several tax experts, but before collecting data, you are reasonably confident that θ is greater than 0.05, but less than 0.20. <b>Which of the following prior distributions most accurately reflects theses prior beliefs about θ?</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/BS/1_6_1_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/BS/1_6_1_1.png"/></center>
 </p>
 <p align="justify">
 <b>Answer</b>: C.<br><br>
@@ -1602,7 +1602,7 @@ Find the value of the following integral:<br>
 $$\int_{0}^{1} \frac{\Gamma(5+3)}{\Gamma(5) \Gamma(3)} z^{5 - 1} (1 - z)^{3 - 1} dz = 1$$
 
 <b>Q</b>: Which of the following plots depicts the probability mass function (PMF) of the prior predictive distribution of X just derived? Recall that we used a binomial likelihood for X and a uniform prior for θ, the probability of success.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/BS/1_6_2_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/BS/1_6_2_1.png"/></center>
 </p>
 <p align="justify">
 <b>Answer</b>: A.<br><br>
@@ -1643,7 +1643,7 @@ D. None of the above.<br><br>
 
 <b>2.</b><br>
 Suppose you believe before the experiments that the thermometer is biased high, so that on average it would read 105 degrees Celsius, and you are 95% confident that the average would be between 100 and 110. Which of the following prior PDFs most accurately reflects this prior belief?<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/BS/1_6_4_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/BS/1_6_4_1.png"/></center>
 </p>
 <p align="justify">
 <b>Answer</b>: D.<br><br>
@@ -1833,7 +1833,7 @@ In other word<br>
 $$\text{Posterior mean} = \text{Prior weight} \times \text{Prior mean} + \text{Data weight} \times \text{Data mean}$$
 
 Each of the following beta priors yields a prior mean equal to 0.5. <b>Which has the highest effective prior sample size?</b><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/BS/1_7_3_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/BS/1_7_3_1.png"/></center>
 </p>
 <p align="justify">
 A. Beta(2, 2)<br>
@@ -2082,7 +2082,7 @@ E. Beta(0, 4)<br><br>
 
 <b>2.</b><br>
 Which of the following graphs depicts the posterior PDF of θ if we observe the sequence (T, T, T, T)? (You may want to use R or Excel to plot the posterior.)<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/BS/1_7_6_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/BS/1_7_6_1.png"/></center>
 </p>
 <p align="justify">
 <b>Answer</b>: A.<br>
@@ -2233,7 +2233,7 @@ F. Gamma(1, 8)<br><br>
 
 <b>5.</b><br>
 Continuing the previous question, what of the following graphs shows the prior density (dotted line) and posterior density (solid line) of $\lambda$?<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/BS/1_8_2_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/BS/1_8_2_1.png"/></center>
 </p>
 <p align="justify">
 <b>Answer</b>: B.<br><br>
@@ -2276,7 +2276,7 @@ D. Gamma(a + 1, b + y)<br><br>
 
 <b>10.</b><br>
 On average, the retailer receives 0.01 calls per customer per day. To give this group the benefit of the doubt, they set the prior mean for θ at 0.01 with standard deviation 0.5. This yields a Gamma($\frac{1}{2500}$, $\frac{1}{25}$) prior for θ. Suppose there are n=24 customers in this particular group of interest, and the retailer monitors calls from these customers for t=5 days. They observe a total of y=6 calls from this group. The following graph shows the resulting Gamma(6.0004,120.04) posterior for θ, the calling rate for this group. The vertical dashed line shows the average calling rate of 0.01.<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/BS/1_8_2_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/BS/1_8_2_2.png"/></center>
 </p>
 <p align="justify">
 Does this posterior inference for θ suggest that the group has a higher calling rate than the average of 0.01 calls per customer per day?<br>
@@ -2406,7 +2406,7 @@ The posterior predictive density for a new waiting time $y^{*}$ in days is:<br>
 $$f(y^{*} \mid y) = \int f(y^{*} \mid \lambda) \cdot f(\lambda \mid y) d\lambda = \frac{\beta^{\alpha} \Gamma(\alpha + 1)}{(\beta + y^{*})^{\alpha + 1} \Gamma(\alpha)} \mathbf{I}_{y^{*} \geq 0} = \frac{\beta^{\alpha} \alpha}{(\beta + y^{*}) ^{\alpha+1}} \mathbf{I}_{y^{*} \geq 0}$$
 
 where f(λ ∣ y) is the Gamma(α,β) posterior found earlier. Use R or Excel to evaluate this posterior predictive PDF. Which of the following graphs shows the posterior predictive distribution for $y^{*}$?<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/BS/1_9_2_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/BS/1_9_2_1.png"/></center>
 </p>
 <p align="justify">
 <b>Answer</b>: B.<br><br>
@@ -2552,7 +2552,7 @@ E. N(96.17, 0.292)<br><br>
 Your friend moves from city A to city B and is delighted to find her favorite restaurant chain at her new location. After several meals, however, she suspects that the restaurant in city B is less generous. She decides to investigate.<br><br>
 
 She orders the main dish on 30 randomly selected days throughout the year and records each meal's weight in grams. You still live in city A, so you assist by performing the same experiment at your restaurant. Assume that the dishes are served on identical plates (measurements subtract the plate's weight), and that your scale and your friend’s scale are consistent. The following histogram shows the 30 measurements from Restaurant B taken by your friend.<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/BS/1_10_3_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/BS/1_10_3_1.png"/></center>
 </p>
 <p align="justify">
 Is it reasonable to assume that these data are normally distributed?<br>
@@ -2899,7 +2899,7 @@ D. N(96.0, $0.05$^{2})<br><br>
 
 <b>4.</b><br>
 Which of the following graphs shows the Jeffreys prior for a Bernoulli/binomial success probability p? Hint: The Jeffreys prior in this case is Beta(1/2, 1/2).<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/BS/1_11_3_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/BS/1_11_3_1.png"/></center>
 </p>
 <p align="justify">
 <b>Answer</b>: B.<br><br>
@@ -3606,7 +3606,7 @@ $$
 $$
 
 We can represent our model in a graph. $\mu$ and $\sigma^{2}$ are parameters to estimate. We use the parameters to generate the data. Here, data is observed (double circle).<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/BS/2_2_2_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/BS/2_2_2_1.png"/></center>
 </p>
 <p align="justify">
 <b>Q</b>: <b>Which component of a Bayesian model would not appear in the model's hierarchical representation?</b><br>
@@ -3626,7 +3626,7 @@ $$
 \end{aligned}
 $$
 We have 3 layers and we use a graph to represent it.<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/BS/2_2_3_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/BS/2_2_3_1.png"/></center>
 </p>
 <p align="justify">
 $$P(\theta \mid y) = \frac{P(y \mid \theta) P(\theta)}{\int P(y \mid \theta) P(\theta) d\theta} \propto P(y \mid \theta) P(\theta)$$
@@ -3747,14 +3747,14 @@ $$
 
 <b>5.</b><br>
 Which of the following graphical depictions represents the model from Xie's scenario?<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/BS/2_2_5_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/BS/2_2_5_1.png"/></center>
 </p>
 <p align="justify">
 <b>Answer</b>: A.<br><br>
 
 <b>6.</b><br>
 Graphical representations of models generally do not identify the distributions of the variables (nodes), but they do reveal the structure of dependence among the variables. Identify which of the following hierarchical models is depicted in the graphical representation below.<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/BS/2_2_5_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/BS/2_2_5_2.png"/></center>
 </p>
 <p align="justify">
 $$
@@ -4032,7 +4032,7 @@ mean(alpha)
 mean(alpha > 1.0)
 {% endhighlight %}
 <p align="justify">
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/BS/2_3_4_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/BS/2_3_4_1.png"/></center>
 </p>
 <p align="justify">
 <b>Transition matrix</b><br>
@@ -4145,7 +4145,7 @@ for (i in 2:n) {
 plot.ts(x)
 {% endhighlight %}
 <p align="justify">
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/BS/2_3_4_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/BS/2_3_4_2.png"/></center>
 </p>
 <p align="justify">
 The theoretical stationary distribution for this chain is normal with mean 0 and variance 1/(1−$\phi^{2}$), which in our example approximately equals 1.562. Let’s look at a histogram of our chain and compare that with the theoretical stationary distribution.<br>
@@ -4157,7 +4157,7 @@ legend("topright", legend="theoretical stationary\ndistribution",
        col="red", lty=1, bty="n")
 {% endhighlight %}
 <p align="justify">
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/BS/2_3_4_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/BS/2_3_4_3.png"/></center>
 </p>
 <p align="justify">
 It appears that the chain has reached the stationary distribution. Therefore, we could treat this simulation from the chain like a Monte Carlo sample from the stationary distribution, a normal with mean 0 and variance 1.562.<br><br>
@@ -4307,7 +4307,7 @@ $$
 &emsp;&emsp;&emsp;reject $\theta^{*}$ with probability of 0.365. set $\theta_{i}$ fair<br><br>
 
 We can draw a schema for the Markov chain<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/BS/2_4_2_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/BS/2_4_2_1.png"/></center>
 </p>
 <p align="justify">
 Stationary distribution $\pi$<br>
@@ -4406,7 +4406,7 @@ points(y, rep(0,n), pch=1) # individual data points
 points(ybar, 0, pch=19) # sample mean
 {% endhighlight %}
 <p align="justify">
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/BS/2_4_3_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/BS/2_4_3_1.png"/></center>
 </p>
 <p align="justify">
 Finally, we’re ready to run the sampler! Let’s use m=1000 iterations and proposal standard deviation (which controls the proposal step size) 3.0, and initial value at the prior median 0.<br>
@@ -4420,7 +4420,7 @@ library("coda")
 traceplot(as.mcmc(post$mu))
 {% endhighlight %}
 <p align="justify">
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/BS/2_4_3_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/BS/2_4_3_2.png"/></center>
 </p>
 <p align="justify">
 This last plot is called a trace plot. It shows the history of the chain and provides basic feedback about whether the chain has reached its stationary distribution. It appears our proposal step size was too large (acceptance rate below 23%). Let’s try another.<br>
@@ -4432,7 +4432,7 @@ post$accpt
 traceplot(as.mcmc(post$mu))
 {% endhighlight %}
 <p align="justify">
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/BS/2_4_3_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/BS/2_4_3_3.png"/></center>
 </p>
 <p align="justify">
 Oops, the acceptance rate is too high (above 50%). Let’s try something in between.<br>
@@ -4444,7 +4444,7 @@ post$accpt
 traceplot(as.mcmc(post$mu))
 {% endhighlight %}
 <p align="justify">
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/BS/2_4_3_4.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/BS/2_4_3_4.png"/></center>
 </p>
 <p align="justify">
 Hey, that looks pretty good. Just for fun, let’s see what happens if we initialize the chain at some far-off value.<br>
@@ -4456,7 +4456,7 @@ post$accpt
 traceplot(as.mcmc(post$mu))
 {% endhighlight %}
 <p align="justify">
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/BS/2_4_3_5.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/BS/2_4_3_5.png"/></center>
 </p>
 <p align="justify">
 It took awhile to find the stationary distribution, but it looks like we succeeded! If we discard the first 100 or so values, it appears like the rest of the samples come from the stationary distribution, our posterior distribution! Let’s plot the posterior density against the prior to see how the data updated our belief about μ.<br>
@@ -4473,7 +4473,7 @@ curve(0.017*exp(lg(mu=x, n=n, ybar=ybar)),
       from=-1.0, to=3.0, add=TRUE, col="blue")
 {% endhighlight %}
 <p align="justify">
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/BS/2_4_3_6.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/BS/2_4_3_6.png"/></center>
 </p>
 <p align="justify">
 These results are encouraging, but they are preliminary. We still need to investigate more formally whether our Markov chain has converged to the stationary distribution. We will explore this in a future lesson.<br><br>
@@ -4493,7 +4493,7 @@ D. Monte Carlo estimation is easier than calculating the integral required to ob
 
 <b>2.</b><br>
 Which of the following candidate-generating distributions would be best for an independent Metropolis-Hastings algorithm to sample the target distribution whose PDF is shown below? Note: In independent Metropolis-Hastings, the candidate-generating distribution q does not depend on the previous iteration of the chain.<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/BS/2_4_4_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/BS/2_4_4_1.png"/></center>
 </p>
 <p align="justify">
 A. q = N(15, $3.1^{2}$)<br>
@@ -4522,7 +4522,7 @@ D. The candidate would be accepted with probability 1 ecause g($\theta^{*}$) = 0
 
 <b>5.</b><br>
 Suppose we use a random walk Metropolis sampler with normal proposals (centered on the current value of the chain) to sample from the target distribution whose PDF is shown below. The chain is currently at $\theta_{i}$ = 15.0. Which of the other points, if used as a candidate $\theta^{*}$ for the next step, would yield the largest acceptance ratio α?<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/BS/2_4_4_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/BS/2_4_4_2.png"/></center>
 </p>
 <p align="justify">
 A. $\theta^{*}$ = 3.1<br>
@@ -4707,7 +4707,7 @@ library("coda")
 plot(mod_sim)
 {% endhighlight %}
 <p align="justify">
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/BS/2_4_5_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/BS/2_4_5_1.png"/></center>
 <br>
 </p>
 
@@ -5079,14 +5079,14 @@ D. Convergence diagnostics provide a guarantee that your inferences are accurate
 
 <b>2.</b><br>
 Which of the following trace plots illustrates a chain that appears to have converged?
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/BS/2_6_2_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/BS/2_6_2_1.png"/></center>
 </p>
 <p align="justify">
 <b>Answer</b>: D.<br><br>
 
 <b>3.</b><br>
 The trace plot below was generated by a random walk Metropolis sampler, where candidates were drawn from a normal proposal distribution with mean equal to the previous iteration's value, and a fixed variance. Based on this result, what action would you recommend taking next?
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/BS/2_6_2_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/BS/2_6_2_2.png"/></center>
 </p>
 <p align="justify">
 A. The step size of the proposals is too large. Increase the variance of the normal proposal distribution and re-run the chain.<br>
@@ -5106,7 +5106,7 @@ D. Retain only the 80% of samples closest to the maximum likelihood estimate.<br
 
 <b>5.</b><br>
 Each of the following plots reports estimated autocorrelation from a MCMC chain with 10,000 iterations. Which will yield the lowest Monte Carlo effective sample size?
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/BS/2_6_2_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/BS/2_6_2_3.png"/></center>
 </p>
 <p align="justify">
 <b>Answer</b>: A.<br>
@@ -5114,7 +5114,7 @@ High autocorrelation leads to low MCMC effective sample size.<br><br>
 
 <b>6.</b><br>
 The following trace plot shows four chains with distinct initial values. Of the choices given, what is the lowest number of samples you would comfortably recommend to discard as burn-in?
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/BS/2_6_2_4.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/BS/2_6_2_4.png"/></center>
 </p>
 <p align="justify">
 A. 50 iterations<br>
