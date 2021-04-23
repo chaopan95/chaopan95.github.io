@@ -284,7 +284,7 @@ $$P(A_{1} \mid B) = \frac{P(B \mid A_{1})P(A_{1})}{\sum_{i=1}^{m} P(B \mid A_{i}
 <p align="justify">
 <b>1.</b><br>
 For Questions 1-4, refer to the following table regarding passengers of the famous Titanic, which tragically sank on its maiden voyage in 1912. The table organizes passenger/crew counts according to the class of their ticket and whether they survived.<br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/COURSES/BS/1_2_4_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/COURSES/BS/1_2_4_1.png"/></center>
 </p>
 <p align="justify">
 If we randomly select a person's name from the complete list of passengers and crew, <b>what is the probability that this person travelled in 1st class?</b> Round your answer to two decimal places.<br>
