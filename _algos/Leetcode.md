@@ -8545,7 +8545,8 @@ Explanation: The famous Die Hard example
 */
 class Solution {
 public:
-    bool canMeasureWater(int jug1Capacity, int jug2Capacity, int targetCapacity) {
+    bool canMeasureWater(int jug1Capacity, int jug2Capacity,
+                         int targetCapacity) {
         int x = jug1Capacity;
         int y = jug2Capacity;
         int z = targetCapacity;
