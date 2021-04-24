@@ -8747,37 +8747,23 @@ dp[i][j] means first i elements' sum is equal to j or not
 class Solution {
 public:
     bool canPartition(vector<int>& nums) {
-        int n = int(nums.size());
-        if (n < 2) { return false; }
-        int sum = 0, max = 0;
-        for (const int &ele : nums)
-        {
-            sum += ele;
-            max = max > ele ? max : ele;
-        }
-        if (sum % 2) { return false; }
-        sum /= 2;
-        if (max > sum) { return false; }
-        bool **dp = new bool *[n];
-        for (int i = 0; i < n; i++) { dp[i] = new bool [sum+1]{}; }
-        for (int i = 0; i < n; i++)
-        {
-            for (int j = 0; j <= sum; j++)
-            {
-                if (j == 0) { dp[i][j] = true; }
-                else if (i == 0)
-                {
-                    dp[i][j] = (j == nums[0]);
-                }
-                else
-                {
-                    if (j < nums[i]) { dp[i][j] = dp[i-1][j]; }
-                    else { dp[i][j] = dp[i-1][j] || dp[i-1][j-nums[i]]; }
+        int n = (int)nums.size();
+        if (n <= 1) { return false; }
+        int sum = 0;
+        for (int &num : nums) { sum += num; }
+        if (sum % 2 == 1) { return false; }
+        int target = sum / 2;
+        bool *dp = new bool [target+1]{};
+        for (int i = 0; i < n; i++) {
+            for (int j = target; j >= nums[i]; j--) {
+                if (i == 0) { dp[j] = (j == nums[i]); }
+                else if (j == 0) { dp[j] = true; }
+                else {
+                    dp[j] = dp[j] || dp[j-nums[i]];
                 }
             }
         }
-        int ans = dp[n-1][sum];
-        for (int i = 0; i < n; i++) { delete []dp[i]; }
+        bool ans = dp[target];
         delete []dp;
         return ans;
     }
