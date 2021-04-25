@@ -19,7 +19,6 @@ MathJax.Hub.Config({
 {:toc}
 
 
-
 <style>
 table {
   border-collapse: collapse;
@@ -54,6 +53,51 @@ table.d {
 }
 </style>
 
+
+## 牛客题霸-算法篇
+### 105. 二分查找-II
+{% highlight C++ %}
+/*
+请实现有重复数字的升序数组的二分查找
+给定一个 元素有序的（升序）整型数组 nums 和一个目标值 target，
+写一个函数搜索 nums 中的 target，如果目标值存在返回下标，否则返回 -1
+
+输入
+[1,2,4,4,5],4
+返回值
+2
+说明
+从左到右，查找到第1个为4的，下标为2，返回2 
+*/
+class Solution {
+public:
+    /**
+     * 代码中的类名、方法名、参数名已经指定，请勿修改，直接返回方法规定的值即可
+     *
+     * 如果目标值存在返回下标，否则返回 -1
+     * @param nums int整型vector 
+     * @param target int整型 
+     * @return int整型
+     */
+    int search(vector<int>& nums, int target) {
+        // write code here
+        int n = (int)nums.size();
+        if (n == 0) { return -1; }
+        int l = 0, r = n - 1;
+        while (l < r) {
+            int m = (l + r) >> 1;
+            if (nums[m] < target) { l = m + 1; }
+            else { r = m; }
+        }
+        return nums[l] == target ? l : -1;
+    }
+};
+{% endhighlight %}
+
+## 
+{% highlight C++ %}
+
+{% endhighlight %}
 
 ## 程序员代码面试指南CD
 ### 17. 机器人达到指定位置方法数
