@@ -9709,6 +9709,39 @@ public:
 };
 {% endhighlight %}
 
+## 0897. Increasing Order Search Tree*
+{% highlight C++ %}
+/*
+            5           1
+          /   \           \
+         1     7            5
+                              \
+                                7
+*/
+class Solution {
+public:
+    TreeNode* increasingBST(TreeNode* root) {
+        TreeNode *last = nullptr;
+        TreeNode *head = nullptr;
+        inOrder(root, last, head);
+        return head;
+    }
+    void inOrder(TreeNode *root, TreeNode *&last, TreeNode *&head) {
+        if (root != nullptr) {
+            inOrder(root->left, last, head);
+            if (last != nullptr) {
+                last->right = root;
+                last->left = nullptr;
+                root->left = nullptr;
+            }
+            else { head = root; }
+            last = root;
+            inOrder(root->right, last, head);
+        }
+    }
+};
+{% endhighlight %}
+
 ## 0912. Sort an Array
 {% highlight C++ %}
 /*
