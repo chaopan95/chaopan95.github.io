@@ -94,6 +94,46 @@ public:
 };
 {% endhighlight %}
 
+## 160. 二分查找-I
+{% highlight C++ %}
+/*
+请实现无重复数字的升序数组的二分查找
+给定一个 元素有序的（升序）整型数组 nums 和一个目标值 target，
+写一个函数搜索 nums 中的 target，如果目标值存在返回下标，否则返回 -1
+
+示例1
+输入
+[-1,0,3,4,6,10,13,14],13
+返回值
+6
+说明
+13 出现在nums中并且下标为 6
+*/
+class Solution {
+public:
+    /**
+     * 代码中的类名、方法名、参数名已经指定，请勿修改，直接返回方法规定的值即可
+     *
+     * 
+     * @param nums int整型vector 
+     * @param target int整型 
+     * @return int整型
+     */
+    int search(vector<int>& nums, int target) {
+        // write code here
+        int n = (int)nums.size();
+        int l = 0, r = n - 1;
+        while (l <= r) {
+            int m = (l + r) >> 1;
+            if (nums[m] == target) { return m; }
+            else if (nums[m] < target) { l = m + 1; }
+            else { r = m - 1; }
+        }
+        return -1;
+    }
+};
+{% endhighlight %}
+
 ## 
 {% highlight C++ %}
 
