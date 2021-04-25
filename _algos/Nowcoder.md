@@ -94,6 +94,48 @@ public:
 };
 {% endhighlight %}
 
+### 127. 最长公共子串
+{% highlight C++ %}
+/*
+给定两个字符串str1和str2,输出两个字符串的最长公共子串
+题目保证str1和str2的最长公共子串存在且唯一。
+
+示例1
+输入
+"1AB2345CD","12345EF"
+返回值
+"2345"
+*/
+class Solution {
+public:
+    /**
+     * longest common substring
+     * @param str1 string字符串 the string
+     * @param str2 string字符串 the string
+     * @return string字符串
+     */
+    string LCS(string str1, string str2) {
+        // write code here
+        int n1 = (int)str1.length(), n2 = (int)str2.length();
+        vector<vector<int>> dp(n1+1, vector<int> (n2+1, 0));
+        int len = 1, pos = 0;
+        for (int i = n1 - 1; i >= 0; i--) {
+            for (int j = n2 - 1; j >= 0; j--) {
+                if (str1[i] == str2[j]) {
+                    dp[i][j] = dp[i+1][j+1] + 1;
+                    if (len < dp[i][j]) {
+                        len = dp[i][j];
+                        pos = i;
+                        
+                    }
+                }
+            }
+        }
+        return str1.substr(pos, len);
+    }
+};
+{% endhighlight %}
+
 ### 160. 二分查找-I
 {% highlight C++ %}
 /*
@@ -134,7 +176,7 @@ public:
 };
 {% endhighlight %}
 
-## 
+### 
 {% highlight C++ %}
 
 {% endhighlight %}
