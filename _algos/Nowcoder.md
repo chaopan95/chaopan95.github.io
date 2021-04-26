@@ -234,9 +234,65 @@ int main(int argc, const char *argv[]) {
 }
 {% endhighlight %}
 
+### 31. 最长公共子序列
+{% highlight C++ %}
+/*
+题目描述
+给定两个字符串str1和str2，输出连个字符串的最长公共子序列。如过最长公共子序列为空，则输出-1。
+输入描述:
+输出包括两行，第一行代表字符串str1，第二行代表str2。
+输出描述:
+输出一行，代表他们最长公共子序列。如果公共子序列的长度为空，则输出-1。
+示例1
+输入
+1A2C3D4B56
+B1D23CA45B6A
+输出
+123456
+说明
+"123456"和“12C4B6”都是最长公共子序列，任意输出一个。
+*/
+#include<iostream>
+#include<string>
+#include<vector>
+using namespace std;
+
+string LCS(string s1, string s2) {
+    int n1 = (int)s1.length(), n2 = (int)s2.length();
+    vector<vector<int>> dp(n1+1, vector<int>(n2+1, 0));
+    string ans = "";
+    for (int i = n1 - 1; i >= 0; i--) {
+        for (int j = n2 - 1; j >= 0; j--) {
+            if (s1[i] == s2[j]) { dp[i][j] = dp[i+1][j+1] + 1; }
+            else { dp[i][j] = max(dp[i+1][j], dp[i][j+1]); }
+        }
+    }
+    int i = 0, j = 0;
+    while (i < n1 && j < n2) {
+        if (s1[i] == s2[j]) {
+            ans.push_back(s1[i]);
+            i++;
+            j++;
+        }
+        else if (dp[i+1][j] > dp[i][j+1]) {
+            i++;
+        }
+        else { j++; }
+    }
+    return dp[0][0] ? ans : "-1";
+}
+
+int main(int argc, const char * argv[]) {
+    // insert code here...
+    string s1 = "1A2C3D4B56", s2 = "B1D23CA45B6A";
+    cin >> s1 >> s2;
+    printf("%s\n", LCS(s1, s2).c_str());
+    return 0;
+}
+{% endhighlight %}
 
 
-## 
+### 
 {% highlight C++ %}
 
 {% endhighlight %}
