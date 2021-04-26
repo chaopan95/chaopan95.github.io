@@ -9810,6 +9810,32 @@ public:
 };
 {% endhighlight %}
 
+## 0938. 二叉搜索树的范围和
+{% highlight C++ %}
+/*
+                10
+             /      \
+           5         15
+         /   \         \
+        3     7         18
+输入：root = [10,5,15,3,7,null,18], low = 7, high = 15
+输出：32
+*/
+class Solution {
+public:
+    int rangeSumBST(TreeNode* root, int low, int high) {
+        if (root == nullptr) { return 0; }
+        int left = rangeSumBST(root->left, low, high);
+        int val = 0;
+        if (root->val >= low && root->val <= high) {
+            val = root->val;
+        }
+        int right = rangeSumBST(root->right, low, high);
+        return left + val + right;
+    }
+};
+{% endhighlight %}
+
 ## 1006. Clumsy Factorial*
 {% highlight C++ %}
 /*
