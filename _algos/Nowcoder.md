@@ -182,6 +182,59 @@ public:
 {% endhighlight %}
 
 ## 程序员代码面试指南CD
+### 3. 不重复打印排序数组中相加和为给定值的所有二元组
+{% highlight C++ %}
+/*
+题目描述
+给定排序数组arr和整数k，不重复打印arr中所有相加和为k的不降序二元组
+例如, arr = [-8, -4, -3, 0, 1, 2, 4, 5, 8, 9], k = 10，打印结果为：
+1, 9
+2, 8
+时间复杂度为O(n)，空间复杂度为O(1)
+输入描述:
+第一行有两个整数n, k
+接下来一行有n个整数表示数组内的元素
+输出描述:
+输出若干行，每行两个整数表示答案
+按二元组从小到大的顺序输出(二元组大小比较方式为每个依次比较二元组内每个数)
+示例1
+输入
+10 10
+-8 -4 -3 0 1 2 4 5 8 9
+输出
+1 9
+2 8
+*/
+#include<iostream>
+#include<vector>
+using namespace std;
+
+void printSum(vector<int> arr, int target) {
+    int n = int(arr.size());
+    int l = 0, r = n - 1;
+    while (l < r) {
+        int sum = arr[l] + arr[r];
+        if (sum < target) { l++; }
+        else if (sum > target) { r--; }
+        else {
+            while (l < r && arr[l] == arr[l+1]) { l++; }
+            while (l < r && arr[r] == arr[r-1]) { r--; }
+            printf("%d %d\n", arr[l++], arr[r--]);
+        }
+    }
+}
+
+
+int main(int argc, const char * argv[]) {
+    int n = 10, K = 10;
+    scanf("%d %d", &n, &K);
+    vector<int> arr(n, 0);
+    for (int i = 0; i < n; i++) { scanf("%d", &arr[i]); }
+    printSum(arr, K);
+    return 0;
+}
+{% endhighlight %}
+
 ### 17. 机器人达到指定位置方法数
 {% highlight C++ %}
 /*
