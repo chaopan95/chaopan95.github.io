@@ -409,6 +409,57 @@ int main(int argc, const char * argv[]) {
 }
 {% endhighlight %}
 
+### 186. 矩阵的最小路径和
+{% highlight C++ %}
+/*
+题目描述
+给定一个 n * m 的矩阵 a，从左上角开始每次只能向右或者向下走，
+最后到达右下角的位置，路径上所有的数字累加起来就是路径和，
+输出所有的路径中最小的路径和。
+输入描述:
+第一行输入两个整数 n 和 m，表示矩阵的大小。
+
+接下来 n 行每行 m 个整数表示矩阵。
+输出描述:
+输出一个整数表示答案。
+示例1
+输入
+4 4
+1 3 5 9
+8 1 3 4
+5 0 6 1
+8 8 4 0
+输出
+12
+*/
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main(int argc, const char *argv[]) {
+    int n = 4, m = 4;
+    scanf("%d %d", &n, &m);
+    vector<vector<int>> dp(n, vector<int>(m, 0));
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            int val = 0;
+            scanf("%d", &val);
+            if (i == 0 && j == 0) { dp[i][j] = val; }
+            else if (i == 0) {
+                dp[i][j] = dp[i][j - 1] + val;
+            }
+            else if (j == 0) {
+                dp[i][j] = dp[i - 1][j] + val;
+            }
+            else {
+                dp[i][j] = min(dp[i - 1][j], dp[i][j - 1]) + val;
+            }
+        }
+    }
+    printf("%d\n", dp[n - 1][m - 1]);
+    return 0;
+}
+{% endhighlight %}
 
 ### 
 {% highlight C++ %}
