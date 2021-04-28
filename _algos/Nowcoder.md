@@ -55,6 +55,45 @@ table.d {
 
 
 ## 牛客题霸-算法篇
+### 19. 子数组的最大累加和问题
+{% highlight C++ %}
+/*
+题目描述
+给定一个数组arr，返回子数组的最大累加和
+例如，arr = [1, -2, 3, 5, -2, 6, -1]，所有子数组中，[3, 5, -2, 6]
+可以累加出最大的和12，所以返回12. 题目保证没有全为负数的数据
+时间复杂度为O(n)O(n)，空间复杂度为O(1)O(1)
+
+示例1
+输入
+[1, -2, 3, 5, -2, 6, -1]
+返回值
+12
+*/
+class Solution {
+public:
+    /**
+     * max sum of the subarray
+     * @param arr int整型vector the array
+     * @return int整型
+     */
+    int maxsumofSubarray(vector<int>& arr) {
+        // write code here
+        int curSum = 0, maxSum = 0;
+        for (int ele : arr) {
+            if (curSum > 0) {
+                curSum += ele;
+            }
+            else { curSum = ele; }
+            if (maxSum < curSum) {
+                maxSum = curSum;
+            }
+        }
+        return maxSum;
+    }
+};
+{% endhighlight %}
+
 ### 105. 二分查找-II
 {% highlight C++ %}
 /*
