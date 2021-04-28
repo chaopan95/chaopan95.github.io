@@ -94,6 +94,56 @@ public:
 };
 {% endhighlight %}
 
+### 35. 最小编辑代价
+{% highlight C++ %}
+/*
+题目描述
+给定两个字符串str1和str2，再给定三个整数ic，dc和rc，分别代表插入、
+删除和替换一个字符的代价，请输出将str1编辑成str2的最小代价。
+示例1
+输入
+"abc","adc",5,3,2
+返回值
+2
+
+示例2
+输入
+"abc","adc",5,3,100
+返回值
+8
+*/
+class Solution {
+public:
+    /**
+     * min edit cost
+     * @param str1 string字符串 the string
+     * @param str2 string字符串 the string
+     * @param ic int整型 insert cost
+     * @param dc int整型 delete cost
+     * @param rc int整型 replace cost
+     * @return int整型
+     */
+    int minEditCost(string str1, string str2, int ic, int dc, int rc) {
+        // write code here
+        int n1 = (int)str1.length(), n2 = (int)str2.length();
+        vector<vector<int>> dp(n1+1, vector<int>(n2+1, 0));
+        for (int i = 0; i <= n1; i++) {
+            for (int j = 0; j <= n2; j++) {
+                if (i == 0) { dp[i][j] = ic * j; }
+                else if (j == 0) { dp[i][j] = dc * i; }
+                else {
+                    int ist = dp[i][j-1] + ic;
+                    int dlt = dp[i-1][j] + dc;
+                    int rpl = dp[i-1][j-1] + rc * (str1[i-1] != str2[j-1]);
+                    dp[i][j] = min(ist, min(dlt, rpl));
+                }
+            }
+        }
+        return dp[n1][n2];
+    }
+};
+{% endhighlight %}
+
 ### 105. 二分查找-II
 {% highlight C++ %}
 /*
