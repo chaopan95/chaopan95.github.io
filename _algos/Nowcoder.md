@@ -144,6 +144,50 @@ public:
 };
 {% endhighlight %}
 
+### 41. 最长无重复子串
+{% highlight C++ %}
+/*
+题目描述
+给定一个数组arr，返回arr的最长无的重复子串的长度(无重复指的是所有数字都不相同)。
+示例1
+输入
+[2,3,4,5]
+返回值
+4
+
+示例2
+输入
+[2,2,3,4,3]
+返回值
+3
+*/
+class Solution {
+public:
+    /**
+     * 
+     * @param arr int整型vector the array
+     * @return int整型
+     */
+    int maxLength(vector<int>& arr) {
+        // write code here
+        int n = (int)arr.size();
+        if (n < 2) { return n; }
+        unordered_set<int> hash;
+        int i = 0, j = 0, len = 0;
+        while (j < n) {
+            if (hash.find(arr[j]) == hash.end()) {
+                hash.insert(arr[j++]);
+                if (len < j - i) { len = j - i; }
+            }
+            else {
+                hash.erase(arr[i++]);
+            }
+        }
+        return len;
+    }
+};
+{% endhighlight %}
+
 ### 105. 二分查找-II
 {% highlight C++ %}
 /*
