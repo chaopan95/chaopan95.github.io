@@ -6968,6 +6968,56 @@ public:
 
 {% endhighlight %}
 
+## 0222. 完全二叉树的节点个数*
+{% highlight C++ %}
+/*
+            1
+        /       \
+       2         3
+     /   \      /
+    4     5    6
+*/
+class Solution {
+public:
+    int countNodes(TreeNode* root) {
+        int ans = 0;
+        if (root == nullptr) { return ans; }
+        TreeNode *curNode = root;
+        while (curNode != nullptr) {
+            TreeNode *ll = curNode->left, *lr = curNode->left;
+            TreeNode *rl = curNode->right, *rr = curNode->right;
+            int lCnt = 1, rCnt = 1;
+            while (ll != nullptr && lr != nullptr &&
+                   rl != nullptr && rr != nullptr) {
+                ll = ll->left;
+                lr = lr->right;
+                rl = rl->left;
+                rr = rr->right;
+                lCnt <<= 1;
+                rCnt <<= 1;
+            }
+            if (ll == nullptr && rl == nullptr) {
+                ans += lCnt - 1 + rCnt - 1 + 1;
+                return ans;
+            }
+            if (lr != nullptr && rl == nullptr) {
+                ans += (lCnt * 2) - 1 + rCnt -1 + 1;
+                return ans;
+            }
+            if (lr == nullptr) {
+                ans += rCnt - 1 + 1;
+                curNode = curNode->left;
+            }
+            else {
+                ans += lCnt * 2 - 1 + 1;
+                curNode = curNode->right;
+            }
+        }
+        return ans;
+    }
+};
+{% endhighlight %}
+
 ## 
 {% highlight C++ %}
 
