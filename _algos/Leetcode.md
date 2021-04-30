@@ -8610,6 +8610,69 @@ public:
 };
 {% endhighlight %}
 
+## 0407. 接雨水 II*
+{% highlight C++ %}
+/*
+给你一个 m x n 的矩阵，其中的值均为非负整数，代表二维高度图每个单
+元的高度，请计算图中形状最多能接多少体积的雨水。
+
+示例：
+给出如下 3x6 的高度图:
+[
+  [1,4,3,1,3,2],
+  [3,2,1,3,2,4],
+  [2,3,3,2,3,1]
+]
+返回 4 。
+*/
+class Solution {
+public:
+    int trapRainWater(vector<vector<int>>& heightMap) {
+        int nRow = (int)heightMap.size();
+        if (nRow == 0) { return 0; }
+        int nCol = (int)heightMap[0].size();
+        if (nCol < 3) { return 0; }
+        typedef pair<int, pair<int, int>> PIII;
+        priority_queue<PIII, vector<PIII>, greater<PIII>> heap;
+        bool **vis = new bool *[nRow];
+        for (int i = 0; i < nRow; i++) {
+            vis[i] = new bool [nCol]{};
+            heap.push({heightMap[i][0], {i, 0}});
+            heap.push({heightMap[i][nCol-1], {i, nCol-1}});
+            vis[i][0] = vis[i][nCol-1] = true;
+        }
+        for (int j = 0; j < nCol; j++) {
+            heap.push({heightMap[0][j], {0, j}});
+            heap.push({heightMap[nRow-1][j], {nRow-1, j}});
+            vis[0][j] = vis[nRow-1][j] = true;
+        }
+        int dx[4] = {-1, 0, 1, 0}, dy[4] = {0, -1, 0, 1};
+        int ans = 0;
+        while (!heap.empty()) {
+            auto cur = heap.top();
+            heap.pop();
+            int x = cur.second.first, y = cur.second.second;
+            int h = cur.first;
+            for (int i = 0; i < 4; i++) {
+                int xx = x + dx[i];
+                int yy = y + dy[i];
+                if (xx >= 0 && xx < nRow && yy >= 0 && yy < nCol &&
+                    !vis[xx][yy]) {
+                    vis[xx][yy] = true;
+                    ans += max(h - heightMap[xx][yy], 0);
+                    heap.push({max(h, heightMap[xx][yy]), {xx, yy}});
+                }
+            }
+        }
+        for (int i = 0; i < nRow; i++) {
+            delete []vis[i];
+        }
+        delete []vis;
+        return ans;
+    }
+};
+{% endhighlight %}
+
 ## 0415. Add Strings
 {% highlight C++ %}
 /*
