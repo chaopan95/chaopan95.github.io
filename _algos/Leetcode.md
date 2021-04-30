@@ -5790,7 +5790,7 @@ public:
     ~LRUCache () {
         BiNode *curNode = head->next;
         while (curNode != nullptr) {
-            //delete curNode->prec;
+            delete curNode->prec;
             curNode = curNode->next;
         }
         delete tail;
