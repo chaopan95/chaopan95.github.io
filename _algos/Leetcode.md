@@ -8627,13 +8627,13 @@ public:
 */
 class Solution {
 public:
-    int trapRainWater(vector<vector<int>>& heightMap) {
+    int trapRainWater(vector< vector< int>>& heightMap) {
         int nRow = (int)heightMap.size();
         if (nRow == 0) { return 0; }
         int nCol = (int)heightMap[0].size();
         if (nCol < 3) { return 0; }
-        typedef pair<int, pair<int, int>> PIII;
-        priority_queue<PIII, vector<PIII>, greater<PIII>> heap;
+        typedef pair < int, pair< int, int>> PIII;
+        priority_queue < PIII, vector < PIII>, greater< PIII>> heap;
         bool **vis = new bool *[nRow];
         for (int i = 0; i < nRow; i++) {
             vis[i] = new bool [nCol]{};
