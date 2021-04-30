@@ -5737,9 +5737,119 @@ public:
 
 {% endhighlight %}
 
-## 
+## 0146. LRU 缓存机制*
 {% highlight C++ %}
+/*
+运用你所掌握的数据结构，设计和实现一个LRU(最近最少使用)缓存机制 。
+实现 LRUCache 类：
 
+LRUCache(int capacity) 以正整数作为容量 capacity 初始化 LRU 缓存
+int get(int key) 如果关键字 key 存在于缓存中，则返回关键字的值，否则返回 -1 。
+void put(int key, int value) 如果关键字已经存在，则变更其数据值；如果关键
+字不存在，则插入该组「关键字-值」。当缓存容量达到上限时，它应该在写入新数据之前
+删除最久未使用的数据值，从而为新的数据值留出空间。
+
+输入
+["LRUCache", "put", "put", "get", "put", "get", "put", "get", "get", "get"]
+[[2], [1, 1], [2, 2], [1], [3, 3], [2], [4, 4], [1], [3], [4]]
+输出
+[null, null, null, 1, null, -1, null, -1, 3, 4]
+
+解释
+LRUCache lRUCache = new LRUCache(2);
+lRUCache.put(1, 1); // 缓存是 {1=1}
+lRUCache.put(2, 2); // 缓存是 {1=1, 2=2}
+lRUCache.get(1);    // 返回 1
+lRUCache.put(3, 3); // 该操作会使得关键字 2 作废，缓存是 {1=1, 3=3}
+lRUCache.get(2);    // 返回 -1 (未找到)
+lRUCache.put(4, 4); // 该操作会使得关键字 1 作废，缓存是 {4=4, 3=3}
+lRUCache.get(1);    // 返回 -1 (未找到)
+lRUCache.get(3);    // 返回 3
+lRUCache.get(4);    // 返回 4
+*/
+struct BiNode {
+    int key, val;
+    BiNode *prec, *next;
+    BiNode(int k, int v): key(k), val(v), prec(nullptr), next(nullptr) {}
+};
+
+
+class LRUCache {
+    BiNode *head;
+    BiNode *tail;
+    int cap;
+    unordered_map<int, BiNode*> hash;
+public:
+    LRUCache(int capacity) {
+        cap = capacity;
+        head = new BiNode(0, 0);
+        tail = new BiNode(0, 0);
+        head->next = tail;
+        tail->prec = head;
+    }
+    ~LRUCache () {
+        BiNode *curNode = head->next;
+        while (curNode != nullptr) {
+            //delete curNode->prec;
+            curNode = curNode->next;
+        }
+        delete tail;
+    }
+    
+    int get(int key) {
+        if (hash.find(key) != hash.end()) {
+            BiNode *node = hash[key];
+            int value = node->val;
+            isolateNode(node);
+            setFirstNode(node);
+            return value;
+        }
+        else { return -1; }
+    }
+    
+    void put(int key, int value) {
+        BiNode *node;
+        if (hash.find(key) == hash.end()) {
+            node = new BiNode(key, value);
+            cap--;
+        }
+        else {
+            node = hash[key];
+            node->val = value;
+            isolateNode(node);
+        }
+        setFirstNode(node);
+        hash[key] = node;
+        if (cap < 0) {
+            hash.erase(tail->prec->key);
+            deleteNode(tail->prec);
+            cap++;
+        }
+    }
+    
+    void setFirstNode(BiNode *node) {
+        head->next->prec = node;
+        node->next = head->next;
+        node->prec = head;
+        head->next = node;
+    }
+    
+    void isolateNode(BiNode *node) {
+        node->prec->next = node->next;
+        node->next->prec = node->prec;
+    }
+    
+    void deleteNode(BiNode *node) {
+        isolateNode(node);
+        delete node;
+    }
+};
+/**
+ * Your LRUCache object will be instantiated and called as such:
+ * LRUCache* obj = new LRUCache(capacity);
+ * int param_1 = obj->get(key);
+ * obj->put(key,value);
+ */
 {% endhighlight %}
 
 ## 
