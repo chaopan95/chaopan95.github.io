@@ -503,41 +503,38 @@ public:
 };
 {% endhighlight %}
 
-## 0007. Reverse Integer
-<p align="justify">
-Given a 32-bit signed integer, reverse digits of an integer.<br><br>
-
-<b>Example 1:</b><br>
-Input: 123<br>
-Output: 321<br><br>
-
-<b>Example 2:</b><br>
-Input: -123<br>
-Output: -321<br><br>
-
-<b>Example 3:</b><br>
-Input: 120<br>
-Output: 21<br><br>
-
-Note:<br>
-Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [$-2^{31}$,  $2^{31}$−1]. For the purpose of this problem, assume that your function returns 0 when the reversed integer overflows.<br><br>
-
-<b>Solution:</b>
-</p>
+## 0007. 整数反转
 {% highlight C++ %}
+/*
+给你一个 32 位的有符号整数 x ，返回将 x 中的数字部分反转后的结果。
+如果反转后整数超过 32 位的有符号整数的范围 [−231,  231 − 1] ，就返回 0。
+假设环境不允许存储 64 位整数（有符号或无符号）。
+
+输入：x = 123
+输出：321
+
+输入：x = -123
+输出：-321
+
+输入：x = 120
+输出：21
+
+输入：x = 0
+输出：0
+*/
 class Solution {
 public:
     int reverse(int x) {
-        long res = 0;
-        bool isNeg = false;
-        if (x < 0) { isNeg = true; }
-        while (x)
-        {
-            res = res * 10 + x % 10;
+        int ans = 0;
+        if (x == INT_MIN) { return 0; }
+        while (x) {
+            if (ans > INT_MAX / 10 || ans < INT_MIN / 10) {
+                return 0;
+            }
+            ans = ans * 10 + (x % 10);
             x /= 10;
         }
-        if (res >= (1ll << 31) || res <= -(1ll << 31)) { return 0; }
-        return int(res);
+        return ans;
     }
 };
 {% endhighlight %}
