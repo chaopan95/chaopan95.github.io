@@ -598,3 +598,39 @@ int main(int argc, const char *argv[]) {
 {% highlight C++ %}
 
 {% endhighlight %}
+
+
+## 程序员面试宝典
+### 54. 元素查找
+{% highlight C++ %}
+/*
+题目描述
+已知int一个有序矩阵mat，同时给定矩阵的大小n和m以及需要查找的元素x，
+且矩阵的行和列都是从小到大有序的。设计查找算法返回所查找元素的二元数
+组，代表该元素的行号和列号(均从零开始)。保证元素互异。
+
+示例1
+输入
+[[1,2,3],[4,5,6]],2,3,6
+返回值
+[1,2]
+*/
+class Solution {
+public:
+    vector<int> findElement(vector<vector<int> > mat, int n, int m, int x) {
+        // write code here
+        int row = n - 1, col = 0;
+        while (row >= 0 && col < m) {
+            if (mat[row][col] == x) { return vector<int> {row, col}; }
+            else if (mat[row][col] > x) { row--; }
+            else { col++; }
+        }
+        return vector<int> {-1, -1};
+    }
+};
+{% endhighlight %}
+
+### 
+{% highlight C++ %}
+
+{% endhighlight %}
