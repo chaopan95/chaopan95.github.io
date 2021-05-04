@@ -315,6 +315,67 @@ public:
 {% endhighlight %}
 
 ## 程序员代码面试指南CD
+### 1. 在行列都排好序的矩阵中找指定的数
+{% highlight C++ %}
+/*
+题目描述
+给定一个N \times MN×M的整形矩阵matrix和一个整数K, matrix的每一行
+和每一列都是排好序的。
+实现一个函数，判断K是否在matrix中
+时间复杂度为O(N+M)O(N+M)，额外空间复杂度为O(1)O(1)。
+输入描述:
+第一行有三个整数N, M, K
+接下来N行，每行M个整数为输入的矩阵
+输出描述:
+若K存在于矩阵中输出"Yes"，否则输出"No"
+示例1
+输入
+2 4 5
+1 2 3 4
+2 4 5 6
+输出
+Yes
+
+示例2
+输入
+2 4 233
+1 2 3 4
+2 4 5 6
+输出
+No
+*/
+#include<iostream>
+#include<vector>
+using namespace std;
+
+void findElement() {
+    int N = 2, M = 4, K = 5;
+    scanf("%d %d %d", &N, &M, &K);
+    vector<vector<int>> mat(N, vector<int> (M, 0));
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < M; j++) {
+            scanf("%d", &mat[i][j]);
+        }
+    }
+    int row = N - 1, col = 0;
+    while (row >= 0 && col < M) {
+        if (mat[row][col] == K) {
+            printf("Yes\n");
+            return;
+        }
+        else if (mat[row][col] > K) { row--; }
+        else { col++; }
+    }
+    printf("No\n");
+}
+
+int main(int argc, const char * argv[]) {
+    findElement();
+    return 0;
+}
+
+{% endhighlight %}
+
 ### 3. 不重复打印排序数组中相加和为给定值的所有二元组
 {% highlight C++ %}
 /*
