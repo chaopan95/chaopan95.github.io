@@ -201,14 +201,56 @@ int LCM(int a, int b) {
 {% endhighlight %}
 
 ## 数据结构
-### 数组 Vector
-### 链表 List
-### 栈 Stack
-### 队列 Queue
-### 树 Tree
-### 图 Graph
-### 堆 Heap
-### 字符串 String
+### 数组
+### 链表
+### 栈
+### 队列
+### 树
+### 图
+### 堆
+### 字符串
+#### KMP
+##### Leetcode 28. 实现 strStr()
+{% highlight C++ %}
+/*
+示例 1：
+输入：haystack = "hello", needle = "ll"
+输出：2
+
+示例 2：
+输入：haystack = "aaaaa", needle = "bba"
+输出：-1
+
+示例 3：
+输入：haystack = "", needle = ""
+输出：0
+*/
+class Solution {
+public:
+    int strStr(string haystack, string needle) {
+        string T = haystack, P = needle;
+        int nT = (int)T.length(), nP = (int)P.length();
+        if (nP == 0) { return 0; }
+        if (nT == 0) { return -1; }
+        int i = 0, j = 0, k = 0, *next = new int [nP]{};
+        int t = next[0] = -1;
+        while (k < nP - 1) {
+            if (t < 0 || P[k] == P[t]) { next[++k] = ++t; }
+            else { t = next[t]; }
+        }
+        while (i < nT && j < nP) {
+            if (j < 0 || T[i] == P[j]) { i++; j++; }
+            else { j = next[j]; }
+        }
+        delete []next;
+        if (i - j > nT - nP) { return -1; }
+        return i - j;
+    }
+};
+{% endhighlight %}
+
+#### Boyer-Moore
+#### Rabin-Karp
 {% highlight C++ %}
 
 {% endhighlight %}
