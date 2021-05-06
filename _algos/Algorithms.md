@@ -57,6 +57,144 @@ table.d {
 
 ## 搜索
 ### 二分
+#### 牛客题霸-算法篇 105. 二分查找-II
+{% highlight C++ %}
+/*
+请实现有重复数字的升序数组的二分查找
+给定一个 元素有序的（升序）整型数组 nums 和一个目标值 target，
+写一个函数搜索 nums 中的 target，如果目标值存在返回下标，否则返回 -1
+
+输入
+[1,2,4,4,5],4
+返回值
+2
+说明
+从左到右，查找到第1个为4的，下标为2，返回2 
+*/
+/**
+ * 代码中的类名、方法名、参数名已经指定，请勿修改，直接返回方法规定的值即可
+ * 如果目标值存在返回下标，否则返回 -1
+ * @param nums int整型vector
+ * @param target int整型
+ * @return int整型
+ */
+int search(vector<int>& nums, int target) {
+    // write code here
+    int n = (int)nums.size();
+    if (n == 0) { return -1; }
+    int l = 0, r = n - 1;
+    while (l < r) {
+        int m = (l + r) >> 1;
+        if (nums[m] < target) { l = m + 1; }
+        else { r = m; }
+    }
+    return nums[l] == target ? l : -1;
+}
+{% endhighlight %}
+
+#### Leetcode 33. 搜索旋转排序数组
+{% highlight C++ %}
+/*
+Input: nums = [4,5,6,7,0,1,2], target = 3
+Output: -1
+*/
+int search(vector<int>& nums, int target) {
+    int n = int(nums.size());
+    int l = 0, r = n - 1;
+    while (l <= r) {
+        int m = (l + r) >> 1;
+        if (nums[m] == target) { return m; }
+        if (nums[l] <= nums[r]) {
+            if (nums[m] < target) { l = m + 1; }
+            else if (nums[m] > target) { r = m - 1; }
+        }
+        else {
+            if (target >= nums[l] && nums[m] >= nums[l]) {
+                if (nums[m] > target) { r = m - 1; }
+                else { l = m + 1; }
+            }
+            else if (target >= nums[l] && nums[m] <= nums[r]) { r = m - 1; }
+            else if (target <= nums[r] && nums[m] <= nums[r])
+            {
+                if (nums[m] > target) { r = m - 1; }
+                else { l = m + 1; }
+            }
+            else if (target <= nums[r] && nums[m] >= nums[l]) { l = m + 1; }
+            else {
+                if (nums[m] < target) { r = m - 1; }
+                else { l = m + 1; }
+            }
+        }
+    }
+    return -1;
+}
+{% endhighlight %}
+
+#### Leetcode 33. 搜索旋转排序数组II
+{% highlight C++ %}
+/*
+Input: nums = [2,5,6,0,0,1,2], target = 0
+Output: true
+*/
+bool search(vector<int>& nums, int target) {
+    int n = int(nums.size());
+    if (n == 0) { return false; }
+    int l = 0, r = n - 1;
+    while (l <= r) {
+        int m = (l + r) >> 1;
+        if (nums[m] == target) { return true; }
+        if (nums[l] < nums[r]) {
+            if (nums[m] > target) { r = m - 1; }
+            else { l = m + 1; }
+        }
+        else {
+            if (nums[m] == nums[l] && nums[m] == nums[r]) { l++; r--; }
+            else if ((target >= nums[l] && nums[m] >= nums[l]) ||
+                (target <= nums[r] && nums[m] <= nums[r]))
+            {
+                if (nums[m] > target) { r = m - 1; }
+                else { l = m + 1; }
+            }
+            else if (target >= nums[l] && nums[m] <= nums[r]) { r = m - 1; }
+            else if (target <= nums[r] && nums[m] >= nums[l]) { l = m + 1; }
+            else
+            {
+                if (nums[m] > target) { l = m + 1; }
+                else { r = m - 1; }
+            }
+        }
+    }
+    return false;
+}
+{% endhighlight %}
+
+#### Leetcode 74. 搜索二维矩阵
+{% highlight C++ %}
+/*
+编写一个高效的算法来判断 m x n 矩阵中，是否存在一个目标值。该矩阵具有如下特性：
+每行中的整数从左到右按升序排列。
+每行的第一个整数大于前一行的最后一个整数。
+1   3   5   7
+10  11  16  20
+23  30  34  60
+*/
+bool searchMatrix(vector<vector<int>>& matrix, int target) {
+    int nRow = int(matrix.size());
+    if (nRow == 0) { return false; }
+    int nCol = int(matrix[0].size());
+    if (nCol == 0) { return false; }
+    int l = 0, r = nRow * nCol - 1;
+    while (l <= r) {
+        int m = (l + r) >> 1;
+        int i = m / nCol, j = m % nCol;
+        if (matrix[i][j] < target) { l = m + 1; }
+        else if (matrix[i][j] > target) { r = m - 1; }
+        else { return true; }
+    }
+    return false;
+}
+{% endhighlight %}
+
 ### BFS
 ### DFS (回溯 Backtracking)
 #### 组合
@@ -199,19 +337,302 @@ void DFS(vector<vector<int>> &res, vector<int> &arr,
 
 
 ## 动态规划 Dynamic Programming
-<p align="justify">
-<a href="https://chaopan95.github.io/algos/Leetcode/#0005-longest-palindromic-substring"> Longest Palindromic Substring</a><br>
-<a href="https://chaopan95.github.io/algos/Leetcode/#0010-regular-expression-matching"> Regular Expression Matching</a><br>
-<a href="https://chaopan95.github.io/algos/Leetcode/#0032-longest-valid-parentheses"> Longest Valid Parentheses</a><br>
-<a href="https://chaopan95.github.io/algos/Leetcode/#0042-trapping-rain-water"> Trapping Rain Water</a><br>
-<a href="https://chaopan95.github.io/algos/Leetcode/#0044-wildcard-matching"> Wildcard Matching</a><br>
-<a href="https://chaopan95.github.io/algos/Leetcode/#0053-maximum-subarray"> Maximum Subarray</a><br>
-<a href="https://chaopan95.github.io/algos/Leetcode/#0062-unique-paths"> Unique Paths</a><br>
-<a href="https://chaopan95.github.io/algos/Leetcode/#0063-unique-paths-ii"> Unique Paths II</a><br>
-<a href="https://chaopan95.github.io/algos/Leetcode/#0064-minimum-path-sum"> Minimum Path Sum</a><br>
-<a href="https://chaopan95.github.io/algos/Leetcode/#0072-edit-distance"> Edit Distance</a><br>
-<a href="https://chaopan95.github.io/algos/Leetcode/#0087-scramble-string"> Scramble String</a><br>
-</p>
+### 经典问题
+#### Leetcode 53. 最大子序和
+{% highlight C++ %}
+/*
+给定一个整数数组 nums ，找到一个具有最大和的连续子数组（子数组最少包含一个元素），
+返回其最大和。
+
+Input: nums = [-2,1,-3,4,-1,2,1,-5,4]
+Output: 6
+Explanation: [4,-1,2,1] has the largest sum = 6.
+*/
+int maxSubArray(vector<int>& nums) {
+    int n = int(nums.size());
+    int maxSum = -(1ll << 31), curSum = 0;
+    for (int i = 0; i < n; i++) {
+        if (curSum >= 0) { curSum += nums[i]; }
+        else { curSum = nums[i]; }
+        if (curSum > maxSum) { maxSum = curSum; }
+    }
+    return maxSum;
+}
+{% endhighlight %}
+
+#### Leetcode 152. 乘积最大子数组
+{% highlight C++ %}
+/*
+Input: nums = [2,3,-2,4]
+Output: 6
+Explanation: [2,3] has the largest product 6.
+*/
+int maxProduct(vector<int>& nums) {
+    int n = int(nums.size());
+    int minF = nums[0], maxF = nums[0], ans = nums[0];
+    for (int i = 1; i < n; i++) {
+        int _min = minF, _max = maxF;
+        minF = min(nums[i], min(_min * nums[i], _max * nums[i]));
+        maxF = max(nums[i], max(_min * nums[i], _max * nums[i]));
+        ans = max(ans, maxF);
+    }
+    return ans;
+}
+{% endhighlight %}
+
+### 编辑距离
+#### Leetcode 72. 编辑距离
+{% highlight C++ %}
+/*
+给你两个单词 word1 和 word2，请你计算出将 word1 转换成 word2 所使用的最少操作数 。
+你可以对一个单词进行如下三种操作：
+插入一个字符
+删除一个字符
+替换一个字符
+
+输入：word1 = "horse", word2 = "ros"
+输出：3
+解释：
+horse -> rorse (将 'h' 替换为 'r')
+rorse -> rose (删除 'r')
+rose -> ros (删除 'e')
+*/
+int minDistance(string word1, string word2) {
+    string s1 = word1, s2 = word2;
+    int n1 = int(s1.length()), n2 = int(s2.length());
+    int **dp = new int *[n1+1];
+    for (int i = 0; i <= n1; i++) { dp[i] = new int [n2+1]{}; }
+    for (int i = 0; i <= n1; i++) {
+        for (int j = 0; j <= n2; j++) {
+            if (i == 0 || j == 0) { dp[i][j] = max(i, j); }
+            else
+            {
+                int a = dp[i-1][j] + 1;
+                int b = dp[i][j-1] + 1;
+                int c = dp[i-1][j-1] + (s1[i-1] != s2[j-1]);
+                dp[i][j] = min(min(a, b), c);
+            }
+        }
+    }
+    int ans = dp[n1][n2];
+    for (int i = 0; i <= n1; i++) { delete []dp[i]; }
+    delete []dp;
+    return ans;
+}
+{% endhighlight %}
+
+#### 牛客题霸-算法篇 35. 最小编辑代价
+{% highlight C++ %}
+/*
+题目描述
+给定两个字符串str1和str2，再给定三个整数ic，dc和rc，分别代表插入、
+删除和替换一个字符的代价，请输出将str1编辑成str2的最小代价。
+示例1
+输入
+"abc","adc",5,3,2
+返回值
+2
+
+示例2
+输入
+"abc","adc",5,3,100
+返回值
+8
+*/
+/**
+ * min edit cost
+ * @param str1 string字符串 the string
+ * @param str2 string字符串 the string
+ * @param ic int整型 insert cost
+ * @param dc int整型 delete cost
+ * @param rc int整型 replace cost
+ * @return int整型
+ */
+int minEditCost(string str1, string str2, int ic, int dc, int rc) {
+    // write code here
+    int n1 = (int)str1.length(), n2 = (int)str2.length();
+    vector<vector<int>> dp(n1+1, vector<int>(n2+1, 0));
+    for (int i = 0; i <= n1; i++) {
+        for (int j = 0; j <= n2; j++) {
+            if (i == 0) { dp[i][j] = ic * j; }
+            else if (j == 0) { dp[i][j] = dc * i; }
+            else {
+                int ist = dp[i][j-1] + ic;
+                int dlt = dp[i-1][j] + dc;
+                int rpl = dp[i-1][j-1] + rc * (str1[i-1] != str2[j-1]);
+                dp[i][j] = min(ist, min(dlt, rpl));
+            }
+        }
+    }
+    return dp[n1][n2];
+}
+{% endhighlight %}
+
+### 最长公共子序列
+#### Leetcode 1143. 最长公共子序列
+{% highlight C++ %}
+/*
+给定两个字符串 text1 和 text2，返回这两个字符串的最长 公共子序列
+的长度。如果不存在 公共子序列 ，返回 0 。
+
+一个字符串的 子序列 是指这样一个新的字符串：它是由原字符串在不改变
+字符的相对顺序的情况下删除某些字符（也可以不删除任何字符）后组成的新字符串。
+
+例如，"ace" 是 "abcde" 的子序列，但 "aec" 不是 "abcde" 的子序列。
+两个字符串的 公共子序列 是这两个字符串所共同拥有的子序列。
+
+输入：text1 = "abcde", text2 = "ace" 
+输出：3  
+解释：最长公共子序列是 "ace" ，它的长度为 3 。
+*/
+int longestCommonSubsequence(string text1, string text2) {
+    string s1 = text1, s2 = text2;
+    int n1 = int(s1.length()), n2 = int(s2.length());
+    int **dp = new int *[n1+1];
+    for (int i = 0; i < n1+1; i++) { dp[i] = new int [n2+1]{}; }
+    for (int i = 1; i < n1+1; i++) {
+        for (int j = 1; j < n2+1; j++) {
+            if (s1[i-1] == s2[j-1]) { dp[i][j] = dp[i-1][j-1] + 1; }
+            else {
+                dp[i][j] = (dp[i-1][j] > dp[i][j-1] ?
+                            dp[i-1][j] : dp[i][j-1]);
+            }
+        }
+    }
+    int lcs = dp[n1][n2];
+    for (int i = 0; i < n1+1; i++) { delete []dp[i]; }
+    delete []dp;
+    return lcs;
+}
+{% endhighlight %}
+
+#### 程序员代码面试指南 31. 最长公共子序列
+{% highlight C++ %}
+/*
+题目描述
+给定两个字符串str1和str2，输出连个字符串的最长公共子序列。如过最长公共子序列为空，则输出-1。
+输入描述:
+输出包括两行，第一行代表字符串str1，第二行代表str2。
+输出描述:
+输出一行，代表他们最长公共子序列。如果公共子序列的长度为空，则输出-1。
+示例1
+输入
+1A2C3D4B56
+B1D23CA45B6A
+输出
+123456
+说明
+"123456"和“12C4B6”都是最长公共子序列，任意输出一个。
+*/
+#include<iostream>
+#include<string>
+#include<vector>
+using namespace std;
+
+string LCS(string s1, string s2) {
+    int n1 = (int)s1.length(), n2 = (int)s2.length();
+    vector<vector<int>> dp(n1+1, vector<int>(n2+1, 0));
+    string ans = "";
+    for (int i = n1 - 1; i >= 0; i--) {
+        for (int j = n2 - 1; j >= 0; j--) {
+            if (s1[i] == s2[j]) { dp[i][j] = dp[i+1][j+1] + 1; }
+            else { dp[i][j] = max(dp[i+1][j], dp[i][j+1]); }
+        }
+    }
+    int i = 0, j = 0;
+    while (i < n1 && j < n2) {
+        if (s1[i] == s2[j]) {
+            ans.push_back(s1[i]);
+            i++;
+            j++;
+        }
+        else if (dp[i+1][j] > dp[i][j+1]) {
+            i++;
+        }
+        else { j++; }
+    }
+    return dp[0][0] ? ans : "-1";
+}
+
+int main(int argc, const char * argv[]) {
+    // insert code here...
+    string s1 = "1A2C3D4B56", s2 = "B1D23CA45B6A";
+    cin >> s1 >> s2;
+    printf("%s\n", LCS(s1, s2).c_str());
+    return 0;
+}
+{% endhighlight %}
+
+### 最长公共子串
+#### Leetcode 718. 最长重复子数组
+{% highlight C++ %}
+/*
+给两个整数数组 A 和 B ，返回两个数组中公共的、长度最长的子数组的长度。
+
+Input:
+A: [1,2,3,2,1]
+B: [3,2,1,4,7]
+Output: 3
+Explanation: 
+The repeated subarray with maximum length is [3, 2, 1].
+*/
+int findLength(vector<int>& A, vector<int>& B) {
+    int na = int(A.size()), nb = int(B.size());
+    vector<vector<int>> dp(na+1, vector<int>(nb+1, 0));
+    int ans = 0;
+    for (int i = 1; i <= na; i++) {
+        for (int j = 1; j <= nb; j++) {
+            if (A[i-1] == B[j-1]) {
+                dp[i][j] = dp[i-1][j-1] + 1;
+                ans = max(ans, dp[i][j]);
+            }
+        }
+    }
+    return ans;
+}
+{% endhighlight %}
+
+#### 牛客题霸-算法篇 127. 最长公共子串
+{% highlight C++ %}
+/*
+给定两个字符串str1和str2,输出两个字符串的最长公共子串
+题目保证str1和str2的最长公共子串存在且唯一。
+
+示例1
+输入
+"1AB2345CD","12345EF"
+返回值
+"2345"
+*/
+class Solution {
+public:
+    /**
+     * longest common substring
+     * @param str1 string字符串 the string
+     * @param str2 string字符串 the string
+     * @return string字符串
+     */
+    string LCS(string str1, string str2) {
+        // write code here
+        int n1 = (int)str1.length(), n2 = (int)str2.length();
+        vector<vector<int>> dp(n1+1, vector<int> (n2+1, 0));
+        int len = 1, pos = 0;
+        for (int i = n1 - 1; i >= 0; i--) {
+            for (int j = n2 - 1; j >= 0; j--) {
+                if (str1[i] == str2[j]) {
+                    dp[i][j] = dp[i+1][j+1] + 1;
+                    if (len < dp[i][j]) {
+                        len = dp[i][j];
+                        pos = i;
+                        
+                    }
+                }
+            }
+        }
+        return str1.substr(pos, len);
+    }
+};
+{% endhighlight %}
 
 ### 序列型DP
 #### Leetcode 740. 删除并获得点数
@@ -265,6 +686,186 @@ public:
 };
 {% endhighlight %}
 
+### 棋盘形DP
+#### Leetcode 62. 不同路径
+<p align="justify">
+$$
+\begin{aligned}
+& dp[i][1] = 1, \quad i = 1, 2, ..., m \\
+& dp[1][j] = 1, \quad j = 1, 2, ..., n \\
+& dp[i][j] = dp[i-1][j] + dp[i][j-1], \quad i = 2, 3, ..., m \quad j = 2, 3, ..., n
+\end{aligned}
+$$
+</p>
+{% highlight C++ %}
+/*
+一个机器人位于一个 m x n 网格的左上角 （起始点在下图中标记为 “Start” ）。
+
+机器人每次只能向下或者向右移动一步。机器人试图达到网格的右下角（在下图中标记为 “Finish” ）。
+
+问总共有多少条不同的路径？
+
+Input: m = 3, n = 2
+Output: 3
+Explanation:
+From the top-left corner, there are a total of 3 ways to reach the
+bottom-right corner:
+1. Right -> Down -> Down
+2. Down -> Down -> Right
+3. Down -> Right -> Down
+*/
+int uniquePaths(int m, int n) {
+    int **dp = new int *[m];
+    for (int i = 0; i < m; i++) { dp[i] = new int [n]{}; }
+    for (int i = 0; i < m; i++) { dp[i][0] = 1; }
+    for (int j = 0; j < n; j++) { dp[0][j] = 1; }
+    for (int i = 1; i < m; i++) {
+        for (int j = 1; j < n; j++) {
+            dp[i][j] = dp[i-1][j] + dp[i][j-1];
+        }
+    }
+    int ans = dp[m-1][n-1];
+    for (int i = 0; i < m; i++) { delete []dp[i]; }
+    delete []dp;
+    return ans;
+}
+{% endhighlight %}
+
+#### Leetcode 63. 不同路径II
+{% highlight C++ %}
+/*
+一个机器人位于一个 m x n 网格的左上角 （起始点在下图中标记为“Start” ）。
+
+机器人每次只能向下或者向右移动一步。机器人试图达到网格的右下角（在下图中标记为“Finish”）。
+
+现在考虑网格中有障碍物。那么从左上角到右下角将会有多少条不同的路径？
+
+Input: obstacleGrid = [[0,0,0],[0,1,0],[0,0,0]]
+Output: 2
+Explanation: There is one obstacle in the middle of the 3x3 grid above.
+There are two ways to reach the bottom-right corner:
+1. Right -> Right -> Down -> Down
+2. Down -> Down -> Right -> Right
+*/
+int uniquePathsWithObstacles(vector<vector<int>>& obstacleGrid) {
+    vector<vector<int>> mat = obstacleGrid;
+    int m = int(mat.size());
+    if (m == 0) { return 0; }
+    int n = int(mat[0].size());
+    if (n == 0) { return 0; }
+    int **dp = new int *[m];
+    for (int i = 0; i < m; i++) { dp[i] = new int [n]{}; }
+    if (mat[0][0]) { return 0; }
+    dp[0][0] = 1;
+    for (int i = 1; i < m; i++) {
+        if (mat[i][0]) { dp[i][0] = 0; }
+        else { dp[i][0] = dp[i-1][0]; }
+    }
+    for (int j = 1; j < n; j++) {
+        if (mat[0][j]) { dp[0][j] = 0; }
+        else { dp[0][j] = dp[0][j-1]; }
+    }
+    for (int i = 1; i < m; i++) {
+        for (int j = 1; j < n; j++) {
+            if (mat[i][j]) { dp[i][j] = 0; }
+            else { dp[i][j] = dp[i-1][j] + dp[i][j-1]; }
+        }
+    }
+    int ans = dp[m-1][n-1];
+    for (int i = 0; i < m; i++) { delete []dp[i]; }
+    delete []dp;
+    return ans;
+}
+{% endhighlight %}
+
+#### Leetcode 63. 最小路径和
+{% highlight C++ %}
+/*
+给定一个包含非负整数的 m x n 网格 grid ，请找出一条从左上角
+到右下角的路径，使得路径上的数字总和为最小。
+说明：每次只能向下或者向右移动一步。
+
+1 3 1
+1 5 1
+4 2 1
+Input: grid = [[1,3,1],[1,5,1],[4,2,1]]
+Output: 7
+Explanation: Because the path 1 → 3 → 1 → 1 → 1 minimizes the sum.
+*/
+int minPathSum(vector<vector<int>>& grid) {
+    int m = int(grid.size());
+    if (m == 0) { return 0; }
+    int n = int(grid[0].size());
+    if (n == 0) { return 0; }
+    int **dp = new int *[m];
+    for (int i = 0; i < m; i++) { dp[i] = new int [n]{}; }
+    dp[0][0] = grid[0][0];
+    for (int i = 1; i < m; i++) { dp[i][0] = dp[i-1][0] + grid[i][0]; }
+    for (int j = 1; j < n; j++) { dp[0][j] = dp[0][j-1] + grid[0][j]; }
+    for (int i = 1; i < m; i++) {
+        for (int j = 1; j < n; j++) {
+            dp[i][j] = min(dp[i-1][j], dp[i][j-1]) + grid[i][j];
+        }
+    }
+    int ans = dp[m-1][n-1];
+    for (int i = 0; i < m; i++) { delete []dp[i]; }
+    delete []dp;
+    return ans;
+}
+{% endhighlight %}
+
+#### 程序员代码面试指南 17. 机器人达到指定位置方法数
+{% highlight C++ %}
+/*
+题目描述
+假设有排成一行的N个位置，记为1~N，开始时机器人在M位置，机器人可以往左或者往右走，
+如果机器人在1位置，那么下一步机器人只能走到2位置，如果机器人在N位置，那么下一步机
+器人只能走到N-1位置。规定机器人只能走k步，最终能来到P位置的方法有多少种。由于方
+案数可能比较大，所以答案需要对1e9+7取模。
+输入描述:
+输出包括一行四个正整数N（2<=N<=5000）、M(1<=M<=N)、K(1<=K<=5000)、P(1<=P<=N)。
+输出描述:
+输出一个整数，代表最终走到P的方法数对10^9+7取模后的值。
+示例1
+输入
+复制
+5 2 3 3
+输出
+复制
+3
+说明
+1).2->1,1->2,2->3
+2).2->3,3->2,2->3
+3).2->3,3->4,4->3
+*/
+#include<iostream>
+#include<vector>
+using namespace std;
+
+int moveRobot(int N, int M, int K, int P) {
+    const int MOD = 1000000007;
+    vector<vector<int>> dp(N+2, vector<int>(2, 0));
+    dp[M][0] = 1;
+    while (K--) {
+        for (int i = 1; i <= N; i++) {
+            dp[i][1] = (dp[i-1][0] + dp[i+1][0]) % MOD;
+        }
+        for (int i = 1; i <= N; i++) {
+            dp[i][0] = dp[i][1];
+        }
+    }
+    return dp[P][1];
+}
+
+
+int main(int argc, const char *argv[]) {
+    int N = 5, M = 2, K = 3, P = 3;
+    scanf("%d %d %d %d", &N, &M, &K, &P);
+    printf("%d\n", moveRobot(N, M, K, P));
+    return 0;
+}
+{% endhighlight %}
+
 ## 分治 Divider and Conquer
 ### 求一个数组的元素和
 {% highlight C++ %}
@@ -298,6 +899,121 @@ void reverse(int *A, int lo, int hi)
 }
 {% endhighlight %}
 
+### 0240. 搜索二维矩阵 II
+{% highlight C++ %}
+/*
+1   4   7
+2   5   8
+3   6   9
+find(5) = true
+*/
+class Solution {
+public:
+    bool searchMatrix(vector<vector<int>>& matrix, int target) {
+        int nRow = (int)matrix.size();
+        if (nRow == 0) { return false; }
+        int nCol = (int)matrix[0].size();
+        if (nCol == 0) { return false; }
+        int row = nRow - 1, col = 0;
+        while (row >= 0 && col < nCol) {
+            if (matrix[row][col] == target) { return true; }
+            else if (matrix[row][col] > target) { row--; }
+            else { col++; }
+        }
+        return false;
+    }
+};
+{% endhighlight %}
+
+## 双指针
+### Leetcode 3. 无重复字符的最长子串
+{% highlight C++ %}
+/*
+给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。
+
+示例 1:
+输入: s = "abcabcbb"
+输出: 3 
+解释: 因为无重复字符的最长子串是 "abc"，所以其长度为 3。
+*/
+int lengthOfLongestSubstring(string s) {
+    int n = int(s.length());
+    if (n == 0) { return 0; }
+    int i = 0, j = 0, maxLen = 0;
+    unordered_set<char> hash;
+    while (j < n) {
+        if (hash.count(s[j])) { hash.erase(s[i++]); }
+        else {
+            hash.insert(s[j++]);
+            maxLen = max(maxLen, j - i);
+        }
+    }
+    return maxLen;
+}
+{% endhighlight %}
+
+### Leetcode 15. 三数之和
+{% highlight C++ %}
+/*
+给你一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素
+a，b，c ，使得 a + b + c = 0 ？请你找出所有和为 0 且不重复的
+三元组。
+
+注意：答案中不可以包含重复的三元组。
+*/
+vector<vector<int>> threeSum(vector<int>& nums) {
+    int n = int(nums.size());
+    vector<vector<int>> ans;
+    if (n < 3) { return ans; }
+    sort(nums.begin(), nums.end());
+    for (int i = 0; i < n - 2; i++) {
+        int j = i + 1, k = n - 1;
+        while (j < k) {
+            int sum = nums[i] + nums[j] + nums[k];
+            if (sum < 0) { j++; }
+            else if (sum > 0) { k--; }
+            else {
+                while (i < k && nums[i] == nums[i+1]) { i++; }
+                while (j < k && nums[j] == nums[j+1]) { j++; }
+                while (j < k && nums[k] == nums[k-1]) { k--; }
+                ans.push_back({nums[i], nums[j], nums[k]});
+                j++;
+                k--;
+            }
+        }
+    }
+    return ans;
+}
+{% endhighlight %}
+
+### Leetcode 16. 最接近的三数之和
+{% highlight C++ %}
+/*
+给定一个包括 n 个整数的数组 nums 和 一个目标值 target。找出 nums 中的三
+个整数，使得它们的和与 target 最接近。返回这三个数的和。假定每组输入只存在
+唯一答案。
+*/
+int threeSumClosest(vector<int>& nums, int target) {
+    int n = int(nums.size()), res = 0, diff = (1ll << 31) - 1;
+    if (n < 3) { return 0; }
+    sort(nums.begin(), nums.end());
+    for (int i = 0; i <= n-3; i++) {
+        int j = i + 1, k = n - 1;
+        while (j < k) {
+            int sum = nums[i] + nums[j] + nums[k];
+            if (abs(sum - target) < diff)
+            {
+                diff = abs(sum - target);
+                res = sum;
+            }
+            if (sum < target) { j++; }
+            else if (sum > target) { k--; }
+            else { return target; }
+        }
+    }
+    return res;
+}
+{% endhighlight %}
 
 ## 数学
 ### 最大公约数

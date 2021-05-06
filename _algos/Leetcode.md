@@ -154,99 +154,6 @@ public:
 };
 {% endhighlight %}
 
-## 0003. Longest Substring Without Repeating Characters*
-<p align="justify">
-Given a string, find the length of the longest substring without repeating characters.<br><br>
-
-<b>Example 1:</b><br>
-Input: "abcabcbb"<br>
-Output: 3 <br>
-Explanation: The answer is "abc", with the length of 3. <br><br>
-
-<b>Example 2:</b><br>
-Input: "bbbbb"<br>
-Output: 1<br>
-Explanation: The answer is "b", with the length of 1.<br><br>
-
-<b>Example 3:</b><br>
-Input: "pwwkew"<br>
-Output: 3<br>
-Explanation: The answer is "wke", with the length of 3. <br>
-Note that the answer must be a substring, "pwke" is a subsequence and not a substring.<br><br>
-
-<b>Solution:</b><br>
-$\bigstar$ Dynamic programming<br>
-We need a dictionary dict (Attention: dict is a key word in Python, take another) for each character to stock its last position in one string and we need a array dp for each character to represente a max length without repetition if we regard this character as an end.<br>
-At first, if the length of s is 0, return directly 0.<br>
-Then, dp[0] = 1 which means max length is 1 for the first character. We take i (i>=1) into account.<br>
-If s[i] is not in dict, we regard s[i] is never visited, in otehr word, s[i] is different from any character from s[0] to s[i-1], so we have dp[i] = dp[i-1]+1.<br>
-If s[i] is in dict, s[i] is repeated and we calculate i-dict[s[i]], which means a distance dist between two same s[i]. If dist > dp[i-1], a max length without repetition for s[i] is bigger than s[i-1], in other word, s[i-1] has one repetition before, then dp[i] = dp[i-1]+1; otherwise, dp[i] = dist.
-</p>
-{% highlight C++ %}
-// Dynamic programming
-class Solution {
-public:
-    int lengthOfLongestSubstring(string s) {
-        int n = int(s.length()), maxLen = 1;
-        if (n == 0) { return 0; }
-        map<int, int> dict;
-        map<int, int>::iterator iter;
-        int *dp = new int [n]{};
-        dp[0] = 1;
-        dict[s[0]] = 0;
-        for (int i = 1; i < n; i++)
-        {
-            iter = dict.find(s[i]);
-            if (iter == dict.end()) { dp[i] = dp[i-1] + 1; }
-            else
-            {
-                int dist = i - dict[s[i]];
-                if (dist > dp[i-1]) { dp[i] = dp[i-1] + 1; }
-                else { dp[i] = dist; }
-            }
-            dict[s[i]] = i;
-            maxLen = maxLen > dp[i] ? maxLen : dp[i];
-        }
-        delete []dp;
-        return maxLen;
-    }
-};
-{% endhighlight %}
-
-<p align="justify">
-$\bigstar$ Sliding window<br>
-1) We initialise a dict for all characters of s with false, which means no one is visited. We set two index or pointers i, j for sliding window: i = j = 0 or i, j points to s[0].<br>
-2) Under a loop of i < length(s) and j < length(s), if dict[s[i]] is false, set dict[s[i]] = true, max_len = max(max_len, i-j+1), i++, which means s[i] is never visited, we cans slide i further; otherwise, set dict[s[j]] = false, j++, which means s[i] and s[j] are same characters, we have to get rid of the influence of i, that is to say, s[i] is visited.
-</p>
-{% highlight C++ %}
-// Sliding windows
-class Solution {
-public:
-    int lengthOfLongestSubstring(string s) {
-        int n = int(s.length());
-        if (n == 0) { return 0; }
-        int i = 0, j = 0, maxLen = 1;
-        map<int, bool> dict;
-        for (int i = 0; i < n; i++) { dict[s[i]] = false; }
-        while (i < n && j < n)
-        {
-            if (!dict[s[i]])
-            {
-                dict[s[i]] = true;
-                maxLen = maxLen > (i-j+1) ? maxLen : (i-j+1);
-                i++;
-            }
-            else
-            {
-                dict[s[j]] = false;
-                j++;
-            }
-        }
-        return maxLen;
-    }
-};
-{% endhighlight %}
-
 ## 0004. Median of Two Sorted Arrays*
 <p align="justify">
 There are two sorted arrays nums1 and nums2 of size m and n respectively. Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)). You may assume nums1 and nums2 cannot be both empty.<br><br>
@@ -1028,125 +935,7 @@ $$
 3) compute sum of nums for i, j, k. if sum < 0, j++; if sum > 0, k--; if sum is 0, append this tuple into our resuslt array. Conitnue to move j rightward until no repetiton and continue to move k until no duplicate.<br>
 4) repeat 3) until i ends<br>
 </p>
-{% highlight C++ %}
-/*
-Given array nums = [-1, 0, 1, 2, -1, -4],
-A solution set is:
-[[-1, 0, 1],[-1, -1, 2]]
-*/
-class Solution {
-public:
-    vector<vector<int>> threeSum(vector<int>& nums) {
-        int n = int(nums.size());
-        vector<vector<int>> ans;
-        if (n < 3) { return ans; }
-        sort(nums.begin(), nums.end());
-        for (int i = 0; i < n - 2; i++)
-        {
-            int j = i + 1, k = n - 1;
-            while (j < k)
-            {
-                int sum = nums[i] + nums[j] + nums[k];
-                if (sum < 0) { j++; }
-                else if (sum > 0) { k--; }
-                else
-                {
-                    while (i < k && nums[i] == nums[i+1]) { i++; }
-                    while (j < k && nums[j] == nums[j+1]) { j++; }
-                    while (j < k && nums[k] == nums[k-1]) { k--; }
-                    ans.push_back({nums[i], nums[j], nums[k]});
-                    j++;
-                    k--;
-                }
-            }
-        }
-        return ans;
-    }
-};
-{% endhighlight %}
 
-## 0016. 3Sum Closest
-<p align="justify">
-Given an array nums of n integers and an integer target, find three integers in nums such that the sum is closest to target. Return the sum of the three integers. You may assume that each input would have exactly one solution.
-</p>
-{% highlight C++ %}
-/*
-Input: nums = [-1,2,1,-4], target = 1
-Output: 2
-Explanation:
-The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).
-*/
-class Solution {
-public:
-    void swap(vector<int>& nums, int i, int j){
-        int temp = nums[i];
-        nums[i] = nums[j];
-        nums[j] = temp;
-    }
-    void quickSort(vector<int>& nums, int start, int end){
-        if (start < end)
-        {
-            int i = start, j = end;
-            while (i < j)
-            {
-                while (nums[i] <= nums[j] && i < j) { j--; }
-                swap(nums, i, j);
-                while (nums[i] <= nums[j] && i < j) { i++; }
-                swap(nums, i, j);
-            }
-            quickSort(nums, start, i-1);
-            quickSort(nums, j+1, end);
-        }
-    }
-    int threeSumClosest(vector<int>& nums, int target) {
-        int n = int(nums.size());
-        quickSort(nums, 0, n-1);
-        int sum = nums[0] + nums[1] + nums[2];
-        int res = sum;
-        for (int i = 0; i < n - 2; i++)
-        {
-            int j = i + 1, k = n - 1;
-            while (j < k)
-            {
-                sum = nums[i] + nums[j] + nums[k];
-                if (sum == target) { return sum; }
-                if (abs(sum - target) < abs(res - target)) { res = sum; }
-                if (sum < target) { j++; }
-                else { k--; }
-            }
-        }
-        return res;
-    }
-};
-{% endhighlight %}
-
-{% highlight C++ %}
-class Solution {
-public:
-    int threeSumClosest(vector<int>& nums, int target) {
-        int n = int(nums.size()), res = 0, diff = (1ll << 31) - 1;
-        if (n < 3) { return 0; }
-        sort(nums.begin(), nums.end());
-        for (int i = 0; i <= n-3; i++)
-        {
-            int j = i + 1, k = n - 1;
-            while (j < k)
-            {
-                int sum = nums[i] + nums[j] + nums[k];
-                if (abs(sum - target) < diff)
-                {
-                    diff = abs(sum - target);
-                    res = sum;
-                }
-                if (sum < target) { j++; }
-                else if (sum > target) { k--; }
-                else { return target; }
-            }
-        }
-        return res;
-    }
-};
-{% endhighlight %}
 
 ## 0017. Letter Combinations of a Phone Number
 <p align="justify">
@@ -1773,52 +1562,6 @@ public:
         }
         delete []dp;
         return maxLen * 2;
-    }
-};
-{% endhighlight %}
-
-## 0033. Search in Rotated Sorted Array
-{% highlight C++ %}
-/*
-Input: nums = [4,5,6,7,0,1,2], target = 3
-Output: -1
-*/
-class Solution {
-public:
-    int search(vector<int>& nums, int target) {
-        int n = int(nums.size());
-        int l = 0, r = n - 1;
-        while (l <= r)
-        {
-            int m = (l + r) >> 1;
-            if (nums[m] == target) { return m; }
-            if (nums[l] <= nums[r])
-            {
-                if (nums[m] < target) { l = m + 1; }
-                else if (nums[m] > target) { r = m - 1; }
-            }
-            else
-            {
-                if (target >= nums[l] && nums[m] >= nums[l])
-                {
-                    if (nums[m] > target) { r = m - 1; }
-                    else { l = m + 1; }
-                }
-                else if (target >= nums[l] && nums[m] <= nums[r]) { r = m - 1; }
-                else if (target <= nums[r] && nums[m] <= nums[r])
-                {
-                    if (nums[m] > target) { r = m - 1; }
-                    else { l = m + 1; }
-                }
-                else if (target <= nums[r] && nums[m] >= nums[l]) { l = m + 1; }
-                else
-                {
-                    if (nums[m] < target) { r = m - 1; }
-                    else { l = m + 1; }
-                }
-            }
-        }
-        return -1;
     }
 };
 {% endhighlight %}
@@ -2711,49 +2454,6 @@ public:
 };
 {% endhighlight %}
 
-## 0053. Maximum Subarray*
-<p align="justify">
-Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum. Follow up: If you have figured out the O(n) solution, try coding another solution using the divide and conquer approach, which is more subtle.
-</p>
-{% highlight C++ %}
-/*
-Example:
-Input: nums = [-2,1,-3,4,-1,2,1,-5,4]
-Output: 6
-Explanation: [4,-1,2,1] has the largest sum = 6.
-
-Input: nums = [1]
-Output: 1
-
-Input: nums = [0]
-Output: 0
-
-Input: nums = [-1]
-Output: -1
-
-Input: nums = [-2147483647]
-Output: -2147483647
-
-Constraints:
-1 <= nums.length <= 2 * 10^4
--2^31 <= nums[i] <= 2^31 - 1
-*/
-class Solution {
-public:
-    int maxSubArray(vector<int>& nums) {
-        int n = int(nums.size());
-        int maxSum = -(1ll << 31), curSum = 0;
-        for (int i = 0; i < n; i++)
-        {
-            if (curSum >= 0) { curSum += nums[i]; }
-            else { curSum = nums[i]; }
-            if (curSum > maxSum) { maxSum = curSum; }
-        }
-        return maxSum;
-    }
-};
-{% endhighlight %}
-
 ## 0054. Spiral Matrix
 {% highlight C++ %}
 /*
@@ -3118,149 +2818,6 @@ public:
 };
 {% endhighlight %}
 
-## 0062. Unique Paths*
-<p align="justify">
-A robot is located at the top-left corner of a m x n grid (marked 'Start' in the diagram below). The robot can only move either down or right at any point in time. The robot is trying to reach the bottom-right corner of the grid (marked 'Finish' in the diagram below). How many possible unique paths are there?
-$$
-\begin{aligned}
-& dp[i][1] = 1, \quad i = 1, 2, ..., m \\
-& dp[1][j] = 1, \quad j = 1, 2, ..., n \\
-& dp[i][j] = dp[i-1][j] + dp[i][j-1], \quad i = 2, 3, ..., m \quad j = 2, 3, ..., n
-\end{aligned}
-$$
-</p>
-{% highlight C++ %}
-/*
-Input: m = 3, n = 2
-Output: 3
-Explanation:
-From the top-left corner, there are a total of 3 ways to reach the
-bottom-right corner:
-1. Right -> Down -> Down
-2. Down -> Down -> Right
-3. Down -> Right -> Down
-*/
-class Solution {
-public:
-    int uniquePaths(int m, int n) {
-        int **dp = new int *[m];
-        for (int i = 0; i < m; i++) { dp[i] = new int [n]{}; }
-        for (int i = 0; i < m; i++) { dp[i][0] = 1; }
-        for (int j = 0; j < n; j++) { dp[0][j] = 1; }
-        for (int i = 1; i < m; i++)
-        {
-            for (int j = 1; j < n; j++)
-            {
-                dp[i][j] = dp[i-1][j] + dp[i][j-1];
-            }
-        }
-        int ans = dp[m-1][n-1];
-        for (int i = 0; i < m; i++) { delete []dp[i]; }
-        delete []dp;
-        return ans;
-    }
-};
-{% endhighlight %}
-
-## 0063. Unique Paths II
-<p align="justify">
-A robot is located at the top-left corner of a m x n grid (marked 'Start' in the diagram below). The robot can only move either down or right at any point in time. The robot is trying to reach the bottom-right corner of the grid (marked 'Finish' in the diagram below). Now consider if some obstacles are added to the grids. How many unique paths would there be? An obstacle and space is marked as 1 and 0 respectively in the grid.
-</p>
-{% highlight C++ %}
-/*
-Input: obstacleGrid = [[0,0,0],[0,1,0],[0,0,0]]
-Output: 2
-Explanation: There is one obstacle in the middle of the 3x3 grid above.
-There are two ways to reach the bottom-right corner:
-1. Right -> Right -> Down -> Down
-2. Down -> Down -> Right -> Right
-*/
-class Solution {
-public:
-    int uniquePathsWithObstacles(vector<vector<int>>& obstacleGrid) {
-        vector<vector<int>> mat = obstacleGrid;
-        int m = int(mat.size());
-        if (m == 0) { return 0; }
-        int n = int(mat[0].size());
-        if (n == 0) { return 0; }
-        int **dp = new int *[m];
-        for (int i = 0; i < m; i++) { dp[i] = new int [n]{}; }
-        if (mat[0][0]) { return 0; }
-        dp[0][0] = 1;
-        for (int i = 1; i < m; i++)
-        {
-            if (mat[i][0]) { dp[i][0] = 0; }
-            else { dp[i][0] = dp[i-1][0]; }
-        }
-        for (int j = 1; j < n; j++)
-        {
-            if (mat[0][j]) { dp[0][j] = 0; }
-            else { dp[0][j] = dp[0][j-1]; }
-        }
-        for (int i = 1; i < m; i++)
-        {
-            for (int j = 1; j < n; j++)
-            {
-                if (mat[i][j]) { dp[i][j] = 0; }
-                else { dp[i][j] = dp[i-1][j] + dp[i][j-1]; }
-            }
-        }
-        int ans = dp[m-1][n-1];
-        for (int i = 0; i < m; i++) { delete []dp[i]; }
-        delete []dp;
-        return ans;
-    }
-};
-{% endhighlight %}
-
-## 0064. Minimum Path Sum
-<p align="justify">
-Given a m x n grid filled with non-negative numbers, find a path from top left to bottom right, which minimizes the sum of all numbers along its path. Note: You can only move either down or right at any point in time.
-</p>
-{% highlight C++ %}
-/*
-1 3 1
-1 5 1
-4 2 1
-Input: grid = [[1,3,1],[1,5,1],[4,2,1]]
-Output: 7
-Explanation: Because the path 1 → 3 → 1 → 1 → 1 minimizes the sum.
-*/
-class Solution {
-public:
-    int minPathSum(vector<vector<int>>& grid) {
-        int m = int(grid.size());
-        if (m == 0) { return 0; }
-        int n = int(grid[0].size());
-        if (n == 0) { return 0; }
-        int **dp = new int *[m];
-        for (int i = 0; i < m; i++) { dp[i] = new int [n]{}; }
-        dp[0][0] = grid[0][0];
-        for (int i = 1; i < m; i++) { dp[i][0] = dp[i-1][0] + grid[i][0]; }
-        for (int j = 1; j < n; j++) { dp[0][j] = dp[0][j-1] + grid[0][j]; }
-        for (int i = 1; i < m; i++)
-        {
-            for (int j = 1; j < n; j++)
-            {
-                dp[i][j] = min(dp[i-1][j], dp[i][j-1]) + grid[i][j];
-            }
-        }
-        int ans = dp[m-1][n-1];
-        for (int i = 0; i < m; i++) { delete []dp[i]; }
-        delete []dp;
-        return ans;
-    }
-};
-{% endhighlight %}
-
-## 
-<p align="justify">
-
-</p>
-{% highlight C++ %}
-
-{% endhighlight %}
-
 ## 0066. Plus One
 <p align="justify">
 Given a non-empty array of decimal digits representing a non-negative integer, increment one to the integer. The digits are stored such that the most significant digit is at the head of the list, and each element in the array contains a single digit. You may assume the integer does not contain any leading zero, except the number 0 itself.
@@ -3499,57 +3056,6 @@ public:
 };
 {% endhighlight %}
 
-## 0072. Edit Distance
-<p align="justify">
-Given two strings word1 and word2, return the minimum number of operations required to convert word1 to word2. You have the following three operations permitted on a word: Insert a character, Delete a character, Replace a character
-</p>
-{% highlight C++ %}
-/*
-Input: word1 = "horse", word2 = "ros"
-Output: 3
-Explanation:
-horse -> rorse (replace 'h' with 'r')
-rorse -> rose (remove 'r')
-rose -> ros (remove 'e')
-
-Input: word1 = "intention", word2 = "execution"
-Output: 5
-Explanation: 
-intention -> inention (remove 't')
-inention -> enention (replace 'i' with 'e')
-enention -> exention (replace 'n' with 'x')
-exention -> exection (replace 'n' with 'c')
-exection -> execution (insert 'u')
-*/
-class Solution {
-public:
-    int minDistance(string word1, string word2) {
-        string s1 = word1, s2 = word2;
-        int n1 = int(s1.length()), n2 = int(s2.length());
-        int **dp = new int *[n1+1];
-        for (int i = 0; i <= n1; i++) { dp[i] = new int [n2+1]{}; }
-        for (int i = 0; i <= n1; i++)
-        {
-            for (int j = 0; j <= n2; j++)
-            {
-                if (i == 0 || j == 0) { dp[i][j] = max(i, j); }
-                else
-                {
-                    int a = dp[i-1][j] + 1;
-                    int b = dp[i][j-1] + 1;
-                    int c = dp[i-1][j-1] + (s1[i-1] != s2[j-1]);
-                    dp[i][j] = min(min(a, b), c);
-                }
-            }
-        }
-        int ans = dp[n1][n2];
-        for (int i = 0; i <= n1; i++) { delete []dp[i]; }
-        delete []dp;
-        return ans;
-    }
-};
-{% endhighlight %}
-
 ## 0073. Set Matrix Zeroes
 {% highlight C++ %}
 /*
@@ -3585,37 +3091,6 @@ public:
             int j = *iter;
             for (int i = 0; i < nRow; i++) { matrix[i][j] = 0; }
         }
-    }
-};
-{% endhighlight %}
-
-## 0074. Search a 2D Matrix
-{% highlight C++ %}
-/*
-Integers in each row are sorted from left to right.
-The first integer of each row is greater than the last
-integer of the previous row.
-1   3   5   7
-10  11  16  20
-23  30  34  60
-*/
-class Solution {
-public:
-    bool searchMatrix(vector<vector<int>>& matrix, int target) {
-        int nRow = int(matrix.size());
-        if (nRow == 0) { return false; }
-        int nCol = int(matrix[0].size());
-        if (nCol == 0) { return false; }
-        int l = 0, r = nRow * nCol - 1;
-        while (l <= r)
-        {
-            int m = (l + r) >> 1;
-            int i = m / nCol, j = m % nCol;
-            if (matrix[i][j] < target) { l = m + 1; }
-            else if (matrix[i][j] > target) { r = m - 1; }
-            else { return true; }
-        }
-        return false;
     }
 };
 {% endhighlight %}
@@ -3838,50 +3313,6 @@ public:
             if (count <= 2) { nums[len++] = nums[i]; }
         }
         return len;
-    }
-};
-{% endhighlight %}
-
-## 0081. Search in Rotated Sorted Array II*
-{% highlight C++ %}
-/*
-Input: nums = [2,5,6,0,0,1,2], target = 0
-Output: true
-*/
-class Solution {
-public:
-    bool search(vector<int>& nums, int target) {
-        int n = int(nums.size());
-        if (n == 0) { return false; }
-        int l = 0, r = n - 1;
-        while (l <= r)
-        {
-            int m = (l + r) >> 1;
-            if (nums[m] == target) { return true; }
-            if (nums[l] < nums[r])
-            {
-                if (nums[m] > target) { r = m - 1; }
-                else { l = m + 1; }
-            }
-            else
-            {
-                if (nums[m] == nums[l] && nums[m] == nums[r]) { l++; r--; }
-                else if ((target >= nums[l] && nums[m] >= nums[l]) ||
-                    (target <= nums[r] && nums[m] <= nums[r]))
-                {
-                    if (nums[m] > target) { r = m - 1; }
-                    else { l = m + 1; }
-                }
-                else if (target >= nums[l] && nums[m] <= nums[r]) { r = m - 1; }
-                else if (target <= nums[r] && nums[m] >= nums[l]) { l = m + 1; }
-                else
-                {
-                    if (nums[m] > target) { l = m + 1; }
-                    else { r = m - 1; }
-                }
-            }
-        }
-        return false;
     }
 };
 {% endhighlight %}
@@ -5705,30 +5136,6 @@ public:
 };
 {% endhighlight %}
 
-## 0152. Maximum Product Subarray*
-{% highlight C++ %}
-/*
-Input: nums = [2,3,-2,4]
-Output: 6
-Explanation: [2,3] has the largest product 6.
-*/
-class Solution {
-public:
-    int maxProduct(vector<int>& nums) {
-        int n = int(nums.size());
-        int minF = nums[0], maxF = nums[0], ans = nums[0];
-        for (int i = 1; i < n; i++)
-        {
-            int _min = minF, _max = maxF;
-            minF = min(nums[i], min(_min * nums[i], _max * nums[i]));
-            maxF = max(nums[i], max(_min * nums[i], _max * nums[i]));
-            ans = max(ans, maxF);
-        }
-        return ans;
-    }
-};
-{% endhighlight %}
-
 ## 0153. Find Minimum in Rotated Sorted Array
 {% highlight C++ %}
 /*
@@ -7065,16 +6472,6 @@ public:
 };
 {% endhighlight %}
 
-## 
-{% highlight C++ %}
-
-{% endhighlight %}
-
-## 
-{% highlight C++ %}
-
-{% endhighlight %}
-
 ## 0239. Sliding Window Maximum
 {% highlight C++ %}
 /*
@@ -7127,112 +6524,6 @@ public:
         return ans;
     }
 };
-{% endhighlight %}
-
-## 0240. Search a 2D Matrix II*
-{% highlight C++ %}
-/*
-1   4   7
-2   5   8
-3   6   9
-find(5) = true
-*/
-class Solution {
-public:
-    bool searchMatrix(vector<vector<int>>& matrix, int target) {
-        int nRow = (int)matrix.size();
-        if (nRow == 0) { return false; }
-        int nCol = (int)matrix[0].size();
-        if (nCol == 0) { return false; }
-        int row = nRow - 1, col = 0;
-        while (row >= 0 && col < nCol) {
-            if (matrix[row][col] == target) { return true; }
-            else if (matrix[row][col] > target) { row--; }
-            else { col++; }
-        }
-        return false;
-    }
-};
-{% endhighlight %}
-
-## 
-{% highlight C++ %}
-
-{% endhighlight %}
-
-## 
-{% highlight C++ %}
-
-{% endhighlight %}
-
-## 
-{% highlight C++ %}
-
-{% endhighlight %}
-
-## 
-{% highlight C++ %}
-
-{% endhighlight %}
-
-## 
-{% highlight C++ %}
-
-{% endhighlight %}
-
-## 
-{% highlight C++ %}
-
-{% endhighlight %}
-
-## 
-{% highlight C++ %}
-
-{% endhighlight %}
-
-## 
-{% highlight C++ %}
-
-{% endhighlight %}
-
-## 
-{% highlight C++ %}
-
-{% endhighlight %}
-
-## 
-{% highlight C++ %}
-
-{% endhighlight %}
-
-## 
-{% highlight C++ %}
-
-{% endhighlight %}
-
-## 
-{% highlight C++ %}
-
-{% endhighlight %}
-
-## 
-{% highlight C++ %}
-
-{% endhighlight %}
-
-## 
-{% highlight C++ %}
-
-{% endhighlight %}
-
-## 
-{% highlight C++ %}
-
-{% endhighlight %}
-
-## 
-{% highlight C++ %}
-
 {% endhighlight %}
 
 ## 0257. Binary Tree Paths
@@ -8771,38 +8062,6 @@ public:
 };
 {% endhighlight %}
 
-## 0718. Maximum Length of Repeated Subarray*
-{% highlight C++ %}
-/*
-Input:
-A: [1,2,3,2,1]
-B: [3,2,1,4,7]
-Output: 3
-Explanation: 
-The repeated subarray with maximum length is [3, 2, 1].
-*/
-class Solution {
-public:
-    int findLength(vector<int>& A, vector<int>& B) {
-        int na = int(A.size()), nb = int(B.size());
-        vector<vector<int>> dp(na+1, vector<int>(nb+1, 0));
-        int ans = 0;
-        for (int i = 1; i <= na; i++)
-        {
-            for (int j = 1; j <= nb; j++)
-            {
-                if (A[i-1] == B[j-1])
-                {
-                    dp[i][j] = dp[i-1][j-1] + 1;
-                    ans = max(ans, dp[i][j]);
-                }
-            }
-        }
-        return ans;
-    }
-};
-{% endhighlight %}
-
 ## 0738. Monotone Increasing Digits*
 <p align="justify">
 Given a non-negative integer N, find the largest number that is less than or equal to N with monotone increasing digits. (Recall that an integer has monotone increasing digits if and only if each pair of adjacent digits x and y satisfy x <= y.)
@@ -9541,51 +8800,6 @@ public:
             if (maxAdd < add) { maxAdd = add; }
         }
         return ans + maxAdd;
-    }
-};
-{% endhighlight %}
-
-## 1143. Longest Common Subsequence
-<p align="justify">
-Given two strings text1 and text2, return the length of their longest common subsequence. A subsequence of a string is a new string generated from the original string with some characters(can be none) deleted without changing the relative order of the remaining characters. (eg, "ace" is a subsequence of "abcde" while "aec" is not). A common subsequence of two strings is a subsequence that is common to both strings. If there is no common subsequence, return 0.
-</p>
-{% highlight C++ %}
-/*
-Input: text1 = "abcde", text2 = "ace" 
-Output: 3
-Explanation: The longest common subsequence is "ace" and its length is 3.
-
-Input: text1 = "abc", text2 = "abc"
-Output: 3
-Explanation: The longest common subsequence is "abc" and its length is 3.
-
-Input: text1 = "abc", text2 = "def"
-Output: 0
-Explanation: There is no such common subsequence, so the result is 0.
-*/
-class Solution {
-public:
-    int longestCommonSubsequence(string text1, string text2) {
-        string s1 = text1, s2 = text2;
-        int n1 = int(s1.length()), n2 = int(s2.length());
-        int **dp = new int *[n1+1];
-        for (int i = 0; i < n1+1; i++) { dp[i] = new int [n2+1]{}; }
-        for (int i = 1; i < n1+1; i++)
-        {
-            for (int j = 1; j < n2+1; j++)
-            {
-                if (s1[i-1] == s2[j-1]) { dp[i][j] = dp[i-1][j-1] + 1; }
-                else
-                {
-                    dp[i][j] = (dp[i-1][j] > dp[i][j-1] ?
-                                dp[i-1][j] : dp[i][j-1]);
-                }
-            }
-        }
-        int lcs = dp[n1][n2];
-        for (int i = 0; i < n1+1; i++) { delete []dp[i]; }
-        delete []dp;
-        return lcs;
     }
 };
 {% endhighlight %}
