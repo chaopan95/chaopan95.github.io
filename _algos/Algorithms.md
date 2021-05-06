@@ -235,6 +235,25 @@ int LCM(int a, int b) {
 ### 数组
 ### 链表
 ### 栈
+#### 汉诺塔
+{% highlight C++ %}
+int hanoi(int n, char x, char y, char z) {
+    if (n == 1) {
+        printf("%d: %c -> %c\n", n, x, z);
+        return 1;
+    }
+    else {
+        // 1至n-1移到y柱，借助z
+        int res = hanoi(n-1, x, z, y);
+        // n移到z
+        printf("%d: %c -> %c\n", n, x, z);
+        // 1至n-1移到z柱，借助x
+        res += hanoi(n-1, y, x, z);
+        return 1+res;
+    }
+}
+{% endhighlight %}
+
 ### 队列
 ### 树
 ### 图
