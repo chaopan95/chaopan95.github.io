@@ -133,6 +133,42 @@ public:
 {% endhighlight %}
 
 ## 分治 Divider and Conquer
+{% highlight C++ %}
+/*
+求一个数组的元素和
+*/
+int sum(int A[], int lo, int hi)
+{
+    if (lo == hi) { return A[lo]; }
+    int mi = (lo + hi) >> 1;
+    return sum(A, lo, mi) + sum(A, mi+1, hi);
+}
+{% endhighlight %}
+<p align="justify">
+时间复杂度分析
+$$
+\begin{aligned}
+T(n) &= 2T(\frac{n}{2}) \\
+&= 2 \cdot 2 T(\frac{n}{4}) \\
+&= 2^{\log_{2}n} \cdot T(1) \\
+&= n
+\end{aligned}
+$$
+</p>
+
+## 减治 Decrease and Conquer
+{% highlight C++ %}
+/*
+将一个数组反转
+*/
+void reverse(int *A, int lo, int hi)
+{
+    if (lo < hi) {
+        swap(A[lo], A[hi]);
+        reverse(A, lo+1, hi-1);
+    }
+}
+{% endhighlight %}
 
 
 ## 数学
