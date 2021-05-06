@@ -350,56 +350,6 @@ int main(int argc, const char * argv[]) {
 {% endhighlight %}
 
 <p align="justify">
-有一个序列1-n，一个机器人从一个起始点b（1 $\leq$ b $\leq$ n）出发，可以向左也可以向右移动一步，但当机器人处于1位置时不能向左，处于n位置时不能向右移动。问当移动k次，刚好落在终点e的路径有几条？<br><br>
-
-例如，输入5 2 3 2<br>
-输出 3<br><br>
-
-解释：总共三条路径：<br>
-2 -> 1 -> 2 -> 3<br>
-2 -> 3 -> 4 -> 3<br>
-2 -> 3 -> 2 -> 3<br>
-</p>
-{% highlight C++ %}
-void move(int n, int b, int e, int k, int &count, int &res, int *arr)
-{
-    if (b <= 0 || b > n) { return; }
-    if (count == k)
-    {
-        if (b == e)
-        {
-            arr[k] = e;
-            for (int i = 0; i < k; i++)
-            {
-                cout << arr[i] << "->";
-            }
-            cout << arr[k] << endl;
-            res++;
-        }
-        return;
-    }
-    arr[count] = b;
-    count++;
-    move(n, b+1, e, k, count, res, arr);
-    move(n, b-1, e, k, count, res, arr);
-    count--;
-}
-
-
-
-int main(int argc, const char * argv[]) {
-    // insert code here...
-    int n = 5, b = 2, e = 3, k = 5;
-    int count = 0, res = 0;
-    int *arr = new int[k+1]{};
-    move(n, b, e, k, count, res, arr);
-    cout << res << endl;
-    delete []arr;
-    return 0;
-}
-{% endhighlight %}
-
-<p align="justify">
 李白有2斗酒，出门遇到酒店话，酒加倍，遇到莲花话，喝酒一斗。问他遇到5次酒店，10次莲花，且最后一次是莲花，刚好把酒喝完，这样的莲花、酒店组成的序列有多少种？
 </p>
 {% highlight C++ %}
