@@ -162,68 +162,6 @@ Logarithmic series
 $$log1 + log2 + log3 + \cdots + logn = log(n!) = \Theta(nlogn)$$
 </p>
 
-### 1.6 Recurrence
-#### 1.6.1 Recursion Tracking
-<p align="justify">
-T(n) = $\sum$ O(single recursion instance), is helpful for simple recursion.
-</p>
-
-#### 1.6.2 Recursion Equation
-<p align="justify">
-We have an implicite recursive equation and an initial value, we need to solve its explicite equation. For example
-$$T(n) = T(n-1) + O(1) \quad T(0) = O(1)$$
-</p>
-
-#### 1.6.3 Decrease and Conquer
-<p align="justify">
-If a problem is complicated, we can reduce its size by splitting it into a smaller problem (sub-problem) and a normal problem (e.g. size in O(1)).<br><br>
-
-For example, given an array A, get its inverse order.
-</p>
-{% highlight C++ %}
-void reverse(int *A, int lo, int hi)
-{
-	if (lo < hi)
-	{
-		swap(A[lo], A[hi]);
-		reverse(A[*A, lo+1, hi-1]);
-	}
-	else
-	{
-		return; //base case
-	}
-}
-{% endhighlight %}
-
-#### 1.6.4 Divide and Conquer
-<p align="justify">
-Split a big problem into several (usually 2) sub-problem woth a same size.<br><br>
-
-For example, give an array A, get its sum.
-</p>
-{% highlight C++ %}
-int sum(int A[], int lo, int hi)
-{
-	if (lo == hi)
-	{
-		return A[lo]; //base case
-	}
-	int mi = (lo + hi) >> 1;
-	return sum(A, lo, mi) + sum(A, mi+1, hi);
-}
-{% endhighlight %}
-<p align="justify">
-solve recursive equation
-$$
-\begin{aligned}
-& T(n) = 2T(\frac{n}{2}) + O(1) \quad T(1) = O(1) \\
-& T(n) = 2T(\frac{n}{2}) + c_{1} \\
-& T(n) + c_{1} = 2(T(\frac{n}{2}) + c_{1}) = 2^{2}(T(\frac{n}{4}) + c_{1}) = \cdots = 2^{logn}(T(1)+c_{1}) = n(c_{2} + c_{1}) \\
-& T(n) = O(n)
-\end{aligned}
-$$
-</p>
-
 ### 1.7. Dynamic programming
 #### 1.7.1 Fibonacci
 <p align="justify">
