@@ -59,10 +59,143 @@ table.d {
 ### 二分
 ### BFS
 ### DFS (回溯 Backtracking)
-<p align="justify">
-<a href="https://chaopan95.github.io/algos/Leetcode/#0039-combination-sum"> Combination Sum</a><br>
-<a href="https://chaopan95.github.io/algos/Leetcode/#0040-combination-sum-ii"> Combination Sum II</a><br>
-</p>
+#### 组合
+##### Leetcode 39. 组合总和
+{% highlight C++ %}
+/*
+给定一个无重复元素的数组 candidates 和一个目标数 target ，找出
+candidates 中所有可以使数字和为 target 的组合。
+
+candidates 中的数字可以无限制重复被选取。
+
+说明：
+所有数字（包括 target）都是正整数。
+解集不能包含重复的组合。 
+
+示例 1：
+输入：candidates = [2,3,6,7], target = 7,
+所求解集为：
+[
+  [7],
+  [2,2,3]
+]
+
+示例 2：
+输入：candidates = [2,3,5], target = 8,
+所求解集为：
+[
+  [2,2,2,2],
+  [2,3,3],
+  [3,5]
+]
+*/
+vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
+    vector<vector<int>> res;
+    vector<int> arr;
+    int n = int(candidates.size());
+    if (n == 0) { return res; }
+    DFS(res, arr, candidates, n, target, 0);
+    return res;
+}
+void DFS(vector<vector<int>> &res, vector<int> &arr,
+          vector<int> candidates, int n, int target,
+          int idx)
+{
+    if (target == 0)
+    {
+        res.push_back(arr);
+        return;
+    }
+    for (int i = idx; i < n; i++)
+    {
+        if (target-candidates[i] >= 0)
+        {
+            arr.push_back(candidates[i]);
+            DFS(res, arr, candidates, n, target-candidates[i], i);
+            arr.resize(arr.size()-1);
+        }
+    }
+}
+{% endhighlight %}
+
+##### Leetcode 40. 组合总和 II
+{% highlight C++ %}
+/*
+给定一个数组 candidates 和一个目标数 target ，找出
+candidates 中所有可以使数字和为 target 的组合。
+
+candidates 中的每个数字在每个组合中只能使用一次。
+
+说明：
+所有数字（包括目标数）都是正整数。
+解集不能包含重复的组合。 
+
+示例 1:
+输入: candidates = [10,1,2,7,6,1,5], target = 8,
+所求解集为:
+[
+  [1, 7],
+  [1, 2, 5],
+  [2, 6],
+  [1, 1, 6]
+]
+
+示例 2:
+输入: candidates = [2,5,2,1,2], target = 5,
+所求解集为:
+[
+  [1,2,2],
+  [5]
+]
+*/
+vector<vector<int>> combinationSum2(vector<int>& candidates, int target) {
+    vector<vector<int>> res;
+    vector<int> arr;
+    int n = int(candidates.size());
+    if (n == 0) { return res; }
+    map<int, int> dict;
+    map<int, int>::iterator iter;
+    for (int num: candidates)
+    {
+        iter = dict.find(num);
+        if (iter == dict.end()) { dict[num] = 1; }
+        else { dict[num]++; }
+    }
+    vector<pair<int, int>> nums;
+    int size = 0;
+    for (iter = dict.begin(); iter != dict.end(); iter++)
+    {
+        nums.emplace_back(iter->first, iter->second);
+        size++;
+    }
+    DFS(res, arr, candidates, target, 0, size, nums);
+    return res;
+}
+void DFS(vector<vector<int>> &res, vector<int> &arr,
+          vector<int> candidates, int target, int idx,
+          int size, vector<pair<int, int>> nums)
+{
+    if (target <= 0 || idx >= size)
+    {
+        if (target == 0) { res.push_back(arr); }
+        return;
+    }
+    for (int j = 1; j <= nums[idx].second; j++)
+    {
+        for (int k = 0; k < j; k++) { arr.push_back(nums[idx].first); }
+        DFS(res, arr, candidates, target-j*nums[idx].first, idx+1, size,
+            nums);
+        for (int k = 0; k < j; k++) { arr.pop_back(); }
+    }
+    DFS(res, arr, candidates, target, idx+1, size, nums);
+}
+{% endhighlight %}
+
+
+### A*
+{% highlight C++ %}
+
+{% endhighlight %}
 
 
 ## 动态规划 Dynamic Programming
