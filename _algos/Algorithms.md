@@ -174,7 +174,7 @@ int GCD_Euclidean_Algorithm_subtract(int a, int b)
 }
 {% endhighlight %}
 
-#### 一组数的最大公约数
+#### 数组的最大公约数
 {% highlight C++ %}
 int GCD_Array(vector<int> arr)
 {
