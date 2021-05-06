@@ -81,7 +81,7 @@ Turing machine has a tape on which there are finite alphabets. Besides, there is
 $$(q, c; d, L/R, p)$$
 
 Where current state q, current alphabet c, replace c with d, move left or right a cell to arrive at a new state p. If turing machine arrives at h state, stop.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/1_2_Turing_Machine_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/1_2_Turing_Machine_1.png"/></center>
 </p>
 
 ### 1.3 Random Access Machine
@@ -126,7 +126,7 @@ $\exists$ c, when n >> 2, we have T(n) > cf(n)
 <p align="justify">
 T(n) = $\Theta$(f(n)):<br>
 $\exists$ $c_{1}$ > $c_{2}$ > 0, when n >> 2, we have $c_{1}$f(n) > T(n) > $c_{2}$f(n)
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/1_4_3_Big_Theta_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/1_4_3_Big_Theta_1.png"/></center>
 </p>
 
 ### 1.5 Series
@@ -255,7 +255,7 @@ So
 $$S(n) = S(n-1) + S(n-2) = fib(n+1) = O(\Phi^{n}), \quad \Phi = \frac{1+\sqrt{5}}{2} = 1.61803$$
 
 $$T(n) = 2S(n) - 1 = 2fib(n+1) - 1 = O(fib(n+1)) = O(\Phi^{n}) = O(2^{n})$$
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/1_7_1_Fibonacci_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/1_7_1_Fibonacci_1.png"/></center>
 </p>
 <p align="justify">
 We can use dynamic programming to get fib(n)
@@ -277,7 +277,7 @@ int fib(n)
 #### 1.7.2 Longest Common Sequence
 <p align="justify">
 Longest common sequence (LCS): two sequences have a common sequence (every iterm in orginal order) and this common sequence is the longest among all common sequences.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/1_7_2_Longest_Common_Sequence_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/1_7_2_Longest_Common_Sequence_1.png"/></center>
 </p>
 <p align="justify">
 Suppose two sequences A[0, n] and B[0, m], we have two methods: recursion and iteration (dynamic programming).
@@ -291,7 +291,7 @@ LCS(A[0, n], B[0, m]) =
 \end{cases}
 $$
 Worst condition is in $O(2^{n})$
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/1_7_2_Longest_Common_Sequence_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/1_7_2_Longest_Common_Sequence_2.png"/></center>
 </p>
 {% highlight C++ %}
 int getLCS(string s1, string s2)
@@ -328,7 +328,7 @@ int getLCS(string s1, string s2)
 We construct a iterative table by n*m then initialize this table by first column and first row. Next, we fill out this table according to LCS equation.<br><br>
 
 Worst condition is in $O(n*m)$
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/1_7_2_Longest_Common_Sequence_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/1_7_2_Longest_Common_Sequence_3.png"/></center>
 </p>
 
 ### 1.8 Abstract data type and data structure
@@ -480,7 +480,7 @@ static Rank binSearch(T *A, T const &e, Rank lo, Rank hi)
 <b>Search length</b>: a number of comparison for keys. Binary search lenghth is in $O(1.5logn)$<br><br>
 
 For example, at point 2, if we want to search 2, we have to do 2 comparison (check left and right). We can observe turn left and turn right have different comparison numbers.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/2_4_1_Binary_Search_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/2_4_1_Binary_Search_1.png"/></center>
 </p>
 <p align="justify">
 We use 2 comparison<br>
@@ -588,7 +588,7 @@ Because List cannont be efficiently accessed by rank.
 ### 4.1 Stack
 <p align="justify">
 A stack is open at its top, while other positions are not allowed to visit. LIFO (last in first out) is its speciality. In general, there are three basic operation for one stack: push, top and pop.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/ALGOS/DSA/4_1_0_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/ALGOS/DSA/4_1_0_1.png"/></center>
 </p>
 <p align="justify">
 A stack can be implemented like Vetcor or List. Take Vector for instance, we can regard the head of vector is stack bottom and vetcor tail is stack top. Therefore, insert and remove is in O(1). In constrast, vector head is stack top makes insert ans remove in o(n).
@@ -639,7 +639,7 @@ void convert(stack<char> &S, _int64 n, int base)
 #### 4.1.2 Parenthesis
 <p align="justify">
 Parenthesis is useful for checking legal expressions. The expression above is illegal. We can take used of Stack to check parenthesis.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/parenthesis.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/parenthesis.png"/></center>
 </p>
 {% highlight c++ %}
 bool paren(const char exp[], int lo, int hi)
@@ -668,7 +668,7 @@ We call such a process stack permutation<br><br>
 
 If a stack has n elements, then how many possible stack permutations SP(n)?<br>
 Suppose that we have a stack with n elements whose number is like 1, 2, 3,..., n, we take #1 element for instance, when #1 enter Stack B (at this time, Stack S is empty), we consider #1 as k-th element in Stack B. That is to say, before #1, there are k-1 elements and in Stack A, n-k elements are left. Well, the two groups are independent.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/stack_permutation_number.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/stack_permutation_number.png"/></center>
 $$SP(n)=\sum_{k=1}^{n}SP(k-1)\times SP(n-k)$$
 $$SP(1)=1$$
 </p>
@@ -727,7 +727,7 @@ For example: (0! + 1) ^ (2 * 3+ 4 - 5)<br>
 ### 4.2 Queue
 <p align="justify">
 A queue is a linear sequence and in its one side, only enqueue (at the tail of queue) is allowed, in constrast, in its other side, only dequeue (at the head of queue) is allowed. FIFO is fist in first out.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/queue_schema.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/queue_schema.png"/></center>
 </p>
 <p align="justify">
 Queue has two limits:<br>
@@ -939,7 +939,7 @@ In computer science, a self-balancing binary search tree is any node-based binar
 
 For non self-balancing BST, we can rotate it to be self-balancing BST.<br>
 Ideally balanced: h = log(n); Moderately balanced: h <= O(log(n))
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/rotation_bst.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/rotation_bst.png"/></center>
 </p>
 
 ### 6.3 AVL
@@ -953,7 +953,7 @@ For any node, |bf(v)| = 0 or 1<br>
 #### 6.3.1 AVL ~ BBST
 <p align="justify">
 An AVL tree with a height of h, has at least S(h) = fib(h+3)-1 nodes.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/avl_example.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/avl_example.png"/></center>
 </p>
 <p align="justify">
 We can write a recursive equation for number of one AVL tree with a height of h. Like the example above, left tree is more high than right tree.
@@ -979,20 +979,20 @@ Thus, AVL satisfies the requirement of BBST(balanced BST): moderately balanced
 </p>
 
 #### 6.3.2 Unbalanced
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/avl_unbalanced.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/avl_unbalanced.png"/></center>
 <p align="justify">
 If we insert or remove one element in an AVL tree, it may be unbalanced. In details, insert an element, several subtress are unbalanced, for example, insert M, its ancestors K, N, R and G are unbalanced; while remove Y, only its parent R is unbalanced.
 </p>
 
 #### 6.3.3 Single rotation
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/avl_signle_rotation_insert.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/avl_signle_rotation_insert.png"/></center>
 <p align="justify">
 From the example, after inserting a node in the subtree of v, g becomes unbalanced, while v and p are not. Well, g is wanted for us, because it is the deepest node among all unbalanced nodes after inserting one node. We performe a signle rotation on g. A case of three generations g, p, v towards right is called zagzag, in contrast, zigzig. Attention, after this rotation, all ancestors of g return balanced if they were unbalanced before. Why?<br><br>
 
 Before inserting one node, we have a base line (foot of T2 and T3), after inserting, our base line goes down 1 and this breaks balance rule. Besides, we notice a height for v, p, g increase by 1. After a single rotation, our base line comes back. We know, before inserting, our tree is balanced. Now our base line returns, ancestor of g is also balanced.<br><br>
 
 A single rotation for inserting one node is in O(1).
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/avl_single_rotation_remove.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/avl_single_rotation_remove.png"/></center>
 </p>
 <p align="justify">
 As for removing one node, this is some different with inserting. From the example above, we remove one node of T3, this tree becomes unbalanced, we perform a zig on g. Finally, our tree return balanced. If T2 has a node, our base line comes back, but unlickily if T2 has no node, our base line goes up compared to that before removing, which potentially provoke an unbalanced of some ancestor of g.<br><br>
@@ -1001,17 +1001,17 @@ We have to check other some nodes if balanced or not. In the worst condition, we
 </p>
 
 #### 6.3.4 Double rotation
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/avl_double_rotation_insert.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/avl_double_rotation_insert.png"/></center>
 <p align="justify">
 How to solve a case like the example above g's right child is p and p's left child is v (or symmetry case)? Answer is double rotation(zagzig or zigzag)
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/avl_double_rotation_remove.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/avl_double_rotation_remove.png"/></center>
 </p>
 <p align="justify">
 As for removing one node in case of zagzig pr zigzag, our base line will goes up compared to that before removing, which means some ancestor will be unbalanced.
 </p>
 
 #### 6.3.5 3+4 reconstruction
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/34_reconstruct.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/34_reconstruct.png"/></center>
 <p align="justify">
 1) Suppose g is the deepest node among all unbalanced node, we care about three generations: g, p, v<br>
 2) Rename them as a, b, c in the way of in-order<br>
@@ -1042,24 +1042,24 @@ AVL has a relatively rigorous reauirement even if it has been relaxed form ideal
 Locality: Some visited data just now is likely to be visited once more in a small time periode. Take BST as instance, it is likely to visit some data many times in a short time.<br><br>
 
 Self-adjusting: consider a list, one element' visiting efficiency depends on its rank in the list, the smaller its rank is (or the nearer to head), the bigger vist efficiency is. If this list has a locality, we can do something on the list. For example, if one element in the list is visited, we put this element in the position of head. After a while, some frequently visited elements are aggregated in the front of list.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/splaytree_list_tree_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/splaytree_list_tree_1.png"/></center>
 </p>
 
 #### 7.1.2 Single splay
 <p align="justify">
 Naturally, we can generalize this concept to a tree or BST. Concretely, list's head corresponds to tree's top anf list's tail correspons to tree's bottom.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/splaytree_list_tree_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/splaytree_list_tree_2.png"/></center>
 </p>
 
 <p align="justify">
 So, we have a strategy: once one element is visited, we move it to the root of the tree by zig or zag. Because one zig or zag can level up an element once. We repeat zig or zag until the element is moved to root node.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/splaytree_zigzag.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/splaytree_zigzag.png"/></center>
 </p>
 
 <p align="justify">
 We talk about the worst condition: we have a tree like this. We hope to search each element in a cycle.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/splaytree_worst_condition_1.png"/></center>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/splaytree_worst_condition_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/splaytree_worst_condition_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/splaytree_worst_condition_2.png"/></center>
 </p>
 <p align="justify">
 We can find out a whole cycle is in $\Omega(n^{2})$ and amortized complexity is in $\Omega(n)$. This is much bigger than log(n). So, we have to do some change.
@@ -1069,15 +1069,15 @@ We can find out a whole cycle is in $\Omega(n^{2})$ and amortized complexity is 
 <p align="justify">
 Double splay: for three generations g = parent(p), p = parent(v), v, lift v two levels to be root with at most 2 rotations.<br>
 For zigzag (or zagzig), double splay has no difference avec single AVL and single splay: we have to zig on p then zag on g to left v two levels.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/double_splay_zigzag.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/double_splay_zigzag.png"/></center>
 </p>
 <p align="justify">
 But for zigzig (or zagzag), double splay is different: zig on g then zig on p to lift v two levels while single splay zig on p then zig on g. According to their final result, these two splay manage to lift v two levels, but they have a different effect on the sub tree.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/double_splay_zigzig.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/double_splay_zigzig.png"/></center>
 </p>
 <p align="justify">
 To clarify the difference between single splay and double splay on zagzag (or zigzig). We try to visit the deepest node.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/double_splay_zagzag_example.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/double_splay_zagzag_example.png"/></center>
 </p>
 <p align="justify">
 The power of double splay is to reduce subtree's height in an exponential way, while single splay does the same thing in an arithmetic progression. amortized complexity for double splay is $O(log(n)))$.<br><br>
@@ -1108,7 +1108,7 @@ Merge d generations as a super node: $2^{d}-1$ key values and $m=2^{d}$ branches
 If there are N internal keys values in this B-tree, there are N+1 external nodes (key value is null)<br><br>
 
 In fact, B-tree is logically equal to BBST. But, compared to BBST, B-tree visit a batch of values at each super node in order to reduce I/O, because each level represents one I/O.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/b_tree_merge.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/b_tree_merge.png"/></center>
 </p>
 <p align="justify">
 How many internal nodes in a m-way B-tree?<br>
@@ -1148,15 +1148,15 @@ A 256-way B-tree has a $\frac{1}{8}$ of BBST's height. In fact, a m-way B-tree h
 #### 7.2.3 Insert
 <p align="justify">
 If we insert a new key value in a super node and an overflow happens, we have to split this node. In fact, this super node has already m key values such as $k_{0}, k_{1}, ..., k_{m-1}$. We take its median $s=\left \lfloor \frac{m}{2} \right \rfloor$ and split all key values with $k_{s}$
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/b_tree_overflow_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/b_tree_overflow_1.png"/></center>
 </p>
 <p align="justify">
 Besides, we lift $k_{s}$ one level to join its parent and set the rest 2 parts as left children and right children of $k_{s}$. For example, after inserting 37, overflow happens, we put 37 into its parent and set 17, 20, 31 as its left children and 41, 56 as its right children.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/b_tree_overflow_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/b_tree_overflow_2.png"/></center>
 </p>
 <p align="justify">
 Possibly, this kind of overflow will pass upward until root. We split this super node and establish a new root and take $k_{s}$ a key value in this new root. For example, an overflow in root node, we establish a new node with only one key value 37, and set 17, 20, 31 as its left children and 41, 56 as its right children. At this time, height adds 1 and number of branches for the new root is 2.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/b_tree_overflow_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/b_tree_overflow_3.png"/></center>
 </p>
 <p align="justify">
 Insert is in $O(h)$<br><br>
@@ -1167,7 +1167,7 @@ Insert is in $O(h)$<br><br>
 As for removing, if some key value to be removed is not a leaf, we find its most left children in its right subtree and exchange their position, then remove the key value. Similarly, remove may provoke underflow.<br>
 If some super node has an underflow after removing one key value, at this time it has $\left \lceil \frac{m}{2} \right \rceil-2$ key values and $\left \lceil \frac{m}{2} \right \rceil-1$ branches. There are two methods for solving underflow.<br>
 <b>Rotation</b>: if this super node v's sibling s has more than $\left \lceil \frac{m}{2} \right \rceil-1$ key value, v can borrow a key value from s with respecting the in-order rule. For example, y move to first one of v, x replace y's orginal position.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/b_tree_underflow_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/b_tree_underflow_1.png"/></center>
 </p>
 <p align="justify">
 What if v's lfet sibling and right sibling have no available key value?<br>
@@ -1175,7 +1175,7 @@ What if v's lfet sibling and right sibling have no available key value?<br>
 $$\left \lceil \frac{m}{2} \right \rceil-1+\left \lceil \frac{m}{2} \right \rceil-2+1<m-1$$
 
 At the same time, combine y's left pointer and right pointer together at the new super node. Naturally, this process will pass upward until root node.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/b_tree_underflow_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/b_tree_underflow_2.png"/></center>
 </p>
 <p align="justify">
 Remove is in $O(h)$<br><br>
@@ -1188,7 +1188,7 @@ Ephemeral data structure: some state exists in one moment. If we have a dynamic 
 Persistent structure: support a visit for ancient state. How to realize this structure? A sample method is to preserve its each history version, but this way will cause much waste for some data because of duplicated copy.<br><br>
 
 Take a BBST as an instance, we preserve all history version (h = |history|). Each search is in $O(logh+logn)$, because we have to locate version then search some element. Totally, time/space complexity is in $O(h+n)$.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/rb_tree_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/rb_tree_1.png"/></center>
 </p>
 <p align="justify">
 In fact, we update a few elements between two neighbor versions and most elements are not updated. This is a relationship. So we just maintain some updated elements. Then time complexity for sigle version (or augmentation) is in $O(logn)$ and total complexity is in $O(n+h)$.<br><br>
@@ -1205,14 +1205,14 @@ A Red-Black tree can be defined as follows:<br>
 2) all external nodes must be black<br>
 3) for other nodes, if they are red, their children must be black (red's children and parent are black)<br>
 4) from root to any external node, the number of black nodes passed must be identic.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/rb_tree_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/rb_tree_2.png"/></center>
 </p>
 
 #### 7.3.2 Lifting
 <p align="justify">
 In order to better understand Red-Black tree. We need a technique -- lifting. Concretely, we lift each red node one level so that it has a same height as its parent.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/rb_tree_lift_1.png"/></center>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/rb_tree_lift_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/rb_tree_lift_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/rb_tree_lift_2.png"/></center>
 </p>
 <p align="justify">
 We can observe that all nodes in the last level has a same height after lifting. In fact, this is a (2, 4) B-tree now. Besides, a Red-Black tree is balanced because B-tree is balanced. If there is n internal nodes in a Red-Black tree, its height is $h = O(logn)$<br><br>
@@ -1231,25 +1231,25 @@ Algorithm:<br>
 Suppose a node named x to be inserted, according to BBST's insert algorithm, we insert x as a leaf node with two external children and color x in red. At this time, definition 1), 2), 4) are satistied but 3) is not for sure. Because there is a risk x's parent p is red. We call this case double red. If p is black, everything is ok, otherwise, we have to get rid of double red.<br><br>
 
 In addition, we are sure g is black if p is red but we are not sure g's anothr child u is red or black.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/rb_tree_insert_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/rb_tree_insert_1.png"/></center>
 </p>
 <p align="justify">
 According to u's color, we have 2 situations.<br><br>
 
 <b>If u is black</b>, p and x is red, we consider three generations g, p, x. Naturally, there are 4 kinds of topological structure: zagzag, zigzig, zagzig and zigzag. Here, we only take zigzig and zagzig into account because of symmetry. In this case, u may be an external node or a leave node, but this tree's black doesn't change. We lift all red node one level to form a B-tree (4-way is legal) then we can observe a super node with x, p, g or p, x, g. No matter whcih condition, two red node are adjacent. What we should do is reorginize this tree value so that red-black-red. For zigzig, exchange p and g's color; for zagzig, exchange x and g's color.<br><br>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/rb_tree_insert_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/rb_tree_insert_2.png"/></center>
 </p>
 <p align="justify">
 Another way is 3+4 reconstruction, we sort a, b, c as well as their subtree (if not null) to reconstruct a BBST and color a, c in red and the others in black. This method can handle all topological structures.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/rb_tree_insert_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/rb_tree_insert_3.png"/></center>
 </p>
 <p align="justify">
 Only one recolor is enough to get rid of double color and the Red-Black tree's topological structure doesn't change, so complexity for this situation is in $O(1)$.<br><br>
 
 <b>If u is red</b>, similarly we take three generations g, p, x into account for zigzig and zagzig. We lift red nodes, then we can observe the super node has 4 key values with an overflow happened. So, we need to split the super node to eliminate overflow. Equivalently, in the view of Red-Black tree, p and u change to black, g changes to red. Take care that g goes up one level (or g gets red) may cause a new double red, so we can continue our algorithm until no double red. Although, double red will pass upward and total recolor may be in $O(logn)$, our topological structure of Red-Black tree doesn't change. During this process, what we only do is change color instead of rotations. So, topological structure variation is in $O(1)$.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/rb_tree_insert_4.png"/></center>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/rb_tree_insert_5.png"/></center>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/rb_tree_insert_6.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/rb_tree_insert_4.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/rb_tree_insert_5.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/rb_tree_insert_6.png"/></center>
 </p>
 <p align="justify">
 In other word, reconstruction is in $O(1)$. Why do we focus on reconstruction more than coloring? Because reconstruction of tree has a relationship with persistent structure. If some sturcture os persistent, the less reconstruction happens, the better.
@@ -1259,42 +1259,42 @@ In other word, reconstruction is in $O(1)$. Why do we focus on reconstruction mo
 <p align="justify">
 Algorithm:<br>
 Suppose we want to remove x, first of all we have to find x's successor r. According to normal BST's algorithm, we usually find the leftmost child in x's right subtree. Attention, we ignore external nodes. If one of x and r is red, everything is ok, otherwise, we have a double black (double red is impossible).
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/rb_tree_remove_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/rb_tree_remove_1.png"/></center>
 </p>
 <p align="justify">
 If both x and r are black, after removing x, we reduce our black height by 1, so rule 4 is not satisfied. Besides, we call x's parent p and p's another child s (x's sibling). We have four cases.<br><br>
 
 <b>Case 1: if s is black and has at least one red child t</b>
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/rb_tree_remove_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/rb_tree_remove_2.png"/></center>
 </p>
 <p align="justify">
 We take use of B-tree to elaborate why it works. In fact, after remvoing x, an underflow happens in the supernode of x. Lucily, x can borrow a key value form its sibling s by rotating.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/rb_tree_remove_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/rb_tree_remove_3.png"/></center>
 </p>
 <p align="justify">
 <b>Case 2: if s is black with two black children and p is red</b><br>
 x/r keeps balck, s changes to be red and p changes to be black.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/rb_tree_remove_4.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/rb_tree_remove_4.png"/></center>
 </p>
 <p align="justify">
 Is an underflow possible to propagate upward? No, because p is red so p's parent must be black. In the viwe of B-tree, there must be a value with p together in some super node. Although p goes down to combine with its children, the original super node couldn't have an underdlow.<br><br>
 
 <b>Case 3: if s is black with two black children and p is black</b><br>
 s changes to be red.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/rb_tree_remove_5.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/rb_tree_remove_5.png"/></center>
 </p>
 <p align="justify">
 In the view of B-tree, un underflow continues to propagate upwards so such a combination may be in $O(logn)$. However, in the view of Red-Black tree, there is no strcuctural variation. What we need do is color s in red.<br><br>
 
 <b>Case 4: if s is red (obviously with 2 black children or null)</b><br>
 zig(p) (or zag(p)), s changes to be black and p changes to be red.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/rb_tree_remove_6.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/rb_tree_remove_6.png"/></center>
 </p>
 <p align="justify">
 After such an operation, we do not solve double black and rule 4 is still unsatisfied. But we transform case 4 to case 1 or case 2. Then we do the same thing like case 1 or case 2 to get rid of double black.<br><br>
 
 In a word, remove a node in $O(logn)$, with at most $O(logn)$ coloring, one 3+4 reconstruction (rotation), one single rotation (zig or zag).
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/rb_tree_remove_7.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/rb_tree_remove_7.png"/></center>
 </p>
 
 
@@ -1341,7 +1341,7 @@ Consider we want to visit some value with a key, an usual way is to use a vector
 
 Our hash table must be capable of accomodating all value N. At the same time, hash table is much smaller than real key space
 $$N < M << R$$
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/hashing_1.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/hashing_1.png"/></center>
 </p>
 <p align="justify">
 Concretely, we want to search a phone number with 8-digits and we know there is totally 90000 phone numbers. How do we design our searching system? Simply. we can set a vector to contain all possible numbers, say $10^{8}$. Obviously, this occupies much ressources and has a low use rate, because we search 90000 phone numbers but have to spend so much memory (use rate = $\frac{90000}{10^{8}}$). So, we turn to hash table. We set a hash table with a length of 90000 and a hash function
@@ -1371,7 +1371,7 @@ It would be better that M is a prime number. Why? Consider we have a hash table 
 $$gcd(S, M) = g$$
 
 We hope g can be uniformly distributed in our hash table for any s. According to number theory, g should be 1. So, M is a prime. 
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/hashing_2.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/hashing_2.png"/></center>
 </p>
 <p align="justify">
 Modulo operation is not perfect, because 0 is always mapped to 0 no matter what M is ($hash(0) \equiv 0$). Besides, if s and s' is near to each other, thier maps are still near. These will break uniformity.
@@ -1439,7 +1439,7 @@ static size_t hashCode(char s[])
 #### 9.3.1 Open hashing
 <p align="justify">
 For any collision address, we open a chain for them.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/hashing_3.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/hashing_3.png"/></center>
 </p>
 <p align="justify">
 Pros:<br>
@@ -1477,7 +1477,7 @@ Suppose we have hash time with a lenghth M = 11. We can calculate all poosible b
 $$\{0, 1, 2, 3, 4, 5,...\}^{2} \% 11 = \{0, 1, 4, 9, 5, 3\}$$
 
 We can observe first 6 ($\left \lceil \frac{11}{2} \right \rceil$) keys map to different address to each other and about 50% buckets are never visited.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/hashing_4.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/hashing_4.png"/></center>
 </p>
 <p align="justify">
 <b>Proof by contradiction</b>: any two keys less than $\left \lceil \frac{M}{2} \right \rceil$ are different to each other.<br>
@@ -1501,7 +1501,7 @@ We can use 2 probing, one is forward and the other is backward.
 $$\begin{matrix} [hash(key) + 1^{2}] \% M\\ [hash(key) - 1^{2}] \% M\\ [hash(key) + 2^{2}] \% M\\ [hash(key) - 2^{2}] \% M\\ [hash(key) + 3^{2}] \% M\\ [hash(key) - 3^{2}] \% M\\ \vdots \end{matrix}$$
 
 But for some prime number like 5, 13, forward chain and backward chain are compose of a same group of numbers, while other prime number like 7, 11 are not.
-<center><img src="https://raw.githubusercontent.com/chaopan1995/chaopan1995.github.io/master/_imgs/DSA/hashing_5.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chaopan95/chaopan95.github.io/master/_imgs/DSA/hashing_5.png"/></center>
 </p>
 <p align="justify">
 How to chose prime number M? It would be better $M = 4\times k + 3$, like 7, 11, 19, 23, ..... Why?<br><br>
