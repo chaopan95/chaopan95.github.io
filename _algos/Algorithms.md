@@ -133,12 +133,9 @@ public:
 {% endhighlight %}
 
 ## 分治 Divider and Conquer
+### 求一个数组的元素和
 {% highlight C++ %}
-/*
-求一个数组的元素和
-*/
-int sum(int A[], int lo, int hi)
-{
+int sum(int A[], int lo, int hi) {
     if (lo == hi) { return A[lo]; }
     int mi = (lo + hi) >> 1;
     return sum(A, lo, mi) + sum(A, mi+1, hi);
@@ -157,10 +154,8 @@ $$
 </p>
 
 ## 减治 Decrease and Conquer
+### 将一个数组反转
 {% highlight C++ %}
-/*
-将一个数组反转
-*/
 void reverse(int *A, int lo, int hi)
 {
     if (lo < hi) {
