@@ -1409,32 +1409,30 @@ public:
 输出："dcbabcd"
 */
 string shortestPalindrome(string s) {
-    string ans = "";
     int n = (int)s.length();
     if (n <= 1) { return s; }
     vector<int> next(n, -1);
-    int i = 0, t = -1;
+    int i = 0, pos = -1;
     while (i < n - 1) {
-        if (t < 0 || s[i] == s[t]) {
-            next[++i] = ++t;
+        if (pos < 0 || s[i] == s[pos]) {
+            i++;
+            pos++;
+            next[i] = s[i] != s[pos] ? pos : next[pos];
         }
-        else { t = next[t]; }
+        else { pos = next[pos]; }
     }
-    int j = 0;
+    pos = 0;
     i = n - 1;
-    while (i >= 0 && j < n) {
-        if (j < 0 || s[i] == s[j]) {
+    while (i >= 0 && pos < n) {
+        if (pos < 0 || s[i] == s[pos]) {
             i--;
-            j++;
+            pos++;
         }
-        else { j = next[j]; }
+        else { pos = next[pos]; }
     }
-    int pos = j;
-    for (char c : s.substr(pos, n - pos)) {
-        ans.insert(0, 1, c);
-    }
-    ans += s;
-    return ans;
+    string ans = s.substr(pos, n - pos);
+    reverse(ans.begin(), ans.end());
+    return ans + s;
 }
 {% endhighlight %}
 
