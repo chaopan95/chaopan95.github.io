@@ -1394,6 +1394,50 @@ public:
 };
 {% endhighlight %}
 
+##### Leetcode 214. 最短回文串
+{% highlight C++ %}
+/*
+给定一个字符串 s，你可以通过在字符串前面添加字符将其转换为回文串。
+找到并返回可以用这种方式转换的最短回文串。
+
+示例 1：
+输入：s = "aacecaaa"
+输出："aaacecaaa"
+
+示例 2：
+输入：s = "abcd"
+输出："dcbabcd"
+*/
+string shortestPalindrome(string s) {
+    string ans = "";
+    int n = (int)s.length();
+    if (n <= 1) { return s; }
+    vector<int> next(n, -1);
+    int i = 0, t = -1;
+    while (i < n - 1) {
+        if (t < 0 || s[i] == s[t]) {
+            next[++i] = ++t;
+        }
+        else { t = next[t]; }
+    }
+    int j = 0;
+    i = n - 1;
+    while (i >= 0 && j < n) {
+        if (j < 0 || s[i] == s[j]) {
+            i--;
+            j++;
+        }
+        else { j = next[j]; }
+    }
+    int pos = j;
+    for (char c : s.substr(pos, n - pos)) {
+        ans.insert(0, 1, c);
+    }
+    ans += s;
+    return ans;
+}
+{% endhighlight %}
+
 #### Boyer-Moore
 #### Rabin-Karp
 {% highlight C++ %}
