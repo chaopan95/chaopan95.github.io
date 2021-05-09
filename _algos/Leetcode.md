@@ -7594,42 +7594,6 @@ public:
 };
 {% endhighlight %}
 
-## 0416. Partition Equal Subset Sum*
-{% highlight C++ %}
-/*
-Input: nums = [1,5,11,5]
-Output: true
-Explanation: The array can be partitioned as
-[1, 5, 5] and [11].
-
-dp[i][j] means first i elements' sum is equal to j or not
-*/
-class Solution {
-public:
-    bool canPartition(vector<int>& nums) {
-        int n = (int)nums.size();
-        if (n <= 1) { return false; }
-        int sum = 0;
-        for (int &num : nums) { sum += num; }
-        if (sum % 2 == 1) { return false; }
-        int target = sum / 2;
-        bool *dp = new bool [target+1]{};
-        for (int i = 0; i < n; i++) {
-            for (int j = target; j >= nums[i]; j--) {
-                if (i == 0) { dp[j] = (j == nums[i]); }
-                else if (j == 0) { dp[j] = true; }
-                else {
-                    dp[j] = dp[j] || dp[j-nums[i]];
-                }
-            }
-        }
-        bool ans = dp[target];
-        delete []dp;
-        return ans;
-    }
-};
-{% endhighlight %}
-
 ## 0470. Implement Rand10() Using Rand7()*
 {% highlight C++ %}
 /*
