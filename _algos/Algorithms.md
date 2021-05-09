@@ -444,6 +444,50 @@ int maxProduct(vector<int>& nums) {
 }
 {% endhighlight %}
 
+### 背包问题
+#### 01背包
+<p align="justify">
+一个背包有一定的承重cap，有N件物品，每件都有自己的价值，记录在数组v中，也都有自己的重量，记录在数组w中，每件物品只能选择要装入背包还是不装入背包，要求在不超过背包承重的前提下，选出物品的总价值最大。给定物品的重量w价值v及物品数n和承重cap。请返回最大总价值。<br>
+测试样例：<br>
+[1,2,3],[1,2,3],3,6<br>
+返回：6<br><br>
+
+动态规划：dp[i][j]表示前i件物品在最大重量j的条件下的价值
+$$
+dp[i][j] =\max
+\begin{cases}
+dp[i-1]][j], &\quad \text{we don't put i-th item in our bag} \\
+dp[i-1][j - w[i-1]], &\quad \text{otherwise, but } j > w[i-1], i = 1, 2, ..., N
+\end{cases}
+$$
+</p>
+{% highlight C++ %}
+/* *
+ * v[]: value for each item
+ * w[]: weight for each item
+ * W: capacity limit
+ * N: number of item
+*/
+int knapsack(int v[], int w[], int W, int N) {
+    int **dp = new int *[N+1];
+    for (int i = 0; i <= N; i++) { dp[i] = new int [W+1]{}; }
+    for (int i = 1; i <= N; i++)
+    {
+        for (int j = 1; j <= W; j++) {
+            if (j < w[i-1]) { dp[i][j] = dp[i-1][j]; }
+            else {
+                dp[i][j] = max(dp[i-1][j], dp[i-1][j-w[i-1]] + v[i-1]);
+            }
+        }
+    }
+    int res = dp[N][W];
+    for (int i = 0; i <= N; i++) { delete []dp[i]; }
+    delete []dp;
+    return res;
+}
+{% endhighlight %}
+
+
 ### 编辑距离
 #### Leetcode 72. 编辑距离
 {% highlight C++ %}
