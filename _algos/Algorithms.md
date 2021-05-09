@@ -1095,7 +1095,7 @@ void reverse(int *A, int lo, int hi)
 }
 {% endhighlight %}
 
-### 0240. 搜索二维矩阵 II
+### Leetcode 240. 搜索二维矩阵 II
 {% highlight C++ %}
 /*
 1   4   7
