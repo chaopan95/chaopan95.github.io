@@ -195,6 +195,70 @@ bool searchMatrix(vector<vector<int>>& matrix, int target) {
 }
 {% endhighlight %}
 
+#### Leetcode 1482. 制作 m 束花所需的最少天数
+{% highlight C++ %}
+/*
+给你一个整数数组 bloomDay，以及两个整数 m 和 k 。
+现需要制作 m 束花。制作花束时，需要使用花园中 相邻的 k 朵花 。
+花园中有 n 朵花，第 i 朵花会在 bloomDay[i] 时盛开，恰好 可
+以用于一束 花中。
+请你返回从花园中摘 m 束花需要等待的最少的天数。如果不能摘到 m 束花则返回 -1 。
+
+示例 1：
+输入：bloomDay = [1,10,3,10,2], m = 3, k = 1
+输出：3
+解释：让我们一起观察这三天的花开过程，x 表示花开，而 _ 表示花还未开。
+现在需要制作 3 束花，每束只需要 1 朵。
+1 天后：[x, _, _, _, _]   // 只能制作 1 束花
+2 天后：[x, _, _, _, x]   // 只能制作 2 束花
+3 天后：[x, _, x, _, x]   // 可以制作 3 束花，答案为 3
+
+示例 2：
+输入：bloomDay = [1,10,3,10,2], m = 3, k = 2
+输出：-1
+解释：要制作 3 束花，每束需要 2 朵花，也就是一共需要 6 朵花。而花园中只有 5
+朵花，无法满足制作要求，返回 -1 。
+*/
+class Solution {
+public:
+    int minDays(vector<int>& bloomDay, int m, int k) {
+        int n = (int)bloomDay.size();
+        if (n < m * k) { return -1; }
+        int minDay = INT_MAX, maxDay = 0;
+        for (int day : bloomDay) {
+            minDay = min(minDay, day);
+            maxDay = max(maxDay, day);
+        }
+        while (minDay < maxDay) {
+            int midDay = (minDay + maxDay) >> 1;
+            if (canMake(bloomDay, m, k, midDay)) {
+                maxDay = midDay;
+            }
+            else {
+                minDay = midDay + 1;
+            }
+        }
+        return maxDay;
+    }
+    bool canMake (vector<int> &bloomDay, int m, int k, int days) {
+        int bouquets = 0, flowers = 0;
+        for (int bd : bloomDay) {
+            if (bd <= days) {
+                flowers++;
+                if (flowers == k) {
+                    bouquets++;
+                    flowers = 0;
+                }
+            }
+            else {
+                flowers = 0;
+            }
+        }
+        return bouquets >= m;
+    }
+};
+{% endhighlight %}
+
 ### BFS
 ### DFS (回溯 Backtracking)
 #### 组合
@@ -1437,6 +1501,12 @@ string shortestPalindrome(string s) {
 {% endhighlight %}
 
 #### Boyer-Moore
+<p align="justify">
+1、坏字符<br><br>
+
+2、好后缀
+</p>
+
 #### Rabin-Karp
 {% highlight C++ %}
 
