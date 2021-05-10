@@ -1638,6 +1638,99 @@ string shortestPalindrome(string s) {
 
 2、好后缀
 </p>
+{% highlight C++ %}
+class BoyerMoore{
+    vector<int> bc;
+    vector<int> suffix;
+    bool *prefix;
+    string T, P;
+    int nT, nP;
+public:
+    const int N = 256;
+    BoyerMoore (string text, string pattern) {
+        T = text;
+        P = pattern;
+        nT = (int)T.length();
+        nP = (int)P.length();
+    }
+    
+    ~BoyerMoore () {
+        delete []prefix;
+    }
+    
+    void buildBadCharacter() {
+        bc.resize(N, -1);
+        for (int i = 0; i < nP; i++) {
+            bc[P[i]] = i;
+        }
+    }
+    
+    void buildGoodSuffix() {
+        suffix.resize(nP, -1);
+        prefix = new bool [nP]{};
+        for (int i = 0; i < nP - 1; i++) {
+            // k代表后缀的长度
+            int j = i, k = 0;
+            while (j >= 0 && P[j] == P[nP - 1 - k]) {
+                k++;
+                j--;
+                suffix[k] = j + 1;
+            }
+            if (j == -1) {
+                prefix[k] = true;
+            }
+        }
+    }
+    
+    int stepsToMoveWithGoodSuffix(int idxBC) {
+        int k = nP - idxBC - 1;
+        if (k == 0) { return 0; }
+        if (suffix[k] != -1) {
+            return idxBC - suffix[k] + 1;
+        }
+        for (int i = k - 1; i > 0; i--) {
+            if (prefix[i]) {
+                return nP - i - suffix[i];
+            }
+        }
+        return nP;
+    }
+    
+    vector<int> match() {
+        buildBadCharacter();
+        buildGoodSuffix();
+        vector<int> ans;
+        int k = nP - 1;
+        while (k < nT) {
+            int i = k, j = nP - 1;
+            while (j >= 0 && T[i] == P[j]) {
+                i--;
+                j--;
+            }
+            if (j == -1) {
+                ans.emplace_back(i+1);
+                k++;
+                continue;
+            }
+            int stepsWithBC = nP - 1 - bc[T[i]] - (k - i);
+            int stepsWithGS = stepsToMoveWithGoodSuffix(j);
+            k += max(stepsWithBC, stepsWithGS);
+        }
+        return ans;
+    }
+    
+    bool isMatch() {
+        return !match().empty();
+    }
+};
+/*
+string T = "ababab", P = "abab";
+// aaabaaabbbabaa,babb: -1
+// ababbbbaaabbbaaa,bbbb: 3
+BoyerMoore bm(T, P);
+vector<int> pos = bm.match();  // [0 2]
+*/
+{% endhighlight %}
 
 #### Rabin-Karp
 {% highlight C++ %}
