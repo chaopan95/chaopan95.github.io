@@ -1566,28 +1566,31 @@ public:
 输入：haystack = "", needle = ""
 输出：0
 */
-class Solution {
-public:
-    int strStr(string haystack, string needle) {
-        string T = haystack, P = needle;
-        int nT = (int)T.length(), nP = (int)P.length();
-        if (nP == 0) { return 0; }
-        if (nT == 0) { return -1; }
-        int i = 0, j = 0, k = 0, *next = new int [nP]{};
-        int t = next[0] = -1;
-        while (k < nP - 1) {
-            if (t < 0 || P[k] == P[t]) { next[++k] = ++t; }
-            else { t = next[t]; }
+int strStr(string haystack, string needle) {
+    int n = (int)haystack.length(), m = (int)needle.length();
+    if (m == 0) { return 0; }
+    if (n == 0) { return -1; }
+    vector<int> next(m, -1);
+    int j = 0, k = -1;
+    while (j < m - 1) {
+        if (k < 0 || needle[j] == needle[k]) {
+            j++;
+            k++;
+            next[j] = needle[j] != needle[k] ? k : next[k];
         }
-        while (i < nT && j < nP) {
-            if (j < 0 || T[i] == P[j]) { i++; j++; }
-            else { j = next[j]; }
-        }
-        delete []next;
-        if (i - j > nT - nP) { return -1; }
-        return i - j;
+        else { k = next[k]; }
     }
-};
+    int i = 0;
+    j = 0;
+    while (i < n && j < m) {
+        if (j < 0 || haystack[i] == needle[j]) {
+            i++;
+            j++;
+        }
+        else { j = next[j]; }
+    }
+    return i - j > n - m ? -1 : i - j;
+}
 {% endhighlight %}
 
 ##### Leetcode 214. 最短回文串
