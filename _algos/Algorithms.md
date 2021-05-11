@@ -1680,9 +1680,6 @@ a & c & f & a & c & \mathbf{{\color{Blue} f}} \\
 $$
 空间复杂度：$O(m)$, 最坏时间复杂度：$O(n + m)$，m是P的长度，n是T的长度
 </p>
-{% highlight C++ %}
-
-{% endhighlight %}
 
 ##### Leetcode 28. 实现 strStr()
 {% highlight C++ %}
