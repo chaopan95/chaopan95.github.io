@@ -1662,9 +1662,9 @@ KMP讲求从左到右依次匹配，当出现误匹配的字符时，将模式�
 $$
 \begin{matrix}
 a & c & e & a & c & {\color{Red} e} & a & f & d & b & e \\
-a & c & e & a & c & {\color{Blue} f} & & & & & \\
-& & & & & \downarrow & & & & & \\
-& & & a & c & e & a & c & f & &
+a & c & e & a & c & {\color{Blue} f} \\
+& & & & & \downarrow \\
+& & & a & c & e & a & c & f
 \end{matrix}
 $$
 为了更加高效地移动P，next数组表示地下一个位置应当尽可能地小
@@ -1774,27 +1774,27 @@ string shortestPalindrome(string s) {
 $$
 \begin{matrix}
 a & c & {\color{Red} e} & a & f & d & b & e \\
-a & f & {\color{Blue} d} & & & & & \\
-& & & & \downarrow & & & \\
-& & & a & f & d & &
+a & f & {\color{Blue} d} \\
+& & & & \downarrow \\
+& & & a & f & d
 \end{matrix}
 $$
 1.3 当坏字符出现在模式串中，将P中最近的字符与T中的坏字符对应
 $$
 \begin{matrix}
 a & c & {\color{Red} e} & a & f & d & b & e \\
-a & {\color{Blue} e} & d & & & & & \\
-& & & & \downarrow & & & \\
-& a & {\color{Blue} e} & d & & & &
+a & c & {\color{Blue} d} \\
+& & & & \downarrow \\
+& a & e & d
 \end{matrix}
 $$
 但是如果坏字符在P中的位置大于不匹配的位置j时，移动的距离是负数
 $$
 \begin{matrix}
 & {\color{Red} a} & c & d & a & f & d & b & e \\
-& {\color{Blue} b} & a & d & & & & & \\
-& & & & \downarrow & & & & \\
-{\color{Blue} b} & a & d & & & & & &
+& {\color{Blue} b} & a & d \\
+& & & & \downarrow \\
+{\color{Blue} b} & a & d
 \end{matrix}
 $$
 为了避免这种情况，BM还需要好后缀规则。<br><br>
