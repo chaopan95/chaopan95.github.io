@@ -1652,3 +1652,76 @@ public:
  * bool param_3 = obj->startsWith(prefix);
  */
 {% endhighlight %}
+
+### 图
+### 堆
+### 字符串
+#### KMP
+<p align="justify">
+KMP讲求从左到右依次匹配，当出现误匹配的字符时，将模式串P向右移动若干距离。KMP借助P的前缀（历史匹配信息）构建next数组。将P前缀中与失配字符前最大重合的位置对齐。P中的第一个字符发生失配时，对应的下一个位置应该是-1，表示将整个P移动到失配字符的下一个位置。
+$$
+\begin{matrix}
+a & c & e & a & c & \mathbf{{\color{Red} e}} & a & f & d & b & e \\
+a & c & e & a & c & \mathbf{{\color{Blue} f}} \\
+& & & & \downarrow & & & \\
+& & & a & c & e & a & c & f
+\end{matrix}
+$$
+为了更加高效地移动P，next数组表示地下一个位置应当尽可能地小
+$$
+\begin{matrix}
+a & c & f & a & c & \mathbf{{\color{Red} e}} & a & f & d & b & e \\
+a & c & f & a & c & \mathbf{{\color{Blue} f}} \\
+& & & & \downarrow & & & \\
+& & & a & c & \mathbf{{\color{Blue} f}} & a & c & f \\
+& & & & \downarrow & & & \\
+& & & & & & a & c & f & a & c & f
+\end{matrix}
+$$
+空间复杂度：$O(m)$, 最坏时间复杂度：$O(n + m)$，m是P的长度，n是T的长度
+</p>
+
+
+#### Rabin-Karp
+<p align="justify">
+利用哈希的方法，将字符串转化成一个数。由此，两字符串之间的比较转化为两数字的比较。如果出现散列冲突，逐一比较两字符串是否相等。
+</p>
+{% highlight C++ %}
+int RabinKarp(string T, string P) {
+    int n = (int)T.length(), m = (int)P.length();
+    if (m == 0) { return 0; }
+    if (n == 0) { return -1; }
+    int key = 0, value = 0;
+    for (int i = 0; i < m - 1; i++) {
+        key += P[i];
+        value += T[i];
+    }
+    key += P[m-1];
+    for (int i = m - 1, j = -1; i < n; i++) {
+        value += T[i];
+        if (j >= 0) { value -= T[j]; }
+        j++;
+        if (value == key) {
+            int x = j, y = 0;
+            while (x <= i && y < m && T[x] == P[y]) {
+                x++;
+                y++;
+            }
+            if (y == m) { return j; }
+        }
+    }
+    return -1;
+}
+
+int RabinKarp(string T, string P) {
+    int n = (int)T.length(), m = (int)P.length();
+    if (m == 0) { return 0; }
+    if (n == 0) { return -1; }
+    for (int i = 0; i <= n-m; i++) {
+        if (T.substr(i, m) == P) {
+            return i;
+        }
+    }
+    return -1;
+}
+{% endhighlight %}
