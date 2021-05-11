@@ -1568,6 +1568,8 @@ int hanoi(int n, char x, char y, char z) {
 {% endhighlight %}
 
 ### 队列
+#### 打印杨辉三角
+
 ### 树
 #### 二叉树
 ##### 前序遍历
