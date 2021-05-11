@@ -1659,6 +1659,15 @@ public:
 #### KMP
 <p align="justify">
 KMP讲求从左到右依次匹配，当出现误匹配的字符时，将模式串P向右移动若干距离。KMP借助P的前缀（历史匹配信息）构建next数组。将P前缀中与失配字符前最大重合的位置对齐。P中的第一个字符发生失配时，对应的下一个位置应该是-1，表示将整个P移动到失配字符的下一个位置。
+$$
+\begin{matrix}
+a & c & e & a & c & \mathbf{{\color{Red} e}} & a & f & d & b & e \\
+a & c & e & a & c & \mathbf{{\color{Blue} f}} & & & & & \\
+& & & & & \downarrow & & & & & \\
+& & & a & c & e & a & c & f & &
+\end{matrix}
+$$
+为了更加高效地移动P，next数组表示地下一个位置应当尽可能地小
 
 空间复杂度：$O(m)$, 最坏时间复杂度：$O(n + m)$，m是P的长度，n是T的长度
 </p>
