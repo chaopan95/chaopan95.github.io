@@ -424,6 +424,36 @@ int maxSubArray(vector<int>& nums) {
 }
 {% endhighlight %}
 
+#### 最大和的子数组
+{% highlight C++ %}
+vector<int> getMaxSumEpisode(vector<int> nums)
+{
+    // vector<int> nums {1, 2, -1, 3};
+    int n = int(nums.size());
+    vector<int> ans;
+    if (n == 0) { return ans; }
+    int maxSum = -(1ll << 31), curSum = 0;
+    int left = 0, right = 0, begin = 0;
+    for (int i = 0; i < n; i++)
+    {
+        if (curSum >= 0) { curSum += nums[i]; }
+        else {
+            curSum = nums[i];
+            begin = i;
+        }
+        if (maxSum < curSum) {
+            maxSum = curSum;
+            left = begin;
+            right = i;
+        }
+    }
+    for (int i = left; i <= right; i++) {
+        ans.push_back(nums[i]);
+    }
+    return ans;
+}
+{% endhighlight %}
+
 #### Leetcode 152. 乘积最大子数组
 {% highlight C++ %}
 /*
@@ -1276,6 +1306,51 @@ int LCM(int a, int b) {
 }
 {% endhighlight %}
 
+### 位运算符
+#### XOR
+##### Leetcode 1734. 解码异或后的排列
+{% highlight C++ %}
+/*
+给你一个整数数组 perm ，它是前 n 个正整数的排列，且 n 是个 奇数 。
+它被加密成另一个长度为 n - 1 的整数数组 encoded ，满足
+encoded[i] = perm[i] XOR perm[i + 1] 。比方说，如果 perm = [1,3,2] ，
+那么 encoded = [2,1] 。
+给你 encoded 数组，请你返回原始数组 perm 。题目保证答案存在且唯一。
+
+示例 1：
+输入：encoded = [3,1]
+输出：[1,2,3]
+解释：如果 perm = [1,2,3] ，那么 encoded = [1 XOR 2,2 XOR 3] = [3,1]
+
+示例 2：
+输入：encoded = [6,5,4,6]
+输出：[2,4,1,5,3]
+*/
+/*
+perm包含了1-n+1的所有数字，n为encoded的长度
+total = perm[0] ^ ... ^ perm[n-1]
+perm[0] ^ perm[1] = encoded[0]
+perm[1] ^ perm[2] = encoded[1]
+perm[2] ^ perm[3] = encoded[2]
+perm[3] ^ perm[4] = encoded[3]
+所以，encoded数组中奇数位置的元素XOR，对应了perm1-n的XOR，
+由此，可以求得perm[0]的大小
+*/
+vector<int> decode(vector<int>& encoded) {
+    int n = (int)encoded.size();
+    vector<int> perm;
+    int total = 0;
+    for (int i = 1; i <= n+1; i++) { total ^= i; }
+    int odd = 0;
+    for (int i = 1; i < n; i += 2) { odd ^= encoded[i]; }
+    perm.emplace_back(total ^ odd);
+    for (int i = 0; i < n; i++) {
+        perm.emplace_back(perm.back() ^ encoded[i]);
+    }
+    return perm;
+}
+{% endhighlight %}
+
 ## 数据结构
 ### 数组
 ### 链表
@@ -1551,6 +1626,33 @@ public:
 ### 堆
 ### 字符串
 #### KMP
+<p align="justify">
+KMP讲求从左到右依次匹配，当出现误匹配的字符时，将模式串P向右移动若干距离。KMP借助P的前缀（历史匹配信息）构建next数组。将P前缀中与失配字符前最大重合的位置对齐。P中的第一个字符发生失配时，对应的下一个位置应该是-1，表示将整个P移动到失配字符的下一个位置。
+$$
+\begin{matrix}
+a & c & e & a & c & \mathbf{{\color{Red} e}} & a & f & d & b & e \\
+a & c & e & a & c & \mathbf{{\color{Blue} f}} \\
+& & & & \downarrow & & & \\
+& & & a & c & e & a & c & f
+\end{matrix}
+$$
+为了更加高效地移动P，next数组表示地下一个位置应当尽可能地小
+$$
+\begin{matrix}
+a & c & f & a & c & \mathbf{{\color{Red} e}} & a & f & d & b & e \\
+a & c & f & a & c & \mathbf{{\color{Blue} f}} \\
+& & & & \downarrow & & & \\
+& & & a & c & \mathbf{{\color{Blue} f}} & a & c & f \\
+& & & & \downarrow & & & \\
+& & & & & & a & c & f & a & c & f
+\end{matrix}
+$$
+空间复杂度：$O(m)$, 最坏时间复杂度：$O(n + m)$，m是P的长度，n是T的长度
+</p>
+{% highlight C++ %}
+
+{% endhighlight %}
+
 ##### Leetcode 28. 实现 strStr()
 {% highlight C++ %}
 /*
@@ -1637,9 +1739,84 @@ string shortestPalindrome(string s) {
 
 #### Boyer-Moore
 <p align="justify">
-1、坏字符<br><br>
+1、坏字符<br>
+当模式串P与文本串T在某以位置pos发生不匹配时，T[pos]叫做坏字符。<br>
+1.1 坏字符哈希表的构造，一遍扫描将P中的字符位置保存在字典中，key为字符本身，value为字符在P中的位置。<br>
+1.2 当坏字符不在模式串中，将模式串全部移动到坏字符后一位
+$$
+\begin{matrix}
+a & c & \mathbf{{\color{Red} e}} & a & f & d & b & e \\
+a & f & d & & & & & \\
+& & & & \downarrow & & & \\
+& & & a & f & d & &
+\end{matrix}
+$$
+1.3 当坏字符出现在模式串中，将P中最近的字符与T中的坏字符对应
+$$
+\begin{matrix}
+a & c & \mathbf{{\color{Red} e}} & a & f & d & b & e \\
+a & \mathbf{{\color{Blue} e}} & d & & & & & \\
+& & & & \downarrow & & & \\
+& a & \mathbf{{\color{Blue} e}} & d & & & &
+\end{matrix}
+$$
+但是如果坏字符在P中的位置大于不匹配的位置j时，移动的距离是负数
+$$
+\begin{matrix}
+& \mathbf{{\color{Red} a}} & c & d & a & f & d & b & e \\
+& \mathbf{{\color{Blue} b}} & a & d & & & & & \\
+& & & & \downarrow & & & & \\
+\mathbf{{\color{Blue} b}} & a & d & & & & & &
+\end{matrix}
+$$
+为了避免这种情况，BM还需要好后缀规则。<br><br>
 
-2、好后缀
+2、好后缀<br>
+因为T与P的匹配是从左到右（移动方向一直是向右），当出现坏字符时，P的后半部分（如果有）一定是匹配好的，这部分叫做好后缀。<br>
+2.1 好后缀在P的前缀中出现，将P的好后缀匹配的前缀部分与T对齐<br>
+$$
+\begin{matrix}
+c & a & c & \mathbf{{\color{Red} d}} & \mathbf{{\color{Green} e}} & \mathbf{{\color{Green} f}} & a & d & e & f \\
+a & e & f & \mathbf{{\color{Blue} c}} & \mathbf{{\color{Green} e}} & \mathbf{{\color{Green} f}} \\
+& & & & \downarrow \\
+& & & a & \mathbf{{\color{Green} e}} & \mathbf{{\color{Green} f}} & c & e & f
+\end{matrix}
+$$
+2.2 好后缀的部分（后缀）在P的前缀中出现，将部分后缀（P前缀中的）与T对齐
+$$
+\begin{matrix}
+c & a & \mathbf{{\color{Red} d}} & \mathbf{{\color{Green} c}} & \mathbf{{\color{Green} e}} & \mathbf{{\color{Green} f}} & a & d & e & f \\
+a & e & \mathbf{{\color{Blue} f}} & \mathbf{{\color{Green} c}} & \mathbf{{\color{Green} e}} & \mathbf{{\color{Green} f}} \\
+& & & & \downarrow \\
+& & & a & \mathbf{{\color{Green} e}} & \mathbf{{\color{Green} f}} & c & e & f
+\end{matrix}
+$$
+2.3 好后缀在P的前缀中没有出现，将P整体移动lenP（P的长度）
+$$
+\begin{matrix}
+a & c & \mathbf{{\color{Red} f}} & \mathbf{{\color{Green} a}} & \mathbf{{\color{Green} f}} & d & b & e & c & f\\
+& c & \mathbf{{\color{Blue} c}} & \mathbf{{\color{Green} a}} & \mathbf{{\color{Green} f}} \\
+& & & & \downarrow \\
+& & & & & c & c & a & f
+\end{matrix}
+$$
+2.4 好后缀的构造
+$$
+\begin{aligned}
+& \text{suffix[ k ] = pos} \\
+& \text{prefix[ k ] = T/F}
+\end{aligned}
+$$
+k表示好后缀的长度（从1开始），pos表示好后缀在前缀出现的位置（若不存在为-1）, T/F表示长度为k的后缀在P的前缀中是否出现，例如
+\begin{aligned}
+& \text{P = cefcef} \\
+& \text{suffix[1] = 2,} \quad \text{prefix[1] = False} \\
+& \text{suffix[2] = 1,} \quad \text{prefix[1] = False} \\
+& \text{suffix[3] = 0,} \quad \text{prefix[1] = True} \\
+& \text{suffix[4] = -1,} \quad \text{prefix[1] = False} \\
+& \text{suffix[5] = -1,} \quad \text{prefix[1] = False} \\
+\end{aligned}
+3、坏字符与好后缀组合，分别计算两种规则下移动的距离，取较大者。空间复杂度：$O(m + \Sigma)$；时间复杂度：最好情况下$O(\frac{n}{m})$，最差情况下$O(n+m)$
 </p>
 {% highlight C++ %}
 class BoyerMoore{
@@ -1736,6 +1913,45 @@ vector<int> pos = bm.match();  // [0 2]
 {% endhighlight %}
 
 #### Rabin-Karp
+<p align="justify">
+利用哈希的方法，将字符串转化成一个数。由此，两字符串之间的比较转化为两数字的比较。如果出现散列冲突，逐一比较两字符串是否相等。
+</p>
 {% highlight C++ %}
+int RabinKarp(string T, string P) {
+    int n = (int)T.length(), m = (int)P.length();
+    if (m == 0) { return 0; }
+    if (n == 0) { return -1; }
+    int key = 0, value = 0;
+    for (int i = 0; i < m - 1; i++) {
+        key += P[i];
+        value += T[i];
+    }
+    key += P[m-1];
+    for (int i = m - 1, j = -1; i < n; i++) {
+        value += T[i];
+        if (j >= 0) { value -= T[j]; }
+        j++;
+        if (value == key) {
+            int x = j, y = 0;
+            while (x <= i && y < m && T[x] == P[y]) {
+                x++;
+                y++;
+            }
+            if (y == m) { return j; }
+        }
+    }
+    return -1;
+}
 
+int RabinKarp(string T, string P) {
+    int n = (int)T.length(), m = (int)P.length();
+    if (m == 0) { return 0; }
+    if (n == 0) { return -1; }
+    for (int i = 0; i <= n-m; i++) {
+        if (T.substr(i, m) == P) {
+            return i;
+        }
+    }
+    return -1;
+}
 {% endhighlight %}
