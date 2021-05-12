@@ -646,8 +646,6 @@ public:
 
 输出4
 */
-class Solution {
-public:
 int maximalSquare(vector<vector<char>>& matrix) {
     int nRow = (int)matrix.size();
     if (nRow == 0) { return 0; }
@@ -666,7 +664,35 @@ int maximalSquare(vector<vector<char>>& matrix) {
     }
     return ans;
 }
-};
+{% endhighlight %}
+
+#### Leetcode 1277. 统计全为 1 的正方形子矩阵
+{% highlight C++ %}
+/*
+0 1 1 1
+1 1 1 1
+0 1 1 1
+
+输出15
+*/
+int countSquares(vector<vector<int>>& matrix) {
+    int nRow = (int)matrix.size();
+    if (nRow == 0) { return 0; }
+    int nCol = (int)matrix[0].size();
+    if (nCol == 0) { return 0; }
+    vector<vector<int>> dp(nRow + 1, vector<int>(nCol + 1, 0));
+    int ans = 0;
+    for (int i = nRow - 1; i >= 0; i--) {
+        for (int j = nCol - 1; j >= 0; j--) {
+            if (matrix[i][j]) {
+                dp[i][j] = min(dp[i+1][j],
+                               min(dp[i][j+1], dp[i+1][j+1])) + 1;
+            }
+            ans += dp[i][j];
+        }
+    }
+    return ans;
+}
 {% endhighlight %}
 
 ### 编辑距离
