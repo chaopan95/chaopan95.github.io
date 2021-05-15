@@ -2126,36 +2126,6 @@ public:
 };
 {% endhighlight %}
 
-## 0045. Jump Game II*
-{% highlight C++ %}
-/*
-Input: nums = [2,3,1,1,4]
-Output: 2
-Explanation: The minimum number of jumps to reach
-the last index is 2. Jump 1 step from index 0 to 1,
-then 3 steps to the last index.
-*/
-class Solution {
-public:
-    int jump(vector<int>& nums)
-    {
-        int n = int(nums.size());
-        if (n <= 1) { return 0; }
-        int ans = 0, end = 0, farestPos = 0;
-        for (int i = 0; i < n-1; i++)
-        {
-            farestPos = max(i + nums[i], farestPos);
-            if (i == end)
-            {
-                end = farestPos;
-                ans++;
-            }
-        }
-        return ans;
-    }
-};
-{% endhighlight %}
-
 ## 0046. Permutations
 <p align="justify">
 Given an array nums of distinct integers, return all the possible permutations. You can return the answer in any order.
@@ -2535,34 +2505,6 @@ public:
         }
         delete []vis;
         return ans;
-    }
-};
-{% endhighlight %}
-
-## 0055. Jump Game
-{% highlight C++ %}
-/*
-Input: nums = [2,3,1,1,4]
-Output: true
-Explanation: Jump 1 step from index 0 to 1,
-then 3 steps to the last index.
-*/
-class Solution {
-public:
-    bool canJump(vector<int>& nums) {
-        int n = int(nums.size());
-        if (n == 0) { return false; }
-        int count = 0, end = 0, maxPos = 0;
-        for (int i = 0; i < n - 1; i++)
-        {
-            maxPos = max(nums[i] + i, maxPos);
-            if (i == end)
-            {
-                end = maxPos;
-                count++;
-            }
-        }
-        return end >= n - 1;
     }
 };
 {% endhighlight %}
