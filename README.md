@@ -1,1 +1,1 @@
-## 欢迎来到我的[博客](https://github.com/chaopan95/blogs)
+## 欢迎来到我的[博客](https://chaopan95.github.io/blogs/)
